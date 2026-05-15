@@ -45,7 +45,7 @@ export default function Locations() {
               className="glass rounded-2xl overflow-hidden group"
             >
               <div
-                className="h-44 bg-cover bg-center group-hover:scale-105 transition duration-700"
+                className="h-44 bg-cover bg-center group-hover:scale-110 transition duration-700"
                 style={{ backgroundImage: `url('${locationImages[loc.id]}')` }}
               />
               <div className="p-5">

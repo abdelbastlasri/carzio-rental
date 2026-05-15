@@ -44,16 +44,19 @@ export default function ExploreAgadir() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0"
               >
-                <img
+                <motion.img
                   src={slides[current].image}
                   alt={slides[current].title}
                   className="w-full h-full object-cover rounded-xl"
+                  initial={{ scale: 1.3 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 1.2, ease: 'easeOut' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-left">

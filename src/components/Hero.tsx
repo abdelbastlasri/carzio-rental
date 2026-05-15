@@ -47,7 +47,7 @@ const slides = [
   },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 6000;
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -87,19 +87,26 @@ export default function Hero() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background images with cinematic zoom */}
+      {/* Background images with Ken Burns zoom */}
       {slides.map((slide, i) => (
-        <div
+        <motion.div
           key={i}
-          className={`absolute inset-0 transition-all duration-1000 ${
-            i === current ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
-          }`}
+          className="absolute inset-0"
+          initial={false}
+          animate={{
+            opacity: i === current ? 1 : 0,
+            scale: i === current ? [1, 1.2] : 1.2,
+          }}
+          transition={{
+            opacity: { duration: 1, ease: 'easeInOut' },
+            scale: { duration: INTERVAL / 1000, ease: 'linear', repeat: i === current ? 0 : 0 },
+          }}
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${slide.image}')` }}
           />
-        </div>
+        </motion.div>
       ))}
 
       {/* Cinematic gradient overlays */}

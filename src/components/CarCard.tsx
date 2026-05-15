@@ -24,8 +24,8 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
             alt={car.name}
             loading="lazy"
             className="w-full h-full object-contain p-4"
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.4 }}
+            whileHover={{ scale: 1.15 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           />
         ) : (
           <div className="text-center">
