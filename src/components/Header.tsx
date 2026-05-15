@@ -13,11 +13,11 @@ const navLinks = [
 ];
 
 const languages = [
-  { code: 'en', label: 'lang.en', flag: 'https://flagcdn.com/16x12/gb.png' },
-  { code: 'fr', label: 'lang.fr', flag: 'https://flagcdn.com/16x12/fr.png' },
-  { code: 'es', label: 'lang.es', flag: 'https://flagcdn.com/16x12/es.png' },
-  { code: 'pl', label: 'lang.pl', flag: 'https://flagcdn.com/16x12/pl.png' },
-  { code: 'de', label: 'lang.de', flag: 'https://flagcdn.com/16x12/de.png' },
+  { code: 'en', label: 'lang.en', flag: 'https://hatscripts.github.io/circle-flags/flags/gb.svg' },
+  { code: 'fr', label: 'lang.fr', flag: 'https://hatscripts.github.io/circle-flags/flags/fr.svg' },
+  { code: 'es', label: 'lang.es', flag: 'https://hatscripts.github.io/circle-flags/flags/es.svg' },
+  { code: 'pl', label: 'lang.pl', flag: 'https://hatscripts.github.io/circle-flags/flags/pl.svg' },
+  { code: 'de', label: 'lang.de', flag: 'https://hatscripts.github.io/circle-flags/flags/de.svg' },
 ];
 
 export default function Header() {
@@ -76,40 +76,6 @@ export default function Header() {
               </svg>
               {t('common.callUs')}
             </a>
-
-            {/* Language Selector */}
-            <div className="relative">
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                className="text-white/70 hover:text-gold text-sm font-medium transition flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-white/5"
-                aria-label="Select language"
-              >
-                <img src={languages.find(l => l.code === i18n.language)?.flag} alt={i18n.language} className="w-6 h-6 object-cover rounded-full" />
-                <svg className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {langOpen && (
-                <>
-                  <div className="fixed inset-0 z-10" onClick={() => setLangOpen(false)} />
-                  <div className="absolute right-0 top-full mt-1 z-20 glass-dark rounded-xl py-1 min-w-[140px] border border-white/5">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { i18n.changeLanguage(lang.code); setLangOpen(false); }}
-                        className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm transition ${
-                          i18n.language === lang.code ? 'text-gold bg-gold/10' : 'text-white/70 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        <img src={lang.flag} alt={lang.code} className="w-6 h-6 object-cover rounded-full" />
-                        {t(lang.label)}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
             <Link
               to="/cars"
               className="glass-gold text-white font-semibold text-sm px-5 py-2 rounded-lg transition hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
@@ -118,20 +84,37 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Language Flags */}
-          <div className="md:hidden flex items-center gap-1 mr-1">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => i18n.changeLanguage(lang.code)}
-                className={`w-7 h-7 rounded-full flex items-center justify-center transition ${
-                  i18n.language === lang.code ? 'ring-1 ring-gold' : ''
-                }`}
-                title={t(lang.label)}
-              >
-                <img src={lang.flag} alt={lang.code} className="w-5 h-5 object-cover rounded-full" />
-              </button>
-            ))}
+          {/* Language Selector — unified for all screens */}
+          <div className="relative">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="text-white/70 hover:text-gold text-sm font-medium transition flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-white/5"
+              aria-label="Select language"
+            >
+              <img src={languages.find(l => l.code === i18n.language)?.flag} alt={i18n.language} className="w-6 h-6 rounded-full" />
+              <svg className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {langOpen && (
+              <>
+                <div className="fixed inset-0 z-10" onClick={() => setLangOpen(false)} />
+                <div className="absolute right-0 md:right-0 top-full mt-1 z-20 glass-dark rounded-xl py-1 min-w-[140px] border border-white/5">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { i18n.changeLanguage(lang.code); setLangOpen(false); }}
+                      className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm transition ${
+                        i18n.language === lang.code ? 'text-gold bg-gold/10' : 'text-white/70 hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      <img src={lang.flag} alt={lang.code} className="w-6 h-6 rounded-full" />
+                      {t(lang.label)}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
