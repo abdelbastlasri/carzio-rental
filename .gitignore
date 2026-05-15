@@ -13,6 +13,13 @@ dist-ssr
 *.local
 .env
 server/data/
+*.tsbuildinfo
+about images/
+cars images/
+logo carzio/
+new images/
+AGENTS.md
+README.md
 
 # Editor directories and files
 .vscode/*
