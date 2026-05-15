@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
 import ExploreAgadir from '../components/ExploreAgadir';
+import HomeGallery from '../components/HomeGallery';
 import Locations from '../components/Locations';
 import HowItWorks from '../components/HowItWorks';
 import WhyChooseUs from '../components/WhyChooseUs';
@@ -29,6 +30,7 @@ export default function Home() {
       />
       <Locations />
       <ExploreAgadir />
+      <HomeGallery />
       <HowItWorks />
       <WhyChooseUs />
       <Stats />
