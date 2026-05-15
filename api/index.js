@@ -17,6 +17,15 @@ if (supabaseUrl && supabaseKey) {
 app.use(cors());
 app.use(express.json());
 
+function toSnake(obj) {
+  const out = {};
+  for (const key in obj) {
+    const snake = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+    out[snake] = obj[key];
+  }
+  return out;
+}
+
 app.get('/api/status', (req, res) => {
   res.json({
     supabaseConfigured: !!supabase,
@@ -37,7 +46,7 @@ app.get('/api/bookings', async (req, res) => {
 app.post('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const newBooking = { id: `BK-${Date.now()}`, ...req.body, submitted_at: new Date().toISOString() };
+    const newBooking = { id: `BK-${Date.now()}`, ...toSnake(req.body), submitted_at: new Date().toISOString() };
     const { data, error } = await supabase.from('bookings').insert(newBooking).select();
     if (error) throw error;
     res.status(201).json(data?.[0] || newBooking);
@@ -65,7 +74,7 @@ app.get('/api/contacts', async (req, res) => {
 app.post('/api/contacts', async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const newContact = { id: `CT-${Date.now()}`, ...req.body, submitted_at: new Date().toISOString() };
+    const newContact = { id: `CT-${Date.now()}`, ...toSnake(req.body), submitted_at: new Date().toISOString() };
     const { data, error } = await supabase.from('contacts').insert(newContact).select();
     if (error) throw error;
     res.status(201).json(data?.[0] || newContact);
