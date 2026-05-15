@@ -47,6 +47,7 @@ export default function Home() {
         onClose={() => setBookingOpen(false)}
         preselectedCar={selectedCar || formData.selectedCar}
         preselectedLocation={formData.pickupLocation}
+        preselectedDropoffLocation={formData.dropoffLocation}
         preselectedPickupDate={formData.pickupDate}
         preselectedDropoffDate={formData.dropoffDate}
       />

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { fleet } from '../data/fleet';
 import CarCard from './CarCard';
 
@@ -7,6 +8,7 @@ interface FleetProps {
 }
 
 export default function Fleet({ onBook, featured }: FleetProps) {
+  const { t } = useTranslation();
   const cars = featured ? fleet.slice(0, 4) : fleet;
   return (
     <section id="cars" className="py-16 md:py-24 relative overflow-hidden">
@@ -17,12 +19,10 @@ export default function Fleet({ onBook, featured }: FleetProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">
-            {featured ? 'Featured Vehicles' : 'Our Cars'}
+            {featured ? t('fleet.featuredTitle') : t('fleet.title')}
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            {featured
-              ? 'Handpicked selection of our most popular vehicles for every journey.'
-              : 'Browse our selection of premium vehicles — comfort, style and reliability for every journey.'}
+            {featured ? t('fleet.featuredSubtitle') : t('fleet.subtitle')}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">

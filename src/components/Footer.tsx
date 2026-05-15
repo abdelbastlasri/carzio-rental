@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="relative border-t border-white/5 bg-black">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/10 to-transparent" />
@@ -11,36 +13,36 @@ export default function Footer() {
               <img src="/images/carzio-logo.png" alt="Carzio" className="h-12 md:h-14 w-auto" />
             </Link>
             <p className="text-white/40 text-sm mt-3 leading-relaxed">
-              Premium vehicle solutions for discerning clients. Experience the road in unparalleled style and comfort.
+              {t('footer.tagline')}
             </p>
           </div>
           <div>
-            <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">Quick Links</h3>
+            <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
               {[
-                { label: 'Home', to: '/' },
-                { label: 'Our Cars', to: '/cars' },
-                { label: 'About Us', to: '/about' },
-                { label: 'Contact', to: '/contact' },
+                { label: 'footer.home', to: '/' },
+                { label: 'footer.ourCars', to: '/cars' },
+                { label: 'footer.aboutUs', to: '/about' },
+                { label: 'footer.contact', to: '/contact' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-white/40 text-sm hover:text-gold transition">{link.label}</Link>
+                  <Link to={link.to} className="text-white/40 text-sm hover:text-gold transition">{t(link.label)}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">Get in Touch</h3>
+            <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.getInTouch')}</h3>
             <ul className="space-y-2 text-white/40 text-sm">
-              <li>Airport Agadir, Agadir 80000</li>
-              <li><a href="https://wa.me/212680318003" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">+212 680-318003</a></li>
-              <li><a href="mailto:contact@carzio.ma" className="hover:text-gold transition">contact@carzio.ma</a></li>
-              <li>Mon-Sun: 24/7 Service</li>
+              <li>{t('footer.address')}</li>
+              <li><a href="https://wa.me/212680318003" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">{t('footer.phone')}</a></li>
+              <li><a href="mailto:contact@carzio.ma" className="hover:text-gold transition">{t('footer.email')}</a></li>
+              <li>{t('footer.hours')}</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-white/5 pt-6 text-center text-white/30 text-xs">
-          &copy; 2026 Carzio. All rights reserved.
+          {t('footer.copyright')}
         </div>
       </div>
     </footer>

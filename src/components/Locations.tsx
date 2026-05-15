@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { locations, locationImages } from '../data/locations';
 
@@ -20,14 +21,15 @@ const cardVariants = {
 };
 
 export default function Locations() {
+  const { t } = useTranslation();
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/10 to-black" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">Our Locations</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">{t('locations.title')}</h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            Visit our pickup points across Morocco &mdash; convenient airport service and city locations.
+            {t('locations.subtitle')}
           </p>
         </div>
         <motion.div
@@ -61,7 +63,7 @@ export default function Locations() {
                     to="/cars"
                     className="flex-1 glass-gold text-white font-semibold text-sm py-2.5 rounded-xl text-center transition hover:bg-gold/20"
                   >
-                    Book Now
+                    {t('locations.bookNow')}
                   </Link>
                   <a
                     href={loc.mapUrl}

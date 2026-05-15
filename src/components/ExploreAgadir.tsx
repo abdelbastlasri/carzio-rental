@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
@@ -21,6 +22,7 @@ const slides = [
 ];
 
 export default function ExploreAgadir() {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent(c => (c === 0 ? slides.length - 1 : c - 1));
@@ -33,9 +35,9 @@ export default function ExploreAgadir() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-2 tracking-tight">Explore Agadir</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-2 tracking-tight">{t('explore.title')}</h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            Discover the beauty of Agadir while driving with Carzio
+            {t('explore.subtitle')}
           </p>
         </div>
 
@@ -98,7 +100,7 @@ export default function ExploreAgadir() {
             to="/cars"
             className="inline-block glass-gold text-white font-semibold px-8 py-3 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
           >
-            Book a Car to Explore
+            {t('explore.bookCar')}
           </Link>
         </div>
       </div>

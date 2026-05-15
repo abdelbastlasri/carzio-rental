@@ -1,8 +1,10 @@
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import Fleet from '../components/Fleet';
 import BookingModal from '../components/BookingModal';
 
 export default function Cars() {
+  const { t } = useTranslation();
   const [bookingOpen, setBookingOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState('');
   const [modalKey, setModalKey] = useState(0);
@@ -19,8 +21,8 @@ export default function Cars() {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/30 to-black" />
         <div className="absolute top-0 left-1/3 w-64 h-64 bg-gold/5 rounded-full blur-[80px]" />
         <div className="relative z-10">
-          <h1 className="text-white font-heading text-3xl md:text-5xl font-bold mb-2 tracking-tight">Our Cars</h1>
-           <p className="text-white/50">Available Vehicles in Our Agency</p>
+          <h1 className="text-white font-heading text-3xl md:text-5xl font-bold mb-2 tracking-tight">{t('fleet.title')}</h1>
+           <p className="text-white/50">{t('fleet.subtitle')}</p>
         </div>
       </div>
       <Fleet onBook={handleBook} />

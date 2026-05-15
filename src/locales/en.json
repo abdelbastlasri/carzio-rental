@@ -1,0 +1,150 @@
+{
+  "lang": {
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "pl": "Polish",
+    "de": "German"
+  },
+  "common": {
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us",
+    "browseFleet": "Browse Fleet",
+    "callUs": "+212 680-318003",
+    "qualitySlogan": "Quality You Can Feel, Convenience You Deserve"
+  },
+  "nav": {
+    "home": "Home",
+    "ourCars": "Our Cars",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "label": "Premium Car Rentals · Agadir",
+    "slide0": { "headline": "Drive Morocco", "subhead": "Your Way", "desc": "Explore the Atlantic coast with premium vehicles built for comfort and performance." },
+    "slide1": { "headline": "Coastal Freedom", "subhead": "Endless Views", "desc": "Cruise the Agadir shoreline with the wind in your hair and the sun on your skin." },
+    "slide2": { "headline": "Ascend Higher", "subhead": "New Perspectives", "desc": "Take the scenic route through the Anti-Atlas mountains in style and confidence." },
+    "slide3": { "headline": "Vibrant Souks", "subhead": "Local Treasures", "desc": "Navigate the heart of Agadir's markets with the freedom only a rental car brings." },
+    "slide4": { "headline": "Surf & Sun", "subhead": "Beach Escape", "desc": "Taghazout is waiting. Your perfect surf trip starts with the perfect ride." },
+    "slide5": { "headline": "Golden Hours", "subhead": "Unwind in Style", "desc": "End your day with a sunset drive along Morocco's most beautiful coastline." },
+    "slide6": { "headline": "Ancient Walls", "subhead": "History Awaits", "desc": "Discover Agadir Oufella and the rich heritage of the Souss region." }
+  },
+  "bookingForm": {
+    "title": "Book Your Car",
+    "pickupLocation": "Pickup Location",
+    "dropoffLocation": "Drop Off Location",
+    "pickupDate": "Pickup Date",
+    "dropoffDate": "Drop Off Date",
+    "selectCar": "Select a car (optional)",
+    "searchCars": "Search Available Cars",
+    "noHiddenFees": "No hidden fees",
+    "freeCancellation": "Free cancellation",
+    "secureBooking": "Secure booking"
+  },
+  "fleet": {
+    "title": "Available Cars in Our Agency Rental",
+    "featuredTitle": "Featured Vehicles",
+    "subtitle": "Browse our selection of premium vehicles — comfort, style and reliability for every journey.",
+    "featuredSubtitle": "Handpicked selection of our most popular vehicles for every journey."
+  },
+  "carCard": {
+    "orSimilar": "or similar",
+    "bookNow": "Book Now"
+  },
+  "locations": {
+    "title": "Our Locations",
+    "subtitle": "Visit our pickup points across Morocco — convenient airport service and city locations.",
+    "bookNow": "Book Now"
+  },
+  "explore": {
+    "title": "Explore Agadir",
+    "subtitle": "Discover the beauty of Agadir while driving with Carzio",
+    "bookCar": "Book a Car to Explore"
+  },
+  "howItWorks": {
+    "title": "Quick & Easy Car Rental",
+    "subtitle": "Booking your rental car has never been simpler — choose your vehicle online and hit the road in just a few clicks.",
+    "step1Title": "Select Your Car",
+    "step1Desc": "Browse our wide selection of vehicles to find the perfect match for your travel style, needs, and budget.",
+    "step2Title": "Contact Our Team",
+    "step2Desc": "Reach out to our friendly team to confirm your booking details and any special requirements.",
+    "step3Title": "Hit the Road",
+    "step3Desc": "Your car is ready! Pick it up, start exploring Agadir, and enjoy the freedom of the open road with confidence."
+  },
+  "whyChooseUs": {
+    "title": "Built for a Better Drive",
+    "subtitle": "Everything you need for a stress-free rental — from a reliable fleet to friendly local service.",
+    "reason1Title": "Diverse Fleet",
+    "reason1Desc": "Choose from economy cars, luxury models, and SUVs — all well-maintained and ready for the road.",
+    "reason2Title": "Transparent Pricing",
+    "reason2Desc": "No hidden fees — just fair, competitive rates tailored to your budget.",
+    "reason3Title": "Airport Pickup",
+    "reason3Desc": "Seamless travel with convenient pickup and drop-off at Agadir Al Massira Airport.",
+    "reason4Title": "Trusted Local Service",
+    "reason4Desc": "Friendly, bilingual support and personalized service from a locally trusted team."
+  },
+  "stats": {
+    "title": "Why Choose Carzio",
+    "subtitle": "Trusted by thousands of travelers across Morocco",
+    "rating": "Customer Rating",
+    "travelers": "Happy Travelers",
+    "insured": "Drive Worry-Free",
+    "support": "Support"
+  },
+  "reviews": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from travellers who trusted us with their journey across Morocco."
+  },
+  "contact": {
+    "mapTitle": "Find Us on the Map",
+    "mapSubtitle": "Our main office is located at Agadir Al Massira Airport — easy to reach the moment you land.",
+    "getInTouch": "Get in Touch",
+    "helpText": "Reach out anytime — we're here to help.",
+    "ourAddress": "Our Address",
+    "addressValue": "Airport Agadir, Agadir 80000",
+    "callUs": "Call Us",
+    "phoneValue": "+212 680-318003",
+    "emailUs": "Email Us",
+    "emailValue": "contact@carzio.ma",
+    "workingHours": "Working Hours",
+    "hoursValue": "Mon-Sun: 24/7 Service",
+    "whatsapp": "WhatsApp",
+    "directions": "Directions",
+    "messageSent": "Message Sent!",
+    "messageSentDesc": "We'll get back to you shortly.",
+    "sendAnother": "Send another message",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "message": "Message",
+    "sendMessage": "Send Message"
+  },
+  "about": {
+    "title": "Who We Are",
+    "experience": "5+ Years Experience",
+    "heading": "Where Quality Meets Convenience",
+    "description": "Carzio is a trusted car hire company based in Agadir, Morocco, dedicated to providing reliable and affordable vehicle rental services. Whether you're exploring the city, embarking on a coastal adventure, or traveling for business — we've got you covered.",
+    "highlight1Title": "Wide Range of Vehicles",
+    "highlight1Desc": "From compact city cars to luxury SUVs, our fleet covers every need with modern, well-maintained vehicles.",
+    "highlight2Title": "Affordable Daily Rates",
+    "highlight2Desc": "Competitive pricing with no hidden fees. Get the best value for your money with transparent, upfront costs.",
+    "highlight3Title": "Airport Pickup & Drop-Off",
+    "highlight3Desc": "Seamless travel experience with convenient pickup and drop-off directly at Agadir Al Massira Airport.",
+    "highlight4Title": "Customer-Centric Support",
+    "highlight4Desc": "Our dedicated team is available 24/7 to assist you with any questions or concerns during your rental."
+  },
+  "footer": {
+    "tagline": "Premium vehicle solutions for discerning clients. Experience the road in unparalleled style and comfort.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "ourCars": "Our Cars",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch",
+    "address": "Airport Agadir, Agadir 80000",
+    "phone": "+212 680-318003",
+    "email": "contact@carzio.ma",
+    "hours": "Mon-Sun: 24/7 Service",
+    "copyright": "© 2026 Carzio. All rights reserved."
+  }
+}

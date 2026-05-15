@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
 
@@ -16,6 +17,7 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ onOpenBooking, formData, setFormData }: BookingFormProps) {
+  const { t } = useTranslation();
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -26,11 +28,11 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
       <div className="max-w-7xl mx-auto px-4">
         <div className="bg-zinc-900/80 backdrop-blur rounded-2xl p-6 md:p-10 shadow-2xl -mt-20 md:-mt-32 relative z-20 border border-white/5">
           <h2 className="text-white font-heading text-2xl md:text-3xl font-bold mb-6 text-center">
-            Book Your Car
+            {t('bookingForm.title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="block text-gray-400 text-xs mb-1">Pickup Location</label>
+              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.pickupLocation')}</label>
               <select
                 value={formData.pickupLocation}
                 onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
@@ -42,7 +44,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               </select>
             </div>
             <div>
-              <label className="block text-gray-400 text-xs mb-1">Drop Off Location</label>
+              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.dropoffLocation')}</label>
               <select
                 value={formData.dropoffLocation}
                 onChange={(e) => setFormData({ ...formData, dropoffLocation: e.target.value })}
@@ -54,7 +56,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               </select>
             </div>
             <div>
-              <label className="block text-gray-400 text-xs mb-1">Pickup Date</label>
+              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.pickupDate')}</label>
               <input
                 type="date"
                 value={formData.pickupDate}
@@ -64,7 +66,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               />
             </div>
             <div>
-              <label className="block text-gray-400 text-xs mb-1">Drop Off Date</label>
+              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.dropoffDate')}</label>
               <input
                 type="date"
                 value={formData.dropoffDate}
@@ -79,7 +81,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                 onChange={(e) => setFormData({ ...formData, selectedCar: e.target.value })}
                 className="w-full sm:w-64 bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
               >
-                <option value="">Select a car (optional)</option>
+                <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (
                   <option key={car.id} value={car.id}>{car.name} — {car.pricePerDay}€/day</option>
                 ))}
@@ -89,7 +91,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                 onClick={onOpenBooking}
                 className="w-full sm:w-auto bg-gold hover:bg-gold-light text-black font-semibold px-8 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
               >
-                Search Available Cars
+                {t('bookingForm.searchCars')}
               </button>
             </div>
           </div>
@@ -98,19 +100,19 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
               </svg>
-              No hidden fees
+              {t('bookingForm.noHiddenFees')}
             </span>
             <span className="inline-flex items-center gap-1">
               <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              Free cancellation
+              {t('bookingForm.freeCancellation')}
             </span>
             <span className="inline-flex items-center gap-1">
               <svg className="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              Secure booking
+              {t('bookingForm.secureBooking')}
             </span>
           </p>
         </div>

@@ -7,11 +7,12 @@ interface BookingModalProps {
   onClose: () => void;
   preselectedCar?: string;
   preselectedLocation?: string;
+  preselectedDropoffLocation?: string;
   preselectedPickupDate?: string;
   preselectedDropoffDate?: string;
 }
 
-export default function BookingModal({ isOpen, onClose, preselectedCar, preselectedLocation, preselectedPickupDate, preselectedDropoffDate }: BookingModalProps) {
+export default function BookingModal({ isOpen, onClose, preselectedCar, preselectedLocation, preselectedDropoffLocation, preselectedPickupDate, preselectedDropoffDate }: BookingModalProps) {
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -21,7 +22,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
 
   // Step 1 fields
   const [pickupLocation, setPickupLocation] = useState(preselectedLocation || 'agadir');
-  const [dropoffLocation, setDropoffLocation] = useState(preselectedLocation || 'agadir');
+  const [dropoffLocation, setDropoffLocation] = useState(preselectedDropoffLocation || preselectedLocation || 'agadir');
   const [pickupDate, setPickupDate] = useState(preselectedPickupDate || today);
   const [dropoffDate, setDropoffDate] = useState(preselectedDropoffDate || '');
   const [pickupTime, setPickupTime] = useState('');
@@ -45,7 +46,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       setShowConfirmation(false);
       setSubmitError('');
       setPickupLocation(preselectedLocation || 'agadir');
-      setDropoffLocation(preselectedLocation || 'agadir');
+      setDropoffLocation(preselectedDropoffLocation || preselectedLocation || 'agadir');
       setPickupDate(preselectedPickupDate || today);
       setDropoffDate(preselectedDropoffDate || '');
       setPickupTime('');

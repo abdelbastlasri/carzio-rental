@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { reviews } from '../data/reviews';
 
 const INTERVAL = 6000;
 
 export default function Reviews() {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => setCurrent(c => (c + 1) % reviews.length), []);
@@ -25,9 +27,9 @@ export default function Reviews() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">What Our Clients Say</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">{t('reviews.title')}</h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            Real stories from travellers who trusted us with their journey across Morocco.
+            {t('reviews.subtitle')}
           </p>
         </div>
 

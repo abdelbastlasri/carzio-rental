@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const WHATSAPP_NUMBER = '212680318003';
 const EMAIL = 'contact@carzio.ma';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -43,9 +45,9 @@ export default function Contact() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">Find Us on the Map</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">{t('contact.mapTitle')}</h2>
           <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            Our main office is located at Agadir Al Massira Airport &mdash; easy to reach the moment you land.
+            {t('contact.mapSubtitle')}
           </p>
         </div>
 
@@ -69,9 +71,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-white font-heading text-xl font-bold mb-6 tracking-tight">Get in Touch</h3>
+            <h3 className="text-white font-heading text-xl font-bold mb-6 tracking-tight">{t('contact.getInTouch')}</h3>
             <p className="text-white/50 mb-8">
-              Reach out anytime &mdash; we&apos;re here to help.
+              {t('contact.helpText')}
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
@@ -82,8 +84,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Our Address</p>
-                  <p className="text-white/50 text-sm">Airport Agadir, Agadir 80000</p>
+                  <p className="text-white font-semibold text-sm">{t('contact.ourAddress')}</p>
+                  <p className="text-white/50 text-sm">{t('contact.addressValue')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -93,8 +95,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Call Us</p>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-gold transition">+212 680-318003</a>
+                  <p className="text-white font-semibold text-sm">{t('contact.callUs')}</p>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-gold transition">{t('contact.phoneValue')}</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -104,8 +106,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Email Us</p>
-                  <a href={`mailto:${EMAIL}`} className="text-white/50 text-sm hover:text-gold transition">{EMAIL}</a>
+                  <p className="text-white font-semibold text-sm">{t('contact.emailUs')}</p>
+                  <a href={`mailto:${EMAIL}`} className="text-white/50 text-sm hover:text-gold transition">{t('contact.emailValue')}</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -115,8 +117,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Working Hours</p>
-                  <p className="text-white/50 text-sm">Mon-Sun: 24/7 Service</p>
+                  <p className="text-white font-semibold text-sm">{t('contact.workingHours')}</p>
+                  <p className="text-white/50 text-sm">{t('contact.hoursValue')}</p>
                 </div>
               </div>
             </div>
@@ -127,7 +129,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="glass-gold text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
               >
-                WhatsApp
+                {t('contact.whatsapp')}
               </a>
               <a
                 href="https://www.google.com/maps?q=Agadir+Airport+Al+Massira"
@@ -135,7 +137,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="glass text-white/80 font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-white/10"
               >
-                Directions
+                {t('contact.directions')}
               </a>
             </div>
           </div>
@@ -151,17 +153,17 @@ export default function Contact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-white font-heading font-bold text-lg mb-2">Message Sent!</h3>
-                <p className="text-white/50 text-sm mb-4">We&apos;ll get back to you shortly.</p>
+                <h3 className="text-white font-heading font-bold text-lg mb-2">{t('contact.messageSent')}</h3>
+                <p className="text-white/50 text-sm mb-4">{t('contact.messageSentDesc')}</p>
                 <button onClick={() => setSent(false)} className="text-gold hover:text-gold-light font-medium text-sm">
-                  Send another message
+                  {t('contact.sendAnother')}
                 </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 md:p-7">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-white/60 text-sm font-medium mb-1">Full Name</label>
+                    <label className="block text-white/60 text-sm font-medium mb-1">{t('contact.fullName')}</label>
                     <input
                       type="text"
                       value={name}
@@ -171,7 +173,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-white/60 text-sm font-medium mb-1">Email</label>
+                    <label className="block text-white/60 text-sm font-medium mb-1">{t('contact.email')}</label>
                     <input
                       type="email"
                       value={email}
@@ -182,7 +184,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-white/60 text-sm font-medium mb-1">Phone Number</label>
+                  <label className="block text-white/60 text-sm font-medium mb-1">{t('contact.phoneNumber')}</label>
                   <input
                     type="tel"
                     value={phone}
@@ -192,7 +194,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="block text-white/60 text-sm font-medium mb-1">Message</label>
+                  <label className="block text-white/60 text-sm font-medium mb-1">{t('contact.message')}</label>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -208,7 +210,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full glass-gold text-white font-semibold py-2.5 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
                 >
-                  Send Message
+                  {t('contact.sendMessage')}
                 </button>
               </form>
             )}

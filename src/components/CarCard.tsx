@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Car } from '../types';
 
@@ -8,6 +9,7 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -17,13 +19,13 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="glass rounded-2xl overflow-hidden group"
     >
-      <div className="bg-black/40 h-48 flex items-center justify-center overflow-hidden">
+      <div className="bg-zinc-800 h-48 flex items-center justify-center overflow-hidden">
         {car.image ? (
           <motion.img
             src={car.image}
             alt={car.name}
             loading="lazy"
-            className="w-full h-full object-contain p-4 mix-blend-multiply brightness-110"
+            className="w-full h-full object-cover p-2 scale-110"
             whileHover={{ scale: 1.15 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />
@@ -42,7 +44,7 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
             {car.pricePerDay}€<span className="text-white/40 text-xs font-normal">/day</span>
           </span>
         </div>
-        <p className="text-white/40 text-xs mb-3">or similar &middot; {car.type}</p>
+        <p className="text-white/40 text-xs mb-3">{t('carCard.orSimilar')} &middot; {car.type}</p>
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/50 mb-3">
           {car.ac && <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>AC</span>}
           <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>{car.doors}d</span>
@@ -58,7 +60,7 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
             whileTap={{ scale: 0.98 }}
             className="w-full bg-burgundy hover:bg-red-900 text-white font-semibold text-sm py-2.5 rounded-xl transition shadow-lg shadow-burgundy/20 hover:shadow-burgundy/40"
           >
-            Book Now
+            {t('carCard.bookNow')}
           </motion.button>
         </div>
       </div>

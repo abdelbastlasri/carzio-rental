@@ -1,55 +1,22 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
-  {
-    image: '/images/11.jpg',
-    headline: 'Drive Morocco',
-    subhead: 'Your Way',
-    desc: 'Explore the Atlantic coast with premium vehicles built for comfort and performance.',
-  },
-  {
-    image: '/images/2.jpg',
-    headline: 'Coastal Freedom',
-    subhead: 'Endless Views',
-    desc: 'Cruise the Agadir shoreline with the wind in your hair and the sun on your skin.',
-  },
-  {
-    image: '/images/3.jpg',
-    headline: 'Ascend Higher',
-    subhead: 'New Perspectives',
-    desc: 'Take the scenic route through the Anti-Atlas mountains in style and confidence.',
-  },
-  {
-    image: '/images/4.jpg',
-    headline: 'Vibrant Souks',
-    subhead: 'Local Treasures',
-    desc: 'Navigate the heart of Agadir\'s markets with the freedom only a rental car brings.',
-  },
-  {
-    image: '/images/55.jpg',
-    headline: 'Surf & Sun',
-    subhead: 'Beach Escape',
-    desc: 'Taghazout is waiting. Your perfect surf trip starts with the perfect ride.',
-  },
-  {
-    image: '/images/66.jpg',
-    headline: 'Golden Hours',
-    subhead: 'Unwind in Style',
-    desc: 'End your day with a sunset drive along Morocco\'s most beautiful coastline.',
-  },
-  {
-    image: '/images/7.jpg',
-    headline: 'Ancient Walls',
-    subhead: 'History Awaits',
-    desc: 'Discover Agadir Oufella and the rich heritage of the Souss region.',
-  },
+  { image: '/images/11.jpg', key: 'hero.slide0' },
+  { image: '/images/2.jpg', key: 'hero.slide1' },
+  { image: '/images/3.jpg', key: 'hero.slide2' },
+  { image: '/images/4.jpg', key: 'hero.slide3' },
+  { image: '/images/55.jpg', key: 'hero.slide4' },
+  { image: '/images/66.jpg', key: 'hero.slide5' },
+  { image: '/images/7.jpg', key: 'hero.slide6' },
 ];
 
 const INTERVAL = 6000;
 
 export default function Hero() {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
@@ -150,14 +117,14 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
               <p className="text-gold font-heading font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
-                Premium Car Rentals &middot; Agadir
+                {t('hero.label')}
               </p>
               <h1 className="text-white font-heading text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4">
-                {slides[current].headline}<br />
-                <span className="text-gold">{slides[current].subhead}</span>
+                {t(`${slides[current].key}.headline`)}<br />
+                <span className="text-gold">{t(`${slides[current].key}.subhead`)}</span>
               </h1>
               <p className="text-white/60 text-sm md:text-base max-w-lg mb-8 leading-relaxed">
-                {slides[current].desc}
+                {t(`${slides[current].key}.desc`)}
               </p>
             </motion.div>
           </AnimatePresence>
@@ -167,13 +134,13 @@ export default function Hero() {
               to="/cars"
               className="glass-gold text-white font-semibold px-8 py-3 rounded-lg transition text-sm md:text-base hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20 hover:scale-[1.02] active:scale-[0.98]"
             >
-              Browse Fleet
+              {t('common.browseFleet')}
             </Link>
             <Link
               to="/contact"
               className="glass text-white/80 hover:text-white font-semibold px-8 py-3 rounded-lg transition text-sm md:text-base hover:bg-white/10 hover:scale-[1.02] active:scale-[0.98]"
             >
-              Contact Us
+              {t('common.contactUs')}
             </Link>
           </div>
         </div>
