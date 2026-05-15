@@ -21,15 +21,17 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, message }),
       });
-      if (!res.ok) throw new Error('Server error');
+      const body = await res.json();
+      if (!res.ok) throw new Error(body.error || 'Server error');
       setSent(true);
       setName('');
       setEmail('');
       setPhone('');
       setMessage('');
     } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
       console.error('Failed to save contact:', err);
-      setSubmitError('Failed to send message. Please try again.');
+      setSubmitError(msg);
     }
   };
 

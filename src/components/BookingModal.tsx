@@ -104,11 +104,13 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
           specialRequests: requests,
         }),
       });
-      if (!res.ok) throw new Error('Server error');
+      const body = await res.json();
+      if (!res.ok) throw new Error(body.error || 'Server error');
       setShowConfirmation(true);
     } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Failed to save booking. Please try again.';
       console.error('Failed to save booking:', err);
-      setSubmitError('Failed to save booking. Please try again.');
+      setSubmitError(msg);
     }
   };
 
