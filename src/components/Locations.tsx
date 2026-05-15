@@ -1,38 +1,65 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { locations, locationImages } from '../data/locations';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
+};
 
 export default function Locations() {
   return (
-    <section className="bg-zinc-900 pb-16 md:pb-20">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/10 to-black" />
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3">Our Locations</h2>
-          <p className="text-silver max-w-xl mx-auto">
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">Our Locations</h2>
+          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
             Visit our pickup points across Morocco &mdash; convenient airport service and city locations.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
+        >
           {locations.map((loc) => (
-            <div
+            <motion.div
               key={loc.id}
-              className="bg-black/80 rounded-xl overflow-hidden border border-white/5 hover:border-gold/30 shadow-lg hover:shadow-xl transition group"
+              variants={cardVariants}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="glass rounded-2xl overflow-hidden group"
             >
               <div
-                className="h-44 bg-cover bg-center group-hover:scale-105 transition duration-500"
+                className="h-44 bg-cover bg-center group-hover:scale-105 transition duration-700"
                 style={{ backgroundImage: `url('${locationImages[loc.id]}')` }}
               />
               <div className="p-5">
-                <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-gold/20 transition">
+                <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-gold/20 transition">
                   <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-white font-heading font-semibold text-lg mb-3">{loc.name}</h3>
+                <h3 className="text-white font-heading font-semibold text-lg mb-3 tracking-tight">{loc.name}</h3>
                 <div className="flex gap-2">
                   <Link
                     to="/cars"
-                    className="flex-1 bg-gold hover:bg-gold-light text-black font-semibold text-sm py-2.5 rounded-lg text-center transition shadow-lg shadow-gold/20 hover:shadow-gold/40"
+                    className="flex-1 glass-gold text-white font-semibold text-sm py-2.5 rounded-xl text-center transition hover:bg-gold/20"
                   >
                     Book Now
                   </Link>
@@ -40,18 +67,18 @@ export default function Locations() {
                     href={loc.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-zinc-800 hover:bg-gold/20 rounded-lg flex items-center justify-center transition shrink-0 border border-zinc-700"
+                    className="w-10 h-10 glass rounded-xl flex items-center justify-center transition shrink-0 hover:bg-white/10"
                     title="View on map"
                   >
-                    <svg className="w-5 h-5 text-gray-400 hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-white/50 hover:text-gold transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                     </svg>
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

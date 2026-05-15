@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const WHATSAPP_NUMBER = '212680318003';
 const EMAIL = 'contact@carzio.ma';
@@ -36,16 +37,24 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-black py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3">Find Us on the Map</h2>
-          <p className="text-silver max-w-xl mx-auto">
+    <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/10 to-black" />
+      <div className="absolute top-1/3 right-0 w-80 h-80 bg-gold/5 rounded-full blur-[100px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">Find Us on the Map</h2>
+          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
             Our main office is located at Agadir Al Massira Airport &mdash; easy to reach the moment you land.
           </p>
         </div>
 
-        <div className="rounded-xl overflow-hidden border border-white/5 shadow-lg mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl overflow-hidden glass mb-12"
+        >
           <iframe
             src="https://www.google.com/maps?q=Agadir+Airport+Al+Massira&output=embed"
             width="100%"
@@ -56,50 +65,58 @@ export default function Contact() {
             referrerPolicy="no-referrer-when-downgrade"
             title="Agadir Airport - Al Massira"
           />
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-white font-heading text-xl font-bold mb-6">Get in Touch</h3>
-            <p className="text-silver mb-8">
+            <h3 className="text-white font-heading text-xl font-bold mb-6 tracking-tight">Get in Touch</h3>
+            <p className="text-white/50 mb-8">
               Reach out anytime &mdash; we&apos;re here to help.
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                <div className="w-10 h-10 glass-gold rounded-xl flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
                 <div>
                   <p className="text-white font-semibold text-sm">Our Address</p>
-                  <p className="text-silver text-sm">Airport Agadir, Agadir 80000</p>
+                  <p className="text-white/50 text-sm">Airport Agadir, Agadir 80000</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
+                <div className="w-10 h-10 glass-gold rounded-xl flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
                 <div>
                   <p className="text-white font-semibold text-sm">Call Us</p>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-silver text-sm hover:text-gold transition">+212 680-318003</a>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-white/50 text-sm hover:text-gold transition">+212 680-318003</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <div className="w-10 h-10 glass-gold rounded-xl flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
                 <div>
                   <p className="text-white font-semibold text-sm">Email Us</p>
-                  <a href={`mailto:${EMAIL}`} className="text-silver text-sm hover:text-gold transition">{EMAIL}</a>
+                  <a href={`mailto:${EMAIL}`} className="text-white/50 text-sm hover:text-gold transition">{EMAIL}</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <div className="w-10 h-10 glass-gold rounded-xl flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
                 <div>
                   <p className="text-white font-semibold text-sm">Working Hours</p>
-                  <p className="text-silver text-sm">Mon-Sun: 24/7 Service</p>
+                  <p className="text-white/50 text-sm">Mon-Sun: 24/7 Service</p>
                 </div>
               </div>
             </div>
@@ -108,7 +125,7 @@ export default function Contact() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gold hover:bg-gold-light text-black font-semibold px-6 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
+                className="glass-gold text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
               >
                 WhatsApp
               </a>
@@ -116,7 +133,7 @@ export default function Contact() {
                 href="https://www.google.com/maps?q=Agadir+Airport+Al+Massira"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-zinc-600 text-white font-semibold px-6 py-2.5 rounded-lg transition text-sm hover:bg-zinc-800"
+                className="glass text-white/80 font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-white/10"
               >
                 Directions
               </a>
@@ -124,63 +141,64 @@ export default function Contact() {
           </div>
           <div>
             {sent ? (
-              <div className="bg-zinc-900/80 rounded-xl p-10 border border-white/5 shadow-lg text-center">
-                <div className="w-14 h-14 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="glass rounded-2xl p-10 text-center"
+              >
+                <div className="w-14 h-14 bg-green-900/50 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <h3 className="text-white font-heading font-bold text-lg mb-2">Message Sent!</h3>
-                <p className="text-silver text-sm mb-4">We&apos;ll get back to you shortly.</p>
-                <button
-                  onClick={() => setSent(false)}
-                  className="text-gold hover:text-gold-light font-medium text-sm"
-                >
+                <p className="text-white/50 text-sm mb-4">We&apos;ll get back to you shortly.</p>
+                <button onClick={() => setSent(false)} className="text-gold hover:text-gold-light font-medium text-sm">
                   Send another message
                 </button>
-              </div>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-zinc-900/80 rounded-xl p-6 border border-white/5 shadow-lg">
+              <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 md:p-7">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-1">Full Name</label>
+                    <label className="block text-white/60 text-sm font-medium mb-1">Full Name</label>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-1">Email</label>
+                    <label className="block text-white/60 text-sm font-medium mb-1">Email</label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
                     />
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-300 text-sm font-medium mb-1">Phone Number</label>
+                  <label className="block text-white/60 text-sm font-medium mb-1">Phone Number</label>
                   <input
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
-                    className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="block text-gray-300 text-sm font-medium mb-1">Message</label>
+                  <label className="block text-white/60 text-sm font-medium mb-1">Message</label>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={4}
-                    className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none resize-none"
+                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none resize-none transition"
                   />
                 </div>
                 {submitError && (
@@ -188,7 +206,7 @@ export default function Contact() {
                 )}
                 <button
                   type="submit"
-                  className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
+                  className="w-full glass-gold text-white font-semibold py-2.5 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
                 >
                   Send Message
                 </button>

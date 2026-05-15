@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
@@ -26,35 +27,45 @@ export default function ExploreAgadir() {
   const next = () => setCurrent(c => (c === slides.length - 1 ? 0 : c + 1));
 
   return (
-    <section className="bg-black py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-2">Explore Agadir</h2>
-        <p className="text-silver mb-10 max-w-xl mx-auto">
-          Discover the beauty of Agadir while driving with Carzio
-        </p>
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900/20 to-black" />
+      <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-gold/5 rounded-full blur-[120px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-2 tracking-tight">Explore Agadir</h2>
+          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
+            Discover the beauty of Agadir while driving with Carzio
+          </p>
+        </div>
+
         <div className="relative max-w-3xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl aspect-[16/9]">
-            {slides.map((slide, i) => (
-              <div
-                key={i}
-                className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          <div className="relative overflow-hidden rounded-2xl aspect-[16/9] glass p-1">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
               >
                 <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover"
+                  src={slides[current].image}
+                  alt={slides[current].title}
+                  className="w-full h-full object-cover rounded-xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-                  <h3 className="text-white font-heading text-xl md:text-2xl font-bold">{slide.title}</h3>
-                  <p className="text-gold text-sm">{slide.subtitle}</p>
+                  <h3 className="text-white font-heading text-xl md:text-2xl font-bold tracking-tight">{slides[current].title}</h3>
+                  <p className="text-gold text-sm">{slides[current].subtitle}</p>
                 </div>
-              </div>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
           <button
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -62,7 +73,7 @@ export default function ExploreAgadir() {
           </button>
           <button
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -73,17 +84,20 @@ export default function ExploreAgadir() {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-2.5 h-2.5 rounded-full transition ${i === current ? 'bg-gold w-6' : 'bg-gray-600 hover:bg-gray-400'}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? 'bg-gold w-8' : 'bg-white/20 hover:bg-white/40 w-1.5'}`}
               />
             ))}
           </div>
         </div>
-        <Link
-          to="/cars"
-          className="inline-block mt-8 bg-gold hover:bg-gold-light text-black font-semibold px-8 py-3 rounded transition"
-        >
-          Book a Car to Explore
-        </Link>
+
+        <div className="text-center mt-8">
+          <Link
+            to="/cars"
+            className="inline-block glass-gold text-white font-semibold px-8 py-3 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
+          >
+            Book a Car to Explore
+          </Link>
+        </div>
       </div>
     </section>
   );

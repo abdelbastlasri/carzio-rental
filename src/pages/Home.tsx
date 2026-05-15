@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Hero from '../components/Hero';
 import BookingForm from '../components/BookingForm';
 import ExploreAgadir from '../components/ExploreAgadir';
-import HomeGallery from '../components/HomeGallery';
 import Locations from '../components/Locations';
+import Fleet from '../components/Fleet';
 import HowItWorks from '../components/HowItWorks';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Stats from '../components/Stats';
@@ -12,6 +12,7 @@ import BookingModal from '../components/BookingModal';
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState('');
   const [formData, setFormData] = useState({
     pickupLocation: 'agadir',
     dropoffLocation: 'agadir',
@@ -19,6 +20,11 @@ export default function Home() {
     dropoffDate: '',
     selectedCar: '',
   });
+
+  const handleBook = (carId: string) => {
+    setSelectedCar(carId);
+    setBookingOpen(true);
+  };
 
   return (
     <>
@@ -29,8 +35,8 @@ export default function Home() {
         setFormData={setFormData}
       />
       <Locations />
+      <Fleet onBook={handleBook} featured />
       <ExploreAgadir />
-      <HomeGallery />
       <HowItWorks />
       <WhyChooseUs />
       <Stats />
@@ -39,7 +45,7 @@ export default function Home() {
         key="home-booking"
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
-        preselectedCar={formData.selectedCar}
+        preselectedCar={selectedCar || formData.selectedCar}
         preselectedLocation={formData.pickupLocation}
         preselectedPickupDate={formData.pickupDate}
         preselectedDropoffDate={formData.dropoffDate}
