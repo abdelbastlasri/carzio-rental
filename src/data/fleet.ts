@@ -249,22 +249,4 @@ export const fleet: Car[] = [
       { name: 'Baby seat', price: 2, perDay: true },
     ],
   },
-  {
-    id: 'porsche-macan-suv',
-    name: 'PORSHE MACAN SUV',
-    type: 'SUV',
-    pricePerDay: 200,
-    image: '/images/porshe-macan-suv.jpg',
-    seats: 5,
-    doors: 5,
-    suitcases: 4,
-    transmission: 'Automatic',
-    ac: true,
-    km: 'Unlimited',
-    description: 'Luxury performance SUV with panoramic roof and premium features.',
-    extras: [
-      { name: 'Baby seat', price: 0, perDay: true },
-      { name: 'Booster seat', price: 0, perDay: true },
-    ],
-  },
 ];

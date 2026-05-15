@@ -41,7 +41,7 @@ export default function Hero() {
           <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl">
             Get the best value for your trip with transparent pricing, flexible options, and top-notch service you can trust.
           </p>
-          <div className="flex flex-wrap gap-4 mb-12">
+          <div className="flex flex-wrap gap-4">
             <Link
               to="/cars"
               className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-3 rounded transition text-sm md:text-base"
@@ -54,19 +54,6 @@ export default function Hero() {
             >
               Contact Us
             </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { value: '4.9/5', label: 'Customer Rating' },
-              { value: '15k+', label: 'Happy Travelers' },
-              { value: 'Fully Insured', label: 'Drive Worry-Free' },
-              { value: '24/7', label: 'Support' },
-            ].map((badge) => (
-              <div key={badge.label} className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 text-center border border-white/10">
-                <div className="text-gold font-heading font-bold text-lg md:text-xl">{badge.value}</div>
-                <div className="text-gray-400 text-xs md:text-sm">{badge.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
