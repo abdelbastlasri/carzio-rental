@@ -23,7 +23,7 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
             src={car.image}
             alt={car.name}
             loading="lazy"
-            className="w-full h-full object-contain p-4"
+            className="w-full h-full object-contain p-4 mix-blend-multiply brightness-110"
             whileHover={{ scale: 1.15 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />

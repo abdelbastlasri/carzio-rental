@@ -5,8 +5,8 @@ export default function Footer() {
     <footer className="relative border-t border-white/5 bg-black">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/10 to-transparent" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+          <div className="col-span-2 md:col-span-1">
             <Link to="/" className="block shrink-0">
               <img src="/images/carzio-logo.png" alt="Carzio" className="h-12 md:h-14 w-auto" />
             </Link>

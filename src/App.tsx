@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import Cars from './pages/Cars';
 import About from './pages/About';
@@ -12,6 +13,7 @@ function App() {
     <>
       <ScrollToTop />
       <Header />
+      <WhatsAppButton />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

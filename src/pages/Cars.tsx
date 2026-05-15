@@ -20,7 +20,7 @@ export default function Cars() {
         <div className="absolute top-0 left-1/3 w-64 h-64 bg-gold/5 rounded-full blur-[80px]" />
         <div className="relative z-10">
           <h1 className="text-white font-heading text-3xl md:text-5xl font-bold mb-2 tracking-tight">Our Cars</h1>
-          <p className="text-white/50">Quality You Can Feel, Convenience You Deserve</p>
+           <p className="text-white/50">Available Vehicles in Our Agency</p>
         </div>
       </div>
       <Fleet onBook={handleBook} />

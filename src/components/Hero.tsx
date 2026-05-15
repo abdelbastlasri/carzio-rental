@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    image: '/images/1.jpg',
+    image: '/images/11.jpg',
     headline: 'Drive Morocco',
     subhead: 'Your Way',
     desc: 'Explore the Atlantic coast with premium vehicles built for comfort and performance.',
@@ -28,13 +28,13 @@ const slides = [
     desc: 'Navigate the heart of Agadir\'s markets with the freedom only a rental car brings.',
   },
   {
-    image: '/images/5.jpg',
+    image: '/images/55.jpg',
     headline: 'Surf & Sun',
     subhead: 'Beach Escape',
     desc: 'Taghazout is waiting. Your perfect surf trip starts with the perfect ride.',
   },
   {
-    image: '/images/6.jpg',
+    image: '/images/66.jpg',
     headline: 'Golden Hours',
     subhead: 'Unwind in Style',
     desc: 'End your day with a sunset drive along Morocco\'s most beautiful coastline.',

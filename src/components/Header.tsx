@@ -11,9 +11,19 @@ const navLinks = [
   { label: 'Contact', path: '/contact' },
 ];
 
+const languages = [
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'fr', label: 'French', flag: '🇫🇷' },
+  { code: 'es', label: 'Spanish', flag: '🇪🇸' },
+  { code: 'pl', label: 'Polish', flag: '🇵🇱' },
+  { code: 'de', label: 'German', flag: '🇩🇪' },
+];
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState('en');
   const location = useLocation();
 
   useEffect(() => {
@@ -49,7 +59,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -61,6 +71,40 @@ export default function Header() {
               </svg>
               +212 680-318003
             </a>
+
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="text-white/70 hover:text-gold text-sm font-medium transition flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-white/5"
+                aria-label="Select language"
+              >
+                <span className="text-base leading-none">{languages.find(l => l.code === currentLang)?.flag}</span>
+                <svg className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {langOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setLangOpen(false)} />
+                  <div className="absolute right-0 top-full mt-1 z-20 glass-dark rounded-xl py-1 min-w-[140px] border border-white/5">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => { setCurrentLang(lang.code); setLangOpen(false); }}
+                        className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm transition ${
+                          currentLang === lang.code ? 'text-gold bg-gold/10' : 'text-white/70 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <span className="text-base leading-none">{lang.flag}</span>
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
             <Link
               to="/cars"
               className="glass-gold text-white font-semibold text-sm px-5 py-2 rounded-lg transition hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
@@ -91,21 +135,35 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-xl overflow-hidden"
           >
-            <div className="px-4 py-4 flex flex-col gap-3 text-sm">
+            <div className="px-4 py-4 flex flex-col items-center gap-3 text-base font-medium">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`transition ${location.pathname === link.path ? 'text-gold' : 'text-white/80 hover:text-gold'}`}
+                  className={`transition text-center ${location.pathname === link.path ? 'text-gold' : 'text-white/80 hover:text-gold'}`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-gold font-medium">+212 680-318003</a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-gold font-medium text-center">+212 680-318003</a>
+              <div className="flex items-center gap-2 pt-1">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setCurrentLang(lang.code)}
+                    className={`text-base leading-none px-1.5 py-1 rounded transition ${
+                      currentLang === lang.code ? 'text-gold' : 'text-white/40 hover:text-white/70'
+                    }`}
+                    title={lang.label}
+                  >
+                    {lang.flag}
+                  </button>
+                ))}
+              </div>
               <Link
                 to="/cars"
-                className="glass-gold text-white font-semibold text-center px-4 py-2 rounded"
+                className="glass-gold text-white font-semibold text-center px-4 py-2 rounded w-full max-w-[200px]"
                 onClick={() => setMenuOpen(false)}
               >
                 Book Now
