@@ -11,11 +11,22 @@ import BookingModal from '../components/BookingModal';
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    pickupLocation: 'agadir',
+    dropoffLocation: 'agadir',
+    pickupDate: '',
+    dropoffDate: '',
+    selectedCar: '',
+  });
 
   return (
     <>
       <Hero />
-      <BookingForm onOpenBooking={() => setBookingOpen(true)} />
+      <BookingForm
+        onOpenBooking={() => setBookingOpen(true)}
+        formData={formData}
+        setFormData={setFormData}
+      />
       <Locations />
       <ExploreAgadir />
       <HowItWorks />
@@ -26,6 +37,10 @@ export default function Home() {
         key="home-booking"
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
+        preselectedCar={formData.selectedCar}
+        preselectedLocation={formData.pickupLocation}
+        preselectedPickupDate={formData.pickupDate}
+        preselectedDropoffDate={formData.dropoffDate}
       />
     </>
   );

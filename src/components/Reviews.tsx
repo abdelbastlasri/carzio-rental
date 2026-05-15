@@ -2,17 +2,17 @@ import { reviews } from '../data/reviews';
 
 export default function Reviews() {
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-zinc-900 py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-black font-heading text-3xl md:text-4xl font-bold mb-3">What Our Clients Say</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3">What Our Clients Say</h2>
           <p className="text-silver max-w-xl mx-auto">
             Real stories from travellers who trusted us with their journey across Morocco.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <div key={review.id} className="bg-black/80 rounded-xl p-6 border border-white/5 hover:border-gold/30 transition shadow-lg">
               <div className="flex gap-1 mb-3">
                 {Array.from({ length: review.rating }).map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
@@ -20,13 +20,13 @@ export default function Reviews() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;{review.text}&rdquo;</p>
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;{review.text}&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold text-sm">
                   {review.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
-                  <p className="text-black font-semibold text-sm">{review.name}</p>
+                  <p className="text-white font-semibold text-sm">{review.name}</p>
                   <p className="text-silver text-xs">{review.country}</p>
                 </div>
               </div>

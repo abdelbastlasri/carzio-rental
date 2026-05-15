@@ -14,23 +14,6 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const isAdmin = location.pathname === '/admin';
-
-  if (isAdmin) {
-    return (
-      <header className="fixed top-0 left-0 w-full z-50 bg-black">
-        <div className="hidden md:flex bg-zinc-900 text-silver text-xs py-1.5 px-4 justify-center items-center gap-6">
-          <span>Airport Agadir, Agadir 80000</span>
-          <span>Mon-Sun: 24/7 Service</span>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link to="/" className="block shrink-0">
-            <img src="/images/carzio-logo.png" alt="Carzio" className="h-10 md:h-12 w-auto" />
-          </Link>
-        </div>
-      </header>
-    );
-  }
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black">

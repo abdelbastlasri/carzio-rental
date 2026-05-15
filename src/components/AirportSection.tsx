@@ -22,7 +22,7 @@ export default function AirportSection() {
             </p>
             <Link
               to="/cars"
-              className="inline-block bg-gold hover:bg-gold-light text-black font-semibold px-6 py-2.5 rounded transition text-sm"
+              className="inline-block bg-gold hover:bg-gold-light text-black font-semibold px-6 py-2.5 rounded transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
             >
               Book Now
             </Link>

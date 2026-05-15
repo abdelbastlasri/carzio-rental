@@ -39,21 +39,21 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-gray-50 py-16 md:py-20">
+    <section className="bg-black py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-black font-heading text-3xl md:text-4xl font-bold mb-3">Built for a Better Drive</h2>
+          <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3">Built for a Better Drive</h2>
           <p className="text-silver max-w-xl mx-auto">
             Everything you need for a stress-free rental &mdash; from a reliable fleet to friendly local service.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((reason) => (
-            <div key={reason.title} className="bg-white rounded-xl p-6 text-center border border-gray-100 shadow-sm">
-              <div className="w-14 h-14 bg-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-gold">
+            <div key={reason.title} className="bg-zinc-900/80 rounded-xl p-6 text-center border border-white/5 hover:border-gold/30 transition shadow-lg group">
+              <div className="w-14 h-14 bg-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4 text-gold group-hover:bg-gold/20 transition">
                 {reason.icon}
               </div>
-              <h3 className="text-black font-heading font-semibold text-lg mb-2">{reason.title}</h3>
+              <h3 className="text-white font-heading font-semibold text-lg mb-2">{reason.title}</h3>
               <p className="text-silver text-sm leading-relaxed">{reason.description}</p>
             </div>
           ))}
