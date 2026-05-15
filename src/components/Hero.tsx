@@ -152,7 +152,7 @@ export default function Hero() {
               <p className="text-gold font-heading font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
                 Premium Car Rentals &middot; Agadir
               </p>
-              <h1 className="text-white font-heading text-4xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-4">
+              <h1 className="text-white font-heading text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4">
                 {slides[current].headline}<br />
                 <span className="text-gold">{slides[current].subhead}</span>
               </h1>

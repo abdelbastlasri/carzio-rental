@@ -24,7 +24,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
   return (
     <section id="booking" className="bg-black py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="bg-zinc-900/80 backdrop-blur rounded-2xl p-6 md:p-10 shadow-2xl -mt-32 relative z-20 border border-white/5">
+        <div className="bg-zinc-900/80 backdrop-blur rounded-2xl p-6 md:p-10 shadow-2xl -mt-20 md:-mt-32 relative z-20 border border-white/5">
           <h2 className="text-white font-heading text-2xl md:text-3xl font-bold mb-6 text-center">
             Book Your Car
           </h2>

@@ -141,7 +141,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-10 md:pt-16 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 md:pt-16 overflow-y-auto">
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
       <div className="relative bg-zinc-900 rounded-2xl w-full max-w-2xl mx-4 shadow-2xl z-10 mb-10 border border-white/5">
 
@@ -315,7 +315,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                       className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                       <label className="block text-gray-300 text-xs font-medium mb-1">Email</label>
                       <input

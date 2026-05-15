@@ -47,7 +47,7 @@ export default function Stats() {
               whileHover={{ y: -2 }}
               className="glass rounded-2xl px-6 py-8 text-center"
             >
-              <div className="text-gold font-heading font-bold text-3xl md:text-5xl mb-1 tracking-tight">{stat.value}</div>
+              <div className="text-gold font-heading font-bold text-lg md:text-5xl mb-1 tracking-tight leading-none">{stat.value}</div>
               <div className="text-white/50 text-xs md:text-sm">{stat.label}</div>
             </motion.div>
           ))}
