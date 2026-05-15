@@ -13,11 +13,11 @@ const navLinks = [
 ];
 
 const languages = [
-  { code: 'en', label: 'lang.en', flag: '🇬🇧' },
-  { code: 'fr', label: 'lang.fr', flag: '🇫🇷' },
-  { code: 'es', label: 'lang.es', flag: '🇪🇸' },
-  { code: 'pl', label: 'lang.pl', flag: '🇵🇱' },
-  { code: 'de', label: 'lang.de', flag: '🇩🇪' },
+  { code: 'en', label: 'lang.en', flag: 'https://flagcdn.com/16x12/gb.png' },
+  { code: 'fr', label: 'lang.fr', flag: 'https://flagcdn.com/16x12/fr.png' },
+  { code: 'es', label: 'lang.es', flag: 'https://flagcdn.com/16x12/es.png' },
+  { code: 'pl', label: 'lang.pl', flag: 'https://flagcdn.com/16x12/pl.png' },
+  { code: 'de', label: 'lang.de', flag: 'https://flagcdn.com/16x12/de.png' },
 ];
 
 export default function Header() {
@@ -84,7 +84,7 @@ export default function Header() {
                 className="text-white/70 hover:text-gold text-sm font-medium transition flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-white/5"
                 aria-label="Select language"
               >
-                <span className="text-base leading-none">{languages.find(l => l.code === i18n.language)?.flag}</span>
+                <img src={languages.find(l => l.code === i18n.language)?.flag} alt={i18n.language} className="w-5 h-3.5 object-cover rounded-sm" />
                 <svg className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -101,7 +101,7 @@ export default function Header() {
                           i18n.language === lang.code ? 'text-gold bg-gold/10' : 'text-white/70 hover:text-white hover:bg-white/5'
                         }`}
                       >
-                        <span className="text-base leading-none">{lang.flag}</span>
+                        <img src={lang.flag} alt={lang.code} className="w-5 h-3.5 object-cover rounded-sm" />
                         {t(lang.label)}
                       </button>
                     ))}
@@ -161,12 +161,12 @@ export default function Header() {
                   <button
                     key={lang.code}
                     onClick={() => i18n.changeLanguage(lang.code)}
-                    className={`text-base leading-none px-1.5 py-1 rounded transition ${
-                      i18n.language === lang.code ? 'text-gold' : 'text-white/40 hover:text-white/70'
+                    className={`px-1.5 py-1 rounded transition ${
+                      i18n.language === lang.code ? 'ring-1 ring-gold' : ''
                     }`}
                     title={t(lang.label)}
                   >
-                    {lang.flag}
+                    <img src={lang.flag} alt={lang.code} className="w-5 h-3.5 object-cover rounded-sm" />
                   </button>
                 ))}
               </div>

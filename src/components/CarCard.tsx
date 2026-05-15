@@ -19,13 +19,13 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="glass rounded-2xl overflow-hidden group"
     >
-      <div className="bg-zinc-800 h-48 flex items-center justify-center overflow-hidden">
+      <div className="bg-white h-48 flex items-center justify-center overflow-hidden">
         {car.image ? (
           <motion.img
             src={car.image}
             alt={car.name}
             loading="lazy"
-            className="w-full h-full object-cover p-2 scale-110"
+            className="w-full h-full object-contain p-4"
             whileHover={{ scale: 1.15 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />

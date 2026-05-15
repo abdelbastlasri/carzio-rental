@@ -19,11 +19,13 @@ export default function Fleet({ onBook, featured }: FleetProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-white font-heading text-3xl md:text-4xl font-bold mb-3 tracking-tight">
-            {featured ? t('fleet.featuredTitle') : t('fleet.title')}
+            {featured ? t('fleet.featuredTitle') : 'Book Your Car Now !'}
           </h2>
-          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
-            {featured ? t('fleet.featuredSubtitle') : t('fleet.subtitle')}
-          </p>
+          {featured && (
+            <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base">
+              {t('fleet.featuredSubtitle')}
+            </p>
+          )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
           {cars.map((car, i) => (
