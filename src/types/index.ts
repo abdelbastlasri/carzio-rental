@@ -10,6 +10,7 @@ export interface Car {
   transmission: string;
   ac: boolean;
   km: string;
+  model: string;
   description: string;
   extras: Extra[];
 }

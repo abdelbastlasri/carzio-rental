@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
 
@@ -13,6 +14,7 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ isOpen, onClose, preselectedCar, preselectedLocation, preselectedDropoffLocation, preselectedPickupDate, preselectedDropoffDate }: BookingModalProps) {
+  const { t } = useTranslation();
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -151,13 +153,13 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
           <div>
             {step === 1 ? (
               <>
-                <h2 className="text-white font-heading font-bold text-xl">Enter Booking Details</h2>
-                <p className="text-silver text-xs">Choose pickup &amp; drop-off details</p>
+                <h2 className="text-white font-heading font-bold text-xl">{t('bookingModal.step1Title')}</h2>
+                <p className="text-silver text-xs">{t('bookingModal.step1Subtitle')}</p>
               </>
             ) : (
               <>
-                <h2 className="text-white font-heading font-bold text-xl">Book {car?.name || ''}</h2>
-                <p className="text-silver text-xs">Complete your reservation</p>
+                <h2 className="text-white font-heading font-bold text-xl">{t('bookingModal.step2Title', { carName: car?.name || '' })}</h2>
+                <p className="text-silver text-xs">{t('bookingModal.step2Subtitle')}</p>
               </>
             )}
           </div>
@@ -167,7 +169,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 onClick={() => setStep(1)}
                 className="text-gray-400 hover:text-white text-xs font-medium"
               >
-                &larr; Back
+                &larr; {t('bookingModal.back')}
               </button>
             )}
             <button onClick={handleClose} className="text-gray-400 hover:text-white transition" aria-label="Close">
@@ -183,7 +185,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
           <form onSubmit={handleContinue} className="p-5 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1">Pickup Location</label>
+                <label className="block text-gray-300 text-sm font-medium mb-1">{t('bookingModal.pickupLocation')}</label>
                 <select
                   value={pickupLocation}
                   onChange={(e) => setPickupLocation(e.target.value)}
@@ -195,7 +197,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 </select>
               </div>
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1">Drop Off Location</label>
+                <label className="block text-gray-300 text-sm font-medium mb-1">{t('bookingModal.dropoffLocation')}</label>
                 <select
                   value={dropoffLocation}
                   onChange={(e) => setDropoffLocation(e.target.value)}
@@ -209,7 +211,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1">Pickup Date</label>
+                <label className="block text-gray-300 text-sm font-medium mb-1">{t('bookingModal.pickupDate')}</label>
                 <div className="flex gap-1">
                   <input
                     type="date"
@@ -228,7 +230,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 </div>
               </div>
               <div>
-                <label className="block text-gray-300 text-sm font-medium mb-1">Drop Off Date</label>
+                <label className="block text-gray-300 text-sm font-medium mb-1">{t('bookingModal.dropoffDate')}</label>
                 <div className="flex gap-1">
                   <input
                     type="date"
@@ -251,7 +253,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
               type="submit"
               className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-3 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
             >
-              Continue
+              {t('bookingModal.continue')}
             </button>
           </form>
         )}
@@ -276,12 +278,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 </div>
                 <div className="flex-1">
                   <h3 className="text-white font-heading font-bold text-xl">{car.name}</h3>
-                  <p className="text-gold font-heading font-bold text-lg">{car.pricePerDay.toFixed(2)}€ <span className="text-gray-400 text-sm font-normal">/day</span></p>
+                  <p className="text-gold font-heading font-bold text-lg">{car.pricePerDay.toFixed(2)}€ <span className="text-gray-400 text-sm font-normal">{t('common.perDay')}</span></p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-2">
-                    {car.ac && <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>Air conditioner</span>}
-                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>{car.doors}-Door Hatchback</span>
-                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>{car.suitcases}-Suitcase Capacity</span>
-                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>{car.seats}-Seats</span>
+                    {car.ac && <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{t('bookingModal.airConditioner')}</span>}
+                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>{t('bookingModal.doorHatchback', { doors: car.doors })}</span>
+                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>{t('bookingModal.suitcaseCapacity', { suitcases: car.suitcases })}</span>
+                    <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>{t('bookingModal.seatsCount', { seats: car.seats })}</span>
                     <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>{car.km}</span>
                     <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>{car.transmission}</span>
                   </div>
@@ -292,22 +294,22 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             {/* Booking Summary + Description */}
             <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-white font-heading font-semibold text-sm mb-2">Booking Summary</h4>
+                <h4 className="text-white font-heading font-semibold text-sm mb-2">{t('bookingModal.bookingSummary')}</h4>
                 <div className="bg-black rounded-lg p-3 text-xs space-y-1 text-gray-400 border border-zinc-800">
-                  <p><span className="font-medium text-white">Pickup:</span> {locations.find(l => l.id === pickupLocation)?.name} on {pickupDate} at {pickupTime || '--:--'}</p>
-                  <p><span className="font-medium text-white">Dropoff:</span> {locations.find(l => l.id === dropoffLocation)?.name} on {dropoffDate} at {dropoffTime || '--:--'}</p>
-                  <p><span className="font-medium text-white">Total Price:</span> <span className="text-gold font-bold">{totalPrice}€</span> ({days} day{days > 1 ? 's' : ''})</p>
+                  <p><span className="font-medium text-white">{t('bookingModal.pickup')}:</span> {t('bookingModal.pickupDetails', { location: locations.find(l => l.id === pickupLocation)?.name || '', date: pickupDate, time: pickupTime || '--:--' })}</p>
+                  <p><span className="font-medium text-white">{t('bookingModal.dropoff')}:</span> {t('bookingModal.dropoffDetails', { location: locations.find(l => l.id === dropoffLocation)?.name || '', date: dropoffDate, time: dropoffTime || '--:--' })}</p>
+                  <p><span className="font-medium text-white">{t('bookingModal.totalPrice')}:</span> <span className="text-gold font-bold">{totalPrice}€</span> ({days} {t(days > 1 ? 'bookingModal.days' : 'bookingModal.day')})</p>
                 </div>
-                <h4 className="text-white font-heading font-semibold text-sm mt-4 mb-1">Description</h4>
+                <h4 className="text-white font-heading font-semibold text-sm mt-4 mb-1">{t('bookingModal.description')}</h4>
                 <p className="text-silver text-xs leading-relaxed">{car.description}</p>
               </div>
 
               {/* Your Information */}
               <div>
-                <h4 className="text-white font-heading font-semibold text-sm mb-2">Your Information</h4>
+                <h4 className="text-white font-heading font-semibold text-sm mb-2">{t('bookingModal.yourInformation')}</h4>
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-gray-300 text-xs font-medium mb-1">Full Name</label>
+                    <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.fullName')}</label>
                     <input
                       type="text"
                       value={name}
@@ -318,7 +320,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-gray-300 text-xs font-medium mb-1">Email</label>
+                      <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.email')}</label>
                       <input
                         type="email"
                         value={email}
@@ -327,7 +329,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                       />
                     </div>
                     <div>
-                      <label className="block text-gray-300 text-xs font-medium mb-1">Phone Number</label>
+                      <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.phoneNumber')}</label>
                       <input
                         type="tel"
                         value={phone}
@@ -338,7 +340,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                     </div>
                   </div>
                   <div>
-                    <label className="block text-gray-300 text-xs font-medium mb-1">Flight Number</label>
+                    <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.flightNumber')}</label>
                     <input
                       type="text"
                       value={flightNumber}
@@ -347,7 +349,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-300 text-xs font-medium mb-1">Special Requests</label>
+                    <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.specialRequests')}</label>
                     <textarea
                       value={requests}
                       onChange={(e) => setRequests(e.target.value)}
@@ -361,7 +363,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
 
             {/* Available Extras */}
             <div className="p-5">
-              <h4 className="text-white font-heading font-semibold text-sm mb-3">Available Extras</h4>
+              <h4 className="text-white font-heading font-semibold text-sm mb-3">{t('bookingModal.availableExtras')}</h4>
               <div className="space-y-2">
                 {car.extras.map((extra) => (
                   <label key={extra.name} className="flex items-center justify-between p-2 rounded-lg hover:bg-zinc-800 cursor-pointer">
@@ -372,10 +374,10 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                         onChange={() => toggleExtra(extra.name)}
                         className="accent-gold"
                       />
-                      <span className="text-sm text-gray-200">{extra.name}</span>
+                      <span className="text-sm text-gray-200">{t(`extras.${extra.name}`, extra.name)}</span>
                     </div>
                     <span className="text-xs text-gray-500">
-                      {extra.price > 0 ? `${extra.price}€` : '-'} (per day)
+                      {extra.price > 0 ? `${extra.price}€` : t('bookingModal.free')} {t('bookingModal.perDay')}
                     </span>
                   </label>
                 ))}
@@ -393,7 +395,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   className="mt-0.5 accent-gold"
                 />
                 <span className="text-xs text-gray-400">
-                  I acknowledge having read and accepted the Terms and Conditions of Use
+                  {t('bookingModal.terms')}
                 </span>
               </label>
               {submitError && (
@@ -404,7 +406,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 disabled={!agreed || !name || !phone}
                 className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-3 rounded-lg transition text-sm disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gold/20 hover:shadow-gold/40"
               >
-                Confirm Booking
+                {t('bookingModal.confirmBooking')}
               </button>
             </div>
           </form>
@@ -418,12 +420,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-white font-heading font-bold text-xl mb-6">Booking Confirmed!</h3>
+            <h3 className="text-white font-heading font-bold text-xl mb-6">{t('bookingModal.bookingConfirmed')}</h3>
             <button
               onClick={handleClose}
               className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
             >
-              Done
+              {t('bookingModal.done')}
             </button>
           </div>
         )}

@@ -31,6 +31,12 @@ export const locations: Location[] = [
     airport: 'Tamraght',
     mapUrl: 'https://www.google.com/maps/place/Tamraght/@30.5121014,-9.687549,15z/data=!3m1!4b1!4m6!3m5!1s0xdb3b31f8b5a1be7:0xfdc27404a7bca26a!8m2!3d30.5110051!4d-9.6772967!16s%2Fg%2F120lq991?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D',
   },
+  {
+    id: 'casablanca',
+    name: 'Casablanca Mohammed V International Airport',
+    airport: 'Casablanca',
+    mapUrl: 'https://www.google.com/maps/place/Casablanca+Mohammed+V+International+Airport/@33.4163897,-7.7736088,11.25z/data=!4m6!3m5!1s0xda63a975723fb01:0x36a43ade39731673!8m2!3d33.3702714!4d-7.5829065!16zL20vMDFxYnBk?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D',
+  },
 ];
 
 export const locationImages: Record<string, string> = {
@@ -39,4 +45,5 @@ export const locationImages: Record<string, string> = {
   essaouira: '/images/essaouira-airport.jpg',
   taghazout: '/images/taghazout-beach.jpg',
   tamraght: '/images/tamraght.jpg',
+  casablanca: '/images/casablanca-airport.jpg',
 };

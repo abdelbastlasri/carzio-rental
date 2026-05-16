@@ -83,7 +83,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               >
                 <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (
-                  <option key={car.id} value={car.id}>{car.name} — {car.pricePerDay}€/day</option>
+                  <option key={car.id} value={car.id}>{car.name} — {car.pricePerDay}€{t('common.perDay')}</option>
                 ))}
               </select>
               <button

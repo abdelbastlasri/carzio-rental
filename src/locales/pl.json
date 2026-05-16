@@ -11,7 +11,8 @@
     "contactUs": "Kontakt",
     "browseFleet": "Zobacz Flotę",
     "callUs": "+212 680-318003",
-    "qualitySlogan": "Jakość i Wygoda, Które Docenisz"
+    "qualitySlogan": "Jakość i Wygoda, Które Docenisz",
+    "perDay": "/dzień"
   },
   "nav": {
     "home": "Strona Główna",
@@ -21,11 +22,11 @@
   },
   "hero": {
     "label": "Wynajem Samochodów Premium · Agadir",
-    "slide0": { "headline": "Prowadź Maroko", "subhead": "Na Swój Sposób", "desc": "Odkryj wybrzeże Atlantyku z pojazdami premium zaprojektowanymi dla komfortu i wydajności." },
+    "slideSurf": { "headline": "Surf i Słońce", "subhead": "Ucieczka na Plażę", "desc": "Taghazout czeka. Twój idealny wyjazd surfingowy zaczyna się od odpowiedniego samochodu." },
+    "slideTaghazoutNight": { "headline": "Plaża Taghazout", "subhead": "Mówiące Fale", "desc": "Taghazout to miejsce, gdzie fale nie tylko się załamują, ale przemawiają." },
+    "slideTamraght": { "headline": "Plaża Tamraght", "subhead": "Ciche Brzegi", "desc": "Życie wydaje się lżejsze tam, gdzie fale Tamraght dotykają brzegu." },
     "slide1": { "headline": "Wolność Wybrzeża", "subhead": "Nieskończone Widoki", "desc": "Przemierzaj wybrzeże Agadiru z wiatrem we włosach i słońcem na skórze." },
     "slide2": { "headline": "Wznieś się Wyżej", "subhead": "Nowe Perspektywy", "desc": "Wybierz malowniczą trasę przez góry Antyatlasu ze stylem i pewnością siebie." },
-    "slide3": { "headline": "Żywe Suki", "subhead": "Lokalne Skarby", "desc": "Poruszaj się po sercu rynków Agadiru z wolnością, jaką daje tylko wynajęty samochód." },
-    "slide4": { "headline": "Surf i Słońce", "subhead": "Ucieczka na Plażę", "desc": "Taghazout czeka. Twój idealny wyjazd surfingowy zaczyna się od odpowiedniego samochodu." },
     "slide5": { "headline": "Złote Godziny", "subhead": "Relaks w Stylu", "desc": "Zakończ dzień przejażdżką o zachodzie słońca wzdłuż najpiękniejszego wybrzeża Maroka." },
     "slide6": { "headline": "Starożytne Mury", "subhead": "Historia Czeka", "desc": "Odkryj Agadir Oufella i bogate dziedzictwo regionu Souss." }
   },
@@ -119,6 +120,51 @@
     "message": "Wiadomość",
     "sendMessage": "Wyślij Wiadomość"
   },
+  "bookingModal": {
+    "step1Title": "Wprowadź Szczegóły Rezerwacji",
+    "step1Subtitle": "Wybierz szczegóły odbioru i zwrotu",
+    "step2Title": "Rezerwuj {{carName}}",
+    "step2Subtitle": "Dokończ rezerwację",
+    "back": "Wstecz",
+    "pickupLocation": "Miejsce Odbioru",
+    "dropoffLocation": "Miejsce Zwrotu",
+    "pickupDate": "Data Odbioru",
+    "dropoffDate": "Data Zwrotu",
+    "continue": "Kontynuuj",
+    "bookingSummary": "Podsumowanie Rezerwacji",
+    "pickup": "Odbiór",
+    "dropoff": "Zwrot",
+    "pickupDetails": "{{location}} dnia {{date}} o {{time}}",
+    "dropoffDetails": "{{location}} dnia {{date}} o {{time}}",
+    "totalPrice": "Cena Całkowita",
+    "day": "dzień",
+    "days": "dni",
+    "description": "Opis",
+    "yourInformation": "Twoje Informacje",
+    "fullName": "Imię i Nazwisko",
+    "email": "Email",
+    "phoneNumber": "Numer Telefonu",
+    "flightNumber": "Numer Lotu",
+    "specialRequests": "Specjalne Życzenia",
+    "airConditioner": "Klimatyzacja",
+    "doorHatchback": "{{doors}}-Drzwi",
+    "suitcaseCapacity": "{{suitcases}}-Walizki",
+    "seatsCount": "{{seats}}-Miejsca",
+    "availableExtras": "Dodatki",
+    "free": "Bezpłatnie",
+    "perDay": "za dzień",
+    "terms": "Potwierdzam, że przeczytałem i zaakceptowałem Warunki Korzystania z Usługi",
+    "confirmBooking": "Potwierdź Rezerwację",
+    "bookingConfirmed": "Rezerwacja Potwierdzona!",
+    "done": "Gotowe"
+  },
+  "extras": {
+    "Baby Seat": "Fotelik Dziecięcy",
+    "Booster Seat": "Podstawka",
+    "Kayak Roof Rack/Surfboard": "Bagażnik dachowy kajak/deska surfingowa",
+    "Roof bars": "Relingi dachowe",
+    "Roof rails": "Szyny dachowe"
+  },
   "about": {
     "title": "Kim Jesteśmy",
     "experience": "Ponad 5 Lat Doświadczenia",
@@ -145,6 +191,7 @@
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Pon-Niedz: Obsługa 24/7",
+    "followUs": "Śledź nas",
     "copyright": "© 2026 Carzio. Wszelkie prawa zastrzeżone."
   }
 }

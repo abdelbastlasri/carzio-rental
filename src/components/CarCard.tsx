@@ -19,13 +19,13 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="glass rounded-2xl overflow-hidden group"
     >
-      <div className="bg-white h-48 flex items-center justify-center overflow-hidden">
+      <div className="bg-white h-56 flex items-center justify-center overflow-hidden">
         {car.image ? (
           <motion.img
             src={car.image}
             alt={car.name}
             loading="lazy"
-            className="w-full h-full object-contain p-4"
+            className="w-full h-full object-cover p-2"
             whileHover={{ scale: 1.15 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />
@@ -39,9 +39,9 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
       </div>
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="font-heading font-bold text-lg text-white tracking-tight truncate">{car.name}</h3>
-          <span className="glass-gold text-gold font-heading font-bold text-lg px-3 py-1 rounded-lg">
-            {car.pricePerDay}€<span className="text-white/40 text-xs font-normal">/day</span>
+          <h3 className="font-heading font-bold text-lg text-white tracking-tight">{car.name} <span className="text-white/40 text-xs font-normal">— Model 2025/2026</span></h3>
+          <span className="glass-gold text-gold font-heading font-bold text-lg px-3 py-1 rounded-lg shrink-0 ml-2">
+            {car.pricePerDay}€<span className="text-white/40 text-xs font-normal">{t('common.perDay')}</span>
           </span>
         </div>
         <p className="text-white/40 text-xs mb-3">{t('carCard.orSimilar')} &middot; {car.type}</p>

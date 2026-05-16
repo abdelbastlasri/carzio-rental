@@ -11,7 +11,8 @@
     "contactUs": "Contact Us",
     "browseFleet": "Browse Fleet",
     "callUs": "+212 680-318003",
-    "qualitySlogan": "Quality You Can Feel, Convenience You Deserve"
+    "qualitySlogan": "Quality You Can Feel, Convenience You Deserve",
+    "perDay": "/day"
   },
   "nav": {
     "home": "Home",
@@ -21,11 +22,11 @@
   },
   "hero": {
     "label": "Premium Car Rentals · Agadir",
-    "slide0": { "headline": "Drive Morocco", "subhead": "Your Way", "desc": "Explore the Atlantic coast with premium vehicles built for comfort and performance." },
+    "slideSurf": { "headline": "Surf & Sun", "subhead": "Beach Escape", "desc": "Taghazout is waiting. Your perfect surf trip starts with the perfect ride." },
+    "slideTaghazoutNight": { "headline": "Taghazout Beach", "subhead": "Waves That Speak", "desc": "Taghazout is a place where waves don't just break but they speak." },
+    "slideTamraght": { "headline": "Tamraght Beach", "subhead": "Quiet Shores", "desc": "Life feels lighter where Tamraght's waves touch the shore." },
     "slide1": { "headline": "Coastal Freedom", "subhead": "Endless Views", "desc": "Cruise the Agadir shoreline with the wind in your hair and the sun on your skin." },
     "slide2": { "headline": "Ascend Higher", "subhead": "New Perspectives", "desc": "Take the scenic route through the Anti-Atlas mountains in style and confidence." },
-    "slide3": { "headline": "Vibrant Souks", "subhead": "Local Treasures", "desc": "Navigate the heart of Agadir's markets with the freedom only a rental car brings." },
-    "slide4": { "headline": "Surf & Sun", "subhead": "Beach Escape", "desc": "Taghazout is waiting. Your perfect surf trip starts with the perfect ride." },
     "slide5": { "headline": "Golden Hours", "subhead": "Unwind in Style", "desc": "End your day with a sunset drive along Morocco's most beautiful coastline." },
     "slide6": { "headline": "Ancient Walls", "subhead": "History Awaits", "desc": "Discover Agadir Oufella and the rich heritage of the Souss region." }
   },
@@ -119,6 +120,51 @@
     "message": "Message",
     "sendMessage": "Send Message"
   },
+  "bookingModal": {
+    "step1Title": "Enter Booking Details",
+    "step1Subtitle": "Choose pickup & drop-off details",
+    "step2Title": "Book {{carName}}",
+    "step2Subtitle": "Complete your reservation",
+    "back": "Back",
+    "pickupLocation": "Pickup Location",
+    "dropoffLocation": "Drop Off Location",
+    "pickupDate": "Pickup Date",
+    "dropoffDate": "Drop Off Date",
+    "continue": "Continue",
+    "bookingSummary": "Booking Summary",
+    "pickup": "Pickup",
+    "dropoff": "Dropoff",
+    "pickupDetails": "{{location}} on {{date}} at {{time}}",
+    "dropoffDetails": "{{location}} on {{date}} at {{time}}",
+    "totalPrice": "Total Price",
+    "day": "day",
+    "days": "days",
+    "description": "Description",
+    "yourInformation": "Your Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "flightNumber": "Flight Number",
+    "specialRequests": "Special Requests",
+    "airConditioner": "Air conditioner",
+    "doorHatchback": "{{doors}}-Door Hatchback",
+    "suitcaseCapacity": "{{suitcases}}-Suitcase Capacity",
+    "seatsCount": "{{seats}}-Seats",
+    "availableExtras": "Available Extras",
+    "free": "Free",
+    "perDay": "per day",
+    "terms": "I acknowledge having read and accepted the Terms and Conditions of Use",
+    "confirmBooking": "Confirm Booking",
+    "bookingConfirmed": "Booking Confirmed!",
+    "done": "Done"
+  },
+  "extras": {
+    "Baby Seat": "Baby Seat",
+    "Booster Seat": "Booster Seat",
+    "Kayak Roof Rack/Surfboard": "Kayak Roof Rack/Surfboard",
+    "Roof bars": "Roof bars",
+    "Roof rails": "Roof rails"
+  },
   "about": {
     "title": "Who We Are",
     "experience": "5+ Years Experience",
@@ -145,6 +191,7 @@
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mon-Sun: 24/7 Service",
+    "followUs": "Follow Us",
     "copyright": "© 2026 Carzio. All rights reserved."
   }
 }

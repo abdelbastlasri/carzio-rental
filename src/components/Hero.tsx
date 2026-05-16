@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
-  { image: '/images/111.jpg', key: 'hero.slide0' },
+  { image: '/images/55.jpg', key: 'hero.slideSurf' },
+  { image: '/images/Taghazout-by-night.jpg', key: 'hero.slideTaghazoutNight' },
+  { image: '/images/Tamraght.jpg', key: 'hero.slideTamraght' },
   { image: '/images/2.jpg', key: 'hero.slide1' },
   { image: '/images/3.jpg', key: 'hero.slide2' },
-  { image: '/images/4.jpg', key: 'hero.slide3' },
-  { image: '/images/55.jpg', key: 'hero.slide4' },
   { image: '/images/66.jpg', key: 'hero.slide5' },
   { image: '/images/7.jpg', key: 'hero.slide6' },
 ];
@@ -21,6 +21,7 @@ export default function Hero() {
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
   const touchRef = useRef({ startX: 0, endX: 0 });
+  const mouseRef = useRef({ dragging: false, startX: 0 });
 
   const goTo = useCallback((i: number) => {
     setCurrent(i < 0 ? slides.length - 1 : i >= slides.length ? 0 : i);
@@ -46,15 +47,29 @@ export default function Hero() {
     }
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    mouseRef.current.dragging = true;
+    mouseRef.current.startX = e.clientX;
+  };
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!mouseRef.current.dragging) return;
+    mouseRef.current.dragging = false;
+    const diff = mouseRef.current.startX - e.clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+    }
+  };
+
   return (
     <section
-      className="relative min-h-screen flex items-center bg-black overflow-hidden"
+      className="relative min-h-screen flex items-center bg-black overflow-hidden select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
-      {/* Background images with Ken Burns zoom */}
       {slides.map((slide, i) => (
         <motion.div
           key={i}
@@ -76,36 +91,13 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* Cinematic gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/50 to-transparent" />
 
-      {/* Background ambient glow */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gold/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-burgundy/20 rounded-full blur-[100px]" />
 
-      {/* Arrow buttons */}
-      <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-11 h-11 md:w-13 md:h-13 rounded-full flex items-center justify-center transition hover:bg-white/10 hover:scale-110"
-        aria-label="Previous slide"
-      >
-        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-11 h-11 md:w-13 md:h-13 rounded-full flex items-center justify-center transition hover:bg-white/10 hover:scale-110"
-        aria-label="Next slide"
-      >
-        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full pt-32 md:pt-36">
         <div className="max-w-3xl">
           <AnimatePresence mode="wait">
@@ -146,7 +138,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, i) => (
           <button

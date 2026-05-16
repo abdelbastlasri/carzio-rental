@@ -11,7 +11,8 @@
     "contactUs": "Contactez-nous",
     "browseFleet": "Voir la Flotte",
     "callUs": "+212 680-318003",
-    "qualitySlogan": "Qualité et Confort, à Votre Service"
+    "qualitySlogan": "Qualité et Confort, à Votre Service",
+    "perDay": "/jour"
   },
   "nav": {
     "home": "Accueil",
@@ -21,11 +22,11 @@
   },
   "hero": {
     "label": "Location de Voitures Premium · Agadir",
-    "slide0": { "headline": "Conduisez le Maroc", "subhead": "À Votre Façon", "desc": "Explorez la côte atlantique avec des véhicules premium conçus pour le confort et la performance." },
+    "slideSurf": { "headline": "Surf & Soleil", "subhead": "Évasion Balnéaire", "desc": "Taghazout vous attend. Votre voyage de surf parfait commence avec la voiture idéale." },
+    "slideTaghazoutNight": { "headline": "Plage de Taghazout", "subhead": "Vagues Qui Parlent", "desc": "Taghazout est un endroit où les vagues ne se brisent pas seulement, elles parlent." },
+    "slideTamraght": { "headline": "Plage de Tamraght", "subhead": "Rivages Paisibles", "desc": "La vie semble plus légère là où les vagues de Tamraght touchent le rivage." },
     "slide1": { "headline": "Liberté Côtière", "subhead": "Vues Infinies", "desc": "Longez le littoral d'Agadir avec le vent dans les cheveux et le soleil sur la peau." },
     "slide2": { "headline": "Élevez-Vous", "subhead": "Nouvelles Perspectives", "desc": "Prenez la route panoramique à travers les montagnes de l'Anti-Atlas avec style et confiance." },
-    "slide3": { "headline": "Souks Animés", "subhead": "Trésors Locaux", "desc": "Naviguez au cœur des marchés d'Agadir avec la liberté que seule une voiture de location apporte." },
-    "slide4": { "headline": "Surf & Soleil", "subhead": "Évasion Balnéaire", "desc": "Taghazout vous attend. Votre voyage de surf parfait commence avec la voiture idéale." },
     "slide5": { "headline": "Heures Dorées", "subhead": "Détente avec Style", "desc": "Terminez votre journée par une balade au coucher du soleil le long de la plus belle côte du Maroc." },
     "slide6": { "headline": "Murs Anciens", "subhead": "L'Histoire Attend", "desc": "Découvrez Agadir Oufella et le riche patrimoine de la région du Souss." }
   },
@@ -119,6 +120,51 @@
     "message": "Message",
     "sendMessage": "Envoyer le Message"
   },
+  "bookingModal": {
+    "step1Title": "Entrez les Détails de Réservation",
+    "step1Subtitle": "Choisissez les détails de prise en charge et de retour",
+    "step2Title": "Réserver {{carName}}",
+    "step2Subtitle": "Complétez votre réservation",
+    "back": "Retour",
+    "pickupLocation": "Lieu de Prise en Charge",
+    "dropoffLocation": "Lieu de Retour",
+    "pickupDate": "Date de Prise en Charge",
+    "dropoffDate": "Date de Retour",
+    "continue": "Continuer",
+    "bookingSummary": "Récapitulatif de la Réservation",
+    "pickup": "Prise en charge",
+    "dropoff": "Retour",
+    "pickupDetails": "{{location}} le {{date}} à {{time}}",
+    "dropoffDetails": "{{location}} le {{date}} à {{time}}",
+    "totalPrice": "Prix Total",
+    "day": "jour",
+    "days": "jours",
+    "description": "Description",
+    "yourInformation": "Vos Informations",
+    "fullName": "Nom Complet",
+    "email": "Email",
+    "phoneNumber": "Numéro de Téléphone",
+    "flightNumber": "Numéro de Vol",
+    "specialRequests": "Demandes Spéciales",
+    "airConditioner": "Climatisation",
+    "doorHatchback": "{{doors}}-Portes Hayon",
+    "suitcaseCapacity": "{{suitcases}}-Valises",
+    "seatsCount": "{{seats}}-Places",
+    "availableExtras": "Options Disponibles",
+    "free": "Gratuit",
+    "perDay": "par jour",
+    "terms": "Je reconnais avoir lu et accepté les Conditions Générales d'Utilisation",
+    "confirmBooking": "Confirmer la Réservation",
+    "bookingConfirmed": "Réservation Confirmée !",
+    "done": "Terminé"
+  },
+  "extras": {
+    "Baby Seat": "Siège Bébé",
+    "Booster Seat": "Siège Rehausseur",
+    "Kayak Roof Rack/Surfboard": "Porte-kayak/Planche de surf",
+    "Roof bars": "Barres de toit",
+    "Roof rails": "Rails de toit"
+  },
   "about": {
     "title": "Qui Sommes-Nous",
     "experience": "Plus de 5 Ans d'Expérience",
@@ -145,6 +191,7 @@
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Lun-Dim : Service 24/7",
+    "followUs": "Suivez-nous",
     "copyright": "© 2026 Carzio. Tous droits réservés."
   }
 }

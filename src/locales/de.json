@@ -11,7 +11,8 @@
     "contactUs": "Kontakt",
     "browseFleet": "Flotte ansehen",
     "callUs": "+212 680-318003",
-    "qualitySlogan": "Qualität und Komfort, die Sie verdienen"
+    "qualitySlogan": "Qualität und Komfort, die Sie verdienen",
+    "perDay": "/Tag"
   },
   "nav": {
     "home": "Startseite",
@@ -21,11 +22,11 @@
   },
   "hero": {
     "label": "Premium-Autovermietung · Agadir",
-    "slide0": { "headline": "Fahr Marokko", "subhead": "Dein Weg", "desc": "Entdecken Sie die Atlantikküste mit Premium-Fahrzeugen, die für Komfort und Leistung entwickelt wurden." },
+    "slideSurf": { "headline": "Surf & Sonne", "subhead": "Strandausflug", "desc": "Taghazout wartet. Ihre perfekte Surfreise beginnt mit dem richtigen Fahrzeug." },
+    "slideTaghazoutNight": { "headline": "Taghazout Strand", "subhead": "Sprechende Wellen", "desc": "Taghazout ist ein Ort, an dem Wellen nicht nur brechen, sondern sprechen." },
+    "slideTamraght": { "headline": "Tamraght Strand", "subhead": "Stille Ufer", "desc": "Das Leben fühlt sich leichter an, wo die Wellen von Tamraght das Ufer berühren." },
     "slide1": { "headline": "Küstenfreiheit", "subhead": "Endlose Aussichten", "desc": "Fahren Sie entlang der Küste von Agadir mit dem Wind im Haar und der Sonne auf der Haut." },
     "slide2": { "headline": "Steigen Sie Höher", "subhead": "Neue Perspektiven", "desc": "Nehmen Sie die malerische Route durch das Anti-Atlas-Gebirge mit Stil und Zuversicht." },
-    "slide3": { "headline": "Lebendige Souks", "subhead": "Lokale Schätze", "desc": "Navigieren Sie durch das Herz der Märkte von Agadir mit der Freiheit, die nur ein Mietwagen bietet." },
-    "slide4": { "headline": "Surf & Sonne", "subhead": "Strandausflug", "desc": "Taghazout wartet. Ihre perfekte Surfreise beginnt mit dem richtigen Fahrzeug." },
     "slide5": { "headline": "Goldene Stunden", "subhead": "Entspannen Sie mit Stil", "desc": "Beenden Sie Ihren Tag mit einer Sonnenuntergangsfahrt entlang der schönsten Küste Marokkos." },
     "slide6": { "headline": "Alte Mauern", "subhead": "Geschichte Erwartet Sie", "desc": "Entdecken Sie Agadir Oufella und das reiche Erbe der Souss-Region." }
   },
@@ -119,6 +120,51 @@
     "message": "Nachricht",
     "sendMessage": "Nachricht Senden"
   },
+  "bookingModal": {
+    "step1Title": "Buchungsdetails Eingeben",
+    "step1Subtitle": "Wählen Sie Abhol- und Rückgabeort",
+    "step2Title": "Buchen {{carName}}",
+    "step2Subtitle": "Vervollständigen Sie Ihre Reservierung",
+    "back": "Zurück",
+    "pickupLocation": "Abholort",
+    "dropoffLocation": "Rückgabeort",
+    "pickupDate": "Abholdatum",
+    "dropoffDate": "Rückgabedatum",
+    "continue": "Fortfahren",
+    "bookingSummary": "Buchungszusammenfassung",
+    "pickup": "Abholung",
+    "dropoff": "Rückgabe",
+    "pickupDetails": "{{location}} am {{date}} um {{time}}",
+    "dropoffDetails": "{{location}} am {{date}} um {{time}}",
+    "totalPrice": "Gesamtpreis",
+    "day": "Tag",
+    "days": "Tage",
+    "description": "Beschreibung",
+    "yourInformation": "Ihre Informationen",
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail",
+    "phoneNumber": "Telefonnummer",
+    "flightNumber": "Flugnummer",
+    "specialRequests": "Besondere Wünsche",
+    "airConditioner": "Klimaanlage",
+    "doorHatchback": "{{doors}}-Türer",
+    "suitcaseCapacity": "{{suitcases}}-Koffer",
+    "seatsCount": "{{seats}}-Sitze",
+    "availableExtras": "Verfügbare Extras",
+    "free": "Kostenlos",
+    "perDay": "pro Tag",
+    "terms": "Ich bestätige, die Allgemeinen Geschäftsbedingungen gelesen und akzeptiert zu haben",
+    "confirmBooking": "Buchung Bestätigen",
+    "bookingConfirmed": "Buchung Bestätigt!",
+    "done": "Fertig"
+  },
+  "extras": {
+    "Baby Seat": "Kindersitz",
+    "Booster Seat": "Sitzerhöhung",
+    "Kayak Roof Rack/Surfboard": "Kayak-Dachträger/Surfbrett",
+    "Roof bars": "Dachträger",
+    "Roof rails": "Dachschienen"
+  },
   "about": {
     "title": "Wer Wir Sind",
     "experience": "Über 5 Jahre Erfahrung",
@@ -145,6 +191,7 @@
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mo-So: 24/7 Service",
+    "followUs": "Folge uns",
     "copyright": "© 2026 Carzio. Alle Rechte vorbehalten."
   }
 }

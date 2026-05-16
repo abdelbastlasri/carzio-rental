@@ -8,6 +8,7 @@ import HowItWorks from '../components/HowItWorks';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Stats from '../components/Stats';
 import Reviews from '../components/Reviews';
+import MapSection from '../components/MapSection';
 import BookingModal from '../components/BookingModal';
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
       <WhyChooseUs />
       <Stats />
       <Reviews />
+      <MapSection />
       <BookingModal
         key="home-booking"
         isOpen={bookingOpen}
