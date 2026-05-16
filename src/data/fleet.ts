@@ -56,26 +56,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack', price: 3, perDay: true },
-    ],
-  },
-  {
-    id: 'dacia-sandero-bva',
-    name: 'DACIA SANDERO STEPWAY Automatic',
-    type: 'Economy',
-    pricePerDay: 25,
-    image: '/images/dacia-sandero-bva.jpg',
-    seats: 5,
-    doors: 5,
-    suitcases: 3,
-    transmission: 'Automatic',
-    ac: true,
-    km: 'Unlimited',
-    model: '2025',
-    description: 'Automatic version of the popular Stepway with GPS and touchscreen.',
-    extras: [
-      { name: 'Baby Seat', price: 0, perDay: true },
-      { name: 'Booster Seat', price: 0, perDay: true },
     ],
   },
   {
@@ -95,7 +75,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Roof bars', price: 3, perDay: true },
     ],
   },
   {
@@ -115,7 +94,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -135,7 +113,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -155,7 +132,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -175,7 +151,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -195,7 +170,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -215,7 +189,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -235,7 +208,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
   {
@@ -255,7 +227,6 @@ export const fleet: Car[] = [
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
-      { name: 'Kayak Roof Rack/Surfboard', price: 3, perDay: true },
     ],
   },
 ];

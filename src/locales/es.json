@@ -50,7 +50,12 @@
   },
   "carCard": {
     "orSimilar": "o similar",
-    "bookNow": "Reservar"
+    "bookNow": "Reservar",
+    "type": { "economy": "Económico", "compact": "Compacto", "suv": "SUV" },
+    "transmission": { "manual": "Manual", "automatic": "Automático" },
+    "unlimitedKm": "Ilimitado",
+    "bags": "maletas",
+    "seats": "plazas"
   },
   "locations": {
     "title": "Nuestras Ubicaciones",

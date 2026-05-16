@@ -264,9 +264,9 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             {/* Car Details */}
             <div className="p-5">
               <div className="flex flex-col md:flex-row gap-5">
-                <div className="w-full md:w-48 h-36 bg-black rounded-lg flex items-center justify-center shrink-0 border border-zinc-800">
+                <div className="w-full md:w-48 h-36 bg-white rounded-lg flex items-center justify-center shrink-0 border border-gray-200">
                   {car.image ? (
-                    <img src={car.image} alt={car.name} className="w-full h-full object-contain p-3" />
+                    <img src={car.image} alt={car.name} className="w-full h-full object-cover p-2" />
                   ) : (
                     <div className="text-center">
                       <svg className="w-12 h-12 text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">

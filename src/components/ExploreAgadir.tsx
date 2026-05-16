@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +11,7 @@ const slides = [
   },
   {
     image: '/images/cable-car.jpg',
-    title: 'Télécabine d\'Agadir',
+    title: "Télécabine d'Agadir",
     subtitle: 'Cable Car',
   },
   {
@@ -24,9 +24,39 @@ const slides = [
 export default function ExploreAgadir() {
   const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
+  const touchRef = useRef({ startX: 0, endX: 0 });
+  const mouseRef = useRef({ dragging: false, startX: 0 });
 
-  const prev = () => setCurrent(c => (c === 0 ? slides.length - 1 : c - 1));
-  const next = () => setCurrent(c => (c === slides.length - 1 ? 0 : c + 1));
+  const goTo = useCallback((i: number) => {
+    setCurrent(i < 0 ? slides.length - 1 : i >= slides.length ? 0 : i);
+  }, []);
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchRef.current.startX = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchRef.current.endX = e.changedTouches[0].clientX;
+    const diff = touchRef.current.startX - touchRef.current.endX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    mouseRef.current.dragging = true;
+    mouseRef.current.startX = e.clientX;
+  };
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!mouseRef.current.dragging) return;
+    mouseRef.current.dragging = false;
+    const diff = mouseRef.current.startX - e.clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+    }
+  };
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
@@ -42,7 +72,14 @@ export default function ExploreAgadir() {
         </div>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl aspect-[16/9] glass p-1">
+          <div
+            className="relative overflow-hidden rounded-2xl aspect-[16/9] glass p-1 select-none"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={() => { mouseRef.current.dragging = false; }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -68,22 +105,6 @@ export default function ExploreAgadir() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <button
-            onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 glass text-white/70 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition hover:bg-white/10"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
           <div className="flex justify-center gap-2 mt-4">
             {slides.map((_, i) => (
               <button
