@@ -44,13 +44,13 @@ export default function Locations() {
               key={loc.id}
               variants={cardVariants}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="glass rounded-2xl overflow-hidden group"
+              className="glass rounded-2xl overflow-hidden group flex flex-col"
             >
               <div
-                className="h-44 bg-cover bg-center group-hover:scale-110 transition duration-700"
+                className="h-44 bg-cover bg-center group-hover:scale-110 transition duration-700 shrink-0"
                 style={{ backgroundImage: `url('${locationImages[loc.id]}')` }}
               />
-              <div className="p-5">
+              <div className="p-5 flex-1 flex flex-col">
                 <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-gold/20 transition">
                   <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -58,7 +58,7 @@ export default function Locations() {
                   </svg>
                 </div>
                 <h3 className="text-white font-heading font-semibold text-lg mb-3 tracking-tight">{loc.name}</h3>
-                <div className="flex gap-2">
+                <div className="mt-auto flex gap-2">
                   <Link
                     to="/cars"
                     className="flex-1 glass-gold text-white font-semibold text-sm py-2.5 rounded-xl text-center transition hover:bg-gold/20"
