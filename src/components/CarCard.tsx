@@ -26,7 +26,7 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
             alt={car.name}
             loading="lazy"
             className="w-full h-full object-cover p-2"
-            style={{ transform: ['dacia-logan','hyundai-i10-bva','renault-clio-5','hyundai-tucson'].includes(car.id) ? 'scale(0.85)' : 'none' }}
+            style={{ transform: 'none' }}
             whileHover={{ scale: 1.15 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />
