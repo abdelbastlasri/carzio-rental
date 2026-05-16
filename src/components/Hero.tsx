@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const slides = [
   { image: '/images/55.jpg', key: 'hero.slideSurf' },
   { image: '/images/Taghazout-by-night.jpg', key: 'hero.slideTaghazoutNight' },
-  { image: '/images/Tamraght.jpg', key: 'hero.slideTamraght' },
+  { image: '/images/tamraght_beach.png', key: 'hero.slideTamraght' },
   { image: '/images/2.jpg', key: 'hero.slide1' },
   { image: '/images/3.jpg', key: 'hero.slide2' },
   { image: '/images/66.jpg', key: 'hero.slide5' },

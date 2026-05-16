@@ -17,9 +17,9 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className="glass rounded-2xl overflow-hidden group"
+      className="glass rounded-2xl overflow-hidden group flex flex-col"
     >
-      <div className="bg-white h-56 flex items-center justify-center overflow-hidden">
+      <div className="bg-white h-56 flex items-center justify-center overflow-hidden shrink-0">
         {car.image ? (
           <motion.img
             src={car.image}
