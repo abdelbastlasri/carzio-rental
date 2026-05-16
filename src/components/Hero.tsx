@@ -119,11 +119,11 @@ export default function Hero() {
               <p className="text-gold font-heading font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
                 {t('hero.label')}
               </p>
-              <h1 className="text-white font-heading text-4xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-4">
+              <h1 className="text-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
                 {t(`${slides[current].key}.headline`)}<br />
                 <span className="text-gold">{t(`${slides[current].key}.subhead`)}</span>
               </h1>
-              <p className="text-white/60 text-sm md:text-base max-w-lg mb-8 leading-relaxed">
+              <p className="text-white/60 text-base md:text-lg max-w-lg mb-8 leading-relaxed">
                 {t(`${slides[current].key}.desc`)}
               </p>
             </motion.div>
