@@ -23,6 +23,8 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   };
   const today = localDate();
+  const pickupLoc = locations.find(l => l.id === formData.pickupLocation);
+  const transportFee = pickupLoc?.transportFee || 0;
   return (
     <section id="booking" className="bg-black py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -42,6 +44,11 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                   <option key={loc.id} value={loc.id}>{loc.name}</option>
                 ))}
               </select>
+              {transportFee > 0 && (
+                <p className="text-amber-400 text-xs mt-1">
+                  {t('bookingModal.transportFeeMessage', { fee: transportFee })}
+                </p>
+              )}
             </div>
             <div>
               <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.dropoffLocation')}</label>

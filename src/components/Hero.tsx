@@ -13,7 +13,7 @@ const slides = [
   { image: '/images/7.jpg', key: 'hero.slide6' },
 ];
 
-const INTERVAL = 6000;
+const INTERVAL = 2000;
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -80,7 +80,7 @@ export default function Hero() {
             scale: i === current ? [1, 1.2] : 1.2,
           }}
           transition={{
-            opacity: { duration: 1, ease: 'easeInOut' },
+            opacity: { duration: 0.8, ease: 'easeInOut' },
             scale: { duration: INTERVAL / 1000, ease: 'linear', repeat: i === current ? 0 : 0 },
           }}
         >

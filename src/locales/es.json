@@ -18,7 +18,8 @@
     "home": "Inicio",
     "ourCars": "Nuestros Coches",
     "about": "Sobre Nosotros",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "terms": "Términos y Condiciones"
   },
   "hero": {
     "label": "Alquiler de Coches Premium · Agadir",
@@ -158,10 +159,28 @@
     "availableExtras": "Extras Disponibles",
     "free": "Gratis",
     "perDay": "por día",
-    "terms": "Reconozco haber leído y aceptado los Términos y Condiciones de Uso",
+    "terms": "Reconozco haber leído y aceptado los",
+    "termsLink": "Términos y Condiciones",
     "confirmBooking": "Confirmar Reserva",
     "bookingConfirmed": "¡Reserva Confirmada!",
-    "done": "Hecho"
+    "done": "Hecho",
+    "age": "Edad",
+    "ageRequired": "Debe ser mayor de 18 años",
+    "transportFee": "Tarifa de Transporte/Entrega",
+    "transportFeeFree": "Gratis",
+    "transportFeeMessage": "Se aplica una tarifa de transporte adicional de €{{fee}}.",
+    "carRental": "Alquiler de Coche",
+    "totalAmount": "Monto Total",
+    "noDeposit": "Confirmo que no se requiere depósito de seguridad ni garantía",
+    "paymentMethod": "Método de Pago",
+    "paymentUponDelivery": "Pago al Recibir",
+    "paymentMessage": "No se requiere pago por adelantado. El pago se completará al recibir el vehículo en el lugar de recogida seleccionado.",
+    "confirmationMethod": "Método de Confirmación",
+    "confirmationEmail": "Correo Electrónico",
+    "confirmationWhatsApp": "WhatsApp",
+    "availabilityRequested": "¡Solicitud de Disponibilidad Enviada!",
+    "availabilityMessage": "Su solicitud está pendiente de revisión. Le confirmaremos por {{method}}.",
+    "submitting": "Enviando..."
   },
   "extras": {
     "Baby Seat": "Silla de Bebé",
@@ -192,11 +211,13 @@
     "aboutUs": "Sobre Nosotros",
     "contact": "Contacto",
     "getInTouch": "Contacto",
-    "address": "Aeropuerto de Agadir, Agadir 80000",
+    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Lun-Dom: Servicio 24/7",
     "followUs": "Síguenos",
-    "copyright": "© 2026 Carzio. Todos los derechos reservados."
+    "copyright": "© 2026 Carzio. Todos los derechos reservados.",
+    "terms": "Términos y Condiciones",
+    "openInMaps": "Abrir en Google Maps"
   }
 }

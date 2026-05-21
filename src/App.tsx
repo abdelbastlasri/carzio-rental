@@ -7,8 +7,16 @@ import Home from './pages/Home';
 import Cars from './pages/Cars';
 import About from './pages/About';
 import ContactPage from './pages/ContactPage';
+import TermsPage from './pages/TermsPage';
+import AdminRoutes from './pages/admin/AdminRoutes';
 
 function App() {
+  const isAdmin = window.location.hostname === 'admin.carzio.ma';
+
+  if (isAdmin) {
+    return <AdminRoutes />;
+  }
+
   return (
     <>
       <ScrollToTop />
@@ -20,6 +28,7 @@ function App() {
           <Route path="/cars" element={<Cars />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
       <Footer />

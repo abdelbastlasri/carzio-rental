@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -24,6 +24,7 @@ const slides = [
 export default function ExploreAgadir() {
   const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const touchRef = useRef({ startX: 0, endX: 0 });
   const mouseRef = useRef({ dragging: false, startX: 0 });
 
@@ -33,6 +34,12 @@ export default function ExploreAgadir() {
 
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(next, 2000);
+    return () => clearInterval(interval);
+  }, [next, isPaused]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchRef.current.startX = e.touches[0].clientX;
@@ -78,7 +85,8 @@ export default function ExploreAgadir() {
             onTouchEnd={handleTouchEnd}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
-            onMouseLeave={() => { mouseRef.current.dragging = false; }}
+            onMouseLeave={() => { mouseRef.current.dragging = false; setIsPaused(false); }}
+            onMouseEnter={() => setIsPaused(true)}
           >
             <AnimatePresence mode="wait">
               <motion.div

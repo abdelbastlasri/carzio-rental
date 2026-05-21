@@ -18,7 +18,8 @@
     "home": "Startseite",
     "ourCars": "Unsere Autos",
     "about": "Über uns",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "terms": "AGB"
   },
   "hero": {
     "label": "Premium-Autovermietung · Agadir",
@@ -158,10 +159,28 @@
     "availableExtras": "Verfügbare Extras",
     "free": "Kostenlos",
     "perDay": "pro Tag",
-    "terms": "Ich bestätige, die Allgemeinen Geschäftsbedingungen gelesen und akzeptiert zu haben",
+    "terms": "Ich bestätige, die",
+    "termsLink": "Allgemeinen Geschäftsbedingungen",
     "confirmBooking": "Buchung Bestätigen",
     "bookingConfirmed": "Buchung Bestätigt!",
-    "done": "Fertig"
+    "done": "Fertig",
+    "age": "Alter",
+    "ageRequired": "Muss 18+ sein",
+    "transportFee": "Transport-/Liefergebühr",
+    "transportFeeFree": "Kostenlos",
+    "transportFeeMessage": "Eine zusätzliche Transportgebühr von €{{fee}} wird erhoben.",
+    "carRental": "Autovermietung",
+    "totalAmount": "Gesamtbetrag",
+    "noDeposit": "Ich bestätige, dass keine Kaution oder Sicherheitsleistung erforderlich ist",
+    "paymentMethod": "Zahlungsmethode",
+    "paymentUponDelivery": "Zahlung bei Lieferung",
+    "paymentMessage": "Keine Vorauszahlung erforderlich. Die Zahlung erfolgt bei Fahrzeugübergabe am ausgewählten Abholort.",
+    "confirmationMethod": "Bestätigungsmethode",
+    "confirmationEmail": "E-Mail",
+    "confirmationWhatsApp": "WhatsApp",
+    "availabilityRequested": "Anfrage zur Verfügbarkeit Gesendet!",
+    "availabilityMessage": "Ihre Anfrage wird geprüft. Wir bestätigen per {{method}}.",
+    "submitting": "Wird gesendet..."
   },
   "extras": {
     "Baby Seat": "Kindersitz",
@@ -192,11 +211,13 @@
     "aboutUs": "Über Uns",
     "contact": "Kontakt",
     "getInTouch": "Kontakt",
-    "address": "Flughafen Agadir, Agadir 80000",
+    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mo-So: 24/7 Service",
     "followUs": "Folge uns",
-    "copyright": "© 2026 Carzio. Alle Rechte vorbehalten."
+    "copyright": "© 2026 Carzio. Alle Rechte vorbehalten.",
+    "terms": "AGB",
+    "openInMaps": "In Google Maps öffnen"
   }
 }

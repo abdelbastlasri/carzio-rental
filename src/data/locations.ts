@@ -6,36 +6,42 @@ export const locations: Location[] = [
     name: 'Agadir Airport - Al Massira',
     airport: 'Agadir',
     mapUrl: 'https://www.google.com/maps?q=Agadir+Airport+Al+Massira',
+    transportFee: 0,
   },
   {
     id: 'marrakech',
     name: 'Marrakech Airport - Al Manara',
     airport: 'Marrakech',
     mapUrl: 'https://www.google.com/maps?q=Marrakech+Airport+Al+Manara',
+    transportFee: 80,
   },
   {
     id: 'essaouira',
     name: 'Essaouira Airport - Mogador',
     airport: 'Essaouira',
     mapUrl: 'https://www.google.com/maps?q=Essaouira+Airport+Mogador',
+    transportFee: 0,
   },
   {
     id: 'taghazout',
     name: 'Taghazout',
     airport: 'Taghazout',
     mapUrl: 'https://www.google.com/maps?q=Taghazout',
+    transportFee: 0,
   },
   {
     id: 'tamraght',
     name: 'Tamraght',
     airport: 'Tamraght',
     mapUrl: 'https://www.google.com/maps/place/Tamraght/@30.5121014,-9.687549,15z/data=!3m1!4b1!4m6!3m5!1s0xdb3b31f8b5a1be7:0xfdc27404a7bca26a!8m2!3d30.5110051!4d-9.6772967!16s%2Fg%2F120lq991?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D',
+    transportFee: 0,
   },
   {
     id: 'casablanca',
     name: 'Casablanca Mohammed V International Airport',
     airport: 'Casablanca',
     mapUrl: 'https://www.google.com/maps/place/Casablanca+Mohammed+V+International+Airport/@33.4163897,-7.7736088,11.25z/data=!4m6!3m5!1s0xda63a975723fb01:0x36a43ade39731673!8m2!3d33.3702714!4d-7.5829065!16zL20vMDFxYnBk?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D',
+    transportFee: 80,
   },
 ];
 

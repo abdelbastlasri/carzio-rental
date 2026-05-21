@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
@@ -35,10 +36,14 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [age, setAge] = useState('');
   const [flightNumber, setFlightNumber] = useState('');
   const [requests, setRequests] = useState('');
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
   const [agreed, setAgreed] = useState(false);
+  const [noDepositAgreed, setNoDepositAgreed] = useState(false);
+  const [confirmationMethod, setConfirmationMethod] = useState('email');
+  const [submitting, setSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
@@ -57,10 +62,14 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       setName('');
       setEmail('');
       setPhone('');
+      setAge('');
       setFlightNumber('');
       setRequests('');
       setSelectedExtras([]);
       setAgreed(false);
+      setNoDepositAgreed(false);
+      setConfirmationMethod('email');
+      setSubmitting(false);
     }
   }, [isOpen, preselectedCar, preselectedLocation, preselectedPickupDate, preselectedDropoffDate, today]);
 
@@ -73,6 +82,8 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
     return Math.max(1, Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
   }, [pickupDate, dropoffDate]);
 
+  const transportFee = locations.find(l => l.id === pickupLocation)?.transportFee || 0;
+
   const totalCarPrice = car ? car.pricePerDay * days : 0;
   const totalExtrasPrice = useMemo(() => {
     if (!car) return 0;
@@ -81,7 +92,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       .reduce((sum, e) => sum + e.price * days, 0);
   }, [car, selectedExtras, days]);
 
-  const totalPrice = totalCarPrice + totalExtrasPrice;
+  const totalPrice = totalCarPrice + totalExtrasPrice + transportFee;
 
   if (!isOpen) return null;
 
@@ -97,6 +108,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError('');
+    setSubmitting(true);
     const pickupLoc = locations.find(l => l.id === pickupLocation)?.name || '';
     const dropoffLoc = locations.find(l => l.id === dropoffLocation)?.name || '';
     const carName = car?.name || 'Car';
@@ -118,9 +130,14 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
           customerName: name,
           customerEmail: email,
           customerPhone: phone,
+          customerAge: age ? parseInt(age) : null,
           flightNumber,
           extras: selectedExtras,
           specialRequests: requests,
+          transportFee,
+          paymentMethod: 'payment_upon_delivery',
+          confirmationMethod,
+          noDepositAgreed,
         }),
       });
       const body = await res.json();
@@ -130,6 +147,8 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       const msg = err instanceof Error ? err.message : 'Failed to save booking. Please try again.';
       console.error('Failed to save booking:', err);
       setSubmitError(msg);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -298,7 +317,23 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 <div className="bg-black rounded-lg p-3 text-xs space-y-1 text-gray-400 border border-zinc-800">
                   <p><span className="font-medium text-white">{t('bookingModal.pickup')}:</span> {t('bookingModal.pickupDetails', { location: locations.find(l => l.id === pickupLocation)?.name || '', date: pickupDate, time: pickupTime || '--:--' })}</p>
                   <p><span className="font-medium text-white">{t('bookingModal.dropoff')}:</span> {t('bookingModal.dropoffDetails', { location: locations.find(l => l.id === dropoffLocation)?.name || '', date: dropoffDate, time: dropoffTime || '--:--' })}</p>
-                  <p><span className="font-medium text-white">{t('bookingModal.totalPrice')}:</span> <span className="text-gold font-bold">{totalPrice}€</span> ({days} {t(days > 1 ? 'bookingModal.days' : 'bookingModal.day')})</p>
+                  <div className="border-t border-zinc-800 pt-1 mt-1 space-y-1">
+                    <div className="flex justify-between">
+                      <span>{t('bookingModal.carRental')} ({days} {t(days > 1 ? 'bookingModal.days' : 'bookingModal.day')})</span>
+                      <span>{totalCarPrice}€</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>{t('bookingModal.transportFee')}</span>
+                      <span>{transportFee === 0 ? t('bookingModal.transportFeeFree') : `${transportFee}€`}</span>
+                    </div>
+                    <div className="flex justify-between font-bold text-white pt-1 border-t border-zinc-800">
+                      <span>{t('bookingModal.totalAmount')}</span>
+                      <span className="text-gold">{totalPrice}€</span>
+                    </div>
+                  </div>
+                  {transportFee > 0 && (
+                    <p className="text-amber-400 text-xs mt-1">{t('bookingModal.transportFeeMessage', { fee: transportFee })}</p>
+                  )}
                 </div>
                 <h4 className="text-white font-heading font-semibold text-sm mt-4 mb-1">{t('bookingModal.description')}</h4>
                 <p className="text-silver text-xs leading-relaxed">{car.description}</p>
@@ -337,6 +372,46 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                         required
                         className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
                       />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.age')} <span className="text-gray-500">({t('bookingModal.ageRequired')})</span></label>
+                      <input
+                        type="number"
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
+                        min={18}
+                        required
+                        className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.confirmationMethod')}</label>
+                      <div className="flex gap-3 h-full items-center">
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="confirmationMethod"
+                            value="email"
+                            checked={confirmationMethod === 'email'}
+                            onChange={() => setConfirmationMethod('email')}
+                            className="accent-gold"
+                          />
+                          <span className="text-gray-300 text-xs">{t('bookingModal.confirmationEmail')}</span>
+                        </label>
+                        <label className="flex items-center gap-1.5 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="confirmationMethod"
+                            value="whatsapp"
+                            checked={confirmationMethod === 'whatsapp'}
+                            onChange={() => setConfirmationMethod('whatsapp')}
+                            className="accent-gold"
+                          />
+                          <span className="text-gray-300 text-xs">{t('bookingModal.confirmationWhatsApp')}</span>
+                        </label>
+                      </div>
                     </div>
                   </div>
                   <div>
@@ -384,6 +459,20 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
               </div>
             </div>
 
+            {/* Payment Method */}
+            <div className="p-5">
+              <h4 className="text-white font-heading font-semibold text-sm mb-3">{t('bookingModal.paymentMethod')}</h4>
+              <div className="bg-black rounded-lg p-4 border border-zinc-800">
+                <div className="flex items-center gap-2 text-gold font-semibold text-sm mb-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  {t('bookingModal.paymentUponDelivery')}
+                </div>
+                <p className="text-gray-400 text-xs">{t('bookingModal.paymentMessage')}</p>
+              </div>
+            </div>
+
             {/* Terms + Submit */}
             <div className="p-5 space-y-3">
               <label className="flex items-start gap-2 cursor-pointer">
@@ -395,7 +484,23 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   className="mt-0.5 accent-gold"
                 />
                 <span className="text-xs text-gray-400">
-                  {t('bookingModal.terms')}
+                  {t('bookingModal.terms')}{' '}
+                  <Link to="/terms" target="_blank" className="text-gold underline hover:text-gold-light">
+                    {t('bookingModal.termsLink')}
+                  </Link>{' '}
+                  of Use
+                </span>
+              </label>
+              <label className="flex items-start gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={noDepositAgreed}
+                  onChange={(e) => setNoDepositAgreed(e.target.checked)}
+                  required
+                  className="mt-0.5 accent-gold"
+                />
+                <span className="text-xs text-gray-400">
+                  {t('bookingModal.noDeposit')}
                 </span>
               </label>
               {submitError && (
@@ -403,10 +508,10 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
               )}
               <button
                 type="submit"
-                disabled={!agreed || !name || !phone}
+                disabled={!agreed || !noDepositAgreed || !name || !phone || !age || submitting}
                 className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-3 rounded-lg transition text-sm disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gold/20 hover:shadow-gold/40"
               >
-                {t('bookingModal.confirmBooking')}
+                {submitting ? t('bookingModal.submitting') : t('bookingModal.confirmBooking')}
               </button>
             </div>
           </form>
@@ -415,12 +520,13 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
         {/* Confirmation */}
         {showConfirmation && (
           <div className="p-10 text-center">
-            <div className="w-16 h-16 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <div className="w-16 h-16 bg-amber-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white font-heading font-bold text-xl mb-6">{t('bookingModal.bookingConfirmed')}</h3>
+            <h3 className="text-white font-heading font-bold text-xl mb-2">{t('bookingModal.availabilityRequested')}</h3>
+            <p className="text-gray-400 text-sm mb-6">{t('bookingModal.availabilityMessage', { method: confirmationMethod === 'email' ? t('bookingModal.confirmationEmail') : t('bookingModal.confirmationWhatsApp') })}</p>
             <button
               onClick={handleClose}
               className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"

@@ -18,7 +18,8 @@
     "home": "Home",
     "ourCars": "Our Cars",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "terms": "Terms & Conditions"
   },
   "hero": {
     "label": "Premium Car Rentals · Agadir",
@@ -158,10 +159,28 @@
     "availableExtras": "Available Extras",
     "free": "Free",
     "perDay": "per day",
-    "terms": "I acknowledge having read and accepted the Terms and Conditions of Use",
+    "terms": "I acknowledge having read and accepted the",
+    "termsLink": "Terms and Conditions",
     "confirmBooking": "Confirm Booking",
     "bookingConfirmed": "Booking Confirmed!",
-    "done": "Done"
+    "done": "Done",
+    "age": "Age",
+    "ageRequired": "Must be 18+",
+    "transportFee": "Transport/Delivery Fee",
+    "transportFeeFree": "Free",
+    "transportFeeMessage": "An additional €{{fee}} transportation fee applies.",
+    "carRental": "Car Rental",
+    "totalAmount": "Total Amount",
+    "noDeposit": "I confirm that no security deposit, caution, or guarantee amount is required",
+    "paymentMethod": "Payment Method",
+    "paymentUponDelivery": "Payment Upon Delivery",
+    "paymentMessage": "No advance payment required. Payment will be completed upon vehicle delivery at the selected pickup location.",
+    "confirmationMethod": "Confirmation Method",
+    "confirmationEmail": "Email",
+    "confirmationWhatsApp": "WhatsApp",
+    "availabilityRequested": "Availability Request Sent!",
+    "availabilityMessage": "Your request is pending review. We'll confirm via {{method}}.",
+    "submitting": "Submitting..."
   },
   "extras": {
     "Baby Seat": "Baby Seat",
@@ -192,11 +211,13 @@
     "aboutUs": "About Us",
     "contact": "Contact",
     "getInTouch": "Get in Touch",
-    "address": "Airport Agadir, Agadir 80000",
+    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mon-Sun: 24/7 Service",
     "followUs": "Follow Us",
-    "copyright": "© 2026 Carzio. All rights reserved."
+    "copyright": "© 2026 Carzio. All rights reserved.",
+    "terms": "Terms & Conditions",
+    "openInMaps": "Open in Google Maps"
   }
 }

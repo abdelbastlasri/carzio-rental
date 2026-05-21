@@ -24,6 +24,7 @@ export default function Footer() {
                 { label: 'footer.ourCars', to: '/cars' },
                 { label: 'footer.aboutUs', to: '/about' },
                 { label: 'footer.contact', to: '/contact' },
+                { label: 'footer.terms', to: '/terms' },
               ].map((link) => (
                 <li key={link.label}>
                   <Link to={link.to} className="text-white/40 text-sm hover:text-gold transition">{t(link.label)}</Link>
@@ -34,7 +35,17 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.getInTouch')}</h3>
             <ul className="space-y-2 text-white/40 text-sm">
-              <li>{t('footer.address')}</li>
+              <li className="leading-relaxed">{t('footer.address')}</li>
+              <li>
+                <a
+                  href="https://www.google.com/maps/place/CARZIO+Car+Rental+Agadir+Airport/@30.3316319,-9.4113071,18.5z/data=!4m16!1m9!3m8!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!2sCARZIO+Car+Rental+Agadir+Airport!8m2!3d30.3315284!4d-9.4104744!9m1!1b1!16s%2Fg%2F11zbkvdfgj!3m5!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!8m2!3d30.3315284!4d-9.4104744!16s%2Fg%2F11zbkvdfgj?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold transition text-xs"
+                >
+                  {t('footer.openInMaps')}
+                </a>
+              </li>
               <li><a href="https://wa.me/212680318003" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">{t('footer.phone')}</a></li>
               <li><a href="mailto:contact@carzio.ma" className="hover:text-gold transition">{t('footer.email')}</a></li>
               <li>{t('footer.hours')}</li>
@@ -45,7 +56,7 @@ export default function Footer() {
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition" aria-label="Instagram">
+              <a href="https://www.instagram.com/carzio_cars?igsh=bjl5OWx2MmMxY21z&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full glass flex items-center justify-center hover:bg-white/10 transition" aria-label="Instagram">
                 <svg className="w-4 h-4 text-white/60 hover:text-gold transition" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>

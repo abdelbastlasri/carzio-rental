@@ -18,7 +18,8 @@
     "home": "Strona Główna",
     "ourCars": "Nasze Samochody",
     "about": "O Nas",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "terms": "Warunki i Zasady"
   },
   "hero": {
     "label": "Wynajem Samochodów Premium · Agadir",
@@ -158,10 +159,28 @@
     "availableExtras": "Dodatki",
     "free": "Bezpłatnie",
     "perDay": "za dzień",
-    "terms": "Potwierdzam, że przeczytałem i zaakceptowałem Warunki Korzystania z Usługi",
+    "terms": "Potwierdzam, że przeczytałem i zaakceptowałem",
+    "termsLink": "Warunki i Zasady",
     "confirmBooking": "Potwierdź Rezerwację",
     "bookingConfirmed": "Rezerwacja Potwierdzona!",
-    "done": "Gotowe"
+    "done": "Gotowe",
+    "age": "Wiek",
+    "ageRequired": "Musisz mieć ukończone 18 lat",
+    "transportFee": "Opłata Transportowa/Dostawa",
+    "transportFeeFree": "Bezpłatnie",
+    "transportFeeMessage": "Dodatkowa opłata transportowa w wysokości €{{fee}} ma zastosowanie.",
+    "carRental": "Wynajem Samochodu",
+    "totalAmount": "Kwota Łączna",
+    "noDeposit": "Potwierdzam, że nie jest wymagana kaucja ani depozyt",
+    "paymentMethod": "Metoda Płatności",
+    "paymentUponDelivery": "Płatność przy Odbiorze",
+    "paymentMessage": "Nie wymagamy przedpłaty. Płatność zostanie zrealizowana przy odbiorze pojazdu w wybranym miejscu.",
+    "confirmationMethod": "Metoda Potwierdzenia",
+    "confirmationEmail": "Email",
+    "confirmationWhatsApp": "WhatsApp",
+    "availabilityRequested": "Prośba o Dostępność Wysłana!",
+    "availabilityMessage": "Twoja prośba oczekuje na rozpatrzenie. Potwierdzimy przez {{method}}.",
+    "submitting": "Wysyłanie..."
   },
   "extras": {
     "Baby Seat": "Fotelik Dziecięcy",
@@ -192,11 +211,13 @@
     "aboutUs": "O Nas",
     "contact": "Kontakt",
     "getInTouch": "Kontakt",
-    "address": "Lotnisko Agadir, Agadir 80000",
+    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Pon-Niedz: Obsługa 24/7",
     "followUs": "Śledź nas",
-    "copyright": "© 2026 Carzio. Wszelkie prawa zastrzeżone."
+    "copyright": "© 2026 Carzio. Wszelkie prawa zastrzeżone.",
+    "terms": "Warunki i Zasady",
+    "openInMaps": "Otwórz w Google Maps"
   }
 }
