@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
@@ -18,6 +19,7 @@ interface BookingFormProps {
 
 export default function BookingForm({ onOpenBooking, formData, setFormData }: BookingFormProps) {
   const { t } = useTranslation();
+  const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -25,6 +27,20 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
   const today = localDate();
   const pickupLoc = locations.find(l => l.id === formData.pickupLocation);
   const transportFee = pickupLoc?.transportFee || 0;
+
+  useEffect(() => {
+    fetch('/api/car-prices')
+      .then(r => r.json())
+      .then(data => {
+        const map: Record<string, number> = {};
+        data.forEach((p: { car_id: string; price_per_day: number }) => {
+          map[p.car_id] = p.price_per_day;
+        });
+        setPriceOverrides(map);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section id="booking" className="bg-black py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -90,7 +106,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               >
                 <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (
-                  <option key={car.id} value={car.id}>{car.name} — {car.pricePerDay}€{t('common.perDay')}</option>
+                  <option key={car.id} value={car.id}>{car.name} — {priceOverrides[car.id] || car.pricePerDay}€{t('common.perDay')}</option>
                 ))}
               </select>
               <button

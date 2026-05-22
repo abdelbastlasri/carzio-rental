@@ -46,6 +46,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const [submitting, setSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [overridePrice, setOverridePrice] = useState<number | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -69,11 +70,21 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       setAgreed(false);
       setNoDepositAgreed(false);
       setConfirmationMethod('email');
-      setSubmitting(false);
+      setOverridePrice(null);
     }
   }, [isOpen, preselectedCar, preselectedLocation, preselectedPickupDate, preselectedDropoffDate, today]);
 
+  useEffect(() => {
+    if (selectedCar) {
+      fetch(`/api/prices?car_id=${selectedCar}`)
+        .then(r => r.json())
+        .then(d => setOverridePrice(d.pricePerDay))
+        .catch(() => setOverridePrice(null));
+    }
+  }, [selectedCar]);
+
   const car = fleet.find(c => c.id === selectedCar);
+  const effectivePricePerDay = overridePrice || car?.pricePerDay || 0;
 
   const days = useMemo(() => {
     if (!pickupDate || !dropoffDate) return 1;
@@ -84,7 +95,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
 
   const transportFee = locations.find(l => l.id === pickupLocation)?.transportFee || 0;
 
-  const totalCarPrice = car ? car.pricePerDay * days : 0;
+  const totalCarPrice = effectivePricePerDay * days;
   const totalExtrasPrice = useMemo(() => {
     if (!car) return 0;
     return car.extras
@@ -297,7 +308,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 </div>
                 <div className="flex-1">
                   <h3 className="text-white font-heading font-bold text-xl">{car.name}</h3>
-                  <p className="text-gold font-heading font-bold text-lg">{car.pricePerDay.toFixed(2)}€ <span className="text-gray-400 text-sm font-normal">{t('common.perDay')}</span></p>
+                  <p className="text-gold font-heading font-bold text-lg">{effectivePricePerDay.toFixed(2)}€ <span className="text-gray-400 text-sm font-normal">{t('common.perDay')}</span></p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-2">
                     {car.ac && <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{t('bookingModal.airConditioner')}</span>}
                     <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>{t('bookingModal.doorHatchback', { doors: car.doors })}</span>

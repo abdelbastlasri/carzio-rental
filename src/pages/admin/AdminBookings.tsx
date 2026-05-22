@@ -5,6 +5,7 @@ export default function AdminBookings() {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [sending, setSending] = useState<string | null>(null);
 
   const fetchBookings = async () => {
     try {
@@ -44,6 +45,42 @@ export default function AdminBookings() {
     }
   };
 
+  const sendEmail = async (bookingId: string) => {
+    setSending(bookingId);
+    try {
+      const token = localStorage.getItem('admin_token');
+      const res = await fetch('/api/admin/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ bookingId }),
+      });
+      if (res.ok) alert('Email sent!');
+      else { const d = await res.json(); alert(d.error || 'Failed'); }
+    } catch {
+      alert('Failed to send email');
+    } finally {
+      setSending(null);
+    }
+  };
+
+  const sendWhatsApp = async (bookingId: string) => {
+    setSending(bookingId);
+    try {
+      const token = localStorage.getItem('admin_token');
+      const res = await fetch('/api/admin/send-whatsapp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ bookingId }),
+      });
+      if (res.ok) alert('WhatsApp sent!');
+      else { const d = await res.json(); alert(d.error || 'Failed'); }
+    } catch {
+      alert('Failed to send WhatsApp');
+    } finally {
+      setSending(null);
+    }
+  };
+
   const statusBadge = (status: string) => {
     const colors: Record<string, string> = {
       pending: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
@@ -79,6 +116,9 @@ export default function AdminBookings() {
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-white font-semibold text-base">{booking.customer_name}</h3>
                     <span className={statusBadge(booking.status)}>{booking.status}</span>
+                    {booking.confirmation_method && (
+                      <span className="text-xs text-gray-500">({booking.confirmation_method})</span>
+                    )}
                   </div>
                   <div className="text-gray-400 text-xs space-y-1">
                     <p><span className="text-gray-500">Car:</span> {booking.car_name}</p>
@@ -90,14 +130,11 @@ export default function AdminBookings() {
                       <p><span className="text-gray-500">Transport fee:</span> €{booking.transport_fee}</p>
                     )}
                     <p><span className="text-gray-500">Contact:</span> {booking.customer_phone} | {booking.customer_email}</p>
-                    {booking.confirmation_method && (
-                      <p><span className="text-gray-500">Confirm via:</span> {booking.confirmation_method}</p>
-                    )}
                     {booking.submitted_at && <p><span className="text-gray-500">Submitted:</span> {new Date(booking.submitted_at).toLocaleString()}</p>}
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex items-center gap-2 shrink-0 flex-wrap">
                   {booking.status === 'pending' && (
                     <>
                       <button
@@ -116,24 +153,20 @@ export default function AdminBookings() {
                       </button>
                     </>
                   )}
-                  {booking.customer_email && (
-                    <a
-                      href={`mailto:${booking.customer_email}?subject=Carzio Booking ${booking.id}&body=Dear ${booking.customer_name},`}
-                      className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-xs font-medium rounded-lg transition"
-                    >
-                      Email
-                    </a>
-                  )}
-                  {booking.customer_phone && (
-                    <a
-                      href={`https://wa.me/${booking.customer_phone.replace(/\s/g, '')}?text=Hello ${booking.customer_name},`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-xs font-medium rounded-lg transition"
-                    >
-                      WhatsApp
-                    </a>
-                  )}
+                  <button
+                    onClick={() => sendEmail(booking.id)}
+                    disabled={sending === booking.id}
+                    className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-xs font-medium rounded-lg transition disabled:opacity-50"
+                  >
+                    {sending === booking.id ? '...' : 'Email'}
+                  </button>
+                  <button
+                    onClick={() => sendWhatsApp(booking.id)}
+                    disabled={sending === booking.id}
+                    className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-xs font-medium rounded-lg transition disabled:opacity-50"
+                  >
+                    {sending === booking.id ? '...' : 'WhatsApp'}
+                  </button>
                 </div>
               </div>
             </div>

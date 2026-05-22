@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import serverless from 'serverless-http';
 import { createClient } from '@supabase/supabase-js';
+import nodemailer from 'nodemailer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -16,6 +17,8 @@ const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || 'contact@carzio.ma';
 const SMTP_PASS = process.env.SMTP_PASS;
+const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
+const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
 
 let supabase;
 if (supabaseUrl && supabaseKey) {
@@ -23,11 +26,10 @@ if (supabaseUrl && supabaseKey) {
 }
 
 let transporter = null;
-async function getTransporter() {
+function getTransporter() {
   if (transporter) return transporter;
   try {
-    const nodemailer = await import('nodemailer');
-    transporter = nodemailer.default.createTransport({
+    transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
       secure: SMTP_PORT === 465,
@@ -140,6 +142,7 @@ app.get('/api/status', (req, res) => {
     supabaseConfigured: !!supabase,
     adminConfigured: !!ADMIN_PASSWORD,
     smtpConfigured: !!SMTP_PASS,
+    whatsappConfigured: !!(WHATSAPP_ACCESS_TOKEN && WHATSAPP_PHONE_NUMBER_ID),
   });
 });
 
@@ -229,26 +232,27 @@ app.delete('/api/contacts/:id', async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
+// ===== PUBLIC PRICES =====
+
+app.get('/api/car-prices', async (req, res) => {
+  try {
+    if (!supabase) return res.json([]);
+    const { data, error } = await supabase.from('car_prices').select('*').order('car_id');
+    if (error) throw error;
+    res.json(data || []);
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
 app.get('/api/prices', async (req, res) => {
   try {
-    if (!supabase) return res.json({ basePrice: 0, adjustedPrice: 0, rules: [] });
-    const { data: rules, error } = await supabase.from('pricing_rules').select('*').eq('active', true);
-    if (error) throw error;
+    if (!supabase) return res.json({ pricePerDay: null });
     const carId = req.query.car_id;
-    const startDate = req.query.start_date;
-    const endDate = req.query.end_date;
-    const relevantRules = (rules || []).filter(r => {
-      if (!r.active) return false;
-      if (r.car_id && r.car_id !== carId) return false;
-      if (startDate && endDate) {
-        const s = new Date(startDate), e = new Date(endDate);
-        const rs = new Date(r.start_date), re = new Date(r.end_date);
-        if (e < rs || s > re) return false;
-      }
-      return true;
-    });
-    const maxMultiplier = relevantRules.length > 0 ? Math.max(...relevantRules.map(r => r.multiplier)) : 1;
-    res.json({ rules: relevantRules.map(r => r.name), maxMultiplier, ruleCount: relevantRules.length });
+    if (carId) {
+      const { data, error } = await supabase.from('car_prices').select('*').eq('car_id', carId).maybeSingle();
+      if (error) throw error;
+      return res.json({ pricePerDay: data?.price_per_day || null });
+    }
+    res.json({ pricePerDay: null });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
@@ -282,59 +286,144 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     const { data, error } = await supabase.from('bookings').update({ status }).eq('id', req.params.id).select();
     if (error) throw error;
     const updated = data?.[0];
-    if (updated && updated.customer_email && status !== 'pending') {
-      sendEmail({
-        to: updated.customer_email,
-        subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} - ${updated.id}`,
-        html: bookingEmailTemplate({
-          name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
-          pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
-          dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
-          totalPrice: updated.total_price, status,
-          confirmationMethod: updated.confirmation_method, phone: updated.customer_phone, email: updated.customer_email,
-          age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
-          noDepositAgreed: updated.no_deposit_agreed,
-        }),
-      });
+    if (updated && status !== 'pending') {
+      const isEmail = updated.confirmation_method === 'email';
+      const isWhatsApp = updated.confirmation_method === 'whatsapp';
+      if (updated.customer_email && isEmail) {
+        sendEmail({
+          to: updated.customer_email,
+          subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} - ${updated.id}`,
+          html: bookingEmailTemplate({
+            name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
+            pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
+            dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
+            totalPrice: updated.total_price, status,
+            confirmationMethod: updated.confirmation_method, phone: updated.customer_phone, email: updated.customer_email,
+            age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
+            noDepositAgreed: updated.no_deposit_agreed,
+          }),
+        });
+      }
+      if (updated.customer_phone && isWhatsApp) {
+        sendWhatsApp({
+          to: updated.customer_phone,
+          customerName: updated.customer_name,
+          bookingId: updated.id,
+          carName: updated.car_name,
+          status,
+        });
+      }
     }
     res.json(updated || { success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-app.get('/api/admin/pricing-rules', requireAuth, async (req, res) => {
+// ===== ADMIN CAR PRICES =====
+
+app.get('/api/admin/car-prices', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.json([]);
-    const { data, error } = await supabase.from('pricing_rules').select('*').order('start_date', { ascending: true });
+    const { data, error } = await supabase.from('car_prices').select('*').order('car_id');
     if (error) throw error;
     res.json(data || []);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-app.post('/api/admin/pricing-rules', requireAuth, async (req, res) => {
+app.put('/api/admin/car-prices/:carId', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const rule = { ...req.body, created_at: new Date().toISOString() };
-    const { data, error } = await supabase.from('pricing_rules').insert(rule).select();
-    if (error) throw error;
-    res.status(201).json(data?.[0] || rule);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
-});
-
-app.put('/api/admin/pricing-rules/:id', requireAuth, async (req, res) => {
-  try {
-    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const { data, error } = await supabase.from('pricing_rules').update(req.body).eq('id', req.params.id).select();
+    const { price_per_day } = req.body;
+    if (price_per_day === undefined || price_per_day === null || price_per_day < 0) {
+      return res.status(400).json({ error: 'Invalid price' });
+    }
+    const { data, error } = await supabase.from('car_prices').upsert(
+      { car_id: req.params.carId, price_per_day, updated_at: new Date().toISOString() },
+      { onConflict: 'car_id' }
+    ).select();
     if (error) throw error;
     res.json(data?.[0] || { success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-app.delete('/api/admin/pricing-rules/:id', requireAuth, async (req, res) => {
+// ===== ADMIN SEND EMAIL =====
+
+app.post('/api/admin/send-email', requireAuth, async (req, res) => {
   try {
-    if (!supabase) return res.json({ success: true });
-    const { error } = await supabase.from('pricing_rules').delete().eq('id', req.params.id);
+    const { bookingId } = req.body;
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    const { data, error } = await supabase.from('bookings').select('*').eq('id', bookingId).maybeSingle();
     if (error) throw error;
-    res.json({ success: true });
+    if (!data) return res.status(404).json({ error: 'Booking not found' });
+    sendEmail({
+      to: data.customer_email,
+      subject: `Booking Details - ${data.id}`,
+      html: bookingEmailTemplate({
+        name: data.customer_name, bookingId: data.id, carName: data.car_name,
+        pickupDate: data.pickup_date, pickupTime: data.pickup_time, pickupLocation: data.pickup_location,
+        dropoffDate: data.dropoff_date, dropoffTime: data.dropoff_time, dropoffLocation: data.dropoff_location,
+        totalPrice: data.total_price, status: data.status,
+        confirmationMethod: data.confirmation_method, phone: data.customer_phone, email: data.customer_email,
+        age: data.customer_age, transportFee: data.transport_fee, paymentMethod: data.payment_method,
+        noDepositAgreed: data.no_deposit_agreed,
+      }),
+    });
+    res.json({ success: true, message: 'Email sent' });
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+// ===== ADMIN SEND WHATSAPP =====
+
+async function sendWhatsApp({ to, customerName, bookingId, carName, status }) {
+  if (!WHATSAPP_ACCESS_TOKEN || !WHATSAPP_PHONE_NUMBER_ID) {
+    console.warn('WhatsApp not configured - set WHATSAPP_PHONE_NUMBER_ID and WHATSAPP_ACCESS_TOKEN');
+    return;
+  }
+  const cleanPhone = to.replace(/\s+/g, '').replace(/^0+/, '');
+  const text = status === 'confirmed'
+    ? `Hello ${customerName}, your booking ${bookingId} for ${carName} is CONFIRMED! Come to N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000 to pick up your vehicle.`
+    : status === 'rejected'
+    ? `Hello ${customerName}, we apologize but ${carName} is not available for your requested dates (Booking ${bookingId}). Please visit carzio.ma to choose another vehicle.`
+    : `Hello ${customerName}, your booking ${bookingId} for ${carName} has been received. We will confirm availability soon.`;
+  try {
+    const res = await fetch(`https://graph.facebook.com/v22.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${WHATSAPP_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        to: cleanPhone,
+        type: 'text',
+        text: { body: text },
+      }),
+    });
+    const result = await res.json();
+    if (!res.ok) {
+      console.error('WhatsApp API error:', result);
+    } else {
+      console.log(`WhatsApp sent to ${to}: ${result.messages?.[0]?.id || 'ok'}`);
+    }
+  } catch (err) {
+    console.error('Failed to send WhatsApp:', err.message);
+  }
+}
+
+app.post('/api/admin/send-whatsapp', requireAuth, async (req, res) => {
+  try {
+    const { bookingId } = req.body;
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    const { data, error } = await supabase.from('bookings').select('*').eq('id', bookingId).maybeSingle();
+    if (error) throw error;
+    if (!data) return res.status(404).json({ error: 'Booking not found' });
+    await sendWhatsApp({
+      to: data.customer_phone,
+      customerName: data.customer_name,
+      bookingId: data.id,
+      carName: data.car_name,
+      status: data.status,
+    });
+    res.json({ success: true, message: 'WhatsApp sent' });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 

@@ -16,14 +16,14 @@ export default function MapSection() {
         </div>
         <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
           <iframe
-            src="https://www.google.com/maps?q=30.3315284,-9.4104744&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.0469!2d-9.4104744!3d30.3315284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xafb78533426f6bf3%3A0x2ac9d1a9d4ba79e8!2sCARZIO+Car+Rental+Agadir+Airport!5e0!3m2!1sen!2sma"
             width="100%"
             height="400"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Agadir Al Massira Airport"
+            title="CARZIO Car Rental Agadir Airport"
             className="w-full"
           />
         </div>

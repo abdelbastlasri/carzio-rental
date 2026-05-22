@@ -6,9 +6,11 @@ interface CarCardProps {
   car: Car;
   onBook: (carId: string) => void;
   index?: number;
+  overridePrice?: number;
 }
 
-export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
+export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCardProps) {
+  const displayPrice = overridePrice || car.pricePerDay;
   const { t } = useTranslation();
   return (
     <motion.div
@@ -42,7 +44,7 @@ export default function CarCard({ car, onBook, index = 0 }: CarCardProps) {
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-heading font-bold text-lg text-white tracking-tight">{car.name} <span className="text-white/40 text-xs font-normal">— Model 2025/2026</span></h3>
           <span className="glass-gold text-gold font-heading font-bold text-lg px-3 py-1 rounded-lg shrink-0 ml-2">
-            {car.pricePerDay}€<span className="text-white/40 text-xs font-normal">{t('common.perDay')}</span>
+            {displayPrice}€<span className="text-white/40 text-xs font-normal">{t('common.perDay')}</span>
           </span>
         </div>
         <p className="text-white/40 text-xs">{t('carCard.orSimilar')} &middot; {t('carCard.type.' + car.type.toLowerCase())}</p>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fleet } from '../data/fleet';
 import CarCard from './CarCard';
@@ -9,7 +10,22 @@ interface FleetProps {
 
 export default function Fleet({ onBook, featured }: FleetProps) {
   const { t } = useTranslation();
+  const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
   const cars = featured ? fleet.slice(0, 4) : fleet;
+
+  useEffect(() => {
+    fetch('/api/car-prices')
+      .then(r => r.json())
+      .then(data => {
+        const map: Record<string, number> = {};
+        data.forEach((p: { car_id: string; price_per_day: number }) => {
+          map[p.car_id] = p.price_per_day;
+        });
+        setPriceOverrides(map);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section id="cars" className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black to-transparent" />
@@ -29,7 +45,7 @@ export default function Fleet({ onBook, featured }: FleetProps) {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
           {cars.map((car, i) => (
-            <CarCard key={car.id} car={car} onBook={onBook} index={i} />
+            <CarCard key={car.id} car={car} onBook={onBook} index={i} overridePrice={priceOverrides[car.id]} />
           ))}
         </div>
       </div>
