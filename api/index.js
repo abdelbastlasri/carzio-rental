@@ -73,128 +73,126 @@ function requireAuth(req, res, next) {
   next();
 }
 
-async function sendEmail({ to, subject, html }) {
+async function sendEmail({ to, subject, html, text }) {
   const t = await getTransporter();
   if (!t || !SMTP_PASS) {
     console.warn('Email not sent - SMTP not configured');
     return;
   }
+  const plainText = text || html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   try {
-    await t.sendMail({ from: `"Carzio" <${SMTP_USER}>`, to, subject, html });
+    await t.sendMail({
+      from: `"Carzio" <${SMTP_USER}>`,
+      to,
+      subject,
+      text: plainText,
+      html,
+      headers: {
+        'X-Mailer': 'Carzio Booking System',
+        'X-Priority': 'normal',
+      },
+    });
     console.log(`Email sent to ${to}: ${subject}`);
   } catch (err) {
     console.error('Failed to send email:', err.message);
   }
 }
 
+function stripHtml(html) {
+  return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+}
+
 function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
-  const statusColor = status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706';
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
+  const greeting = status === 'pending'
+    ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>`
+    : status === 'confirmed'
+    ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking has been confirmed. We look forward to serving you.</p>`
+    : `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">The vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>`;
+  const subject = status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Not Available' : 'Request Received';
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5}
-  .container{max-width:600px;margin:0 auto;padding:30px 16px}
-  .header{text-align:center;margin-bottom:24px}
-  .header h1{color:#b8860b;font-size:22px;margin:12px 0 0}
-  .card{background:#ffffff;border-radius:8px;padding:20px 24px;margin-bottom:12px;border:1px solid #e5e7eb}
-  .label{color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
-  .value{color:#1f2937;font-size:15px;font-weight:600}
-  .gold{color:#b8860b}
-  .status{color:${statusColor};font-weight:700;font-size:15px}
-  .footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:24px}
-  .footer a{color:#b8860b;text-decoration:none}
-  hr{border:none;border-top:1px solid #e5e7eb;margin:12px 0}
-</style></head><body>
-<div class="container">
-  <div class="header">
-    <img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:44px"/>
-    <h1>${status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Booking Update' : 'Booking Request Received'}</h1>
-  </div>
-  <div class="card">
-    <p style="margin:0 0 8px">Hello <strong>${name}</strong>,</p>
-    ${status === 'pending'
-      ? '<p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>'
-      : status === 'confirmed'
-      ? '<p style="margin:0">Great news! Your booking has been confirmed. We look forward to serving you.</p>'
-      : '<p style="margin:0">Unfortunately, the vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>'}
-  </div>
-  <div class="card">
-    <div class="label">Booking ID</div><div class="value">${bookingId}</div><hr>
-    <div class="label">Vehicle</div><div class="value">${carName}</div><hr>
-    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} &mdash; ${pickupLocation}</div><hr>
-    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} &mdash; ${dropoffLocation}</div><hr>
-    <div class="label">Total</div><div class="value gold">${totalPrice}€</div><hr>
-    <div class="label">Status</div><div class="value status">${statusText}</div>
-  </div>
-  ${confirmationMethod ? `<div class="card"><p style="margin:0">We will contact you via <strong>${confirmationMethod}</strong>.</p></div>` : ''}
-  <div class="card">
-    ${phone ? `<div class="label">Phone</div><div class="value">${phone}</div><hr>` : ''}
-    ${email ? `<div class="label">Email</div><div class="value">${email}</div><hr>` : ''}
-    ${age ? `<div class="label">Age</div><div class="value">${age}</div><hr>` : ''}
-    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">&euro;${transportFee}</div><hr>` : ''}
-    ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
-    ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div>` : ''}
-  </div>
-  <div class="footer">
-    <p style="margin:0 0 4px"><strong>Carzio</strong> &mdash; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
-    <p style="margin:0"><a href="mailto:contact@carzio.ma">contact@carzio.ma</a> &mdash; <a href="https://wa.me/212680318003">+212 680-318003</a></p>
-  </div>
-</div></body></html>`;
+<html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
+<table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
+<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
+<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">${subject}</h1>
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
+${greeting}
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Booking ID</div><div style="color:#1f2937;font-size:15px;font-weight:600">${bookingId}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${carName}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${pickupLocation}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${dropoffLocation}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Status</div><div style="color:${status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706'};font-weight:700;font-size:15px">${statusText}</div>
+</td></tr></table>
+${confirmationMethod ? `<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will contact you via <strong>${confirmationMethod}</strong>.</p></td></tr></table>` : ''}
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb"><tr><td style="padding:16px 24px">
+${phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div>` : ''}
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
+<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+<p style="margin:0">contact@carzio.ma &#8212; +212 680-318003</p>
+</td></tr></table>
+</td></tr></table>
+</body></html>`;
 }
 
 function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5}
-  .container{max-width:600px;margin:0 auto;padding:30px 16px}
-  .header{text-align:center;margin-bottom:24px}
-  .header h1{color:#b8860b;font-size:22px;margin:12px 0 0}
-  .card{background:#ffffff;border-radius:8px;padding:20px 24px;margin-bottom:12px;border:1px solid #e5e7eb}
-  .label{color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
-  .value{color:#1f2937;font-size:15px;font-weight:600}
-  .gold{color:#b8860b}
-  .badge{display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase}
-  .footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:24px}
-  .footer a{color:#b8860b;text-decoration:none}
-  hr{border:none;border-top:1px solid #e5e7eb;margin:12px 0}
-</style></head><body>
-<div class="container">
-  <div class="header">
-    <img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:44px"/>
-    <h1>New Booking Request</h1>
-    <span class="badge">Pending Review</span>
-  </div>
-  <div class="card">
-    <p style="margin:0 0 8px">Hello <strong>Carzio Team</strong>,</p>
-    <p style="margin:0">A new booking request has been submitted by <strong>${name}</strong>. Review the details below and confirm availability in the admin panel.</p>
-  </div>
-  <div class="card">
-    <div class="label">Booking ID</div><div class="value">${bookingId}</div><hr>
-    <div class="label">Customer</div><div class="value">${name}</div><hr>
-    <div class="label">Vehicle</div><div class="value">${carName}</div><hr>
-    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} &mdash; ${pickupLocation}</div><hr>
-    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} &mdash; ${dropoffLocation}</div><hr>
-    <div class="label">Total</div><div class="value gold">${totalPrice}€</div><hr>
-    ${phone ? `<div class="label">Phone</div><div class="value">${phone}</div><hr>` : ''}
-    ${email ? `<div class="label">Email</div><div class="value">${email}</div><hr>` : ''}
-    ${age ? `<div class="label">Age</div><div class="value">${age}</div><hr>` : ''}
-    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">&euro;${transportFee}</div><hr>` : ''}
-    ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
-    ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div><hr>` : ''}
-    ${confirmationMethod ? `<div class="label">Customer prefers</div><div class="value">Contact via ${confirmationMethod}</div>` : ''}
-  </div>
-  <div class="card" style="background:#fefce8;border-color:#fde68a">
-    <p style="margin:0;color:#92400e;font-size:13px">
-      <strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject this booking.
-    </p>
-  </div>
-  <div class="footer">
-    <p style="margin:0 0 4px"><strong>Carzio</strong> &mdash; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
-    <p style="margin:0"><a href="mailto:contact@carzio.ma">contact@carzio.ma</a> &mdash; <a href="https://wa.me/212680318003">+212 680-318003</a></p>
-  </div>
-</div></body></html>`;
+<html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
+<table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
+<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
+<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">New Booking Request</h1>
+<span style="display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:6px">Pending Review</span>
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
+<p style="margin:0 0 8px 0">Hello <strong>Carzio Team</strong>,</p>
+<p style="margin:0">A new booking request has been submitted by <strong>${name}</strong>. Review the details below.</p>
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Booking ID</div><div style="color:#1f2937;font-size:15px;font-weight:600">${bookingId}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Customer</div><div style="color:#1f2937;font-size:15px;font-weight:600">${name}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${carName}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${pickupLocation}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${dropoffLocation}</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
+${phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${phone}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${email}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${confirmationMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Customer prefers</div><div style="color:#1f2937;font-size:15px;font-weight:600">Contact via ${confirmationMethod}</div>` : ''}
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#fefce8;border-radius:6px;border:1px solid #fde68a"><tr><td style="padding:16px 24px">
+<p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject.</p>
+</td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
+<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+<p style="margin:0">contact@carzio.ma &#8212; +212 680-318003</p>
+</td></tr></table>
+</td></tr></table>
+</body></html>`;
 }
 
 // ===== PUBLIC =====
