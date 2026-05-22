@@ -58,7 +58,7 @@ export default function Contact() {
           className="rounded-2xl overflow-hidden glass mb-12"
         >
           <iframe
-            src="https://www.google.com/maps?q=Agadir+Airport+Al+Massira&output=embed"
+            src="https://www.google.com/maps?q=30.3315284,-9.4104744&output=embed"
             width="100%"
             height="400"
             style={{ border: 0, display: 'block' }}
@@ -132,7 +132,7 @@ export default function Contact() {
                 {t('contact.whatsapp')}
               </a>
               <a
-                href="https://www.google.com/maps?q=Agadir+Airport+Al+Massira"
+                href="https://www.google.com/maps/place/CARZIO+Car+Rental+Agadir+Airport/@30.3316319,-9.4113071,18.5z/data=!4m16!1m9!3m8!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!2sCARZIO+Car+Rental+Agadir+Airport!8m2!3d30.3315284!4d-9.4104744!9m1!1b1!16s%2Fg%2F11zbkvdfgj!3m5!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!8m2!3d30.3315284!4d-9.4104744!16s%2Fg%2F11zbkvdfgj?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass text-white/80 font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-white/10"

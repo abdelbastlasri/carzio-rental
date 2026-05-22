@@ -85,7 +85,7 @@ async function sendEmail({ to, subject, html }) {
   }
 }
 
-function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod }) {
+function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
   const statusColor = status === 'confirmed' ? '#22c55e' : status === 'rejected' ? '#ef4444' : '#f0ad4e';
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
   return `<!DOCTYPE html>
@@ -118,6 +118,14 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
     <div class="label">Status</div><div class="value status">${statusText}</div>
   </div>
   ${confirmationMethod ? `<div class="card"><p>We will contact you via <strong>${confirmationMethod}</strong>.</p></div>` : ''}
+  <div class="card">
+    ${phone ? `<div class="label">Phone</div><div class="value">${phone}</div><hr>` : ''}
+    ${email ? `<div class="label">Email</div><div class="value">${email}</div><hr>` : ''}
+    ${age ? `<div class="label">Age</div><div class="value">${age}</div><hr>` : ''}
+    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">€${transportFee}</div><hr>` : ''}
+    ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
+    ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div>` : ''}
+  </div>
   <div class="footer">
     <p>Carzio - N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
     <p>contact@carzio.ma | +212 680-318003</p>
@@ -162,6 +170,8 @@ app.post('/api/bookings', async (req, res) => {
           pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
           dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
           totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
+          phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
+          transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
         }),
       });
     }
@@ -173,6 +183,9 @@ app.post('/api/bookings', async (req, res) => {
         pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
         dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
         totalPrice: saved.total_price, status: 'pending',
+        confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
+        age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
+        noDepositAgreed: saved.no_deposit_agreed,
       }),
     });
     res.status(201).json(saved);
@@ -278,6 +291,9 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
           pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
           dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
           totalPrice: updated.total_price, status,
+          confirmationMethod: updated.confirmation_method, phone: updated.customer_phone, email: updated.customer_email,
+          age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
+          noDepositAgreed: updated.no_deposit_agreed,
         }),
       });
     }

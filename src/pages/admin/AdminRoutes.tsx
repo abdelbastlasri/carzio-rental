@@ -15,6 +15,7 @@ export default function AdminRoutes() {
   }, [location.pathname]);
 
   if (location.pathname === '/login') {
+    if (isLoggedIn) return <Navigate to="/dashboard" replace />;
     return <AdminLogin onLogin={() => setIsLoggedIn(true)} />;
   }
 

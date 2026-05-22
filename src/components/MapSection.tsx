@@ -16,7 +16,7 @@ export default function MapSection() {
         </div>
         <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.123456789!2d-9.413174!3d30.321789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE5JzE4LjQiTiA5wrAyNCc0Ny40Ilc!5e0!3m2!1sen!2sma!4v1"
+            src="https://www.google.com/maps?q=30.3315284,-9.4104744&output=embed"
             width="100%"
             height="400"
             style={{ border: 0 }}

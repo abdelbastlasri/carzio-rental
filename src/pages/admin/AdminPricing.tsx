@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PricingRule } from '../../types';
+import { fleet } from '../../data/fleet';
 
 export default function AdminPricing() {
   const [rules, setRules] = useState<PricingRule[]>([]);
@@ -117,8 +118,13 @@ export default function AdminPricing() {
                 <p className="text-gray-500 text-xs mt-1">1.5 = 50% increase, 2.0 = 100% increase</p>
               </div>
               <div>
-                <label className="block text-gray-300 text-xs font-medium mb-1">Car (optional)</label>
-                <input type="text" value={form.car_id} onChange={(e) => setForm({ ...form, car_id: e.target.value })} className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none" placeholder="Leave empty for all cars" />
+                <label className="block text-gray-300 text-xs font-medium mb-1">Car</label>
+                <select value={form.car_id} onChange={(e) => setForm({ ...form, car_id: e.target.value })} className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none">
+                  <option value="">All Cars</option>
+                  {fleet.map(car => (
+                    <option key={car.id} value={car.id}>{car.name}</option>
+                  ))}
+                </select>
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} className="accent-gold" />
