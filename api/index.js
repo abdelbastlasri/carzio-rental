@@ -90,7 +90,6 @@ async function sendEmail({ to, subject, html }) {
 function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
   const statusColor = status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706';
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
-  const border = `style="border:none;border-top:1px solid #e5e7eb;margin:12px 0"`;
   return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
@@ -136,6 +135,60 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
     ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">&euro;${transportFee}</div><hr>` : ''}
     ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
     ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div>` : ''}
+  </div>
+  <div class="footer">
+    <p style="margin:0 0 4px"><strong>Carzio</strong> &mdash; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+    <p style="margin:0"><a href="mailto:contact@carzio.ma">contact@carzio.ma</a> &mdash; <a href="https://wa.me/212680318003">+212 680-318003</a></p>
+  </div>
+</div></body></html>`;
+}
+
+function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5}
+  .container{max-width:600px;margin:0 auto;padding:30px 16px}
+  .header{text-align:center;margin-bottom:24px}
+  .header h1{color:#b8860b;font-size:22px;margin:12px 0 0}
+  .card{background:#ffffff;border-radius:8px;padding:20px 24px;margin-bottom:12px;border:1px solid #e5e7eb}
+  .label{color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+  .value{color:#1f2937;font-size:15px;font-weight:600}
+  .gold{color:#b8860b}
+  .badge{display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+  .footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:24px}
+  .footer a{color:#b8860b;text-decoration:none}
+  hr{border:none;border-top:1px solid #e5e7eb;margin:12px 0}
+</style></head><body>
+<div class="container">
+  <div class="header">
+    <img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:44px"/>
+    <h1>New Booking Request</h1>
+    <span class="badge">Pending Review</span>
+  </div>
+  <div class="card">
+    <p style="margin:0 0 8px">Hello <strong>Carzio Team</strong>,</p>
+    <p style="margin:0">A new booking request has been submitted by <strong>${name}</strong>. Review the details below and confirm availability in the admin panel.</p>
+  </div>
+  <div class="card">
+    <div class="label">Booking ID</div><div class="value">${bookingId}</div><hr>
+    <div class="label">Customer</div><div class="value">${name}</div><hr>
+    <div class="label">Vehicle</div><div class="value">${carName}</div><hr>
+    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} &mdash; ${pickupLocation}</div><hr>
+    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} &mdash; ${dropoffLocation}</div><hr>
+    <div class="label">Total</div><div class="value gold">${totalPrice}€</div><hr>
+    ${phone ? `<div class="label">Phone</div><div class="value">${phone}</div><hr>` : ''}
+    ${email ? `<div class="label">Email</div><div class="value">${email}</div><hr>` : ''}
+    ${age ? `<div class="label">Age</div><div class="value">${age}</div><hr>` : ''}
+    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">&euro;${transportFee}</div><hr>` : ''}
+    ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
+    ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div><hr>` : ''}
+    ${confirmationMethod ? `<div class="label">Customer prefers</div><div class="value">Contact via ${confirmationMethod}</div>` : ''}
+  </div>
+  <div class="card" style="background:#fefce8;border-color:#fde68a">
+    <p style="margin:0;color:#92400e;font-size:13px">
+      <strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject this booking.
+    </p>
   </div>
   <div class="footer">
     <p style="margin:0 0 4px"><strong>Carzio</strong> &mdash; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
@@ -191,11 +244,11 @@ app.post('/api/bookings', async (req, res) => {
       await sendEmail({
         to: SMTP_USER,
         subject: `New Booking Request - ${saved.customer_name}`,
-        html: bookingEmailTemplate({
+        html: adminPendingEmailTemplate({
           name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
           pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
           dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-          totalPrice: saved.total_price, status: 'pending',
+          totalPrice: saved.total_price,
           confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
           age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
           noDepositAgreed: saved.no_deposit_agreed,
