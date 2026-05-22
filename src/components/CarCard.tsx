@@ -10,7 +10,7 @@ interface CarCardProps {
 }
 
 export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCardProps) {
-  const displayPrice = overridePrice || car.pricePerDay;
+  const displayPrice = overridePrice ?? car.pricePerDay;
   const { t } = useTranslation();
   return (
     <motion.div

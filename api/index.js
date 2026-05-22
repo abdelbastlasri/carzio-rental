@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import serverless from 'serverless-http';
 import { createClient } from '@supabase/supabase-js';
@@ -12,7 +13,7 @@ const app = express();
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (() => { console.warn('WARNING: ADMIN_PASSWORD env var not set, using default!'); return 'admin'; })();
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || 'contact@carzio.ma';
@@ -53,14 +54,21 @@ function toSnake(obj) {
   return out;
 }
 
+const TOKEN_SECRET = process.env.TOKEN_SECRET || crypto.randomBytes(32).toString('hex');
+
 function generateToken() {
-  const payload = { t: Date.now(), e: Date.now() + 86400000 };
-  return Buffer.from(JSON.stringify(payload)).toString('base64');
+  const payload = { t: Date.now(), e: Date.now() + 86400000, s: crypto.randomBytes(8).toString('hex') };
+  const data = JSON.stringify(payload);
+  const hmac = crypto.createHmac('sha256', TOKEN_SECRET).update(data).digest('hex');
+  return Buffer.from(JSON.stringify({ d: data, h: hmac })).toString('base64');
 }
 
 function verifyToken(token) {
   try {
-    const payload = JSON.parse(Buffer.from(token, 'base64').toString());
+    const parsed = JSON.parse(Buffer.from(token, 'base64').toString());
+    const expected = crypto.createHmac('sha256', TOKEN_SECRET).update(parsed.d).digest('hex');
+    if (expected !== parsed.h) return false;
+    const payload = JSON.parse(parsed.d);
     return payload.e > Date.now();
   } catch { return false; }
 }
@@ -95,6 +103,7 @@ async function sendEmail({ to, subject, html, text }) {
     console.log(`Email sent to ${to}: ${subject}`);
   } catch (err) {
     console.error('Failed to send email:', err.message);
+    transporter = null;
   }
 }
 
@@ -102,13 +111,18 @@ function stripHtml(html) {
   return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
 
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+}
+
 function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
+  const safe = { name: esc(name), carName: esc(carName), pickupLocation: esc(pickupLocation), dropoffLocation: esc(dropoffLocation), email: esc(email || ''), phone: esc(phone || ''), paymentMethod: esc(paymentMethod || '') };
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
   const greeting = status === 'pending'
-    ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>`
+    ? `<p style="margin:0 0 12px 0">Hello ${safe.name},</p><p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>`
     : status === 'confirmed'
-    ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking has been confirmed. We look forward to serving you.</p>`
-    : `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">The vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>`;
+    ? `<p style="margin:0 0 12px 0">Hello ${safe.name},</p><p style="margin:0">Your booking has been confirmed. We look forward to serving you.</p>`
+    : `<p style="margin:0 0 12px 0">Hello ${safe.name},</p><p style="margin:0">The vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>`;
   const subject = status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Booking Not Available' : 'Request Received';
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
@@ -123,11 +137,11 @@ ${greeting}
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Booking ID</div><div style="color:#1f2937;font-size:15px;font-weight:600">${bookingId}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${carName}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.carName}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${pickupLocation}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${safe.pickupLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${dropoffLocation}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
@@ -135,11 +149,11 @@ ${greeting}
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will contact you via Email and WhatsApp.</p></td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb"><tr><td style="padding:16px 24px">
-${phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
-${email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
-${paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div>` : ''}
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
@@ -151,6 +165,7 @@ ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:upp
 }
 
 function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
+  const safe = { name: esc(name), carName: esc(carName), pickupLocation: esc(pickupLocation), dropoffLocation: esc(dropoffLocation), email: esc(email || ''), phone: esc(phone || ''), paymentMethod: esc(paymentMethod || '') };
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
@@ -161,26 +176,26 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
 <p style="margin:0 0 8px 0">Hello <strong>Carzio Team</strong>,</p>
-<p style="margin:0">A new booking request has been submitted by <strong>${name}</strong>. Review the details below.</p>
+<p style="margin:0">A new booking request has been submitted by <strong>${safe.name}</strong>. Review the details below.</p>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Booking ID</div><div style="color:#1f2937;font-size:15px;font-weight:600">${bookingId}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Customer</div><div style="color:#1f2937;font-size:15px;font-weight:600">${name}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Customer</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.name}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${carName}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Vehicle</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.carName}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${pickupLocation}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Pickup</div><div style="color:#1f2937;font-size:15px;font-weight:600">${pickupDate} at ${pickupTime} &#8212; ${safe.pickupLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${dropoffLocation}</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-${phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${phone}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
-${email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${email}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
-${paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 
 </td></tr></table>
@@ -218,8 +233,12 @@ app.get('/api/bookings', async (req, res) => {
 app.post('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    const { customer_name, customer_email, customer_phone, pickup_date, dropoff_date } = req.body;
+    if (!customer_name || !customer_email || !customer_phone || !pickup_date || !dropoff_date) {
+      return res.status(400).json({ error: 'Missing required fields: name, email, phone, pickup date, dropoff date' });
+    }
     const booking = { ...toSnake(req.body), status: 'pending', submitted_at: new Date().toISOString() };
-    const newBooking = { id: `BK-${Date.now()}`, ...booking };
+    const newBooking = { id: `BK-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`, ...booking };
     const { data, error } = await supabase.from('bookings').insert(newBooking).select();
     if (error) throw error;
     const saved = data?.[0] || newBooking;
@@ -259,9 +278,9 @@ app.post('/api/bookings', async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-app.delete('/api/bookings/:id', async (req, res) => {
+app.delete('/api/bookings/:id', requireAuth, async (req, res) => {
   try {
-    if (!supabase) return res.json({ success: true });
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
     const { error } = await supabase.from('bookings').delete().eq('id', req.params.id);
     if (error) throw error;
     res.json({ success: true });
@@ -280,16 +299,20 @@ app.get('/api/contacts', async (req, res) => {
 app.post('/api/contacts', async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const newContact = { id: `CT-${Date.now()}`, ...toSnake(req.body), submitted_at: new Date().toISOString() };
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: 'Missing required fields: name, email, message' });
+    }
+    const newContact = { id: `CT-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`, ...toSnake(req.body), submitted_at: new Date().toISOString() };
     const { data, error } = await supabase.from('contacts').insert(newContact).select();
     if (error) throw error;
     res.status(201).json(data?.[0] || newContact);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-app.delete('/api/contacts/:id', async (req, res) => {
+app.delete('/api/contacts/:id', requireAuth, async (req, res) => {
   try {
-    if (!supabase) return res.json({ success: true });
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
     const { error } = await supabase.from('contacts').delete().eq('id', req.params.id);
     if (error) throw error;
     res.json({ success: true });
@@ -349,25 +372,24 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     }
     const { data, error } = await supabase.from('bookings').update({ status }).eq('id', req.params.id).select();
     if (error) throw error;
-    const updated = data?.[0];
-    if (updated && status !== 'pending') {
-      if (updated.customer_email) {
-        await sendEmail({
-          to: updated.customer_email,
-          subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Booking Not Available'} - ${updated.id}`,
-          html: bookingEmailTemplate({
-            name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
-            pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
-            dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
-            totalPrice: updated.total_price, status,
-            phone: updated.customer_phone, email: updated.customer_email,
-            age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
-            noDepositAgreed: updated.no_deposit_agreed,
-          }),
-        });
-      }
+    if (!data?.[0]) return res.status(404).json({ error: 'Booking not found' });
+    const updated = data[0];
+    if (status !== 'pending' && updated.customer_email) {
+      await sendEmail({
+        to: updated.customer_email,
+        subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Booking Not Available'} - ${updated.id}`,
+        html: bookingEmailTemplate({
+          name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
+          pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
+          dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
+          totalPrice: updated.total_price, status,
+          phone: updated.customer_phone, email: updated.customer_email,
+          age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
+          noDepositAgreed: updated.no_deposit_agreed,
+        }),
+      });
     }
-    res.json(updated || { success: true });
+    res.json(updated);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
@@ -433,6 +455,11 @@ app.delete('/api/admin/bookings/:id', requireAuth, async (req, res) => {
     if (error) throw error;
     res.json({ success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+// --- API 404 handler ---
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'Not found' });
 });
 
 // --- Static files + SPA ---

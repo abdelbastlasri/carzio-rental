@@ -94,7 +94,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                 type="date"
                 value={formData.dropoffDate}
                 onChange={(e) => setFormData({ ...formData, dropoffDate: e.target.value })}
-                min={today}
+                min={formData.pickupDate || today}
                 className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
               />
             </div>
@@ -106,7 +106,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               >
                 <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (
-                  <option key={car.id} value={car.id}>{car.name} — {priceOverrides[car.id] || car.pricePerDay}€{t('common.perDay')}</option>
+                  <option key={car.id} value={car.id}>{car.name} — {priceOverrides[car.id] ?? car.pricePerDay}€{t('common.perDay')}</option>
                 ))}
               </select>
               <button

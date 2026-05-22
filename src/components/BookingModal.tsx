@@ -405,12 +405,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                     </div>
                     <div>
                       <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.confirmationMethod')}</label>
-                      <div className="flex gap-3 h-full items-center">
-                        <label className="flex items-center gap-1.5 cursor-pointer">
-                          <input type="radio" name="confirmationMethod" value="email" checked disabled className="accent-gold" />
-                          <span className="text-gray-300 text-xs">{t('bookingModal.confirmationEmail')}</span>
-                        </label>
-                      </div>
+                      <p className="text-gray-400 text-sm">{t('bookingModal.confirmationEmail')}</p>
                     </div>
                   </div>
                   <div>
