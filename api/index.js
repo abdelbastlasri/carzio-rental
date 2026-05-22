@@ -132,9 +132,9 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
-<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
-<h1 style="color:#1f2937;font-size:20px;margin:0;font-weight:700">Carzio</h1>
-<span style="color:#6b7280;font-size:12px">${subject}</span>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
+<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
+<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">${subject}</h1>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
 ${greeting}
@@ -148,7 +148,7 @@ ${greeting}
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#1f2937;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Status</div><div style="color:${status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706'};font-weight:700;font-size:15px">${statusText}</div>
 </td></tr></table>
@@ -157,7 +157,7 @@ ${greeting}
 ${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
-${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#1f2937;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div>` : ''}
 </td></tr></table>
@@ -174,9 +174,9 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
-<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
-<h1 style="color:#1f2937;font-size:20px;margin:0;font-weight:700">Carzio</h1>
-<span style="color:#6b7280;font-size:12px">New Booking Request</span>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
+<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
+<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">New Booking Request</h1>
 <span style="display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:6px">Pending Review</span>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
@@ -194,18 +194,18 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#1f2937;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 ${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
-${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#1f2937;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#fefce8;border-radius:6px;border:1px solid #fde68a"><tr><td style="padding:16px 24px">
-<p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#2563eb">admin.carzio.ma</a> to confirm or reject.</p>
+<p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject.</p>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
 <p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
