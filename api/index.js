@@ -54,7 +54,7 @@ function toSnake(obj) {
   return out;
 }
 
-const TOKEN_SECRET = process.env.TOKEN_SECRET || crypto.randomBytes(32).toString('hex');
+const TOKEN_SECRET = crypto.createHash('sha256').update(ADMIN_PASSWORD).digest('hex');
 
 function generateToken() {
   const payload = { t: Date.now(), e: Date.now() + 86400000, s: crypto.randomBytes(8).toString('hex') };
@@ -457,14 +457,12 @@ app.delete('/api/admin/bookings/:id', requireAuth, async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// --- API 404 handler ---
-app.use('/api/*', (req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
 // --- Static files + SPA ---
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use((req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'Not found' });
+  }
   res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
