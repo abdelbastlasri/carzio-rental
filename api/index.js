@@ -1,8 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const serverless = require('serverless-http');
-const { createClient } = require('@supabase/supabase-js');
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import serverless from 'serverless-http';
+import { createClient } from '@supabase/supabase-js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -19,13 +22,12 @@ if (supabaseUrl && supabaseKey) {
   supabase = createClient(supabaseUrl, supabaseKey);
 }
 
-// Nodemailer (lazy loaded)
 let transporter = null;
-function getTransporter() {
+async function getTransporter() {
   if (transporter) return transporter;
   try {
-    const nodemailer = require('nodemailer');
-    transporter = nodemailer.createTransport({
+    const nodemailer = await import('nodemailer');
+    transporter = nodemailer.default.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
       secure: SMTP_PORT === 465,
@@ -49,7 +51,6 @@ function toSnake(obj) {
   return out;
 }
 
-// --- Auth helpers ---
 function generateToken() {
   const payload = { t: Date.now(), e: Date.now() + 86400000 };
   return Buffer.from(JSON.stringify(payload)).toString('base64');
@@ -70,10 +71,12 @@ function requireAuth(req, res, next) {
   next();
 }
 
-// --- Email helpers ---
 async function sendEmail({ to, subject, html }) {
-  const t = getTransporter();
-  if (!t) return console.warn('Email not sent - transporter unavailable');
+  const t = await getTransporter();
+  if (!t || !SMTP_PASS) {
+    console.warn('Email not sent - SMTP not configured');
+    return;
+  }
   try {
     await t.sendMail({ from: `"Carzio" <${SMTP_USER}>`, to, subject, html });
     console.log(`Email sent to ${to}: ${subject}`);
@@ -89,55 +92,40 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
 <html><head><style>
   body{font-family:Arial,sans-serif;background:#111;color:#fff;margin:0;padding:0}
   .container{max-width:600px;margin:0 auto;padding:40px 20px}
-  .header{text-align:center;margin-bottom:30px}
-  .header img{height:50px}
+  .header{text-align:center;margin-bottom:30px}h1{color:#d4a853;font-size:24px}
   .card{background:#1a1a1a;border-radius:12px;padding:24px;margin-bottom:16px}
   .label{color:#888;font-size:12px;text-transform:uppercase;margin-bottom:4px}
   .value{color:#fff;font-size:16px;font-weight:600}
-  .gold{color:#d4a853}
-  .status{color:${statusColor};font-weight:700}
+  .gold{color:#d4a853}.status{color:${statusColor};font-weight:700}
   .footer{text-align:center;color:#555;font-size:12px;margin-top:30px}
   hr{border:none;border-top:1px solid #222;margin:16px 0}
 </style></head><body>
 <div class="container">
-  <div class="header">
-    <img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" />
-    <h1 style="color:#d4a853;font-size:24px">Booking ${status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Update' : 'Request Received'}</h1>
-  </div>
+  <div class="header"><img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:50px"/>
+    <h1>Booking ${status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Update' : 'Request Received'}</h1></div>
   <div class="card">
     <p>Hello <strong>${name}</strong>,</p>
-    ${status === 'pending' ? '<p>Your booking request has been received. We\'ll review availability and get back to you soon.</p>' :
+    ${status === 'pending' ? '<p>Your booking request has been received. We will review availability and get back to you soon.</p>' :
       status === 'confirmed' ? '<p>Great news! Your booking has been confirmed. We look forward to serving you.</p>' :
-      '<p>Unfortunately, the vehicle is not available for your requested dates. We encourage you to browse our other options.</p>'}
+      '<p>Unfortunately, the vehicle is not available for your requested dates. Please browse our other options.</p>'}
   </div>
   <div class="card">
-    <div class="label">Booking ID</div>
-    <div class="value">${bookingId}</div>
-    <hr>
-    <div class="label">Vehicle</div>
-    <div class="value">${carName}</div>
-    <hr>
-    <div class="label">Pickup</div>
-    <div class="value">${pickupDate} at ${pickupTime} — ${pickupLocation}</div>
-    <hr>
-    <div class="label">Return</div>
-    <div class="value">${dropoffDate} at ${dropoffTime} — ${dropoffLocation}</div>
-    <hr>
-    <div class="label">Total</div>
-    <div class="value gold">${totalPrice}€</div>
-    <hr>
-    <div class="label">Status</div>
-    <div class="value status">${statusText}</div>
+    <div class="label">Booking ID</div><div class="value">${bookingId}</div><hr>
+    <div class="label">Vehicle</div><div class="value">${carName}</div><hr>
+    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} - ${pickupLocation}</div><hr>
+    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} - ${dropoffLocation}</div><hr>
+    <div class="label">Total</div><div class="value gold">${totalPrice}€</div><hr>
+    <div class="label">Status</div><div class="value status">${statusText}</div>
   </div>
   ${confirmationMethod ? `<div class="card"><p>We will contact you via <strong>${confirmationMethod}</strong>.</p></div>` : ''}
   <div class="footer">
-    <p>Carzio — N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+    <p>Carzio - N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
     <p>contact@carzio.ma | +212 680-318003</p>
   </div>
 </div></body></html>`;
 }
 
-// ==================== PUBLIC ====================
+// ===== PUBLIC =====
 
 app.get('/api/status', (req, res) => {
   res.json({
@@ -147,7 +135,6 @@ app.get('/api/status', (req, res) => {
   });
 });
 
-// --- Bookings ---
 app.get('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.json([]);
@@ -166,48 +153,28 @@ app.post('/api/bookings', async (req, res) => {
     if (error) throw error;
     const saved = data?.[0] || newBooking;
 
-    // Send confirmation email to customer
-    const customerEmail = saved.customer_email;
-    if (customerEmail) {
+    if (saved.customer_email) {
       sendEmail({
-        to: customerEmail,
-        subject: `Booking Request Received — ${saved.id}`,
+        to: saved.customer_email,
+        subject: `Booking Request Received - ${saved.id}`,
         html: bookingEmailTemplate({
-          name: saved.customer_name,
-          bookingId: saved.id,
-          carName: saved.car_name,
-          pickupDate: saved.pickup_date,
-          pickupTime: saved.pickup_time,
-          pickupLocation: saved.pickup_location,
-          dropoffDate: saved.dropoff_date,
-          dropoffTime: saved.dropoff_time,
-          dropoffLocation: saved.dropoff_location,
-          totalPrice: saved.total_price,
-          status: 'pending',
-          confirmationMethod: saved.confirmation_method,
+          name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+          pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+          dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+          totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
         }),
       });
     }
-
-    // Send notification to admin
     sendEmail({
       to: SMTP_USER,
-      subject: `New Booking Request — ${saved.customer_name}`,
+      subject: `New Booking Request - ${saved.customer_name}`,
       html: bookingEmailTemplate({
-        name: saved.customer_name,
-        bookingId: saved.id,
-        carName: saved.car_name,
-        pickupDate: saved.pickup_date,
-        pickupTime: saved.pickup_time,
-        pickupLocation: saved.pickup_location,
-        dropoffDate: saved.dropoff_date,
-        dropoffTime: saved.dropoff_time,
-        dropoffLocation: saved.dropoff_location,
-        totalPrice: saved.total_price,
-        status: 'pending',
+        name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+        pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+        dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+        totalPrice: saved.total_price, status: 'pending',
       }),
     });
-
     res.status(201).json(saved);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
@@ -221,7 +188,6 @@ app.delete('/api/bookings/:id', async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// --- Contacts ---
 app.get('/api/contacts', async (req, res) => {
   try {
     if (!supabase) return res.json([]);
@@ -250,18 +216,11 @@ app.delete('/api/contacts/:id', async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// --- Pricing (public) ---
 app.get('/api/prices', async (req, res) => {
   try {
-    if (!supabase) {
-      return res.json({ basePrice: 0, adjustedPrice: 0, rules: [] });
-    }
-    const { data: rules, error } = await supabase
-      .from('pricing_rules')
-      .select('*')
-      .eq('active', true);
+    if (!supabase) return res.json({ basePrice: 0, adjustedPrice: 0, rules: [] });
+    const { data: rules, error } = await supabase.from('pricing_rules').select('*').eq('active', true);
     if (error) throw error;
-
     const carId = req.query.car_id;
     const startDate = req.query.start_date;
     const endDate = req.query.end_date;
@@ -269,28 +228,18 @@ app.get('/api/prices', async (req, res) => {
       if (!r.active) return false;
       if (r.car_id && r.car_id !== carId) return false;
       if (startDate && endDate) {
-        const s = new Date(startDate);
-        const e = new Date(endDate);
-        const rs = new Date(r.start_date);
-        const re = new Date(r.end_date);
+        const s = new Date(startDate), e = new Date(endDate);
+        const rs = new Date(r.start_date), re = new Date(r.end_date);
         if (e < rs || s > re) return false;
       }
       return true;
     });
-
-    const maxMultiplier = relevantRules.length > 0
-      ? Math.max(...relevantRules.map(r => r.multiplier))
-      : 1;
-
-    res.json({
-      rules: relevantRules.map(r => r.name),
-      maxMultiplier,
-      ruleCount: relevantRules.length,
-    });
+    const maxMultiplier = relevantRules.length > 0 ? Math.max(...relevantRules.map(r => r.multiplier)) : 1;
+    res.json({ rules: relevantRules.map(r => r.name), maxMultiplier, ruleCount: relevantRules.length });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// ==================== ADMIN ====================
+// ===== ADMIN =====
 
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
@@ -320,28 +269,18 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     const { data, error } = await supabase.from('bookings').update({ status }).eq('id', req.params.id).select();
     if (error) throw error;
     const updated = data?.[0];
-
-    // Send status update email to customer
     if (updated && updated.customer_email && status !== 'pending') {
       sendEmail({
         to: updated.customer_email,
-        subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} — ${updated.id}`,
+        subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} - ${updated.id}`,
         html: bookingEmailTemplate({
-          name: updated.customer_name,
-          bookingId: updated.id,
-          carName: updated.car_name,
-          pickupDate: updated.pickup_date,
-          pickupTime: updated.pickup_time,
-          pickupLocation: updated.pickup_location,
-          dropoffDate: updated.dropoff_date,
-          dropoffTime: updated.dropoff_time,
-          dropoffLocation: updated.dropoff_location,
-          totalPrice: updated.total_price,
-          status,
+          name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
+          pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
+          dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
+          totalPrice: updated.total_price, status,
         }),
       });
     }
-
     res.json(updated || { success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
@@ -383,11 +322,11 @@ app.delete('/api/admin/pricing-rules/:id', requireAuth, async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// --- Static files + SPA fallback ---
+// --- Static files + SPA ---
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
-module.exports = app;
-module.exports.handler = serverless(app);
+export default app;
+export const handler = serverless(app);
