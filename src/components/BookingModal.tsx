@@ -158,7 +158,6 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       if (!res.ok) throw new Error(body.error || 'Server error');
       setShowConfirmation(true);
       setSubmitting(false);
-      setTimeout(() => onClose(), 3000);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Failed to save booking. Please try again.';
       console.error('Failed to save booking:', err);
@@ -295,7 +294,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
         )}
 
         {/* Step 2: Full Booking Form */}
-        {step === 2 && car && (
+        {step === 2 && car && !showConfirmation && (
           <form onSubmit={handleSubmit} className="divide-y divide-zinc-800">
             {/* Car Details */}
             <div className="p-5">
@@ -522,7 +521,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             <h3 className="text-white font-heading font-bold text-xl mb-2">{t('bookingModal.availabilityRequested')}</h3>
             <p className="text-gray-400 text-sm mb-6">{t('bookingModal.availabilityMessage', { method: t('bookingModal.confirmationEmail') })}</p>
             <button
-              onClick={handleClose}
+              onClick={onClose}
               className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"
             >
               {t('bookingModal.done')}
