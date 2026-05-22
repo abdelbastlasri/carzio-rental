@@ -177,10 +177,10 @@
     "paymentMessage": "Keine Vorauszahlung erforderlich. Die Zahlung erfolgt bei Fahrzeugübergabe am ausgewählten Abholort.",
     "confirmationMethod": "Bestätigungsmethode",
     "confirmationEmail": "E-Mail",
-    "confirmationWhatsApp": "WhatsApp",
     "availabilityRequested": "Anfrage zur Verfügbarkeit Gesendet!",
     "availabilityMessage": "Ihre Anfrage wird geprüft. Wir bestätigen per {{method}}.",
-    "submitting": "Wird gesendet..."
+    "submitting": "Wird gesendet...",
+    "submitted": "Gesendet"
   },
   "extras": {
     "Baby Seat": "Kindersitz",

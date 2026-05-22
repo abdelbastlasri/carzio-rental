@@ -177,10 +177,10 @@
     "paymentMessage": "Nie wymagamy przedpłaty. Płatność zostanie zrealizowana przy odbiorze pojazdu w wybranym miejscu.",
     "confirmationMethod": "Metoda Potwierdzenia",
     "confirmationEmail": "Email",
-    "confirmationWhatsApp": "WhatsApp",
     "availabilityRequested": "Prośba o Dostępność Wysłana!",
     "availabilityMessage": "Twoja prośba oczekuje na rozpatrzenie. Potwierdzimy przez {{method}}.",
-    "submitting": "Wysyłanie..."
+    "submitting": "Wysyłanie...",
+    "submitted": "Wysłano"
   },
   "extras": {
     "Baby Seat": "Fotelik Dziecięcy",

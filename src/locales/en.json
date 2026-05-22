@@ -177,10 +177,10 @@
     "paymentMessage": "No advance payment required. Payment will be completed upon vehicle delivery at the selected pickup location.",
     "confirmationMethod": "Confirmation Method",
     "confirmationEmail": "Email",
-    "confirmationWhatsApp": "WhatsApp",
     "availabilityRequested": "Availability Request Sent!",
     "availabilityMessage": "Your request is pending review. We'll confirm via {{method}}.",
-    "submitting": "Submitting..."
+    "submitting": "Submitting...",
+    "submitted": "Submitted"
   },
   "extras": {
     "Baby Seat": "Baby Seat",

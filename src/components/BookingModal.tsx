@@ -46,6 +46,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const [submitting, setSubmitting] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const [overridePrice, setOverridePrice] = useState<number | null>(null);
 
   useEffect(() => {
@@ -118,6 +119,8 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitted) return;
+    setSubmitted(true);
     setSubmitError('');
     setSubmitting(true);
     const pickupLoc = locations.find(l => l.id === pickupLocation)?.name || '';
@@ -154,16 +157,19 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       const body = await res.json();
       if (!res.ok) throw new Error(body.error || 'Server error');
       setShowConfirmation(true);
+      setSubmitting(false);
+      setTimeout(() => onClose(), 3000);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Failed to save booking. Please try again.';
       console.error('Failed to save booking:', err);
       setSubmitError(msg);
-    } finally {
+      setSubmitted(false);
       setSubmitting(false);
     }
   };
 
   const handleClose = () => {
+    if (submitted) return;
     onClose();
   };
 
@@ -401,26 +407,8 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                       <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.confirmationMethod')}</label>
                       <div className="flex gap-3 h-full items-center">
                         <label className="flex items-center gap-1.5 cursor-pointer">
-                          <input
-                            type="radio"
-                            name="confirmationMethod"
-                            value="email"
-                            checked={confirmationMethod === 'email'}
-                            onChange={() => setConfirmationMethod('email')}
-                            className="accent-gold"
-                          />
+                          <input type="radio" name="confirmationMethod" value="email" checked disabled className="accent-gold" />
                           <span className="text-gray-300 text-xs">{t('bookingModal.confirmationEmail')}</span>
-                        </label>
-                        <label className="flex items-center gap-1.5 cursor-pointer">
-                          <input
-                            type="radio"
-                            name="confirmationMethod"
-                            value="whatsapp"
-                            checked={confirmationMethod === 'whatsapp'}
-                            onChange={() => setConfirmationMethod('whatsapp')}
-                            className="accent-gold"
-                          />
-                          <span className="text-gray-300 text-xs">{t('bookingModal.confirmationWhatsApp')}</span>
                         </label>
                       </div>
                     </div>
@@ -519,10 +507,10 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
               )}
               <button
                 type="submit"
-                disabled={!agreed || !noDepositAgreed || !name || !phone || !age || submitting}
+                disabled={!agreed || !noDepositAgreed || !name || !phone || !age || submitting || submitted}
                 className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-3 rounded-lg transition text-sm disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gold/20 hover:shadow-gold/40"
               >
-                {submitting ? t('bookingModal.submitting') : t('bookingModal.confirmBooking')}
+                {submitted ? t('bookingModal.submitted') : submitting ? t('bookingModal.submitting') : t('bookingModal.confirmBooking')}
               </button>
             </div>
           </form>
@@ -537,7 +525,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
               </svg>
             </div>
             <h3 className="text-white font-heading font-bold text-xl mb-2">{t('bookingModal.availabilityRequested')}</h3>
-            <p className="text-gray-400 text-sm mb-6">{t('bookingModal.availabilityMessage', { method: confirmationMethod === 'email' ? t('bookingModal.confirmationEmail') : t('bookingModal.confirmationWhatsApp') })}</p>
+            <p className="text-gray-400 text-sm mb-6">{t('bookingModal.availabilityMessage', { method: t('bookingModal.confirmationEmail') })}</p>
             <button
               onClick={handleClose}
               className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-2.5 rounded-lg transition text-sm shadow-lg shadow-gold/20 hover:shadow-gold/40"

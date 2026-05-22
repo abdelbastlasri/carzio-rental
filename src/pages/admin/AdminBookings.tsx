@@ -6,6 +6,7 @@ export default function AdminBookings() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
   const [sending, setSending] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
 
   const fetchBookings = async () => {
     try {
@@ -63,21 +64,25 @@ export default function AdminBookings() {
     }
   };
 
-  const sendWhatsApp = async (bookingId: string) => {
-    setSending(bookingId);
+  const deleteBooking = async (id: string) => {
+    if (!confirm('Delete this booking permanently?')) return;
+    setDeleting(id);
     try {
       const token = localStorage.getItem('admin_token');
-      const res = await fetch('/api/admin/send-whatsapp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ bookingId }),
+      const res = await fetch(`/api/admin/bookings/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
       });
-      if (res.ok) alert('WhatsApp sent!');
-      else { const d = await res.json(); alert(d.error || 'Failed'); }
+      if (res.ok) {
+        setBookings(prev => prev.filter(b => b.id !== id));
+      } else {
+        const d = await res.json();
+        alert(d.error || 'Failed to delete');
+      }
     } catch {
-      alert('Failed to send WhatsApp');
+      alert('Failed to delete booking');
     } finally {
-      setSending(null);
+      setDeleting(null);
     }
   };
 
@@ -116,9 +121,6 @@ export default function AdminBookings() {
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-white font-semibold text-base">{booking.customer_name}</h3>
                     <span className={statusBadge(booking.status)}>{booking.status}</span>
-                    {booking.confirmation_method && (
-                      <span className="text-xs text-gray-500">({booking.confirmation_method})</span>
-                    )}
                   </div>
                   <div className="text-gray-400 text-xs space-y-1">
                     <p><span className="text-gray-500">Car:</span> {booking.car_name}</p>
@@ -160,13 +162,15 @@ export default function AdminBookings() {
                   >
                     {sending === booking.id ? '...' : 'Email'}
                   </button>
-                  <button
-                    onClick={() => sendWhatsApp(booking.id)}
-                    disabled={sending === booking.id}
-                    className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-gray-300 text-xs font-medium rounded-lg transition disabled:opacity-50"
-                  >
-                    {sending === booking.id ? '...' : 'WhatsApp'}
-                  </button>
+                  {booking.status !== 'pending' && (
+                    <button
+                      onClick={() => deleteBooking(booking.id)}
+                      disabled={deleting === booking.id}
+                      className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-red-300 text-xs font-medium rounded-lg border border-red-800/50 transition disabled:opacity-50"
+                    >
+                      {deleting === booking.id ? '...' : 'Delete'}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

@@ -102,14 +102,14 @@ function stripHtml(html) {
   return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
 
-function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
+function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
   const greeting = status === 'pending'
     ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>`
     : status === 'confirmed'
     ? `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">Your booking has been confirmed. We look forward to serving you.</p>`
     : `<p style="margin:0 0 12px 0">Hello ${name},</p><p style="margin:0">The vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>`;
-  const subject = status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Not Available' : 'Request Received';
+  const subject = status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Booking Not Available' : 'Request Received';
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
@@ -133,7 +133,7 @@ ${greeting}
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Status</div><div style="color:${status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706'};font-weight:700;font-size:15px">${statusText}</div>
 </td></tr></table>
-${confirmationMethod ? `<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will contact you via <strong>${confirmationMethod}</strong>.</p></td></tr></table>` : ''}
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will contact you via Email and WhatsApp.</p></td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb"><tr><td style="padding:16px 24px">
 ${phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
@@ -150,7 +150,7 @@ ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:upp
 </body></html>`;
 }
 
-function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
+function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
@@ -182,7 +182,7 @@ ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;lette
 ${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
-${confirmationMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Customer prefers</div><div style="color:#1f2937;font-size:15px;font-weight:600">Contact via ${confirmationMethod}</div>` : ''}
+
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#fefce8;border-radius:6px;border:1px solid #fde68a"><tr><td style="padding:16px 24px">
 <p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject.</p>
@@ -225,49 +225,33 @@ app.post('/api/bookings', async (req, res) => {
     const saved = data?.[0] || newBooking;
 
     try {
-      if (saved.confirmation_method === 'whatsapp') {
-        if (saved.customer_phone) {
-          await sendWhatsApp({
-            to: saved.customer_phone, customerName: saved.customer_name,
-            bookingId: saved.id, carName: saved.car_name, status: 'pending',
-          });
-        }
-        await sendWhatsApp({
-          to: '+212680318003', customerName: saved.customer_name,
-          bookingId: saved.id, carName: saved.car_name, status: 'admin-notify',
-          pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
-          dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-          totalPrice: saved.total_price,
-        });
-      } else {
-        if (saved.customer_email) {
-          await sendEmail({
-            to: saved.customer_email,
-            subject: `Booking Request Received - ${saved.id}`,
-            html: bookingEmailTemplate({
-              name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
-              pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
-              dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-              totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
-              phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
-              transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
-            }),
-          });
-        }
+      if (saved.customer_email) {
         await sendEmail({
-          to: SMTP_USER,
-          subject: `New Booking Request - ${saved.customer_name}`,
-          html: adminPendingEmailTemplate({
+          to: saved.customer_email,
+          subject: `Booking Request Received - ${saved.id}`,
+          html: bookingEmailTemplate({
             name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
             pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
             dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-            totalPrice: saved.total_price,
-            confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
-            age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
-            noDepositAgreed: saved.no_deposit_agreed,
+            totalPrice: saved.total_price, status: 'pending',
+            phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
+            transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
           }),
         });
       }
+      await sendEmail({
+        to: SMTP_USER,
+        subject: `New Booking Request - ${saved.customer_name}`,
+        html: adminPendingEmailTemplate({
+          name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+          pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+          dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+          totalPrice: saved.total_price,
+          phone: saved.customer_phone, email: saved.customer_email,
+          age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
+          noDepositAgreed: saved.no_deposit_agreed,
+        }),
+      });
     } catch (notifyErr) {
       console.error('Notification error:', notifyErr.message);
     }
@@ -367,30 +351,19 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     if (error) throw error;
     const updated = data?.[0];
     if (updated && status !== 'pending') {
-      const isEmail = updated.confirmation_method === 'email';
-      const isWhatsApp = updated.confirmation_method === 'whatsapp';
-      if (updated.customer_email && isEmail) {
+      if (updated.customer_email) {
         await sendEmail({
           to: updated.customer_email,
-          subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} - ${updated.id}`,
+          subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Booking Not Available'} - ${updated.id}`,
           html: bookingEmailTemplate({
             name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
             pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
             dropoffDate: updated.dropoff_date, dropoffTime: updated.dropoff_time, dropoffLocation: updated.dropoff_location,
             totalPrice: updated.total_price, status,
-            confirmationMethod: updated.confirmation_method, phone: updated.customer_phone, email: updated.customer_email,
+            phone: updated.customer_phone, email: updated.customer_email,
             age: updated.customer_age, transportFee: updated.transport_fee, paymentMethod: updated.payment_method,
             noDepositAgreed: updated.no_deposit_agreed,
           }),
-        });
-      }
-      if (updated.customer_phone && isWhatsApp) {
-        await sendWhatsApp({
-          to: updated.customer_phone,
-          customerName: updated.customer_name,
-          bookingId: updated.id,
-          carName: updated.car_name,
-          status,
         });
       }
     }
@@ -442,7 +415,7 @@ app.post('/api/admin/send-email', requireAuth, async (req, res) => {
         pickupDate: data.pickup_date, pickupTime: data.pickup_time, pickupLocation: data.pickup_location,
         dropoffDate: data.dropoff_date, dropoffTime: data.dropoff_time, dropoffLocation: data.dropoff_location,
         totalPrice: data.total_price, status: data.status,
-        confirmationMethod: data.confirmation_method, phone: data.customer_phone, email: data.customer_email,
+        phone: data.customer_phone, email: data.customer_email,
         age: data.customer_age, transportFee: data.transport_fee, paymentMethod: data.payment_method,
         noDepositAgreed: data.no_deposit_agreed,
       }),
@@ -451,66 +424,14 @@ app.post('/api/admin/send-email', requireAuth, async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// ===== ADMIN SEND WHATSAPP =====
+// ===== ADMIN DELETE BOOKING =====
 
-async function sendWhatsApp({ to, customerName, bookingId, carName, status, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice }) {
-  if (!WHATSAPP_ACCESS_TOKEN || !WHATSAPP_PHONE_NUMBER_ID) {
-    console.warn('WhatsApp not configured - set WHATSAPP_PHONE_NUMBER_ID and WHATSAPP_ACCESS_TOKEN');
-    return;
-  }
-  const cleanPhone = to.replace(/\s+/g, '').replace(/^0+/, '');
-  const text = status === 'admin-notify'
-    ? `New Booking Request - ${customerName}\n\nCar: ${carName}\nPickup: ${pickupDate} at ${pickupTime} - ${pickupLocation}\nReturn: ${dropoffDate} at ${dropoffTime} - ${dropoffLocation}\nTotal: ${totalPrice} EUR\n\nReview at admin.carzio.ma`
-    : status === 'confirmed'
-    ? `Hello ${customerName}, your booking ${bookingId} for ${carName} is CONFIRMED! Come to N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000 to pick up your vehicle.`
-    : status === 'rejected'
-    ? `Hello ${customerName}, we apologize but ${carName} is not available for your requested dates (Booking ${bookingId}). Please visit carzio.ma to choose another vehicle.`
-    : `Hello ${customerName}, your booking ${bookingId} for ${carName} has been received. We will confirm availability soon.`;
+app.delete('/api/admin/bookings/:id', requireAuth, async (req, res) => {
   try {
-    const res = await fetch(`https://graph.facebook.com/v22.0/${WHATSAPP_PHONE_NUMBER_ID}/messages`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${WHATSAPP_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        messaging_product: 'whatsapp',
-        to: cleanPhone,
-        type: 'text',
-        text: { body: text },
-      }),
-    });
-    const result = await res.json();
-    if (!res.ok) {
-      console.error('WhatsApp API error:', result);
-    } else {
-      console.log(`WhatsApp sent to ${to}: ${result.messages?.[0]?.id || 'ok'}`);
-    }
-  } catch (err) {
-    console.error('Failed to send WhatsApp:', err.message);
-  }
-}
-
-app.post('/api/admin/send-whatsapp', requireAuth, async (req, res) => {
-  try {
-    const { bookingId } = req.body;
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const { data, error } = await supabase.from('bookings').select('*').eq('id', bookingId).maybeSingle();
+    const { error } = await supabase.from('bookings').delete().eq('id', req.params.id);
     if (error) throw error;
-    if (!data) return res.status(404).json({ error: 'Booking not found' });
-    try {
-      await sendWhatsApp({
-        to: data.customer_phone,
-        customerName: data.customer_name,
-        bookingId: data.id,
-        carName: data.car_name,
-        status: data.status,
-      });
-      res.json({ success: true, message: 'WhatsApp sent' });
-    } catch (waErr) {
-      console.error('WhatsApp send error:', waErr.message);
-      res.status(500).json({ error: waErr.message });
-    }
+    res.json({ success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 

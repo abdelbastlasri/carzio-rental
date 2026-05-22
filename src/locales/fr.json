@@ -177,10 +177,10 @@
     "paymentMessage": "Aucun paiement anticipé requis. Le paiement sera effectué à la livraison du véhicule au lieu de prise en charge sélectionné.",
     "confirmationMethod": "Méthode de Confirmation",
     "confirmationEmail": "Email",
-    "confirmationWhatsApp": "WhatsApp",
     "availabilityRequested": "Demande de Disponibilité Envoyée !",
     "availabilityMessage": "Votre demande est en cours d'examen. Nous vous confirmerons via {{method}}.",
-    "submitting": "Envoi en cours..."
+    "submitting": "Envoi en cours...",
+    "submitted": "Envoyé"
   },
   "extras": {
     "Baby Seat": "Siège Bébé",

@@ -177,10 +177,10 @@
     "paymentMessage": "No se requiere pago por adelantado. El pago se completará al recibir el vehículo en el lugar de recogida seleccionado.",
     "confirmationMethod": "Método de Confirmación",
     "confirmationEmail": "Correo Electrónico",
-    "confirmationWhatsApp": "WhatsApp",
     "availabilityRequested": "¡Solicitud de Disponibilidad Enviada!",
     "availabilityMessage": "Su solicitud está pendiente de revisión. Le confirmaremos por {{method}}.",
-    "submitting": "Enviando..."
+    "submitting": "Enviando...",
+    "submitted": "Enviado"
   },
   "extras": {
     "Baby Seat": "Silla de Bebé",
