@@ -18,8 +18,7 @@ const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || 'contact@carzio.ma';
 const SMTP_PASS = process.env.SMTP_PASS;
-const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID;
-const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN;
+
 
 let supabase;
 if (supabaseUrl && supabaseKey) {
@@ -89,12 +88,16 @@ async function sendEmail({ to, subject, html, text }) {
   }
   const plainText = text || html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   try {
+    // Use the SMTP authenticated user (Gmail address) as From so DKIM
+    // domain matches From domain — DMARC aligns and Gmail trusts the email.
+    const fromUser = t.options?.auth?.user || SMTP_USER;
     await t.sendMail({
-      from: `"Carzio" <${SMTP_USER}>`,
+      from: `"Carzio" <${fromUser}>`,
       to,
       subject,
       text: plainText,
       html,
+      replyTo: 'contact@carzio.ma',
       headers: {
         'X-Mailer': 'Carzio Booking System',
         'X-Priority': 'normal',
@@ -127,9 +130,9 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
-<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
-<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
-<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">${subject}</h1>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
+<h1 style="color:#b8860b;font-size:20px;margin:0;font-weight:700">Carzio</h1>
+<span style="color:#6b7280;font-size:12px">${subject}</span>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
 ${greeting}
@@ -169,9 +172,9 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
-<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:24px">
-<img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:40px;border:0"/>
-<h1 style="color:#b8860b;font-size:20px;margin:10px 0 0 0;font-weight:700">New Booking Request</h1>
+<table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
+<h1 style="color:#b8860b;font-size:20px;margin:0;font-weight:700">Carzio</h1>
+<span style="color:#6b7280;font-size:12px">New Booking Request</span>
 <span style="display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:6px">Pending Review</span>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
@@ -217,7 +220,6 @@ app.get('/api/status', (req, res) => {
     supabaseConfigured: !!supabase,
     adminConfigured: !!ADMIN_PASSWORD,
     smtpConfigured: !!SMTP_PASS,
-    whatsappConfigured: !!(WHATSAPP_ACCESS_TOKEN && WHATSAPP_PHONE_NUMBER_ID),
   });
 });
 
