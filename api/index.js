@@ -233,8 +233,8 @@ app.get('/api/bookings', async (req, res) => {
 app.post('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
-    const { customer_name, customer_email, customer_phone, pickup_date, dropoff_date } = req.body;
-    if (!customer_name || !customer_email || !customer_phone || !pickup_date || !dropoff_date) {
+    const { customerName, customerEmail, customerPhone, pickupDate, dropoffDate } = req.body;
+    if (!customerName || !customerEmail || !customerPhone || !pickupDate || !dropoffDate) {
       return res.status(400).json({ error: 'Missing required fields: name, email, phone, pickup date, dropoff date' });
     }
     const booking = { ...toSnake(req.body), status: 'pending', submitted_at: new Date().toISOString() };
