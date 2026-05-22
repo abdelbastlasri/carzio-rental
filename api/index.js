@@ -225,35 +225,51 @@ app.post('/api/bookings', async (req, res) => {
     const saved = data?.[0] || newBooking;
 
     try {
-      if (saved.customer_email) {
-        await sendEmail({
-          to: saved.customer_email,
-          subject: `Booking Request Received - ${saved.id}`,
-          html: bookingEmailTemplate({
-            name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
-            pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
-            dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-            totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
-            phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
-            transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
-          }),
-        });
-      }
-      await sendEmail({
-        to: SMTP_USER,
-        subject: `New Booking Request - ${saved.customer_name}`,
-        html: adminPendingEmailTemplate({
-          name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+      if (saved.confirmation_method === 'whatsapp') {
+        if (saved.customer_phone) {
+          await sendWhatsApp({
+            to: saved.customer_phone, customerName: saved.customer_name,
+            bookingId: saved.id, carName: saved.car_name, status: 'pending',
+          });
+        }
+        await sendWhatsApp({
+          to: '+212680318003', customerName: saved.customer_name,
+          bookingId: saved.id, carName: saved.car_name, status: 'admin-notify',
           pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
           dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
           totalPrice: saved.total_price,
-          confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
-          age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
-          noDepositAgreed: saved.no_deposit_agreed,
-        }),
-      });
-    } catch (emailErr) {
-      console.error('Email sending error:', emailErr.message);
+        });
+      } else {
+        if (saved.customer_email) {
+          await sendEmail({
+            to: saved.customer_email,
+            subject: `Booking Request Received - ${saved.id}`,
+            html: bookingEmailTemplate({
+              name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+              pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+              dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+              totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
+              phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
+              transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
+            }),
+          });
+        }
+        await sendEmail({
+          to: SMTP_USER,
+          subject: `New Booking Request - ${saved.customer_name}`,
+          html: adminPendingEmailTemplate({
+            name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+            pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+            dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+            totalPrice: saved.total_price,
+            confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
+            age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
+            noDepositAgreed: saved.no_deposit_agreed,
+          }),
+        });
+      }
+    } catch (notifyErr) {
+      console.error('Notification error:', notifyErr.message);
     }
     res.status(201).json(saved);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
@@ -437,13 +453,15 @@ app.post('/api/admin/send-email', requireAuth, async (req, res) => {
 
 // ===== ADMIN SEND WHATSAPP =====
 
-async function sendWhatsApp({ to, customerName, bookingId, carName, status }) {
+async function sendWhatsApp({ to, customerName, bookingId, carName, status, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice }) {
   if (!WHATSAPP_ACCESS_TOKEN || !WHATSAPP_PHONE_NUMBER_ID) {
     console.warn('WhatsApp not configured - set WHATSAPP_PHONE_NUMBER_ID and WHATSAPP_ACCESS_TOKEN');
     return;
   }
   const cleanPhone = to.replace(/\s+/g, '').replace(/^0+/, '');
-  const text = status === 'confirmed'
+  const text = status === 'admin-notify'
+    ? `New Booking Request - ${customerName}\n\nCar: ${carName}\nPickup: ${pickupDate} at ${pickupTime} - ${pickupLocation}\nReturn: ${dropoffDate} at ${dropoffTime} - ${dropoffLocation}\nTotal: ${totalPrice} EUR\n\nReview at admin.carzio.ma`
+    : status === 'confirmed'
     ? `Hello ${customerName}, your booking ${bookingId} for ${carName} is CONFIRMED! Come to N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000 to pick up your vehicle.`
     : status === 'rejected'
     ? `Hello ${customerName}, we apologize but ${carName} is not available for your requested dates (Booking ${bookingId}). Please visit carzio.ma to choose another vehicle.`
