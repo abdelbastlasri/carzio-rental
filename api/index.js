@@ -101,6 +101,8 @@ async function sendEmail({ to, subject, html, text }) {
       headers: {
         'X-Mailer': 'Carzio Booking System',
         'X-Priority': 'normal',
+        'Precedence': 'bulk',
+        'List-Unsubscribe': '<mailto:contact@carzio.ma?subject=unsubscribe>',
       },
     });
     console.log(`Email sent to ${to}: ${subject}`);
@@ -126,12 +128,12 @@ function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime
     : status === 'confirmed'
     ? `<p style="margin:0 0 12px 0">Hello ${safe.name},</p><p style="margin:0">Your booking has been confirmed. We look forward to serving you.</p>`
     : `<p style="margin:0 0 12px 0">Hello ${safe.name},</p><p style="margin:0">The vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>`;
-  const subject = status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Booking Not Available' : 'Request Received';
+  const subject = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Request Received';
   return `<!DOCTYPE html>
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
-<h1 style="color:#b8860b;font-size:20px;margin:0;font-weight:700">Carzio</h1>
+<h1 style="color:#1f2937;font-size:20px;margin:0;font-weight:700">Carzio</h1>
 <span style="color:#6b7280;font-size:12px">${subject}</span>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:20px 24px">
@@ -146,16 +148,16 @@ ${greeting}
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#1f2937;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Status</div><div style="color:${status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706'};font-weight:700;font-size:15px">${statusText}</div>
 </td></tr></table>
-<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will contact you via Email and WhatsApp.</p></td></tr></table>
+<table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb;margin-bottom:8px"><tr><td style="padding:16px 24px"><p style="margin:0">We will reach out to you shortly.</p></td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#ffffff;border-radius:6px;border:1px solid #e5e7eb"><tr><td style="padding:16px 24px">
 ${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
-${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#1f2937;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div>` : ''}
 </td></tr></table>
@@ -173,7 +175,7 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
 <html><body style="font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5">
 <table cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;padding:24px 16px"><tr><td>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;padding-bottom:16px">
-<h1 style="color:#b8860b;font-size:20px;margin:0;font-weight:700">Carzio</h1>
+<h1 style="color:#1f2937;font-size:20px;margin:0;font-weight:700">Carzio</h1>
 <span style="color:#6b7280;font-size:12px">New Booking Request</span>
 <span style="display:inline-block;background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:6px">Pending Review</span>
 </td></tr></table>
@@ -192,18 +194,18 @@ function adminPendingEmailTemplate({ name, bookingId, carName, pickupDate, picku
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 <div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Return</div><div style="color:#1f2937;font-size:15px;font-weight:600">${dropoffDate} at ${dropoffTime} &#8212; ${safe.dropoffLocation}</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
-<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#b8860b;font-size:15px;font-weight:600">${totalPrice} EUR</div>
+<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Total</div><div style="color:#1f2937;font-size:15px;font-weight:600">${totalPrice} EUR</div>
 <div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>
 ${safe.phone ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Phone</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.phone}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${safe.email ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Email</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.email}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${age ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Age</div><div style="color:#1f2937;font-size:15px;font-weight:600">${age}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
-${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#b8860b;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
+${transportFee > 0 ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Transport fee</div><div style="color:#1f2937;font-size:15px;font-weight:600">${transportFee} EUR</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${safe.paymentMethod ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">Payment Method</div><div style="color:#1f2937;font-size:15px;font-weight:600">${safe.paymentMethod}</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px">No Deposit Policy</div><div style="color:#1f2937;font-size:15px;font-weight:600">Accepted</div><div style="border-top:1px solid #e5e7eb;margin:10px 0"></div>` : ''}
 
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%;background:#fefce8;border-radius:6px;border:1px solid #fde68a"><tr><td style="padding:16px 24px">
-<p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject.</p>
+<p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#2563eb">admin.carzio.ma</a> to confirm or reject.</p>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
 <p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
@@ -249,7 +251,7 @@ app.post('/api/bookings', async (req, res) => {
       if (saved.customer_email) {
         await sendEmail({
           to: saved.customer_email,
-          subject: `Booking Request Received - ${saved.id}`,
+          subject: `Your reservation (${saved.id})`,
           html: bookingEmailTemplate({
             name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
             pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
@@ -262,7 +264,7 @@ app.post('/api/bookings', async (req, res) => {
       }
       await sendEmail({
         to: SMTP_USER,
-        subject: `New Booking Request - ${saved.customer_name}`,
+        subject: `New reservation from ${saved.customer_name}`,
         html: adminPendingEmailTemplate({
           name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
           pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
@@ -379,7 +381,7 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     if (status !== 'pending' && updated.customer_email) {
       await sendEmail({
         to: updated.customer_email,
-        subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Booking Not Available'} - ${updated.id}`,
+        subject: `Reservation ${status === 'confirmed' ? 'confirmed' : 'update'} (${updated.id})`,
         html: bookingEmailTemplate({
           name: updated.customer_name, bookingId: updated.id, carName: updated.car_name,
           pickupDate: updated.pickup_date, pickupTime: updated.pickup_time, pickupLocation: updated.pickup_location,
@@ -433,7 +435,7 @@ app.post('/api/admin/send-email', requireAuth, async (req, res) => {
     if (!data) return res.status(404).json({ error: 'Booking not found' });
     await sendEmail({
       to: data.customer_email,
-      subject: `Booking Details - ${data.id}`,
+      subject: `Reservation details (${data.id})`,
       html: bookingEmailTemplate({
         name: data.customer_name, bookingId: data.id, carName: data.car_name,
         pickupDate: data.pickup_date, pickupTime: data.pickup_time, pickupLocation: data.pickup_location,
