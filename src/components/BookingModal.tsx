@@ -484,24 +484,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   of Use
                 </span>
               </label>
-              <label className="flex items-start gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={noDepositAgreed}
-                  onChange={(e) => setNoDepositAgreed(e.target.checked)}
-                  required
-                  className="mt-0.5 accent-gold"
-                />
-                <span className="text-xs text-gray-400">
-                  {t('bookingModal.noDeposit')}
-                </span>
-              </label>
               {submitError && (
                 <p className="text-red-400 text-sm text-center">{submitError}</p>
               )}
               <button
                 type="submit"
-                disabled={!agreed || !noDepositAgreed || !name || !phone || !age || submitting || submitted}
+                disabled={!agreed || !name || !phone || !age || submitting || submitted}
                 className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-3 rounded-lg transition text-sm disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-gold/20 hover:shadow-gold/40"
               >
                 {submitted ? t('bookingModal.submitted') : submitting ? t('bookingModal.submitting') : t('bookingModal.confirmBooking')}
