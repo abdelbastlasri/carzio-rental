@@ -88,49 +88,58 @@ async function sendEmail({ to, subject, html }) {
 }
 
 function bookingEmailTemplate({ name, bookingId, carName, pickupDate, pickupTime, pickupLocation, dropoffDate, dropoffTime, dropoffLocation, totalPrice, status, confirmationMethod, phone, email, age, transportFee, paymentMethod, noDepositAgreed }) {
-  const statusColor = status === 'confirmed' ? '#22c55e' : status === 'rejected' ? '#ef4444' : '#f0ad4e';
+  const statusColor = status === 'confirmed' ? '#16a34a' : status === 'rejected' ? '#dc2626' : '#d97706';
   const statusText = status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Not Available' : 'Pending Review';
+  const border = `style="border:none;border-top:1px solid #e5e7eb;margin:12px 0"`;
   return `<!DOCTYPE html>
-<html><head><style>
-  body{font-family:Arial,sans-serif;background:#111;color:#fff;margin:0;padding:0}
-  .container{max-width:600px;margin:0 auto;padding:40px 20px}
-  .header{text-align:center;margin-bottom:30px}h1{color:#d4a853;font-size:24px}
-  .card{background:#1a1a1a;border-radius:12px;padding:24px;margin-bottom:16px}
-  .label{color:#888;font-size:12px;text-transform:uppercase;margin-bottom:4px}
-  .value{color:#fff;font-size:16px;font-weight:600}
-  .gold{color:#d4a853}.status{color:${statusColor};font-weight:700}
-  .footer{text-align:center;color:#555;font-size:12px;margin-top:30px}
-  hr{border:none;border-top:1px solid #222;margin:16px 0}
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f5;color:#1f2937;margin:0;padding:0;font-size:14px;line-height:1.5}
+  .container{max-width:600px;margin:0 auto;padding:30px 16px}
+  .header{text-align:center;margin-bottom:24px}
+  .header h1{color:#b8860b;font-size:22px;margin:12px 0 0}
+  .card{background:#ffffff;border-radius:8px;padding:20px 24px;margin-bottom:12px;border:1px solid #e5e7eb}
+  .label{color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+  .value{color:#1f2937;font-size:15px;font-weight:600}
+  .gold{color:#b8860b}
+  .status{color:${statusColor};font-weight:700;font-size:15px}
+  .footer{text-align:center;color:#9ca3af;font-size:11px;margin-top:24px}
+  .footer a{color:#b8860b;text-decoration:none}
+  hr{border:none;border-top:1px solid #e5e7eb;margin:12px 0}
 </style></head><body>
 <div class="container">
-  <div class="header"><img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:50px"/>
-    <h1>Booking ${status === 'confirmed' ? 'Confirmed' : status === 'rejected' ? 'Update' : 'Request Received'}</h1></div>
+  <div class="header">
+    <img src="https://carzio.ma/images/carzio-logo.png" alt="Carzio" style="height:44px"/>
+    <h1>${status === 'confirmed' ? 'Booking Confirmed' : status === 'rejected' ? 'Booking Update' : 'Booking Request Received'}</h1>
+  </div>
   <div class="card">
-    <p>Hello <strong>${name}</strong>,</p>
-    ${status === 'pending' ? '<p>Your booking request has been received. We will review availability and get back to you soon.</p>' :
-      status === 'confirmed' ? '<p>Great news! Your booking has been confirmed. We look forward to serving you.</p>' :
-      '<p>Unfortunately, the vehicle is not available for your requested dates. Please browse our other options.</p>'}
+    <p style="margin:0 0 8px">Hello <strong>${name}</strong>,</p>
+    ${status === 'pending'
+      ? '<p style="margin:0">Your booking request has been received. We will review availability and get back to you soon.</p>'
+      : status === 'confirmed'
+      ? '<p style="margin:0">Great news! Your booking has been confirmed. We look forward to serving you.</p>'
+      : '<p style="margin:0">Unfortunately, the vehicle is not available for your requested dates. Please visit carzio.ma to browse other options.</p>'}
   </div>
   <div class="card">
     <div class="label">Booking ID</div><div class="value">${bookingId}</div><hr>
     <div class="label">Vehicle</div><div class="value">${carName}</div><hr>
-    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} - ${pickupLocation}</div><hr>
-    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} - ${dropoffLocation}</div><hr>
+    <div class="label">Pickup</div><div class="value">${pickupDate} at ${pickupTime} &mdash; ${pickupLocation}</div><hr>
+    <div class="label">Return</div><div class="value">${dropoffDate} at ${dropoffTime} &mdash; ${dropoffLocation}</div><hr>
     <div class="label">Total</div><div class="value gold">${totalPrice}€</div><hr>
     <div class="label">Status</div><div class="value status">${statusText}</div>
   </div>
-  ${confirmationMethod ? `<div class="card"><p>We will contact you via <strong>${confirmationMethod}</strong>.</p></div>` : ''}
+  ${confirmationMethod ? `<div class="card"><p style="margin:0">We will contact you via <strong>${confirmationMethod}</strong>.</p></div>` : ''}
   <div class="card">
     ${phone ? `<div class="label">Phone</div><div class="value">${phone}</div><hr>` : ''}
     ${email ? `<div class="label">Email</div><div class="value">${email}</div><hr>` : ''}
     ${age ? `<div class="label">Age</div><div class="value">${age}</div><hr>` : ''}
-    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">€${transportFee}</div><hr>` : ''}
+    ${transportFee > 0 ? `<div class="label">Transport fee</div><div class="value gold">&euro;${transportFee}</div><hr>` : ''}
     ${paymentMethod ? `<div class="label">Payment Method</div><div class="value">${paymentMethod}</div><hr>` : ''}
     ${noDepositAgreed ? `<div class="label">No Deposit Policy</div><div class="value">Accepted</div>` : ''}
   </div>
   <div class="footer">
-    <p>Carzio - N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
-    <p>contact@carzio.ma | +212 680-318003</p>
+    <p style="margin:0 0 4px"><strong>Carzio</strong> &mdash; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+    <p style="margin:0"><a href="mailto:contact@carzio.ma">contact@carzio.ma</a> &mdash; <a href="https://wa.me/212680318003">+212 680-318003</a></p>
   </div>
 </div></body></html>`;
 }
@@ -164,33 +173,37 @@ app.post('/api/bookings', async (req, res) => {
     if (error) throw error;
     const saved = data?.[0] || newBooking;
 
-    if (saved.customer_email) {
-      sendEmail({
-        to: saved.customer_email,
-        subject: `Booking Request Received - ${saved.id}`,
+    try {
+      if (saved.customer_email) {
+        await sendEmail({
+          to: saved.customer_email,
+          subject: `Booking Request Received - ${saved.id}`,
+          html: bookingEmailTemplate({
+            name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
+            pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
+            dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
+            totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
+            phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
+            transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
+          }),
+        });
+      }
+      await sendEmail({
+        to: SMTP_USER,
+        subject: `New Booking Request - ${saved.customer_name}`,
         html: bookingEmailTemplate({
           name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
           pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
           dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-          totalPrice: saved.total_price, status: 'pending', confirmationMethod: saved.confirmation_method,
-          phone: saved.customer_phone, email: saved.customer_email, age: saved.customer_age,
-          transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
+          totalPrice: saved.total_price, status: 'pending',
+          confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
+          age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
+          noDepositAgreed: saved.no_deposit_agreed,
         }),
       });
+    } catch (emailErr) {
+      console.error('Email sending error:', emailErr.message);
     }
-    sendEmail({
-      to: SMTP_USER,
-      subject: `New Booking Request - ${saved.customer_name}`,
-      html: bookingEmailTemplate({
-        name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
-        pickupDate: saved.pickup_date, pickupTime: saved.pickup_time, pickupLocation: saved.pickup_location,
-        dropoffDate: saved.dropoff_date, dropoffTime: saved.dropoff_time, dropoffLocation: saved.dropoff_location,
-        totalPrice: saved.total_price, status: 'pending',
-        confirmationMethod: saved.confirmation_method, phone: saved.customer_phone, email: saved.customer_email,
-        age: saved.customer_age, transportFee: saved.transport_fee, paymentMethod: saved.payment_method,
-        noDepositAgreed: saved.no_deposit_agreed,
-      }),
-    });
     res.status(201).json(saved);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
@@ -290,7 +303,7 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
       const isEmail = updated.confirmation_method === 'email';
       const isWhatsApp = updated.confirmation_method === 'whatsapp';
       if (updated.customer_email && isEmail) {
-        sendEmail({
+        await sendEmail({
           to: updated.customer_email,
           subject: `Booking ${status === 'confirmed' ? 'Confirmed' : 'Not Available'} - ${updated.id}`,
           html: bookingEmailTemplate({
@@ -305,7 +318,7 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
         });
       }
       if (updated.customer_phone && isWhatsApp) {
-        sendWhatsApp({
+        await sendWhatsApp({
           to: updated.customer_phone,
           customerName: updated.customer_name,
           bookingId: updated.id,
@@ -354,7 +367,7 @@ app.post('/api/admin/send-email', requireAuth, async (req, res) => {
     const { data, error } = await supabase.from('bookings').select('*').eq('id', bookingId).maybeSingle();
     if (error) throw error;
     if (!data) return res.status(404).json({ error: 'Booking not found' });
-    sendEmail({
+    await sendEmail({
       to: data.customer_email,
       subject: `Booking Details - ${data.id}`,
       html: bookingEmailTemplate({
@@ -416,14 +429,19 @@ app.post('/api/admin/send-whatsapp', requireAuth, async (req, res) => {
     const { data, error } = await supabase.from('bookings').select('*').eq('id', bookingId).maybeSingle();
     if (error) throw error;
     if (!data) return res.status(404).json({ error: 'Booking not found' });
-    await sendWhatsApp({
-      to: data.customer_phone,
-      customerName: data.customer_name,
-      bookingId: data.id,
-      carName: data.car_name,
-      status: data.status,
-    });
-    res.json({ success: true, message: 'WhatsApp sent' });
+    try {
+      await sendWhatsApp({
+        to: data.customer_phone,
+        customerName: data.customer_name,
+        bookingId: data.id,
+        carName: data.car_name,
+        status: data.status,
+      });
+      res.json({ success: true, message: 'WhatsApp sent' });
+    } catch (waErr) {
+      console.error('WhatsApp send error:', waErr.message);
+      res.status(500).json({ error: waErr.message });
+    }
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
