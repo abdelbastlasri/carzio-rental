@@ -94,7 +94,9 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
     return Math.max(1, Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
   }, [pickupDate, dropoffDate]);
 
-  const transportFee = locations.find(l => l.id === pickupLocation)?.transportFee || 0;
+  const pickupFee = locations.find(l => l.id === pickupLocation)?.transportFee || 0;
+  const dropoffFee = locations.find(l => l.id === dropoffLocation)?.transportFee || 0;
+  const transportFee = pickupFee + dropoffFee;
 
   const totalCarPrice = effectivePricePerDay * days;
   const totalExtrasPrice = useMemo(() => {

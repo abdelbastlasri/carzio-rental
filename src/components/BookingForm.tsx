@@ -26,7 +26,8 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
   };
   const today = localDate();
   const pickupLoc = locations.find(l => l.id === formData.pickupLocation);
-  const transportFee = pickupLoc?.transportFee || 0;
+  const dropoffLoc = locations.find(l => l.id === formData.dropoffLocation);
+  const transportFee = (pickupLoc?.transportFee || 0) + (dropoffLoc?.transportFee || 0);
 
   useEffect(() => {
     fetch('/api/car-prices')
@@ -77,6 +78,11 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                   <option key={loc.id} value={loc.id}>{loc.name}</option>
                 ))}
               </select>
+              {(dropoffLoc?.transportFee || 0) > 0 && (
+                <p className="text-amber-400 text-xs mt-1">
+                  {t('bookingModal.transportFeeMessage', { fee: dropoffLoc?.transportFee })}
+                </p>
+              )}
             </div>
             <div>
               <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.pickupDate')}</label>
