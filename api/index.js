@@ -88,19 +88,13 @@ async function sendEmail({ to, subject, html, text }) {
   }
   const plainText = text || html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   try {
-    // Use the SMTP authenticated user (Gmail address) as From so DKIM
-    // domain matches From domain — DMARC aligns and Gmail trusts the email.
-    const fromUser = t.options?.auth?.user || SMTP_USER;
     await t.sendMail({
-      from: `"Carzio" <${fromUser}>`,
+      from: SMTP_USER,
       to,
       subject,
       text: plainText,
       html,
-      replyTo: 'contact@carzio.ma',
       headers: {
-        'X-Mailer': 'Carzio Booking System',
-        'X-Priority': 'normal',
         'Precedence': 'bulk',
         'List-Unsubscribe': '<mailto:contact@carzio.ma?subject=unsubscribe>',
       },
