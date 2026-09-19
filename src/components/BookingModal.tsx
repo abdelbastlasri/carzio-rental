@@ -378,6 +378,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                         className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
                       />
                     </div>

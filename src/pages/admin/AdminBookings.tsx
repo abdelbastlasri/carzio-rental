@@ -7,6 +7,7 @@ export default function AdminBookings() {
   const [updating, setUpdating] = useState<string | null>(null);
   const [sending, setSending] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const fetchBookings = async () => {
     try {
@@ -29,6 +30,7 @@ export default function AdminBookings() {
 
   const updateStatus = async (id: string, newStatus: 'confirmed' | 'rejected') => {
     setUpdating(id);
+    setNotice(null);
     try {
       const token = localStorage.getItem('admin_token');
       const res = await fetch(`/api/admin/bookings/${id}/status`, {
@@ -36,11 +38,16 @@ export default function AdminBookings() {
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ status: newStatus }),
       });
+      const body = await res.json();
       if (res.ok) {
         setBookings(prev => prev.map(b => b.id === id ? { ...b, status: newStatus } : b));
+        if (body.notification) setNotice({ type: 'success', text: body.notification });
+      } else {
+        setNotice({ type: 'error', text: body.error || 'Failed to update status' });
       }
     } catch (err) {
       console.error('Failed to update status:', err);
+      setNotice({ type: 'error', text: 'Failed to update status' });
     } finally {
       setUpdating(null);
     }
@@ -107,6 +114,16 @@ export default function AdminBookings() {
           Refresh
         </button>
       </div>
+
+      {notice && (
+        <div className={`mb-5 px-4 py-3 rounded-lg border text-sm ${
+          notice.type === 'success'
+            ? 'bg-green-500/10 text-green-400 border-green-500/30'
+            : 'bg-red-500/10 text-red-400 border-red-500/30'
+        }`}>
+          {notice.text}
+        </div>
+      )}
 
       {bookings.length === 0 ? (
         <div className="text-center py-20">

@@ -1,4 +1,5 @@
-const app = require('../api/index');
+const mod = require('../api/index');
+const app = mod.default || mod;
 
 const PORT = process.env.PORT || 3001;
 

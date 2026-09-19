@@ -26,8 +26,11 @@ if (supabaseUrl && supabaseKey) {
 }
 
 let transporter = null;
+let smtpVerify = { verified: false, lastError: null, checkedAt: null };
+
 function getTransporter() {
   if (transporter) return transporter;
+  if (!SMTP_PASS || !SMTP_USER) return null;
   try {
     transporter = nodemailer.createTransport({
       host: SMTP_HOST,
@@ -41,6 +44,30 @@ function getTransporter() {
   return transporter;
 }
 
+async function verifySmtp(force = false) {
+  if (!SMTP_PASS || !SMTP_USER) {
+    smtpVerify = { verified: false, lastError: 'SMTP credentials not configured (SMTP_USER / SMTP_PASS)', checkedAt: new Date().toISOString() };
+    return smtpVerify;
+  }
+  const t = getTransporter();
+  if (!t) {
+    smtpVerify = { verified: false, lastError: 'Transporter creation failed', checkedAt: new Date().toISOString() };
+    return smtpVerify;
+  }
+  // Cache verification result for 60s; force refreshes (used by test-email)
+  if (!force && smtpVerify.checkedAt && (Date.now() - new Date(smtpVerify.checkedAt).getTime()) < 60000) {
+    return smtpVerify;
+  }
+  try {
+    await t.verify();
+    smtpVerify = { verified: true, lastError: null, checkedAt: new Date().toISOString() };
+  } catch (err) {
+    smtpVerify = { verified: false, lastError: err.message, checkedAt: new Date().toISOString() };
+    transporter = null;
+  }
+  return smtpVerify;
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -51,6 +78,13 @@ function toSnake(obj) {
     out[snake] = obj[key];
   }
   return out;
+}
+
+function maskEmail(email) {
+  if (!email || typeof email !== 'string') return null;
+  const at = email.indexOf('@');
+  if (at <= 0) return email;
+  return email.slice(0, 1) + '***' + email.slice(at);
 }
 
 const TOKEN_SECRET = crypto.createHash('sha256').update(ADMIN_PASSWORD).digest('hex');
@@ -82,11 +116,12 @@ function requireAuth(req, res, next) {
 
 async function sendEmail({ to, subject, html, text }) {
   const t = await getTransporter();
-  if (!t || !SMTP_PASS) {
-    console.warn('Email not sent - SMTP not configured');
-    return;
+  if (!t) {
+    const reason = !SMTP_PASS || !SMTP_USER ? 'SMTP not configured (SMTP_USER / SMTP_PASS are empty)' : 'Transporter unavailable';
+    console.warn(`Email not sent - ${reason}`);
+    return { ok: false, error: reason };
   }
-  const plainText = text || html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const plainText = text || stripHtml(html);
   try {
     await t.sendMail({
       from: SMTP_USER,
@@ -100,9 +135,11 @@ async function sendEmail({ to, subject, html, text }) {
       },
     });
     console.log(`Email sent to ${to}: ${subject}`);
+    return { ok: true };
   } catch (err) {
-    console.error('Failed to send email:', err.message);
+    console.error(`Failed to send email to ${to} (${subject}) via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER}:`, err);
     transporter = null;
+    return { ok: false, error: err && err.message ? err.message : String(err) };
   }
 }
 
@@ -211,11 +248,17 @@ ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:upp
 
 // ===== PUBLIC =====
 
-app.get('/api/status', (req, res) => {
+app.get('/api/status', async (req, res) => {
+  const smtpStatus = await verifySmtp();
   res.json({
     supabaseConfigured: !!supabase,
     adminConfigured: !!ADMIN_PASSWORD,
-    smtpConfigured: !!SMTP_PASS,
+    smtpConfigured: !!(SMTP_USER && SMTP_PASS),
+    smtpVerified: smtpStatus.verified,
+    smtpError: smtpStatus.lastError,
+    smtpHost: SMTP_HOST,
+    smtpPort: SMTP_PORT,
+    smtpUser: maskEmail(SMTP_USER),
   });
 });
 
@@ -241,9 +284,11 @@ app.post('/api/bookings', async (req, res) => {
     if (error) throw error;
     const saved = data?.[0] || newBooking;
 
+    let customerNotify = null;
+    let adminNotify = null;
     try {
       if (saved.customer_email) {
-        await sendEmail({
+        customerNotify = await sendEmail({
           to: saved.customer_email,
           subject: `Your reservation (${saved.id})`,
           html: bookingEmailTemplate({
@@ -255,8 +300,10 @@ app.post('/api/bookings', async (req, res) => {
             transportFee: saved.transport_fee, paymentMethod: saved.payment_method, noDepositAgreed: saved.no_deposit_agreed,
           }),
         });
+      } else {
+        customerNotify = { ok: false, error: 'No customer email provided' };
       }
-      await sendEmail({
+      adminNotify = await sendEmail({
         to: SMTP_USER,
         subject: `New reservation from ${saved.customer_name}`,
         html: adminPendingEmailTemplate({
@@ -270,9 +317,17 @@ app.post('/api/bookings', async (req, res) => {
         }),
       });
     } catch (notifyErr) {
-      console.error('Notification error:', notifyErr.message);
+      console.error('Notification error:', notifyErr);
+      customerNotify = customerNotify || { ok: false, error: 'Notification error: ' + (notifyErr.message || notifyErr) };
+      adminNotify = adminNotify || { ok: false, error: 'Notification error: ' + (notifyErr.message || notifyErr) };
     }
-    res.status(201).json(saved);
+    res.status(201).json({
+      ...saved,
+      notification: {
+        customer: customerNotify ? (customerNotify.ok ? 'sent' : `failed: ${customerNotify.error}`) : 'skipped',
+        admin: adminNotify ? (adminNotify.ok ? 'sent' : `failed: ${adminNotify.error}`) : 'skipped',
+      },
+    });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
@@ -372,8 +427,9 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
     if (error) throw error;
     if (!data?.[0]) return res.status(404).json({ error: 'Booking not found' });
     const updated = data[0];
+    let emailNotification = null;
     if (status !== 'pending' && updated.customer_email) {
-      await sendEmail({
+      emailNotification = await sendEmail({
         to: updated.customer_email,
         subject: `Reservation ${status === 'confirmed' ? 'confirmed' : 'update'} (${updated.id})`,
         html: bookingEmailTemplate({
@@ -387,7 +443,12 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
         }),
       });
     }
-    res.json(updated);
+    res.json({
+      ...updated,
+      notification: emailNotification
+        ? (emailNotification.ok ? 'Email sent to customer' : `Email failed: ${emailNotification.error}`)
+        : (status === 'pending' ? 'No email sent (status pending)' : 'No email sent (customer has no email)'),
+    });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
@@ -416,6 +477,38 @@ app.put('/api/admin/car-prices/:carId', requireAuth, async (req, res) => {
     if (error) throw error;
     res.json(data?.[0] || { success: true });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+// ===== ADMIN TEST EMAIL =====
+
+app.post('/api/admin/test-email', requireAuth, async (req, res) => {
+  try {
+    const { to } = req.body;
+    if (!to || typeof to !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
+      return res.status(400).json({ error: 'A valid recipient email is required' });
+    }
+    const smtpStatus = await verifySmtp(true);
+    const result = await sendEmail({
+      to: to.trim(),
+      subject: 'Carzio SMTP Test',
+      html: `<p>This is a <strong>test email</strong> from the Carzio server.</p><p>Sent at ${new Date().toLocaleString()} (UTC ${new Date().toUTCString()}).</p>`,
+    });
+    res.json({
+      success: result.ok,
+      result: result.ok ? 'Email sent successfully' : `Email failed: ${result.error}`,
+      sentTo: to.trim(),
+      config: {
+        host: SMTP_HOST,
+        port: SMTP_PORT,
+        from: SMTP_USER,
+        smtpVerifiedBeforeSend: smtpStatus.verified,
+        smtpVerifyError: smtpStatus.lastError,
+      },
+    });
+  } catch (err) {
+    console.error('test-email error:', err);
+    res.status(500).json({ error: err.message || String(err) });
+  }
 });
 
 // ===== ADMIN SEND EMAIL =====
