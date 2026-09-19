@@ -2,8 +2,31 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookingRecord } from '../../types';
 
+interface SmtpStatus {
+  supabaseConfigured: boolean;
+  adminConfigured: boolean;
+  smtpConfigured: boolean;
+  smtpVerified: boolean;
+  smtpError: string | null;
+  smtpHost: string;
+  smtpPort: number;
+  smtpUser: string | null;
+  smtpFrom: string | null;
+}
+
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
+  const [smtp, setSmtp] = useState<SmtpStatus | null>(null);
+  const [testTo, setTestTo] = useState('');
+  const [testing, setTesting] = useState(false);
+  const [testResult, setTestResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/status')
+      .then(r => r.json())
+      .then(setSmtp)
+      .catch(() => setSmtp(null));
+  }, []);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -29,6 +52,31 @@ export default function AdminDashboard() {
     pending: bookings.filter(b => b.status === 'pending').length,
     confirmed: bookings.filter(b => b.status === 'confirmed').length,
     rejected: bookings.filter(b => b.status === 'rejected').length,
+  };
+
+  const sendTestEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!testTo.trim()) return;
+    setTesting(true);
+    setTestResult(null);
+    try {
+      const token = localStorage.getItem('admin_token');
+      const res = await fetch('/api/admin/test-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ to: testTo.trim() }),
+      });
+      const body = await res.json();
+      if (res.ok && body.success) {
+        setTestResult({ type: 'success', text: body.result + ` — sent to ${body.sentTo}` });
+      } else {
+        setTestResult({ type: 'error', text: body.result || body.error || 'Test email failed' });
+      }
+    } catch (err) {
+      setTestResult({ type: 'error', text: err instanceof Error ? err.message : 'Test email failed' });
+    } finally {
+      setTesting(false);
+    }
   };
 
   const cardClass = 'bg-zinc-900/80 backdrop-blur rounded-xl p-5 border border-white/5';
@@ -84,6 +132,81 @@ export default function AdminDashboard() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
         </Link>
+      </div>
+
+      {/* SMTP / Email diagnostics */}
+      <div className="mt-8 grid md:grid-cols-2 gap-6">
+        <div className={cardClass}>
+          <h2 className="text-white font-heading font-semibold mb-4">Email / SMTP Status</h2>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400">Configured</span>
+              <span className={smtp?.smtpConfigured ? 'text-green-400' : 'text-red-400'}>
+                {smtp?.smtpConfigured ? 'Yes' : 'No'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400">Verified with server</span>
+              <span className={smtp?.smtpVerified ? 'text-green-400' : 'text-amber-400'}>
+                {smtp?.smtpVerified ? 'Connected ✓' : 'Failed'}
+              </span>
+            </div>
+            {smtp && (
+              <>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Host / Port</span>
+                  <span className="text-white">{smtp.smtpHost}:{smtp.smtpPort}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Auth user</span>
+                  <span className="text-white">{smtp.smtpUser || '—'}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">From</span>
+                  <span className="text-white">{smtp.smtpFrom || '—'}</span>
+                </div>
+              </>
+            )}
+            {(smtp?.smtpConfigured && !smtp?.smtpVerified && smtp?.smtpError) && (
+              <p className="text-red-400 text-xs bg-red-500/10 border border-red-500/20 rounded-lg p-2 mt-2 break-words">
+                {smtp.smtpError}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className={cardClass}>
+          <h2 className="text-white font-heading font-semibold mb-4">Send Test Email</h2>
+          <form onSubmit={sendTestEmail} className="space-y-3">
+            <div>
+              <label className="block text-gray-400 text-xs mb-1">Recipient email</label>
+              <input
+                type="email"
+                required
+                value={testTo}
+                onChange={(e) => setTestTo(e.target.value)}
+                placeholder="you@example.com"
+                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={testing || !testTo.trim()}
+              className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-2.5 rounded-lg transition text-sm disabled:opacity-50"
+            >
+              {testing ? 'Sending...' : 'Send Test Email'}
+            </button>
+            {testResult && (
+              <p className={`text-xs rounded-lg p-2 break-words ${
+                testResult.type === 'success'
+                  ? 'text-green-400 bg-green-500/10 border border-green-500/20'
+                  : 'text-red-400 bg-red-500/10 border border-red-500/20'
+              }`}>
+                {testResult.text}
+              </p>
+            )}
+          </form>
+        </div>
       </div>
     </div>
   );

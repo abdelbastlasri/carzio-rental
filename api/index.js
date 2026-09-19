@@ -18,6 +18,10 @@ const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || 'contact@carzio.ma';
 const SMTP_PASS = process.env.SMTP_PASS;
+// Optional: the address shown as sender. Defaults to SMTP_USER.
+// Useful when authenticating as a real Gmail account (SMTP_USER)
+// but displaying a branded address (must be a verified "Send mail as" alias).
+const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
 
 
 let supabase;
@@ -124,7 +128,7 @@ async function sendEmail({ to, subject, html, text }) {
   const plainText = text || stripHtml(html);
   try {
     await t.sendMail({
-      from: SMTP_USER,
+      from: SMTP_FROM,
       to,
       subject,
       text: plainText,
@@ -259,6 +263,7 @@ app.get('/api/status', async (req, res) => {
     smtpHost: SMTP_HOST,
     smtpPort: SMTP_PORT,
     smtpUser: maskEmail(SMTP_USER),
+    smtpFrom: maskEmail(SMTP_FROM),
   });
 });
 
@@ -500,7 +505,8 @@ app.post('/api/admin/test-email', requireAuth, async (req, res) => {
       config: {
         host: SMTP_HOST,
         port: SMTP_PORT,
-        from: SMTP_USER,
+        from: SMTP_FROM,
+        authUser: SMTP_USER,
         smtpVerifiedBeforeSend: smtpStatus.verified,
         smtpVerifyError: smtpStatus.lastError,
       },
