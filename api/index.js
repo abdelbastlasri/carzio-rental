@@ -49,6 +49,39 @@ const smtpCredentialShape = SMTP_PASS
 
 console.log(`[SMTP] host=${SMTP_HOST}:${SMTP_PORT} user=${maskEmail(SMTP_USER)} from=${maskEmail(SMTP_FROM)} configured=${!!(SMTP_USER && SMTP_PASS)} passLength=${SMTP_PASS ? SMTP_PASS.length : 0}`);
 
+// ===== Runtime SMTP config (set from the admin panel) =====
+// The admin dashboard can store working SMTP credentials in Supabase so the
+// site owner never needs to touch Vercel env vars. Stored as a hidden marker
+// row inside the existing `bookings` table (no schema change) and hidden from
+// every booking listing below.
+const SMTP_BEACON_ID = 'SMTP-CONFIG-ROOT';
+let dbSmtp = null; // { user, pass } provided by the admin panel
+let dbSmtpLoaded = false;
+
+async function loadDbSmtp() {
+  if (dbSmtpLoaded || !supabase) return;
+  dbSmtpLoaded = true;
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('customer_email, customer_phone')
+      .eq('id', SMTP_BEACON_ID)
+      .maybeSingle();
+    if (error) throw error;
+    if (data && (data.customer_email || data.customer_phone)) {
+      const dbU = cleanValue(data.customer_email);
+      const dbP = cleanValue(data.customer_phone).replace(/\s+/g, '');
+      dbSmtp = { user: dbU, pass: dbP };
+      console.log('[SMTP] using credentials stored from the admin panel');
+    }
+  } catch (e) {
+    console.warn('[SMTP] could not load stored credentials:', e.message);
+  }
+}
+
+function activeSmtpUser() { return dbSmtp?.user || SMTP_USER; }
+function activeSmtpPass() { return dbSmtp?.pass || SMTP_PASS; }
+
 
 let supabase;
 if (supabaseUrl && supabaseKey) {
@@ -59,14 +92,21 @@ let transporter = null;
 let smtpVerify = { verified: false, lastError: null, checkedAt: null };
 
 function getTransporter() {
-  if (transporter) return transporter;
-  if (!SMTP_PASS || !SMTP_USER) return null;
+  const u = activeSmtpUser();
+  const p = activeSmtpPass();
+  if (!p || !u) return null;
+  // Recreate the transporter if the active credentials changed (e.g. saved
+  // from the admin panel while the server stayed warm).
+  if (transporter && transporter.options && transporter.options.auth &&
+      transporter.options.auth.user === u && transporter.options.auth.pass === p) {
+    return transporter;
+  }
   try {
     transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
       secure: SMTP_PORT === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      auth: { user: u, pass: p },
     });
   } catch (e) {
     console.warn('Nodemailer not available:', e.message);
@@ -75,7 +115,8 @@ function getTransporter() {
 }
 
 async function verifySmtp(force = false) {
-  if (!SMTP_PASS || !SMTP_USER) {
+  await loadDbSmtp();
+  if (!SMTP_PASS && !dbSmtp?.pass) {
     smtpVerify = { verified: false, lastError: 'SMTP credentials not configured (SMTP_USER / SMTP_PASS)', checkedAt: new Date().toISOString() };
     return smtpVerify;
   }
@@ -145,9 +186,10 @@ function requireAuth(req, res, next) {
 }
 
 async function sendEmail({ to, subject, html, text }) {
+  await loadDbSmtp();
   const t = await getTransporter();
   if (!t) {
-    const reason = !SMTP_PASS || !SMTP_USER ? 'SMTP not configured (SMTP_USER / SMTP_PASS are empty)' : 'Transporter unavailable';
+    const reason = !activeSmtpPass() || !activeSmtpUser() ? 'SMTP not configured (email address / 16-letter password are empty)' : 'Transporter unavailable';
     console.warn(`Email not sent - ${reason}`);
     return { ok: false, error: reason };
   }
@@ -279,19 +321,22 @@ ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:upp
 // ===== PUBLIC =====
 
 app.get('/api/status', async (req, res) => {
+  await loadDbSmtp();
   const smtpStatus = await verifySmtp();
   res.json({
     supabaseConfigured: !!supabase,
     adminConfigured: !!ADMIN_PASSWORD,
-    smtpConfigured: !!(SMTP_USER && SMTP_PASS),
+    smtpConfigured: !!(activeSmtpUser() && activeSmtpPass()),
     smtpVerified: smtpStatus.verified,
     smtpError: smtpStatus.lastError,
     smtpHost: SMTP_HOST,
     smtpPort: SMTP_PORT,
-    smtpUser: maskEmail(SMTP_USER),
+    smtpUser: maskEmail(activeSmtpUser()),
     smtpFrom: maskEmail(SMTP_FROM),
     smtpUserFromEnv,
     smtpPassFromEnv,
+    smtpUserFromDb: !!dbSmtp?.user,
+    smtpPassFromDb: !!dbSmtp?.pass,
     smtpCredentialShape,
   });
 });
@@ -299,7 +344,7 @@ app.get('/api/status', async (req, res) => {
 app.get('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.json([]);
-    const { data, error } = await supabase.from('bookings').select('*').order('submitted_at', { ascending: false });
+    const { data, error } = await supabase.from('bookings').select('*').neq('id', SMTP_BEACON_ID).order('submitted_at', { ascending: false });
     if (error) throw error;
     res.json(data || []);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
@@ -338,7 +383,7 @@ app.post('/api/bookings', async (req, res) => {
         customerNotify = { ok: false, error: 'No customer email provided' };
       }
       adminNotify = await sendEmail({
-        to: SMTP_USER,
+        to: activeSmtpUser(),
         subject: `New reservation from ${saved.customer_name}`,
         html: adminPendingEmailTemplate({
           name: saved.customer_name, bookingId: saved.id, carName: saved.car_name,
@@ -368,6 +413,7 @@ app.post('/api/bookings', async (req, res) => {
 app.delete('/api/bookings/:id', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    if (req.params.id === SMTP_BEACON_ID) return res.status(400).json({ error: 'This row is protected system configuration' });
     const { error } = await supabase.from('bookings').delete().eq('id', req.params.id);
     if (error) throw error;
     res.json({ success: true });
@@ -444,7 +490,7 @@ app.post('/api/admin/login', (req, res) => {
 app.get('/api/admin/bookings', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.json([]);
-    const { data, error } = await supabase.from('bookings').select('*').order('submitted_at', { ascending: false });
+    const { data, error } = await supabase.from('bookings').select('*').neq('id', SMTP_BEACON_ID).order('submitted_at', { ascending: false });
     if (error) throw error;
     res.json(data || []);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
@@ -510,6 +556,66 @@ app.put('/api/admin/car-prices/:carId', requireAuth, async (req, res) => {
     ).select();
     if (error) throw error;
     res.json(data?.[0] || { success: true });
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+// ===== ADMIN SMTP SETTINGS =====
+
+app.get('/api/admin/smtp', requireAuth, async (req, res) => {
+  try {
+    await loadDbSmtp();
+    const st = await verifySmtp(true);
+    res.json({
+      user: activeSmtpUser(),
+      smtpUserFromEnv: !!process.env.SMTP_USER,
+      smtpUserFromDb: !!dbSmtp?.user,
+      smtpPassFromEnv: !!process.env.SMTP_PASS,
+      smtpPassFromDb: !!dbSmtp?.pass,
+      smtpConfigured: !!(activeSmtpUser() && activeSmtpPass()),
+      smtpVerified: st.verified,
+      smtpError: st.lastError,
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+    });
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+app.post('/api/admin/smtp', requireAuth, async (req, res) => {
+  try {
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    const { smtpUser, smtpPass } = req.body || {};
+    const user = cleanValue(smtpUser);
+    const pass = cleanValue(smtpPass).replace(/\s+/g, '');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user)) return res.status(400).json({ error: 'Enter a valid Gmail address' });
+    if (pass.length < 8) return res.status(400).json({ error: 'Enter the 16-letter Google password (at least 8 characters)' });
+    // Store inside the bookings table as a hidden marker row (no schema change).
+    const { error } = await supabase.from('bookings').upsert({
+      id: SMTP_BEACON_ID,
+      car_name: '__SMTP_CONFIG__',
+      total_price: 0,
+      days: 1,
+      customer_name: 'System',
+      customer_email: user,
+      customer_phone: pass,
+      status: 'pending',
+      submitted_at: new Date().toISOString(),
+    }, { onConflict: 'id' });
+    if (error) throw error;
+    dbSmtp = null;
+    dbSmtpLoaded = false;
+    transporter = null;
+    smtpVerify = { verified: false, lastError: null, checkedAt: null };
+    await loadDbSmtp();
+    const st = await verifySmtp(true);
+    res.json({
+      success: st.verified,
+      verified: st.verified,
+      result: st.verified ? 'Credentials accepted — emails are now enabled' : `Gmail rejected the login: ${st.lastError}`,
+      user: activeSmtpUser(),
+      smtpUserFromDb: !!dbSmtp?.user,
+      smtpPassFromDb: !!dbSmtp?.pass,
+      smtpError: st.lastError,
+    });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 

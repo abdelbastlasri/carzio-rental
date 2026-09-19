@@ -12,20 +12,41 @@ interface SmtpStatus {
   smtpPort: number;
   smtpUser: string | null;
   smtpFrom: string | null;
+  smtpUserFromDb?: boolean;
+  smtpPassFromDb?: boolean;
 }
 
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
   const [smtp, setSmtp] = useState<SmtpStatus | null>(null);
+  const [smtpUser, setSmtpUser] = useState('');
+  const [smtpPass, setSmtpPass] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [saveResult, setSaveResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [testTo, setTestTo] = useState('');
   const [testing, setTesting] = useState(false);
   const [testResult, setTestResult] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  useEffect(() => {
+  const refreshStatus = () => {
     fetch('/api/status')
       .then(r => r.json())
       .then(setSmtp)
       .catch(() => setSmtp(null));
+  };
+
+  useEffect(() => {
+    refreshStatus();
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('admin_token');
+    if (!token) return;
+    fetch('/api/admin/smtp', { headers: { Authorization: `Bearer ${token}` } })
+      .then(r => (r.ok ? r.json() : null))
+      .then(data => {
+        if (data?.user) setSmtpUser(data.user);
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -41,7 +62,6 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error('Failed to fetch bookings:', err);
-      } finally {
       }
     };
     fetchBookings();
@@ -52,6 +72,31 @@ export default function AdminDashboard() {
     pending: bookings.filter(b => b.status === 'pending').length,
     confirmed: bookings.filter(b => b.status === 'confirmed').length,
     rejected: bookings.filter(b => b.status === 'rejected').length,
+  };
+
+  const saveSmtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaving(true);
+    setSaveResult(null);
+    try {
+      const token = localStorage.getItem('admin_token');
+      const res = await fetch('/api/admin/smtp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ smtpUser: smtpUser.trim(), smtpPass: smtpPass.trim() }),
+      });
+      const body = await res.json();
+      if (res.ok && body.success) {
+        setSaveResult({ type: 'success', text: `${body.result} — sending as ${body.user}` });
+      } else {
+        setSaveResult({ type: 'error', text: body.result || body.error || 'Save failed' });
+      }
+    } catch (err) {
+      setSaveResult({ type: 'error', text: err instanceof Error ? err.message : 'Save failed' });
+    } finally {
+      setSaving(false);
+      refreshStatus();
+    }
   };
 
   const sendTestEmail = async (e: React.FormEvent) => {
@@ -76,6 +121,7 @@ export default function AdminDashboard() {
       setTestResult({ type: 'error', text: err instanceof Error ? err.message : 'Test email failed' });
     } finally {
       setTesting(false);
+      refreshStatus();
     }
   };
 
@@ -134,10 +180,65 @@ export default function AdminDashboard() {
         </Link>
       </div>
 
-      {/* SMTP / Email diagnostics */}
+      {/* Email setup */}
       <div className="mt-8 grid md:grid-cols-2 gap-6">
         <div className={cardClass}>
-          <h2 className="text-white font-heading font-semibold mb-4">Email / SMTP Status</h2>
+          <h2 className="text-white font-heading font-semibold mb-1">Email sender (Gmail)</h2>
+          <p className="text-gray-400 text-xs mb-4">
+            Booking emails are sent from a Gmail address. Set it once here and it works everywhere.
+          </p>
+          <form onSubmit={saveSmtp} className="space-y-3">
+            <div>
+              <label className="block text-gray-400 text-xs mb-1">Your Gmail address</label>
+              <input
+                type="email"
+                required
+                value={smtpUser}
+                onChange={(e) => setSmtpUser(e.target.value)}
+                placeholder="abdelbast.lasri@gmail.com"
+                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-400 text-xs mb-1">16-letter Google password</label>
+              <input
+                type="password"
+                required
+                value={smtpPass}
+                onChange={(e) => setSmtpPass(e.target.value)}
+                placeholder="abcd efgh ijkl mnop"
+                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={saving || !smtpUser.trim() || smtpPass.trim().length < 8}
+              className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-2.5 rounded-lg transition text-sm disabled:opacity-50"
+            >
+              {saving ? 'Testing...' : 'Save & Test Email'}
+            </button>
+            <a
+              href="https://myaccount.google.com/apppasswords"
+              target="_blank"
+              rel="noreferrer"
+              className="block text-center text-gold text-xs underline hover:text-gold-light"
+            >
+              I don't have the 16-letter password — get one from Google ↗
+            </a>
+            {saveResult && (
+              <p className={`text-xs rounded-lg p-2 break-words ${
+                saveResult.type === 'success'
+                  ? 'text-green-400 bg-green-500/10 border border-green-500/20'
+                  : 'text-red-400 bg-red-500/10 border border-red-500/20'
+              }`}>
+                {saveResult.text}
+              </p>
+            )}
+          </form>
+        </div>
+
+        <div className={cardClass}>
+          <h2 className="text-white font-heading font-semibold mb-4">Connection Status</h2>
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-gray-400">Configured</span>
@@ -146,7 +247,7 @@ export default function AdminDashboard() {
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-gray-400">Verified with server</span>
+              <span className="text-gray-400">Verified with Gmail</span>
               <span className={smtp?.smtpVerified ? 'text-green-400' : 'text-amber-400'}>
                 {smtp?.smtpVerified ? 'Connected ✓' : 'Failed'}
               </span>
@@ -154,16 +255,12 @@ export default function AdminDashboard() {
             {smtp && (
               <>
                 <div className="flex items-center justify-between">
+                  <span className="text-gray-400">Sending account</span>
+                  <span className="text-white">{smtp.smtpUser || '—'}{smtp.smtpUserFromDb ? ' (from panel)' : ''}</span>
+                </div>
+                <div className="flex items-center justify-between">
                   <span className="text-gray-400">Host / Port</span>
                   <span className="text-white">{smtp.smtpHost}:{smtp.smtpPort}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-400">Auth user</span>
-                  <span className="text-white">{smtp.smtpUser || '—'}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-400">From</span>
-                  <span className="text-white">{smtp.smtpFrom || '—'}</span>
                 </div>
               </>
             )}
@@ -173,13 +270,10 @@ export default function AdminDashboard() {
               </p>
             )}
           </div>
-        </div>
 
-        <div className={cardClass}>
-          <h2 className="text-white font-heading font-semibold mb-4">Send Test Email</h2>
-          <form onSubmit={sendTestEmail} className="space-y-3">
-            <div>
-              <label className="block text-gray-400 text-xs mb-1">Recipient email</label>
+          <div className="mt-6 border-t border-white/10 pt-4">
+            <h3 className="text-gray-300 font-heading font-semibold text-sm mb-2">Send a test email to my inbox</h3>
+            <form onSubmit={sendTestEmail} className="space-y-2">
               <input
                 type="email"
                 required
@@ -188,24 +282,24 @@ export default function AdminDashboard() {
                 placeholder="you@example.com"
                 className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none"
               />
-            </div>
-            <button
-              type="submit"
-              disabled={testing || !testTo.trim()}
-              className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-2.5 rounded-lg transition text-sm disabled:opacity-50"
-            >
-              {testing ? 'Sending...' : 'Send Test Email'}
-            </button>
-            {testResult && (
-              <p className={`text-xs rounded-lg p-2 break-words ${
-                testResult.type === 'success'
-                  ? 'text-green-400 bg-green-500/10 border border-green-500/20'
-                  : 'text-red-400 bg-red-500/10 border border-red-500/20'
-              }`}>
-                {testResult.text}
-              </p>
-            )}
-          </form>
+              <button
+                type="submit"
+                disabled={testing || !testTo.trim()}
+                className="w-full bg-gold hover:bg-gold-light text-black font-semibold py-2 rounded-lg transition text-sm disabled:opacity-50"
+              >
+                {testing ? 'Sending...' : 'Send Test Email'}
+              </button>
+              {testResult && (
+                <p className={`text-xs rounded-lg p-2 break-words ${
+                  testResult.type === 'success'
+                    ? 'text-green-400 bg-green-500/10 border border-green-500/20'
+                    : 'text-red-400 bg-red-500/10 border border-red-500/20'
+                }`}>
+                  {testResult.text}
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </div>
