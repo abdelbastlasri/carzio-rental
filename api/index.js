@@ -16,12 +16,32 @@ const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (() => { console.warn('WARNING: ADMIN_PASSWORD env var not set, using default!'); return 'admin'; })();
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-const SMTP_USER = process.env.SMTP_USER || 'contact@carzio.ma';
-const SMTP_PASS = process.env.SMTP_PASS;
+
+// Sanitize SMTP credentials before use.
+// Gmail App Passwords are often pasted grouped like "abcd efgh ijkl mnop"
+// (with spaces) or with quotes/newlines attached. Gmail then replies
+// "535-5.7.8 Username and Password not accepted" even when the password
+// itself is correct. Stripping whitespace/quotes fixes that exact case.
+const rawPass = process.env.SMTP_PASS || '';
+const cleanValue = (v) => String(v || '').trim().replace(/^["']|["']$/g, '');
+const SMTP_USER = cleanValue(process.env.SMTP_USER || 'contact@carzio.ma');
+const SMTP_PASS = cleanValue(rawPass).replace(/\s+/g, '');
 // Optional: the address shown as sender. Defaults to SMTP_USER.
 // Useful when authenticating as a real Gmail account (SMTP_USER)
 // but displaying a branded address (must be a verified "Send mail as" alias).
-const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
+const SMTP_FROM = process.env.SMTP_FROM ? cleanValue(process.env.SMTP_FROM) : SMTP_USER;
+
+const smtpCredentialShape = SMTP_PASS
+  ? {
+      length: SMTP_PASS.length,
+      originalHadSpaces: /\s/.test(rawPass),
+      originalHadQuotes: /["']/.test(rawPass),
+      is16Chars: SMTP_PASS.length === 16,
+      allLowerLetters: /^[a-z]{16}$/.test(SMTP_PASS),
+    }
+  : null;
+
+console.log(`[SMTP] host=${SMTP_HOST}:${SMTP_PORT} user=${maskEmail(SMTP_USER)} from=${maskEmail(SMTP_FROM)} configured=${!!(SMTP_USER && SMTP_PASS)} passLength=${SMTP_PASS ? SMTP_PASS.length : 0}`);
 
 
 let supabase;
@@ -264,6 +284,7 @@ app.get('/api/status', async (req, res) => {
     smtpPort: SMTP_PORT,
     smtpUser: maskEmail(SMTP_USER),
     smtpFrom: maskEmail(SMTP_FROM),
+    smtpCredentialShape,
   });
 });
 
@@ -509,6 +530,7 @@ app.post('/api/admin/test-email', requireAuth, async (req, res) => {
         authUser: SMTP_USER,
         smtpVerifiedBeforeSend: smtpStatus.verified,
         smtpVerifyError: smtpStatus.lastError,
+        smtpCredentialShape,
       },
     });
   } catch (err) {
