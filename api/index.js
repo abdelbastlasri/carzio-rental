@@ -24,8 +24,14 @@ const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 // itself is correct. Stripping whitespace/quotes fixes that exact case.
 const rawPass = process.env.SMTP_PASS || '';
 const cleanValue = (v) => String(v || '').trim().replace(/^["']|["']$/g, '');
-const SMTP_USER = cleanValue(process.env.SMTP_USER || 'contact@carzio.ma');
+// Fallback login account used only when SMTP_USER is not set in the environment.
+// This is the account that owns the App Password currently in use.
+const SMTP_USER = cleanValue(process.env.SMTP_USER || 'abdelbast.lasri@gmail.com');
 const SMTP_PASS = cleanValue(rawPass).replace(/\s+/g, '');
+// Diagnostic: true when the value was actually provided by the environment
+// (Vercel), false when the fallback above is in effect.
+const smtpUserFromEnv = !!process.env.SMTP_USER;
+const smtpPassFromEnv = !!process.env.SMTP_PASS;
 // Optional: the address shown as sender. Defaults to SMTP_USER.
 // Useful when authenticating as a real Gmail account (SMTP_USER)
 // but displaying a branded address (must be a verified "Send mail as" alias).
@@ -284,6 +290,8 @@ app.get('/api/status', async (req, res) => {
     smtpPort: SMTP_PORT,
     smtpUser: maskEmail(SMTP_USER),
     smtpFrom: maskEmail(SMTP_FROM),
+    smtpUserFromEnv,
+    smtpPassFromEnv,
     smtpCredentialShape,
   });
 });
