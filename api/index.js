@@ -81,6 +81,9 @@ async function loadDbSmtp() {
 
 function activeSmtpUser() { return dbSmtp?.user || SMTP_USER; }
 function activeSmtpPass() { return dbSmtp?.pass || SMTP_PASS; }
+// Sender (From:) must match the account that authenticates — Gmail rejects
+// messages whose From doesn't belong to the authenticated account.
+function activeSmtpFrom() { return dbSmtp?.user || SMTP_FROM; }
 
 
 let supabase;
@@ -196,7 +199,7 @@ async function sendEmail({ to, subject, html, text }) {
   const plainText = text || stripHtml(html);
   try {
     await t.sendMail({
-      from: SMTP_FROM,
+      from: activeSmtpFrom(),
       to,
       subject,
       text: plainText,
@@ -209,7 +212,7 @@ async function sendEmail({ to, subject, html, text }) {
     console.log(`Email sent to ${to}: ${subject}`);
     return { ok: true };
   } catch (err) {
-    console.error(`Failed to send email to ${to} (${subject}) via ${SMTP_HOST}:${SMTP_PORT} from ${SMTP_USER}:`, err);
+    console.error(`Failed to send email to ${to} (${subject}) via ${SMTP_HOST}:${SMTP_PORT} from ${activeSmtpUser()}:`, err);
     transporter = null;
     return { ok: false, error: err && err.message ? err.message : String(err) };
   }
@@ -332,7 +335,7 @@ app.get('/api/status', async (req, res) => {
     smtpHost: SMTP_HOST,
     smtpPort: SMTP_PORT,
     smtpUser: maskEmail(activeSmtpUser()),
-    smtpFrom: maskEmail(SMTP_FROM),
+    smtpFrom: maskEmail(activeSmtpFrom()),
     smtpUserFromEnv,
     smtpPassFromEnv,
     smtpUserFromDb: !!dbSmtp?.user,
@@ -640,8 +643,8 @@ app.post('/api/admin/test-email', requireAuth, async (req, res) => {
       config: {
         host: SMTP_HOST,
         port: SMTP_PORT,
-        from: SMTP_FROM,
-        authUser: SMTP_USER,
+        from: activeSmtpFrom(),
+        authUser: activeSmtpUser(),
         smtpVerifiedBeforeSend: smtpStatus.verified,
         smtpVerifyError: smtpStatus.lastError,
         smtpCredentialShape,
