@@ -85,6 +85,80 @@ function activeSmtpPass() { return dbSmtp?.pass || SMTP_PASS; }
 // messages whose From doesn't belong to the authenticated account.
 function activeSmtpFrom() { return dbSmtp?.user || SMTP_FROM; }
 
+// ===== Resend (primary sender) =====
+// Resend is an HTTP email API. It has no password, so no provider can revoke it
+// overnight the way a Gmail App Password can. It is tried first on every send;
+// the Gmail transporter above stays as an automatic fallback.
+const RESEND_BEACON_ID = 'RESEND-CONFIG-ROOT';
+// Used until carzio.ma is verified as a sending domain in Resend. Resend only
+// allows this address while the domain is unverified.
+const RESEND_DEFAULT_FROM = 'Carzio <onboarding@resend.dev>';
+let dbResend = null; // { key, from, enabled }
+let dbResendLoaded = false;
+let resendVerify = { verified: false, lastError: null, checkedAt: null };
+
+async function loadDbResend() {
+  if (dbResendLoaded || !supabase) return;
+  dbResendLoaded = true;
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('customer_email, customer_phone, status')
+      .eq('id', RESEND_BEACON_ID)
+      .maybeSingle();
+    if (error) throw error;
+    if (data && (data.customer_email || data.customer_phone)) {
+      dbResend = {
+        key: cleanValue(data.customer_email),
+        from: cleanValue(data.customer_phone),
+        enabled: data.status !== 'disabled',
+      };
+      console.log('[Resend] using API key stored from the admin panel');
+    }
+  } catch (e) {
+    console.warn('[Resend] could not load stored key:', e.message);
+  }
+}
+
+function resendActive() { return !!(dbResend?.key && dbResend.enabled); }
+function resendFrom() { return dbResend?.from || RESEND_DEFAULT_FROM; }
+
+async function resendSend({ to, subject, html, text }) {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${dbResend.key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from: resendFrom(), to: [to], subject, html, text }),
+  });
+  const raw = await res.text();
+  let parsed = {};
+  try { parsed = JSON.parse(raw); } catch { /* non-JSON error body */ }
+  if (!res.ok) {
+    const detail = parsed?.message || parsed?.name || raw.slice(0, 180);
+    throw new Error(`Resend (HTTP ${res.status}): ${detail}`);
+  }
+  return parsed;
+}
+
+// Cheap authenticated read: proves the key is live without sending any mail.
+async function verifyResend(force = false) {
+  await loadDbResend();
+  if (!dbResend?.key) {
+    resendVerify = { verified: false, lastError: 'Resend API key not configured', checkedAt: new Date().toISOString() };
+    return resendVerify;
+  }
+  if (!force && resendVerify.checkedAt && (Date.now() - new Date(resendVerify.checkedAt).getTime()) < 60000) {
+    return resendVerify;
+  }
+  try {
+    const res = await fetch('https://api.resend.com/domains', { headers: { 'Authorization': `Bearer ${dbResend.key}` } });
+    if (!res.ok) throw new Error(`Resend rejected the API key (HTTP ${res.status})`);
+    resendVerify = { verified: true, lastError: null, checkedAt: new Date().toISOString() };
+  } catch (err) {
+    resendVerify = { verified: false, lastError: err.message, checkedAt: new Date().toISOString() };
+  }
+  return resendVerify;
+}
+
 
 let supabase;
 if (supabaseUrl && supabaseKey) {
@@ -119,6 +193,17 @@ function getTransporter() {
 
 async function verifySmtp(force = false) {
   await loadDbSmtp();
+  await loadDbResend();
+  // Resend is the primary sender: a live API key is all that is required, and
+  // unlike an App Password it cannot be revoked without notice.
+  if (resendActive()) {
+    const r = await verifyResend(force);
+    if (r.verified) {
+      smtpVerify = { verified: true, lastError: null, checkedAt: new Date().toISOString() };
+      return smtpVerify;
+    }
+    console.warn('[Resend] verification failed — falling back to Gmail:', r.lastError);
+  }
   if (!SMTP_PASS && !dbSmtp?.pass) {
     smtpVerify = { verified: false, lastError: 'SMTP credentials not configured (SMTP_USER / SMTP_PASS)', checkedAt: new Date().toISOString() };
     return smtpVerify;
@@ -190,13 +275,25 @@ function requireAuth(req, res, next) {
 
 async function sendEmail({ to, subject, html, text }) {
   await loadDbSmtp();
+  await loadDbResend();
+  const plainText = text || stripHtml(html);
+  // Primary path: Resend. Any failure falls through to Gmail below, so a
+  // transient Resend outage can never silently swallow a booking email.
+  if (resendActive()) {
+    try {
+      const sent = await resendSend({ to, subject, html, text: plainText });
+      console.log(`Email sent to ${to}: ${subject} via Resend (id ${sent?.id || 'n/a'})`);
+      return { ok: true, provider: 'resend' };
+    } catch (err) {
+      console.error(`Resend failed for ${to} (${subject}) — falling back to Gmail:`, err.message);
+    }
+  }
   const t = await getTransporter();
   if (!t) {
     const reason = !activeSmtpPass() || !activeSmtpUser() ? 'SMTP not configured (email address / 16-letter password are empty)' : 'Transporter unavailable';
     console.warn(`Email not sent - ${reason}`);
     return { ok: false, error: reason };
   }
-  const plainText = text || stripHtml(html);
   try {
     await t.sendMail({
       from: activeSmtpFrom(),
@@ -209,8 +306,8 @@ async function sendEmail({ to, subject, html, text }) {
         'List-Unsubscribe': '<mailto:contact@carzio.ma?subject=unsubscribe>',
       },
     });
-    console.log(`Email sent to ${to}: ${subject}`);
-    return { ok: true };
+    console.log(`Email sent to ${to}: ${subject} via Gmail`);
+    return { ok: true, provider: 'gmail' };
   } catch (err) {
     console.error(`Failed to send email to ${to} (${subject}) via ${SMTP_HOST}:${SMTP_PORT} from ${activeSmtpUser()}:`, err);
     transporter = null;
@@ -325,6 +422,7 @@ ${noDepositAgreed ? `<div style="color:#6b7280;font-size:11px;text-transform:upp
 
 app.get('/api/status', async (req, res) => {
   await loadDbSmtp();
+  await loadDbResend();
   const smtpStatus = await verifySmtp();
   res.json({
     supabaseConfigured: !!supabase,
@@ -336,6 +434,9 @@ app.get('/api/status', async (req, res) => {
     smtpPort: SMTP_PORT,
     smtpUser: maskEmail(activeSmtpUser()),
     smtpFrom: maskEmail(activeSmtpFrom()),
+    emailProvider: resendActive() ? 'resend' : 'gmail',
+    resendConfigured: resendActive(),
+    resendFrom: resendActive() ? resendFrom() : null,
     smtpUserFromEnv,
     smtpPassFromEnv,
     smtpUserFromDb: !!dbSmtp?.user,
@@ -347,7 +448,7 @@ app.get('/api/status', async (req, res) => {
 app.get('/api/bookings', async (req, res) => {
   try {
     if (!supabase) return res.json([]);
-    const { data, error } = await supabase.from('bookings').select('*').neq('id', SMTP_BEACON_ID).order('submitted_at', { ascending: false });
+    const { data, error } = await supabase.from('bookings').select('*').not('id', 'in', `("${SMTP_BEACON_ID}","${RESEND_BEACON_ID}")`).order('submitted_at', { ascending: false });
     if (error) throw error;
     res.json(data || []);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
@@ -493,7 +594,7 @@ app.post('/api/admin/login', (req, res) => {
 app.get('/api/admin/bookings', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.json([]);
-    const { data, error } = await supabase.from('bookings').select('*').neq('id', SMTP_BEACON_ID).order('submitted_at', { ascending: false });
+    const { data, error } = await supabase.from('bookings').select('*').not('id', 'in', `("${SMTP_BEACON_ID}","${RESEND_BEACON_ID}")`).order('submitted_at', { ascending: false });
     if (error) throw error;
     res.json(data || []);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
@@ -618,6 +719,66 @@ app.post('/api/admin/smtp', requireAuth, async (req, res) => {
       smtpUserFromDb: !!dbSmtp?.user,
       smtpPassFromDb: !!dbSmtp?.pass,
       smtpError: st.lastError,
+    });
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+// ===== ADMIN RESEND (primary sender) =====
+
+app.post('/api/admin/resend', requireAuth, async (req, res) => {
+  try {
+    if (!supabase) return res.status(500).json({ error: 'Database not configured' });
+    const { resendKey, resendFrom: from, enabled } = req.body || {};
+    const key = cleanValue(resendKey);
+    if (!key) return res.status(400).json({ error: 'Resend API key is required' });
+    if (!/^re_[A-Za-z0-9_]+$/.test(key)) return res.status(400).json({ error: 'That does not look like a Resend API key (expected re_...)' });
+    const fromAddr = cleanValue(from);
+    if (fromAddr && !/^[^<>@\s]+@[^<>@\s]+\.[^<>@\s]+(\s*<[^<>@\s]+@[^<>@\s]+>)?$/.test(fromAddr)) {
+      return res.status(400).json({ error: 'Enter a valid From address, e.g. Carzio <contact@carzio.ma>' });
+    }
+    // Hidden marker row in the bookings table — same trick as the SMTP beacon,
+    // so no schema migration and no secret ever lands in the git repository.
+    const { error } = await supabase.from('bookings').upsert({
+      id: RESEND_BEACON_ID,
+      car_name: '__RESEND_CONFIG__',
+      total_price: 0,
+      days: 1,
+      customer_name: 'System',
+      customer_email: key,
+      customer_phone: fromAddr,
+      status: enabled === false ? 'disabled' : 'pending',
+      submitted_at: new Date().toISOString(),
+    }, { onConflict: 'id' });
+    if (error) throw error;
+    dbResend = null;
+    dbResendLoaded = false;
+    resendVerify = { verified: false, lastError: null, checkedAt: null };
+    await loadDbResend();
+    const r = await verifyResend(true);
+    res.json({
+      success: r.verified,
+      verified: r.verified,
+      active: resendActive(),
+      from: resendFrom(),
+      result: r.verified
+        ? `Resend key accepted — sending via Resend as "${resendFrom()}"`
+        : `Resend rejected the key: ${r.lastError}`,
+      fallback: 'Gmail SMTP remains active as an automatic fallback',
+    });
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+app.get('/api/admin/resend', requireAuth, async (req, res) => {
+  try {
+    await loadDbResend();
+    const r = await verifyResend();
+    res.json({
+      configured: resendActive(),
+      verified: r.verified,
+      active: resendActive(),
+      from: resendActive() ? resendFrom() : null,
+      keyShape: dbResend?.key ? { length: dbResend.key.length, prefix: dbResend.key.slice(0, 3) } : null,
+      smtpFallback: { user: maskEmail(activeSmtpUser()), verified: smtpVerify.verified },
     });
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
