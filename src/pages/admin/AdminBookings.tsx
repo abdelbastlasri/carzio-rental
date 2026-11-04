@@ -41,7 +41,7 @@ export default function AdminBookings() {
       const body = await res.json();
       if (res.ok) {
         setBookings(prev => prev.map(b => b.id === id ? { ...b, status: newStatus } : b));
-        if (body.notification) setNotice({ type: 'success', text: body.notification });
+        if (body.notification) setNotice({ type: 'success', text: body.ownerCopy ? `${body.notification} · ${body.ownerCopy}` : body.notification });
       } else {
         setNotice({ type: 'error', text: body.error || 'Failed to update status' });
       }
@@ -93,8 +93,19 @@ export default function AdminBookings() {
     }
   };
 
-  const statusBadge = (status: string) => {
-    const colors: Record<string, string> = {
+  const formatExtras = (extras?: string[] | string) => {
+    let list: string[] = [];
+    if (Array.isArray(extras)) list = extras;
+    else if (typeof extras === 'string') {
+      try { list = JSON.parse(extras); } catch { list = extras.trim() ? [extras] : []; }
+    }
+    return list.filter(Boolean).map((n) => `${n}${/baby seat|booster seat/i.test(n) ? ' (Free)' : ''}`);
+  };
+
+  const humanPayment = (m?: string) =>
+    m === 'payment_upon_delivery' ? 'At key handover' : (m ? m.replace(/_/g, ' ') : '');
+
+  const statusBadge = (status: string) => {    const colors: Record<string, string> = {
       pending: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
       confirmed: 'bg-green-500/20 text-green-400 border-green-500/30',
       rejected: 'bg-red-500/20 text-red-400 border-red-500/30',
@@ -144,11 +155,37 @@ export default function AdminBookings() {
                     <p><span className="text-gray-500">Pickup:</span> {booking.pickup_date} at {booking.pickup_time} — {booking.pickup_location}</p>
                     <p><span className="text-gray-500">Return:</span> {booking.dropoff_date} at {booking.dropoff_time} — {booking.dropoff_location}</p>
                     <p><span className="text-gray-500">Total:</span> €{booking.total_price}</p>
+                    {booking.days !== undefined && booking.days !== null && (
+                      <p><span className="text-gray-500">Duration:</span> {booking.days} day(s)</p>
+                    )}
+                    {booking.pickup_date && booking.dropoff_date && !booking.days && (
+                      <p><span className="text-gray-500">Dates:</span> {booking.pickup_date} → {booking.dropoff_date}</p>
+                    )}
+                    {booking.flight_number && (
+                      <p><span className="text-gray-500">Flight:</span> {booking.flight_number}</p>
+                    )}
+                    {formatExtras(booking.extras).length > 0 && (
+                      <p><span className="text-gray-500">Extras:</span> {formatExtras(booking.extras).join(', ')}</p>
+                    )}
+                    {booking.special_requests && (
+                      <p><span className="text-gray-500">Requests:</span> {booking.special_requests}</p>
+                    )}
                     {booking.customer_age && <p><span className="text-gray-500">Age:</span> {booking.customer_age}</p>}
                     {booking.transport_fee !== undefined && booking.transport_fee > 0 && (
                       <p><span className="text-gray-500">Transport fee:</span> €{booking.transport_fee}</p>
                     )}
+                    {booking.insurance_type && (
+                      <p>
+                        <span className="text-gray-500">Insurance:</span>{' '}
+                        {booking.insurance_type === 'full' ? 'Full' : 'Standard'}
+                        {booking.insurance_franchise !== undefined && ` — franchise ${booking.insurance_franchise} MAD`}
+                        {booking.insurance_price ? ` (+€${booking.insurance_price})` : ''}
+                      </p>
+                    )}
                     <p><span className="text-gray-500">Contact:</span> {booking.customer_phone} | {booking.customer_email}</p>
+                    {booking.payment_method && (
+                      <p><span className="text-gray-500">Payment:</span> {humanPayment(booking.payment_method)}</p>
+                    )}
                     {booking.submitted_at && <p><span className="text-gray-500">Submitted:</span> {new Date(booking.submitted_at).toLocaleString()}</p>}
                   </div>
                 </div>

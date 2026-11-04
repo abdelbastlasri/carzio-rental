@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 const stats = [
-  { value: '4.9/5', label: 'stats.rating' },
-  { value: '15k+', label: 'stats.travelers' },
-  { value: 'Fully Insured', label: 'stats.insured' },
-  { value: '24/7', label: 'stats.support' },
+  { valueKey: 'stats.fromPrice', labelKey: 'stats.clientPrice' },
+  { valueKey: 'stats.deposit', labelKey: 'stats.depositLabel' },
+  { valueKey: 'stats.minimum', labelKey: 'stats.minimumLabel' },
+  { valueKey: 'stats.support', labelKey: 'stats.supportLabel' },
 ];
 
 const containerVariants = {
@@ -44,13 +44,13 @@ export default function Stats() {
         >
           {stats.map((stat) => (
             <motion.div
-              key={stat.value}
+              key={stat.valueKey}
               variants={statVariants}
               whileHover={{ y: -2 }}
               className="glass rounded-2xl px-6 py-8 text-center"
             >
-              <div className="text-gold font-heading font-bold text-lg md:text-5xl mb-1 tracking-tight leading-none">{stat.value}</div>
-              <div className="text-white/50 text-xs md:text-sm">{t(stat.label)}</div>
+              <div className="text-gold font-heading font-bold text-xl md:text-2xl mb-1 tracking-tight leading-none">{t(stat.valueKey)}</div>
+              <div className="text-white/50 text-xs md:text-sm">{t(stat.labelKey)}</div>
             </motion.div>
           ))}
         </motion.div>

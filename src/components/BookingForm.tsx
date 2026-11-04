@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
+import DateRangePicker from './DateRangePicker';
 
 interface BookingFormData {
   pickupLocation: string;
@@ -20,14 +21,8 @@ interface BookingFormProps {
 export default function BookingForm({ onOpenBooking, formData, setFormData }: BookingFormProps) {
   const { t } = useTranslation();
   const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
-  const localDate = () => {
-    const d = new Date();
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-  };
-  const today = localDate();
   const pickupLoc = locations.find(l => l.id === formData.pickupLocation);
   const dropoffLoc = locations.find(l => l.id === formData.dropoffLocation);
-  const transportFee = (pickupLoc?.transportFee || 0) + (dropoffLoc?.transportFee || 0);
 
   useEffect(() => {
     fetch('/api/car-prices')
@@ -55,15 +50,20 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               <select
                 value={formData.pickupLocation}
                 onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
-                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold"
               >
                 {locations.map(loc => (
                   <option key={loc.id} value={loc.id}>{loc.name}</option>
                 ))}
               </select>
-              {transportFee > 0 && (
+              {(pickupLoc?.transportFee || 0) > 0 && (
                 <p className="text-amber-400 text-xs mt-1">
-                  {t('bookingModal.transportFeeMessage', { fee: transportFee })}
+                  {t('bookingModal.transportFeeMessage', { fee: pickupLoc?.transportFee })}
+                </p>
+              )}
+              {pickupLoc?.onRequest && (
+                <p className="text-amber-400 text-xs mt-1">
+                  {t('bookingModal.onRequestNote')}
                 </p>
               )}
             </div>
@@ -72,7 +72,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               <select
                 value={formData.dropoffLocation}
                 onChange={(e) => setFormData({ ...formData, dropoffLocation: e.target.value })}
-                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold"
               >
                 {locations.map(loc => (
                   <option key={loc.id} value={loc.id}>{loc.name}</option>
@@ -83,32 +83,37 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
                   {t('bookingModal.transportFeeMessage', { fee: dropoffLoc?.transportFee })}
                 </p>
               )}
+              {dropoffLoc?.onRequest && (
+                <p className="text-amber-400 text-xs mt-1">
+                  {t('bookingModal.onRequestNote')}
+                </p>
+              )}
             </div>
-            <div>
-              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.pickupDate')}</label>
-              <input
-                type="date"
-                value={formData.pickupDate}
-                onChange={(e) => setFormData({ ...formData, pickupDate: e.target.value })}
-                min={today}
-                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-400 text-xs mb-1">{t('bookingForm.dropoffDate')}</label>
-              <input
-                type="date"
-                value={formData.dropoffDate}
-                onChange={(e) => setFormData({ ...formData, dropoffDate: e.target.value })}
-                min={formData.pickupDate || today}
-                className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+            <div className="md:col-span-2 lg:col-span-2">
+              <label className="block text-gray-400 text-xs mb-1">{t('dateRange.label')}</label>
+              <DateRangePicker
+                value={{ pickupDate: formData.pickupDate, dropoffDate: formData.dropoffDate }}
+                onChange={(dates) =>
+                  setFormData({
+                    ...formData,
+                    pickupDate: dates.pickupDate,
+                    dropoffDate: dates.dropoffDate,
+                  })
+                }
+                pricePerDay={
+                  formData.selectedCar
+                    ? priceOverrides[formData.selectedCar] ??
+                      fleet.find((car) => car.id === formData.selectedCar)?.pricePerDay
+                    : undefined
+                }
+                showTimes={false}
               />
             </div>
             <div className="lg:col-span-4 flex flex-col sm:flex-row gap-3 items-center">
               <select
                 value={formData.selectedCar}
                 onChange={(e) => setFormData({ ...formData, selectedCar: e.target.value })}
-                className="w-full sm:w-64 bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold focus:outline-none"
+                className="w-full sm:w-64 bg-black text-white border border-zinc-700 rounded-lg px-3 py-2.5 text-sm focus:border-gold"
               >
                 <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (

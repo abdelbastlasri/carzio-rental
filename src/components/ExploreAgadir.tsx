@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -48,7 +48,11 @@ export default function ExploreAgadir() {
     touchRef.current.endX = e.changedTouches[0].clientX;
     const diff = touchRef.current.startX - touchRef.current.endX;
     if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
     }
   };
 
@@ -61,7 +65,11 @@ export default function ExploreAgadir() {
     mouseRef.current.dragging = false;
     const diff = mouseRef.current.startX - e.clientX;
     if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
     }
   };
 
@@ -117,20 +125,29 @@ export default function ExploreAgadir() {
             {slides.map((_, i) => (
               <button
                 key={i}
+                type="button"
                 onClick={() => setCurrent(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? 'bg-gold w-8' : 'bg-white/20 hover:bg-white/40 w-1.5'}`}
-              />
+                aria-label={slides[i].title}
+                aria-pressed={i === current}
+                className="group flex h-11 w-8 items-center justify-center"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-[width,background-color] duration-500 ${
+                    i === current ? 'w-8 bg-gold' : 'w-1.5 bg-white/20 group-hover:bg-white/40'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>
 
         <div className="text-center mt-8">
-          <Link
+          <LangLink
             to="/cars"
             className="inline-block glass-gold text-white font-semibold px-8 py-3 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
           >
             {t('explore.bookCar')}
-          </Link>
+          </LangLink>
         </div>
       </div>
     </section>

@@ -18,7 +18,6 @@ export default function AdminDashboard() {
         }
       } catch (err) {
         console.error('Failed to fetch bookings:', err);
-      } finally {
       }
     };
     fetchBookings();

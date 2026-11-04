@@ -1,24 +1,29 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   { image: '/images/55.jpg', key: 'hero.slideSurf' },
   { image: '/images/Taghazout-by-night.jpg', key: 'hero.slideTaghazoutNight' },
-  { image: '/images/tamraght_beach.png', key: 'hero.slideTamraght' },
+  { image: '/images/tamraght_beach.webp', key: 'hero.slideTamraght' },
   { image: '/images/2.jpg', key: 'hero.slide1' },
   { image: '/images/3.jpg', key: 'hero.slide2' },
   { image: '/images/66.jpg', key: 'hero.slide5' },
   { image: '/images/7.jpg', key: 'hero.slide6' },
 ];
 
-const INTERVAL = 2000;
+const INTERVAL = 5000;
 
 export default function Hero() {
   const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(
+    () =>
+      typeof window === 'undefined' ||
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
   const touchRef = useRef({ startX: 0, endX: 0 });
   const mouseRef = useRef({ dragging: false, startX: 0 });
@@ -31,10 +36,10 @@ export default function Hero() {
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !autoPlay) return;
     intervalRef.current = setInterval(next, INTERVAL);
     return () => clearInterval(intervalRef.current);
-  }, [next, isPaused]);
+  }, [next, isPaused, autoPlay]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchRef.current.startX = e.touches[0].clientX;
@@ -43,7 +48,11 @@ export default function Hero() {
     touchRef.current.endX = e.changedTouches[0].clientX;
     const diff = touchRef.current.startX - touchRef.current.endX;
     if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
     }
   };
 
@@ -56,7 +65,11 @@ export default function Hero() {
     mouseRef.current.dragging = false;
     const diff = mouseRef.current.startX - e.clientX;
     if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
     }
   };
 
@@ -100,6 +113,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 w-full pt-32 md:pt-36">
         <div className="max-w-3xl">
+          <h1 className="sr-only">{t('hero.seoHeading')}</h1>
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -111,10 +125,10 @@ export default function Hero() {
               <p className="text-gold font-heading font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
                 {t('hero.label')}
               </p>
-              <h1 className="text-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+              <h2 className="text-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
                 {t(`${slides[current].key}.headline`)}<br />
                 <span className="text-gold">{t(`${slides[current].key}.subhead`)}</span>
-              </h1>
+              </h2>
               <p className="text-white/60 text-base md:text-lg max-w-lg mb-8 leading-relaxed">
                 {t(`${slides[current].key}.desc`)}
               </p>
@@ -122,33 +136,56 @@ export default function Hero() {
           </AnimatePresence>
 
           <div className="flex flex-wrap gap-4">
-            <Link
+            <LangLink
               to="/cars"
               className="glass-gold text-white font-semibold px-8 py-3 rounded-lg transition text-sm md:text-base hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20 hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('common.browseFleet')}
-            </Link>
-            <Link
+            </LangLink>
+            <LangLink
               to="/contact"
               className="glass text-white/80 hover:text-white font-semibold px-8 py-3 rounded-lg transition text-sm md:text-base hover:bg-white/10 hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('common.contactUs')}
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {slides.map((_, i) => (
+      <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1">
+        {slides.map((slide, i) => (
           <button
             key={i}
+            type="button"
             onClick={() => setCurrent(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === current ? 'bg-gold w-10' : 'bg-white/20 hover:bg-white/40 w-1.5'
-            }`}
-            aria-label={`Slide ${i + 1}`}
-          />
+            className="group flex h-11 w-8 items-center justify-center"
+            aria-label={t(`${slide.key}.headline`)}
+            aria-pressed={i === current}
+          >
+            <span
+              className={`block h-1.5 rounded-full transition-[width,background-color] duration-500 ${
+                i === current ? 'w-8 bg-gold' : 'w-1.5 bg-white/20 group-hover:bg-white/40'
+              }`}
+            />
+          </button>
         ))}
+        <button
+          type="button"
+          onClick={() => setAutoPlay((value) => !value)}
+          className="ml-1 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white/70 transition hover:border-gold hover:text-gold"
+          aria-label={autoPlay ? t('hero.pause') : t('hero.play')}
+          aria-pressed={!autoPlay}
+        >
+          {autoPlay ? (
+            <svg aria-hidden="true" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 5h4v14H7zM13 5h4v14h-4z" />
+            </svg>
+          ) : (
+            <svg aria-hidden="true" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
       </div>
     </section>
   );

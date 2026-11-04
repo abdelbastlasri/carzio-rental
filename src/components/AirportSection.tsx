@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 
 export default function AirportSection() {
   return (
@@ -22,12 +22,12 @@ export default function AirportSection() {
               Our convenient airport pickup &amp; drop-off service at Agadir Al Massira Airport
               gets you on the road without delays or complications.
             </p>
-            <Link
+            <LangLink
               to="/cars"
               className="inline-block glass-gold text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm hover:bg-gold/20 hover:shadow-lg hover:shadow-gold/20"
             >
               Book Now
-            </Link>
+            </LangLink>
           </div>
         </div>
       </div>

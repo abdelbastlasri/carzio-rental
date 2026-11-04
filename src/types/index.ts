@@ -9,6 +9,9 @@ export interface Car {
   suitcases: number;
   transmission: string;
   ac: boolean;
+  gps: boolean;
+  touchscreen: boolean;
+  insuranceBand: 'low' | 'high';
   km: string;
   model: string;
   description: string;
@@ -27,6 +30,8 @@ export interface Location {
   airport: string;
   mapUrl: string;
   transportFee: number;
+  /** Delivery price is confirmed with the customer before booking (no public rate). */
+  onRequest?: boolean;
 }
 
 export interface PricingRule {
@@ -59,6 +64,12 @@ export interface BookingRecord {
   extras?: string[];
   special_requests?: string;
   transport_fee?: number;
+  insurance_type?: 'standard' | 'full';
+  insurance_price?: number;
+  insurance_franchise?: number;
+  insurance_band?: 'low' | 'high';
+  full_insurance?: boolean;
+  full_insurance_price?: number;
   payment_method?: string;
   confirmation_method?: string;
   no_deposit_agreed?: boolean;
@@ -69,8 +80,10 @@ export interface BookingRecord {
 export interface Review {
   id: string;
   name: string;
-  country: string;
+  country?: string;
   rating: number;
   text: string;
   avatar: string;
+  /** Optional relative date, localized at render time via Intl.RelativeTimeFormat. */
+  date?: { count: number; unit: 'day' | 'week' | 'month' };
 }

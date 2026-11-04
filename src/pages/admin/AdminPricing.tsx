@@ -88,7 +88,7 @@ export default function AdminPricing() {
                   min="0"
                   value={editValues[car.id] || ''}
                   onChange={(e) => setEditValues(prev => ({ ...prev, [car.id]: e.target.value }))}
-                  className="w-24 bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold focus:outline-none text-center"
+                  className="w-24 bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold text-center"
                 />
                 <span className="text-gray-400 text-xs">€</span>
                 <button

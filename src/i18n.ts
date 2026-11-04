@@ -7,10 +7,11 @@ import pl from './locales/pl.json';
 import de from './locales/de.json';
 
 const savedLang = typeof window !== 'undefined' ? localStorage.getItem('carzioLang') : null;
+const urlMatch = typeof window !== 'undefined' ? window.location.pathname.match(/^\/(fr|en|de|es|pl)(?=\/|$)/) : null;
 
 i18n.use(initReactI18next).init({
   resources: { en: { translation: en }, fr: { translation: fr }, es: { translation: es }, pl: { translation: pl }, de: { translation: de } },
-  lng: savedLang || 'en',
+  lng: urlMatch?.[1] || savedLang || 'en',
   fallbackLng: 'en',
   interpolation: { escapeValue: false },
 });

@@ -85,7 +85,7 @@ export default function WhyChooseUs() {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="glass rounded-2xl p-6 md:p-7 text-center group"
             >
-              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-gold group-hover:bg-gold/20 transition-all duration-300 group-hover:scale-110">
+              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-gold group-hover:bg-gold/20 transition-[background-color,transform] duration-300 group-hover:scale-110">
                 {reason.icon}
               </div>
               <h3 className="text-white font-heading font-semibold text-lg mb-2 tracking-tight">{t(reason.title)}</h3>

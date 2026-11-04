@@ -169,7 +169,7 @@ export default function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
+                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold transition"
                     />
                   </div>
                   <div>
@@ -179,7 +179,7 @@ export default function Contact() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
+                      className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold transition"
                     />
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default function Contact() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
-                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none transition"
+                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold transition"
                   />
                 </div>
                 <div className="mb-4">
@@ -200,7 +200,7 @@ export default function Contact() {
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={4}
-                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold focus:outline-none resize-none transition"
+                    className="w-full bg-black/40 text-white border border-white/10 rounded-xl px-3 py-2.5 text-sm focus:border-gold resize-none transition"
                   />
                 </div>
                 {submitError && (

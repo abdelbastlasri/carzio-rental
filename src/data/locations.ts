@@ -10,9 +10,9 @@ export const locations: Location[] = [
   },
   {
     id: 'marrakech',
-    name: 'Marrakech Airport - Al Manara',
+    name: 'Marrakech Airport - Menara',
     airport: 'Marrakech',
-    mapUrl: 'https://www.google.com/maps?q=Marrakech+Airport+Al+Manara',
+    mapUrl: 'https://www.google.com/maps?q=Marrakech+Airport+Menara',
     transportFee: 80,
   },
   {
@@ -21,6 +21,7 @@ export const locations: Location[] = [
     airport: 'Essaouira',
     mapUrl: 'https://www.google.com/maps?q=Essaouira+Airport+Mogador',
     transportFee: 0,
+    onRequest: true,
   },
   {
     id: 'taghazout',
@@ -28,6 +29,7 @@ export const locations: Location[] = [
     airport: 'Taghazout',
     mapUrl: 'https://www.google.com/maps?q=Taghazout',
     transportFee: 0,
+    onRequest: true,
   },
   {
     id: 'tamraght',
@@ -35,6 +37,7 @@ export const locations: Location[] = [
     airport: 'Tamraght',
     mapUrl: 'https://www.google.com/maps/place/Tamraght/@30.5121014,-9.687549,15z/data=!3m1!4b1!4m6!3m5!1s0xdb3b31f8b5a1be7:0xfdc27404a7bca26a!8m2!3d30.5110051!4d-9.6772967!16s%2Fg%2F120lq991?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D',
     transportFee: 0,
+    onRequest: true,
   },
   {
     id: 'casablanca',

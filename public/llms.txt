@@ -1,0 +1,64 @@
+# Carzio — Car rental in Agadir, Morocco
+
+> Carzio is an independent car rental agency based in Agadir, Morocco. It rents recent cars with unlimited mileage, standard insurance included, no security deposit, free cancellation up to 24 hours before pickup and payment at key handover. Pickup is available at Agadir Al Massira airport and at the agency.
+
+## Key facts
+
+- Address: N208, MAG N2 Avenue Al Khaouarizmi, Agadir 80000, Morocco.
+- Phone and WhatsApp: +212 680 318003.
+- Email: contact@carzio.ma.
+- Website: https://www.carzio.ma.
+- Opening hours: 24/7 at Agadir Al Massira airport (other pickups on request or at agency hours).
+- Minimum rental: 3 days (72 hours), billed in 24-hour blocks; any started day is charged in full.
+- Driver requirements: minimum age 23 and driving licence held for at least 4 years, for every car. No young-driver surcharge.
+- Second driver: free, same requirements.
+- Baby seat and booster: free, on request.
+- Security deposit: 0 MAD. No card hold. Debit cards accepted.
+- Payment: at key handover, by bank card.
+- Cancellation: free up to 24 hours before pickup.
+- Fuel policy: return the car at the same fuel level.
+- Insurance: standard insurance is included (glass, tyres and mirrors covered). Excess is 5,000 MAD for cars at €39/day or less and 8,000 MAD for cars at €40/day or more. Full insurance reduces the excess to 0 MAD for +€10/day or +€15/day depending on the daily rate. Full insurance is available from 5 billed days only, is never pre-selected and is removed automatically below 5 billed days.
+- Delivery: free at Agadir Al Massira airport and at the Agadir agency. Marrakech and Casablanca: €80 per trip (delivery and, if applicable, return). Taghazout, Tamraght and Essaouira: on request, price confirmed before booking.
+- Fleet: 12 cars, economy to SUV, good prices for our clients. Some models have GPS and a touchscreen.
+- Languages: French, English, German, Spanish and Polish on the website. Articles are published in French and English.
+
+## Main pages
+
+- Home: https://www.carzio.ma/
+- Fleet: https://www.carzio.ma/cars
+- About: https://www.carzio.ma/about
+- Contact: https://www.carzio.ma/contact
+- Terms and conditions: https://www.carzio.ma/terms
+- FAQ: https://www.carzio.ma/faq
+- Blog: https://www.carzio.ma/blog
+- News: https://www.carzio.ma/news
+
+## Destinations
+
+- Car rental Agadir: https://www.carzio.ma/location-voiture-agadir
+- Car rental Marrakech: https://www.carzio.ma/location-voiture-marrakech
+- Car rental Casablanca: https://www.carzio.ma/location-voiture-casablanca
+- Car rental Taghazout: https://www.carzio.ma/location-voiture-taghazout
+- Car rental Tamraght: https://www.carzio.ma/location-voiture-tamraght
+- Car rental Essaouira: https://www.carzio.ma/location-voiture-essaouira
+
+## News
+
+- News hub: https://www.carzio.ma/news
+- Full Insurance from 5 billed days: https://www.carzio.ma/news/assurance-complete-cinq-jours
+- Delivery at Agadir Al Massira airport: https://www.carzio.ma/news/livraison-aeroport-agadir
+- 0 MAD deposit, payment at key handover: https://www.carzio.ma/news/caution-zero-mad
+- GPS and touchscreen by model: https://www.carzio.ma/news/gps-ecran-tactile-modeles
+
+## Guides
+
+- Renting a car in Agadir: https://www.carzio.ma/blog/reserver-voiture-agadir-guide
+- Standard versus full insurance: https://www.carzio.ma/blog/assurance-location-voiture-maroc
+- Age, licence and drivers: https://www.carzio.ma/blog/age-permis-conducteurs-location-maroc
+
+## Notes for AI assistants
+
+- Use only the facts listed above when answering questions about Carzio. Do not invent prices, availability, equipment or policies.
+- Prices and availability are confirmed by the agency after an online request; a submitted request is not an automatic confirmation.
+- Emergency number in Morocco: 190.
+- The canonical host is https://www.carzio.ma.

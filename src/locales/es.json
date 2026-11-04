@@ -12,24 +12,64 @@
     "browseFleet": "Ver Flota",
     "callUs": "+212 680-318003",
     "qualitySlogan": "Calidad y Comodidad, a Su Servicio",
-    "perDay": "/día"
+    "perDay": "/día",
+    "skipToContent": "Ir al contenido",
+    "selectLanguage": "Elegir idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "backHome": "Volver al inicio",
+    "viewCars": "Ver los coches"
   },
   "nav": {
     "home": "Inicio",
     "ourCars": "Nuestros Coches",
     "about": "Sobre Nosotros",
+    "blog": "Blog",
+    "news": "Noticias",
+    "faq": "FAQ",
     "contact": "Contacto",
     "terms": "Términos y Condiciones"
   },
   "hero": {
     "label": "Alquiler de Coches Premium · Agadir",
-    "slideSurf": { "headline": "Surf y Sol", "subhead": "Escape a la Playa", "desc": "Taghazout te espera. Tu viaje de surf perfecto comienza con el vehículo ideal." },
-    "slideTaghazoutNight": { "headline": "Playa de Taghazout", "subhead": "Olas Que Hablan", "desc": "Taghazout es un lugar donde las olas no solo rompen, sino que hablan." },
-    "slideTamraght": { "headline": "Playa de Tamraght", "subhead": "Costas Tranquilas", "desc": "La vida se siente más ligera donde las olas de Tamraght tocan la orilla." },
-    "slide1": { "headline": "Libertad Costera", "subhead": "Vistas Infinitas", "desc": "Recorre la costa de Agadir con el viento en tu cabello y el sol en tu piel." },
-    "slide2": { "headline": "Asciende Más Alto", "subhead": "Nuevas Perspectivas", "desc": "Toma la ruta escénica a través de las montañas del Anti-Atlas con estilo y confianza." },
-    "slide5": { "headline": "Horas Doradas", "subhead": "Relájate con Estilo", "desc": "Termina tu día con un paseo al atardecer por la costa más hermosa de Marruecos." },
-    "slide6": { "headline": "Murallas Antiguas", "subhead": "La Historia Espera", "desc": "Descubre Agadir Oufella y el rico patrimonio de la región de Souss." }
+    "seoHeading": "Alquiler de coches en Agadir – Carzio",
+    "pause": "Pausar la presentación",
+    "play": "Reproducir la presentación",
+    "slideSurf": {
+      "headline": "Surf y Sol",
+      "subhead": "Escape a la Playa",
+      "desc": "Taghazout te espera. Tu viaje de surf perfecto comienza con el vehículo ideal."
+    },
+    "slideTaghazoutNight": {
+      "headline": "Playa de Taghazout",
+      "subhead": "Olas Que Hablan",
+      "desc": "Taghazout es un lugar donde las olas no solo rompen, sino que hablan."
+    },
+    "slideTamraght": {
+      "headline": "Playa de Tamraght",
+      "subhead": "Costas Tranquilas",
+      "desc": "La vida se siente más ligera donde las olas de Tamraght tocan la orilla."
+    },
+    "slide1": {
+      "headline": "Libertad Costera",
+      "subhead": "Vistas Infinitas",
+      "desc": "Recorre la costa de Agadir con el viento en tu cabello y el sol en tu piel."
+    },
+    "slide2": {
+      "headline": "Asciende Más Alto",
+      "subhead": "Nuevas Perspectivas",
+      "desc": "Toma la ruta escénica a través de las montañas del Anti-Atlas con estilo y confianza."
+    },
+    "slide5": {
+      "headline": "Horas Doradas",
+      "subhead": "Relájate con Estilo",
+      "desc": "Termina tu día con un paseo al atardecer por la costa más hermosa de Marruecos."
+    },
+    "slide6": {
+      "headline": "Murallas Antiguas",
+      "subhead": "La Historia Espera",
+      "desc": "Descubre Agadir Oufella y el rico patrimonio de la región de Souss."
+    }
   },
   "bookingForm": {
     "title": "Reserva Tu Coche",
@@ -43,6 +83,25 @@
     "freeCancellation": "Cancelación gratuita",
     "secureBooking": "Reserva segura"
   },
+  "dateRange": {
+    "label": "Fechas de alquiler",
+    "placeholder": "Elegir fechas",
+    "today": "Hoy",
+    "previousMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente",
+    "days": "{{count}} días",
+    "minDays": "Mínimo 3 días (72 h)",
+    "billedNote": "Se cobra el día empezado.",
+    "insuranceAvailable": "Seguro Completo disponible",
+    "insuranceFrom": "Seguro Completo desde 5 días",
+    "reset": "Reiniciar",
+    "apply": "Validar",
+    "pickupTime": "Hora de recogida",
+    "dropoffTime": "Hora de devolución",
+    "timeHint": "Horas orientativas, a confirmar con la agencia.",
+    "errorMin": "El alquiler mínimo es de 3 días (72 h). Elija una fecha de devolución posterior.",
+    "selectStart": "Elija la fecha de recogida"
+  },
   "fleet": {
     "title": "Coches Disponibles en Nuestra Agencia",
     "featuredTitle": "Vehículos Destacados",
@@ -52,11 +111,25 @@
   "carCard": {
     "orSimilar": "o similar",
     "bookNow": "Reservar",
-    "type": { "economy": "Económico", "compact": "Compacto", "suv": "SUV" },
-    "transmission": { "manual": "Manual", "automatic": "Automático" },
+    "type": {
+      "economy": "Económico",
+      "compact": "Compacto",
+      "suv": "SUV"
+    },
+    "transmission": {
+      "manual": "Manual",
+      "automatic": "Automático"
+    },
     "unlimitedKm": "Ilimitado",
     "bags": "maletas",
-    "seats": "plazas"
+    "seats": "plazas",
+    "doors": "{{count}} puertas",
+    "ac": "Aire acondicionado",
+    "gps": "GPS",
+    "touchscreen": "Pantalla táctil",
+    "deposit": "0 MAD de fianza",
+    "cancellation": "Cancelación gratuita",
+    "insurance": "Seguro incluido"
   },
   "locations": {
     "title": "Nuestras Ubicaciones",
@@ -91,16 +164,24 @@
     "reason4Desc": "Apoyo bilingüe amigable y servicio personalizado de un equipo local de confianza."
   },
   "stats": {
-    "title": "Por Qué Elegir Carzio",
-    "subtitle": "Confiado por miles de viajeros en todo Marruecos",
-    "rating": "Valoración del Cliente",
-    "travelers": "Viajeros Felices",
-    "insured": "Conduce Tranquilo",
-    "support": "Soporte"
+    "title": "Por qué elegir Carzio",
+    "subtitle": "Reseñas auténticas de clientes reales.",
+    "fromPrice": "Buenos precios",
+    "clientPrice": "para nuestros clientes",
+    "deposit": "0 MAD",
+    "depositLabel": "de fianza",
+    "minimum": "72 h",
+    "minimumLabel": "duración mínima",
+    "support": "24/7",
+    "supportLabel": "en el aeropuerto de Agadir",
+    "insured": "Seguro Standard incluido"
   },
   "reviews": {
     "title": "Lo Que Dicen Nuestros Clientes",
-    "subtitle": "Historias reales de viajeros que confiaron en nosotros para su viaje por Marruecos."
+    "subtitle": "Historias reales de viajeros que confiaron en nosotros para su viaje por Marruecos.",
+    "previous": "Reseña anterior",
+    "next": "Reseña siguiente",
+    "ofReviews": "{{current}} de {{total}}"
   },
   "contact": {
     "mapTitle": "Encuéntranos en el Mapa",
@@ -114,7 +195,7 @@
     "emailUs": "Envíanos un Email",
     "emailValue": "contact@carzio.ma",
     "workingHours": "Horario Laboral",
-    "hoursValue": "Lun-Dom: Servicio 24/7",
+    "hoursValue": "Lun–Dom: 24/7 en el aeropuerto Agadir Al Massira",
     "whatsapp": "WhatsApp",
     "directions": "Cómo Llegar",
     "messageSent": "¡Mensaje Enviado!",
@@ -165,13 +246,24 @@
     "bookingConfirmed": "¡Reserva Confirmada!",
     "done": "Hecho",
     "age": "Edad",
-    "ageRequired": "Debe ser mayor de 18 años",
+    "ageRequired": "Mínimo 23 años, carnet con 4 años de antigüedad",
     "transportFee": "Tarifa de Transporte/Entrega",
     "transportFeeFree": "Gratis",
     "transportFeeMessage": "Se aplica una tarifa de transporte adicional de €{{fee}}.",
+    "onRequestNote": "Bajo petición — precio confirmado antes de la reserva.",
+    "transportFeeOnRequest": "Bajo petición",
+    "selectCarRequired": "Elija primero un coche.",
     "carRental": "Alquiler de Coche",
     "totalAmount": "Monto Total",
     "noDeposit": "Confirmo que no se requiere depósito de seguridad ni garantía",
+    "insuranceTitle": "Seguro",
+    "standardInsurance": "Seguro Estándar",
+    "included": "Incluido",
+    "standardInsuranceDesc": "Franquicia de {{excess}} MAD en caso de daños. Cristales, neumáticos y espejos cubiertos.",
+    "fullInsurance": "Seguro Completo",
+    "fullInsuranceDesc": "Franquicia reducida a 0 MAD: nada que pagar en caso de daños.",
+    "fullInsurancePrice": "+{{price}} € / día",
+    "fullInsuranceFrom": "Disponible a partir de {{days}} días de alquiler.",
     "paymentMethod": "Método de Pago",
     "paymentUponDelivery": "Pago al Recibir",
     "paymentMessage": "No se requiere pago por adelantado. El pago se completará al recibir el vehículo en el lugar de recogida seleccionado.",
@@ -180,7 +272,9 @@
     "availabilityRequested": "¡Solicitud de Disponibilidad Enviada!",
     "availabilityMessage": "Su solicitud está pendiente de revisión. Le confirmaremos por {{method}}.",
     "submitting": "Enviando...",
-    "submitted": "Enviado"
+    "submitted": "Enviado",
+    "flightRequired": "El número de vuelo es obligatorio",
+    "selectCarLabel": "Elija un coche"
   },
   "extras": {
     "Baby Seat": "Silla de Bebé",
@@ -191,7 +285,7 @@
   },
   "about": {
     "title": "Quiénes Somos",
-    "experience": "Más de 5 Años de Experiencia",
+    "experience": "Centrados en su viaje",
     "heading": "Donde la Calidad se Encuentra con la Comodidad",
     "description": "Carzio es una empresa de alquiler de coches de confianza con sede en Agadir, Marruecos, dedicada a proporcionar servicios de alquiler de vehículos fiables y asequibles. Ya sea que explores la ciudad, te embarques en una aventura costera o viajes por negocios — te tenemos cubierto.",
     "highlight1Title": "Amplia Gama de Vehículos",
@@ -201,11 +295,11 @@
     "highlight3Title": "Recogida y Devolución en Aeropuerto",
     "highlight3Desc": "Experiencia de viaje sin problemas con recogida y devolución directamente en el Aeropuerto de Agadir Al Massira.",
     "highlight4Title": "Soporte Centrado en el Cliente",
-    "highlight4Desc": "Nuestro equipo dedicado está disponible 24/7 para ayudarte con cualquier pregunta o inquietud."
+    "highlight4Desc": "Nuestro equipo está disponible 24/7 en el aeropuerto Agadir Al Massira para cualquier consulta o necesidad."
   },
   "termsPage": {
     "title": "Términos y Condiciones",
-    "lastUpdated": "Última actualización: 21/05/2026",
+    "lastUpdated": "Última actualización: 04/11/2026",
     "intro": "Al acceder al sitio web de carzio, usted acepta plenamente estos Términos y Condiciones.",
     "backToHome": "Volver al Inicio",
     "section1Title": "1. Definiciones",
@@ -217,9 +311,9 @@
     "section4Title": "4. Obligaciones del Usuario",
     "section4Content": "Proporcionar información precisa al hacer una reserva. Cumplir con las condiciones de alquiler específicas de cada vehículo. No utilizar el sitio web para fines ilegales.",
     "section5Title": "5. Reserva y Pago",
-    "section5Content": "Las reservas se realizan a través de nuestra plataforma segura en línea. El pago se realiza al recibir el vehículo. Se enviará una confirmación después de la reserva. Los precios se muestran en euros. Importante: Al recibir el vehículo, el monto total debe pagarse en efectivo, ya sea en euros o en dirhams marroquíes.",
+    "section5Content": "Las reservas se realizan a través de nuestra plataforma en línea. El pago se realiza en la entrega de llaves con tarjeta, incluida tarjeta de débito. No se exige depósito ni bloqueo de tarjeta. Se envía una confirmación después de la reserva. La duración mínima es de 3 días (72 h). El conductor debe tener al menos 23 años y llevar 4 años con permiso de conducir. Los precios se muestran en euros.",
     "section6Title": "6. Política de Cancelación y Reembolso",
-    "section6Content": "Las condiciones de cancelación pueden variar según la reserva. Consulte nuestra Política de Reembolso para más detalles.",
+    "section6Content": "La cancelación es gratuita hasta 24 h antes de la recogida. Para cancelaciones posteriores, contáctenos por WhatsApp en el +212 680 318003 antes de la hora de recogida.",
     "section7Title": "7. Responsabilidad de carzio",
     "section7Content": "carzio se compromete a proporcionar servicios de alta calidad, pero no será responsable de: el mal uso del vehículo, errores resultantes de información incorrecta proporcionada por el Usuario.",
     "section8Title": "8. Datos Personales",
@@ -233,9 +327,73 @@
     "section12Title": "12. Llaves o Documentos Perdidos",
     "section12Content": "En caso de pérdida de la llave del coche, se cobrará una tarifa de 150€. En caso de pérdida de los documentos del vehículo, se cobrará una tarifa de 500€.",
     "section13Title": "13. Solicitudes de Disponibilidad",
-    "section13Content": "Todas las reservas de vehículos enviadas a través del sitio web se consideran solicitudes de disponibilidad y no se confirman automáticamente. La agencia se reserva el derecho de revisar cada solicitud y confirmar la disponibilidad antes de la aprobación final. Los clientes deben proporcionar información precisa de la reserva, incluyendo su nombre completo, edad, dirección de correo electrónico, número de teléfono y detalles de recogida. Puede aplicarse una tarifa de transporte/entrega según la ubicación de recogida seleccionada: Aeropuerto Internacional Mohammed V de Casablanca: Tarifa de transporte adicional de 80€. Aeropuerto de Marrakech - Al Manara: Tarifa de transporte adicional de 80€. Aeropuerto de Agadir - Al Massira: Transporte gratuito. Aeropuerto de Essaouira - Mogador: Transporte gratuito. Taghazout: Transporte gratuito. Tamraght: Transporte gratuito.",
+    "section13Content": "Todas las reservas de vehículos enviadas a través del sitio web se consideran solicitudes de disponibilidad y no se confirman automáticamente. La agencia se reserva el derecho de revisar cada solicitud y confirmar la disponibilidad antes de la aprobación final. Los clientes deben proporcionar información precisa de la reserva, incluyendo su nombre completo, edad, dirección de correo electrónico, número de teléfono y detalles de recogida. Puede aplicarse una tarifa de entrega según la ubicación de recogida seleccionada: Aeropuerto Mohammed V de Casablanca: 80 € por trayecto. Aeropuerto de Marrakech-Menara: 80 € por trayecto. Aeropuerto de Agadir Al Massira: gratuito. Taghazout, Tamraght y Essaouira: bajo petición, precio confirmado antes de la reserva.",
     "section14Title": "14. Política de Depósito de Garantía",
-    "section14Content": "No se exigirá al cliente ningún depósito de garantía, fianza o importe de garantía en el momento de la reserva o alquiler del vehículo. El cliente no estará obligado a pagar, bloquear o mantener ningún depósito o importe de garantía en relación con la reserva de un vehículo, excepto cuando se indique expresamente lo contrario por escrito por parte de la agencia."
+    "section14Content": "No se exigirá al cliente ningún depósito de garantía, fianza o importe de garantía en el momento de la reserva o alquiler del vehículo. El cliente no estará obligado a pagar, bloquear o mantener ningún depósito o importe de garantía en relación con la reserva de un vehículo, excepto cuando se indique expresamente lo contrario por escrito por parte de la agencia.",
+    "section15Title": "15. Seguro Standard",
+    "section15Content": "El seguro Standard está incluido en el precio del alquiler. Cubre el vehículo, incluidos los cristales, los neumáticos y los retrovisores. En caso de daño cubierto, la franquicia corre por cuenta del cliente: 5.000 MAD si la tarifa diaria es de 39 € o menos, y 8.000 MAD a partir de 40 €. La tarifa diaria es la indicada en la ficha del vehículo. La duración mínima es de 72 horas, facturadas en bloques de 24 horas; un bloque empezado cuenta como un día completo. La cancelación es gratuita hasta 24 h antes de la recogida.",
+    "section16Title": "16. Seguro completo (todo riesgo / Full Insurance)",
+    "section16Content": "El seguro completo (todo riesgo) reduce la franquicia a 0 MAD. Solo está disponible a partir de 5 días facturados: suplemento de 10 € al día si la tarifa diaria es de 39 € o menos, y de 15 € al día a partir de 40 €. El alquiler se factura en bloques de 24 horas; un bloque empezado cuenta como un día completo. La opción nunca viene preseleccionada y se retira automáticamente por debajo de 5 días facturados. El importe exacto siempre se muestra antes de la confirmación."
+  },
+  "blog": {
+    "label": "Consejos y guías",
+    "title": "Blog Carzio",
+    "heading": "Consejos para alquilar un coche en Marruecos",
+    "intro": "Guías prácticas sobre reservas, seguro y conducción en Agadir y Marruecos.",
+    "metaTitle": "Blog | Consejos alquiler de coches Agadir | Carzio",
+    "metaDescription": "Guías de Carzio: reservar un coche en Agadir, elegir seguro, requisitos de edad y permiso, entrega y conducción en Marruecos.",
+    "readMore": "Leer el artículo",
+    "minRead": "{{count}} min de lectura",
+    "featured": "Destacado",
+    "allArticles": "Todos los artículos",
+    "categories": "Categorías",
+    "categoryLabel": "Categoría",
+    "publishedOn": "Publicado el {{date}}",
+    "updatedOn": "Actualizado el {{date}}",
+    "related": "Leer también",
+    "backToBlog": "Volver al blog",
+    "ctaTitle": "¿Listo para ponerte en marcha?",
+    "ctaText": "Elige tu coche, indica tus fechas y recibe una confirmación por correo.",
+    "ctaButton": "Ver coches",
+    "whatsapp": "¿Preguntas? WhatsApp",
+    "languageNotice": "Los artículos están disponibles en francés e inglés.",
+    "empty": "No hay artículos en esta categoría por ahora.",
+    "notFound": "Artículo no encontrado.",
+    "notFoundText": "Este artículo no existe o aún no se ha publicado.",
+    "backHome": "Volver al inicio",
+    "articlesCount": "{{count}} artículo(s)",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbBlog": "Blog",
+    "breadcrumbLabel": "Ruta de navegación",
+    "trustDeposit": "0 MAD de fianza",
+    "trustCancellation": "Cancelación gratuita 24 h",
+    "trustInsurance": "Seguro incluido",
+    "heroCta": "Ver los coches",
+    "heroWhatsapp": "Hacer una pregunta",
+    "guidesTitle": "Guías esenciales",
+    "guidesIntro": "Más información antes de reservar."
+  },
+  "news": {
+    "label": "Notas desde Agadir",
+    "title": "Noticias Carzio",
+    "heading": "Noticias, consejos e información práctica",
+    "intro": "Novedades de Carzio, normas de alquiler y consejos útiles para tu estancia en Agadir, publicados cada martes.",
+    "metaTitle": "Noticias | Alquiler de coches Agadir | Carzio",
+    "metaDescription": "Noticias de Carzio: seguro, fianza, entrega, equipamiento y consejos prácticos para alquilar un coche en Agadir y Marruecos.",
+    "cadence": "Una nueva nota cada martes.",
+    "categories": "Temas",
+    "allNews": "Todas las noticias",
+    "comingSoon": "Próximamente",
+    "latest": "Destacado",
+    "articlesCount": "{{count}} noticia(s)",
+    "categoryLabel": "Tema",
+    "languageNotice": "Las noticias están disponibles en francés e inglés.",
+    "empty": "Aún no hay noticias en este tema.",
+    "notFound": "Artículo no encontrado.",
+    "notFoundText": "Este artículo no existe o aún no se ha publicado.",
+    "backToNews": "Volver a las noticias",
+    "breadcrumbNews": "Noticias",
+    "latestStories": "Lo más reciente"
   },
   "footer": {
     "tagline": "Soluciones de vehículos premium para clientes exigentes. Experimenta la carretera con un estilo y confort inigualables.",
@@ -243,15 +401,100 @@
     "home": "Inicio",
     "ourCars": "Nuestros Coches",
     "aboutUs": "Sobre Nosotros",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "news": "Noticias",
     "contact": "Contacto",
     "getInTouch": "Contacto",
     "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
-    "hours": "Lun-Dom: Servicio 24/7",
+    "hours": "Lun–Dom: 24/7 en el aeropuerto Agadir Al Massira",
     "followUs": "Síguenos",
     "copyright": "© 2026 Carzio. Todos los derechos reservados.",
     "terms": "Términos y Condiciones",
-    "openInMaps": "Abrir en Google Maps"
+    "openInMaps": "Abrir en Google Maps",
+    "destinations": "También entregamos en"
+  },
+  "facts": {
+    "title": "Lo que debes saber antes de reservar",
+    "delivery": "Entrega gratuita en el aeropuerto de Agadir Al Massira y en la agencia",
+    "deposit": "0 MAD de fianza y sin bloqueo de tarjeta",
+    "fiveDays": "Seguro completo desde 5 días facturados",
+    "freeCancel": "Cancelación gratuita hasta 24 h antes de la recogida"
+  },
+  "homeFaq": {
+    "title": "Tus preguntas, respondidas.",
+    "intro": "Lo esencial para reservar con Carzio — entrega, seguro, cancelación y pago — sin sorpresas. Haz clic para abrir.",
+    "seeAll": "Ver todas las preguntas",
+    "eyebrow": "Antes de reservar"
+  },
+  "faq": {
+    "eyebrow": "Ayuda e información",
+    "heading": "Preguntas frecuentes",
+    "intro": "Todo lo que debe saber antes de alquilar su coche con Carzio.",
+    "metaTitle": "FAQ | Carzio — Alquiler de coches Agadir",
+    "metaDescription": "Preguntas frecuentes sobre el alquiler de coches en Agadir y Marruecos: reserva, seguro, franquicia, combustible, entrega y conducción.",
+    "seeAnswers": "Ver las respuestas",
+    "allGuides": "Todas las guías",
+    "allFaq": "Todas las FAQ",
+    "backToFaq": "Volver a FAQ",
+    "notFound": "Página de FAQ no encontrada.",
+    "notFoundQuestion": "¿No encuentra su respuesta?",
+    "whatsappLine": "Escríbanos por WhatsApp al +212 680 318003.",
+    "whatsappCta": "Chatear por WhatsApp",
+    "stillQuestions": "¿Sigue teniendo preguntas?",
+    "weAnswerFast": "Respondemos rápido por WhatsApp.",
+    "furtherReading": "Para ir más lejos",
+    "guideBooking": "Alquilar un coche en Agadir",
+    "guideInsurance": "Seguro Standard o completo",
+    "guideAge": "Edad, permiso y conductores",
+    "guideAgadir": "Alquiler de coches en Agadir"
+  },
+  "city": {
+    "backToHome": "Volver al inicio",
+    "seeHighlights": "Qué ver en",
+    "distances": "Distancias clave",
+    "dest": "Destino",
+    "distance": "Distancia",
+    "time": "Tiempo",
+    "pickupTitle": "Recogida en",
+    "goodToKnow": "Bueno saber",
+    "faqs": "Preguntas frecuentes",
+    "guides": "Guías prácticas",
+    "guidesIntro": "Prepare su alquiler con nuestras guías detalladas.",
+    "included": [
+      "0 MAD de fianza",
+      "Seguro Standard incluido",
+      "Kilometraje ilimitado",
+      "Cancelación gratuita hasta 24 h"
+    ],
+    "deposit": "Desde",
+    "minimum": "Mínimo 3 días · 23 años y carné desde hace 4 años",
+    "askQuote": "Pedir presupuesto",
+    "seeCars": "Ver los coches",
+    "bookWhatsapp": "Reservar por WhatsApp",
+    "compareCars": "Comparar modelos",
+    "weDeliverToo": "También entregamos en",
+    "notFound": "Página no encontrada.",
+    "responseLine": "Respuesta en 24 h · Pago en la entrega de llaves",
+    "waMessage": "Hola Carzio, quiero alquilar un coche en {{city}}.",
+    "priceHook": "Buenos precios para nuestros clientes"
+  },
+  "pages": {
+    "carTitle": "Nuestros coches de alquiler en Agadir | Carzio",
+    "carDesc": "Descubre los 12 coches de Carzio: buenos precios para nuestros clientes, kilometraje ilimitado y seguro incluido.",
+    "aboutTitle": "Sobre Carzio | Alquiler de coches en Agadir",
+    "aboutDesc": "Carzio, agencia de alquiler de coches en Agadir: vehículos recientes, precios transparentes, 0 MAD de fianza y recogida en el aeropuerto Agadir Al Massira.",
+    "homeTitle": "Alquiler de coches en Agadir | Aeropuerto Al Massira | Carzio",
+    "homeDesc": "Coche de alquiler en Agadir Al Massira: 12 modelos recientes, km ilimitado, 0 MAD de fianza. Pago al recibir las llaves. Entrega gratis, cancelación 24 h.",
+    "notFound": "Esta página no existe",
+    "notFoundDesc": "Esta página no existe o ha sido movida.",
+    "notFoundLead": "El enlace puede estar desactualizado. Encuentra nuestros coches y noticias desde la página de inicio.",
+    "contactTitle": "Contacto | Carzio — Alquiler de coches en Agadir",
+    "contactDesc": "Contacta con Carzio en Agadir: WhatsApp +212 680 318003, email contact@carzio.ma, agencia N208 MAG N2 Avenue Al Khaouarizmi. Respuesta en 24 h.",
+    "termsTitle": "Términos y Condiciones | Carzio",
+    "termsDesc": "Términos de alquiler de Carzio: edad mínima 23 años, carné desde hace 4 años, 0 MAD de fianza, seguro incluido, cancelación gratuita hasta 24 h antes.",
+    "notFoundTitle": "Página no encontrada | Carzio"
   }
 }

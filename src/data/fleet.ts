@@ -1,6 +1,8 @@
 import { Car } from '../types';
 
-export const fleet: Car[] = [
+type CarModel = Omit<Car, 'gps' | 'touchscreen' | 'insuranceBand'>;
+
+const fleetModels: CarModel[] = [
   {
     id: 'dacia-sandero-stepway',
     name: 'DACIA SANDERO STEPWAY',
@@ -158,7 +160,7 @@ export const fleet: Car[] = [
     name: 'KIA SPORTAGE',
     type: 'SUV',
     pricePerDay: 55,
-    image: '/images/kia-sportage-new.jpg',
+    image: '/images/kia-sportage-new.png',
     seats: 5,
     doors: 5,
     suitcases: 5,
@@ -230,3 +232,24 @@ export const fleet: Car[] = [
     ],
   },
 ];
+
+const carFeatures: Record<string, { gps: boolean; touchscreen: boolean }> = {
+  'dacia-sandero-stepway': { gps: false, touchscreen: false },
+  'dacia-sandero-streetway': { gps: false, touchscreen: false },
+  'dacia-logan': { gps: false, touchscreen: false },
+  'hyundai-i10-bva': { gps: false, touchscreen: true },
+  'peugeot-208': { gps: true, touchscreen: true },
+  'renault-clio-5': { gps: false, touchscreen: true },
+  'dacia-duster-bva': { gps: true, touchscreen: true },
+  'dacia-jogger': { gps: false, touchscreen: false },
+  'kia-sportage': { gps: true, touchscreen: true },
+  'vw-troc-automatic': { gps: true, touchscreen: true },
+  'hyundai-tucson': { gps: true, touchscreen: true },
+  'volkswagen-touareg': { gps: true, touchscreen: true },
+};
+
+export const fleet: Car[] = fleetModels.map((car) => ({
+  ...car,
+  ...(carFeatures[car.id] || { gps: false, touchscreen: false }),
+  insuranceBand: car.pricePerDay >= 40 ? 'high' : 'low',
+}));

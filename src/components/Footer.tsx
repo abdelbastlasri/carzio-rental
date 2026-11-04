@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
@@ -9,10 +9,10 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="block shrink-0">
+            <LangLink to="/" className="block shrink-0">
               <img src="/images/carzio-logo.png" alt="Carzio" className="h-12 md:h-14 w-auto" />
-            </Link>
-            <p className="text-white/40 text-sm mt-3 leading-relaxed">
+            </LangLink>
+            <p className="text-white/60 text-sm mt-3 leading-relaxed">
               {t('footer.tagline')}
             </p>
           </div>
@@ -23,18 +23,21 @@ export default function Footer() {
                 { label: 'footer.home', to: '/' },
                 { label: 'footer.ourCars', to: '/cars' },
                 { label: 'footer.aboutUs', to: '/about' },
+                { label: 'footer.faq', to: '/faq' },
+                { label: 'footer.blog', to: '/blog' },
+                { label: 'footer.news', to: '/news' },
                 { label: 'footer.contact', to: '/contact' },
                 { label: 'footer.terms', to: '/terms' },
               ].map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-white/40 text-sm hover:text-gold transition">{t(link.label)}</Link>
+                  <LangLink to={link.to} className="text-white/60 text-sm hover:text-gold transition">{t(link.label)}</LangLink>
                 </li>
               ))}
             </ul>
           </div>
           <div>
             <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.getInTouch')}</h3>
-            <ul className="space-y-2 text-white/40 text-sm">
+            <ul className="space-y-2 text-white/60 text-sm">
               <li className="leading-relaxed">{t('footer.address')}</li>
               <li>
                 <a
@@ -69,7 +72,26 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t border-white/5 pt-6 text-center text-white/30 text-xs">
+        <div className="border-t border-white/5 pt-8">
+          <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-3">{t('footer.destinations')}</h3>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {[
+              { name: 'Agadir', slug: 'agadir' },
+              { name: 'Marrakech', slug: 'marrakech' },
+              { name: 'Casablanca', slug: 'casablanca' },
+              { name: 'Taghazout', slug: 'taghazout' },
+              { name: 'Tamraght', slug: 'tamraght' },
+              { name: 'Essaouira', slug: 'essaouira' },
+            ].map((city) => (
+              <li key={city.slug}>
+                <LangLink to={`/location-voiture-${city.slug}`} className="text-white/60 text-sm hover:text-gold transition">
+                  {city.name}
+                </LangLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="border-t border-white/5 mt-8 pt-6 text-center text-white/50 text-xs">
           {t('footer.copyright')}
         </div>
       </div>

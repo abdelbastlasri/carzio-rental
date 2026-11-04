@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { locations, locationImages } from '../data/locations';
@@ -59,12 +59,12 @@ export default function Locations() {
                 </div>
                 <h3 className="text-white font-heading font-semibold text-lg mb-3 tracking-tight">{loc.name}</h3>
                 <div className="mt-auto flex gap-2">
-                  <Link
+                  <LangLink
                     to="/cars"
                     className="flex-1 glass-gold text-white font-semibold text-sm py-2.5 rounded-xl text-center transition hover:bg-gold/20"
                   >
                     {t('locations.bookNow')}
-                  </Link>
+                  </LangLink>
                   <a
                     href={loc.mapUrl}
                     target="_blank"
