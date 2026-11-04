@@ -91,11 +91,11 @@ async function loadDbSmtp() {
   }
 }
 
-function activeSmtpUser() { return dbSmtp?.user || SMTP_USER; }
-function activeSmtpPass() { return dbSmtp?.pass || SMTP_PASS; }
+function activeSmtpUser() { return SMTP_USER || dbSmtp?.user; }
+function activeSmtpPass() { return SMTP_PASS || dbSmtp?.pass; }
 // Sender (From:) must match the account that authenticates — Gmail rejects
 // messages whose From doesn't belong to the authenticated account.
-function activeSmtpFrom() { return dbSmtp?.user || SMTP_FROM; }
+function activeSmtpFrom() { return SMTP_FROM || dbSmtp?.user || SMTP_USER; }
 
 // ===== Resend =====
 // Resend is an HTTP email API with no password to revoke. Default order is
