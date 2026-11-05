@@ -416,7 +416,11 @@ function billedDaysJs(pickupDate, dropoffDate, pickupTime, dropoffTime) {
 
 function insuranceRow(b) {
   if (!b.insuranceType) return '';
-  const full = b.fullInsurance || b.insuranceType === 'full';
+  // Business rule: Full Risk is only valid from 5 billed days. A 3-4 day
+  // booking must always show Standard Insurance in customer emails.
+  const days = Number(b.days) || billedDaysJs(b.pickupDate, b.dropoffDate, b.pickupTime, b.dropoffTime) || 0;
+  const wantsFull = b.fullInsurance || b.insuranceType === 'full';
+  const full = wantsFull && days >= 5;
   const label = full ? 'Full Risk Insurance' : 'Standard Insurance';
   const note = full ? 'Included in the total price' : 'Included';
   return row('Insurance', `${label} — ${note}`);
