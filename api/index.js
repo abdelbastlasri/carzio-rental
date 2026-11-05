@@ -556,6 +556,12 @@ app.get('/api/status', async (req, res) => {
     smtpPassFromEnv,
     smtpUserFromDb: !!dbSmtp?.user,
     smtpPassFromDb: !!dbSmtp?.pass,
+    emailPrimary: (() => {
+      const gmailConfigured = !!(activeSmtpUser() && activeSmtpPass());
+      if (EMAIL_PROVIDER === 'gmail' && gmailConfigured) return 'gmail';
+      if (resendActive()) return 'resend';
+      return gmailConfigured ? 'gmail' : 'none';
+    })(),
     // Credential shape stays server-side only: this endpoint is public and
     // details such as password length/character class weaken security.
   });
