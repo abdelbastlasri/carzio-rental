@@ -3,8 +3,7 @@ import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import NewsCard from '../components/NewsCard';
-import BlogBreadcrumbs from '../components/BlogBreadcrumbs';
-import RentalTrustChips from '../components/RentalTrustChips';
+import JournalCategoryHero from '../components/JournalCategoryHero';
 import { getNewsByCategory } from '../content/news/loader';
 import { findNewsCategory } from '../content/news/categories';
 
@@ -75,37 +74,29 @@ export default function NewsCategory() {
         robots={posts.length === 0 ? 'noindex, follow' : 'index, follow'}
         jsonLd={[breadcrumbs, collectionLd]}
       />
-      <div className="pt-28 md:pt-32">
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black" />
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
-            <BlogBreadcrumbs
-              items={[
-                { label: t('blog.breadcrumbHome'), to: '/' },
-                { label: t('news.breadcrumbNews'), to: '/news' },
-                { label: copy.name },
-              ]}
-            />
-            <p className="mt-5 text-xs uppercase tracking-[0.4em] text-gold">{t('news.categoryLabel')}</p>
-            <h1
-              lang={contentLang}
-              className="mt-4 font-heading text-3xl font-bold tracking-tight text-white md:text-5xl"
-            >
-              {copy.name}
-            </h1>
-            <p lang={contentLang} className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
-              {copy.description}
+      <JournalCategoryHero
+        image={category.image}
+        imageAlt={category.imageAlt[contentLang]}
+        language={contentLang}
+        eyebrow={t('news.categoryLabel')}
+        title={copy.name}
+        description={copy.description}
+        breadcrumbs={[
+          { label: t('blog.breadcrumbHome'), to: '/' },
+          { label: t('news.breadcrumbNews'), to: '/news' },
+          { label: copy.name },
+        ]}
+        meta={
+          showLanguageNotice ? (
+            <p className="inline-flex rounded-lg border border-white/15 bg-black/45 px-3 py-2 text-xs text-white/70 backdrop-blur-[2px]">
+              {t('news.languageNotice')}
             </p>
-            <RentalTrustChips className="mt-5" />
-            {showLanguageNotice && (
-              <p className="mt-4 inline-flex rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/50">
-                {t('news.languageNotice')}
-              </p>
-            )}
-          </div>
-        </section>
+          ) : undefined
+        }
+      />
 
-        <section className="mx-auto max-w-6xl px-4 pb-16">
+      <div className="relative">
+        <section className="mx-auto max-w-6xl px-4 pb-10 pt-10 md:pt-12">
           {posts.length === 0 ? (
             <div className="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
               <p className="text-sm text-white/60">{t('news.empty')}</p>

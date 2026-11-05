@@ -2,11 +2,11 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 
 export type CurrencyCode = 'MAD' | 'EUR' | 'USD' | 'GBP';
 
-export const CURRENCIES: { code: CurrencyCode; flag: string; label: string }[] = [
-  { code: 'MAD', flag: '🇲🇦', label: 'Dirham' },
-  { code: 'EUR', flag: '🇪🇺', label: 'Euro' },
-  { code: 'USD', flag: '🇺🇸', label: 'Dollar US' },
-  { code: 'GBP', flag: '🇬🇧', label: 'Pound Sterling' },
+export const CURRENCIES: { code: CurrencyCode; label: string }[] = [
+  { code: 'MAD', label: 'Dirham' },
+  { code: 'EUR', label: 'Euro' },
+  { code: 'USD', label: 'Dollar US' },
+  { code: 'GBP', label: 'Pound Sterling' },
 ];
 
 /**

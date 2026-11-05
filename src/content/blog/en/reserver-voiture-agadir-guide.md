@@ -6,8 +6,8 @@ title: "Renting a car in Agadir: the complete guide"
 description: "From the online request to key handover: minimum duration, documents, payment, airport delivery and cancellation. Carzio's guide to booking without surprises."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Carzio Dacia Sandero Stepway at Agadir Al Massira airport"
+image: /images/journal/car-keys.jpg
+imageAlt: "Car keys, the start of the car rental booking"
 readingTime: 9
 featured: true
 published: true

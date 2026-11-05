@@ -1,6 +1,7 @@
 import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import ImageCategoryCard from '../components/ImageCategoryCard';
 import { getFaqCategories } from '../data/faq';
 
 export default function FaqHub() {
@@ -25,14 +26,22 @@ export default function FaqHub() {
         jsonLd={[breadcrumbs]}
       />
       <div className="pt-28 md:pt-32">
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black" />
-          <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
+        <section className="relative min-h-[28rem] overflow-hidden md:min-h-[32rem]">
+          <img
+            src="/images/journal/car-keys.jpg"
+            alt={t('faq.heroAlt')}
+            width={1600}
+            height={1200}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/65 to-zinc-950/5" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/15 to-transparent" />
+          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-10 md:pb-14">
             <p className="text-xs uppercase tracking-[0.4em] text-gold">{t('faq.eyebrow')}</p>
             <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-white md:text-5xl">
               {t('faq.heading')}
             </h1>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-white/60">
+            <p className="mt-3 max-w-2xl text-sm text-white/65">
               {t('faq.intro')}
             </p>
           </div>
@@ -41,20 +50,16 @@ export default function FaqHub() {
         <section className="mx-auto max-w-5xl px-4 pb-16">
           <div className="grid gap-4 md:grid-cols-2">
             {categories.map((category) => (
-              <LangLink
+              <ImageCategoryCard
                 key={category.slug}
                 to={`/faq/${category.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-zinc-950/60 p-6 transition hover:border-gold/40"
-              >
-                <h2 className="font-heading text-lg font-semibold text-white">{category.title}</h2>
-                <p className="mt-2 flex-1 text-sm text-white/50">{category.short}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm text-gold">
-                  {t('faq.seeAnswers')}
-                  <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-5-5l5 5-5 5" />
-                  </svg>
-                </span>
-              </LangLink>
+                image={category.image ?? '/images/journal/car-keys.jpg'}
+                alt={category.imageAlt ?? category.title}
+                title={category.title}
+                description={category.short}
+                badge={category.entries.length}
+                className="h-full"
+              />
             ))}
           </div>
           <div className="mt-10 rounded-2xl border border-white/10 bg-zinc-950/60 p-6">

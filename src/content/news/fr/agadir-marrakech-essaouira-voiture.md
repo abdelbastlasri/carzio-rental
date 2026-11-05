@@ -5,8 +5,8 @@ category: villes-visites
 title: "Agadir, Marrakech, Essaouira : visiter en voiture"
 description: "Agadir, Essaouira et Marrakech en voiture de location : itinéraires, temps de trajet, frais de livraison et bons plans pour un séjour réussi."
 date: 2026-11-05
-image: /images/dacia-logan.jpg
-imageAlt: "Carzio Dacia Logan, visite des villes du Sud marocain"
+image: /images/journal/essaouira-port.jpg
+imageAlt: "Port d'Essaouira, Maroc"
 readingTime: 6
 published: true
 ---

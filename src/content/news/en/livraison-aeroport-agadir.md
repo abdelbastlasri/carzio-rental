@@ -5,8 +5,8 @@ category: aeroports-livraison
 title: "Agadir Al Massira airport delivery: what is free"
 description: "Free pickup at Agadir Al Massira and at the agency. Marrakech and Casablanca cost €80 per trip. Taghazout, Tamraght and Essaouira on request."
 date: 2026-11-03
-image: /images/dacia-sandero-streetway.jpg
-imageAlt: "Carzio Dacia Sandero Streetway, Agadir pickup"
+image: /images/journal/agadir-airport-terminal.jpg
+imageAlt: "Agadir Al Massira airport terminal"
 readingTime: 3
 featured: false
 published: true

@@ -380,7 +380,8 @@
     "heroCta": "Zobacz samochody",
     "heroWhatsapp": "Zadaj pytanie",
     "guidesTitle": "Najważniejsze poradniki",
-    "guidesIntro": "Więcej przed rezerwacją."
+    "guidesIntro": "Więcej przed rezerwacją.",
+    "heroAlt": "Nadmorska droga Maroka wzdłuż Atlantyku"
   },
   "news": {
     "label": "Notatki z Agadiru",
@@ -404,7 +405,8 @@
     "breadcrumbNews": "Aktualności",
     "latestStories": "Najnowsze",
     "categoriesIntro": "Jedenaście tematów, które pomogą przygotować pobyt i wynajem samochodu w Agadirze.",
-    "topics": "tematy"
+    "topics": "tematy",
+    "heroAlt": "Widok oświetlonej promenady Agadir w nocy"
   },
   "footer": {
     "tagline": "Premium rozwiązania pojazdowe dla wymagających klientów. Doświadcz drogi w niezrównanym stylu i komforcie.",
@@ -425,7 +427,8 @@
     "copyright": "© 2026 Carzio. Wszelkie prawa zastrzeżone.",
     "terms": "Warunki i Zasady",
     "openInMaps": "Otwórz w Google Maps",
-    "destinations": "Dostarczamy również do"
+    "destinations": "Dostarczamy również do",
+    "photoCredits": "Źródła zdjęć"
   },
   "facts": {
     "title": "To, co musisz wiedzieć przed rezerwacją",
@@ -460,7 +463,8 @@
     "guideBooking": "Wynajem auta w Agadirze",
     "guideInsurance": "Ubezpieczenie Standard czy Pełne",
     "guideAge": "Wiek, prawo jazdy i kierowcy",
-    "guideAgadir": "Wynajem auta w Agadirze"
+    "guideAgadir": "Wynajem auta w Agadirze",
+    "heroAlt": "Kluczyki do samochodu przy odbiorze wynajmu w Agadirze"
   },
   "city": {
     "backToHome": "Powrót do strony głównej",

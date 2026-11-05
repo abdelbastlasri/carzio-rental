@@ -380,7 +380,8 @@
     "heroCta": "See the cars",
     "heroWhatsapp": "Ask a question",
     "guidesTitle": "Essential guides",
-    "guidesIntro": "Go further before you book."
+    "guidesIntro": "Go further before you book.",
+    "heroAlt": "Morocco coastal road along the Atlantic"
   },
   "news": {
     "label": "Notes from Agadir",
@@ -404,7 +405,8 @@
     "breadcrumbNews": "News",
     "latestStories": "Latest stories",
     "categoriesIntro": "Eleven topics to help you plan your stay and your car rental in Agadir.",
-    "topics": "topics"
+    "topics": "topics",
+    "heroAlt": "Agadir's seafront promenade at night"
   },
   "footer": {
     "tagline": "Premium vehicle solutions for discerning clients. Experience the road in unparalleled style and comfort.",
@@ -425,7 +427,8 @@
     "copyright": "© 2026 Carzio. All rights reserved.",
     "terms": "Terms & Conditions",
     "openInMaps": "Open in Google Maps",
-    "destinations": "We also deliver to"
+    "destinations": "We also deliver to",
+    "photoCredits": "Photo credits"
   },
   "facts": {
     "title": "What you need to know before booking",
@@ -460,7 +463,8 @@
     "guideBooking": "Rent a car in Agadir",
     "guideInsurance": "Standard or Full Insurance",
     "guideAge": "Age, licence and drivers",
-    "guideAgadir": "Car rental in Agadir"
+    "guideAgadir": "Car rental in Agadir",
+    "heroAlt": "Car keys for your Agadir rental pickup"
   },
   "city": {
     "backToHome": "Back to home",

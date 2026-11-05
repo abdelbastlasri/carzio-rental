@@ -5,8 +5,8 @@ category: villes-visites
 title: "Agadir, Marrakech, Essaouira: sightseeing by car"
 description: "Agadir, Essaouira and Marrakech by rental car: routes, driving times, delivery fees and practical tips for a smooth trip."
 date: 2026-11-05
-image: /images/dacia-logan.jpg
-imageAlt: "Carzio Dacia Logan, sightseeing in southern Morocco"
+image: /images/journal/essaouira-port.jpg
+imageAlt: "Essaouira port, Morocco"
 readingTime: 6
 published: true
 ---

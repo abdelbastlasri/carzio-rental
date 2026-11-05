@@ -22,6 +22,7 @@ import NewsCategory from './pages/NewsCategory';
 import NewsArticle from './pages/NewsArticle';
 import CityPage from './pages/CityPage';
 import NotFound from './pages/NotFound';
+import PhotoCredits from './pages/PhotoCredits';
 import AdminRoutes from './pages/admin/AdminRoutes';
 
 function App() {
@@ -32,11 +33,15 @@ function App() {
   const isAdmin = window.location.hostname === 'admin.carzio.ma';
 
   useEffect(() => {
+    if (isAdmin) {
+      document.title = 'Carzio Admin';
+      return;
+    }
     if (urlLang && i18n.language !== urlLang) {
       i18n.changeLanguage(urlLang);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urlLang]);
+  }, [urlLang, isAdmin]);
 
   if (isAdmin) {
     return <AdminRoutes />;
@@ -60,6 +65,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/credits" element={<PhotoCredits />} />
           <Route path="/faq" element={<FaqHub />} />
           <Route path="/faq/:slug" element={<FaqPage />} />
           <Route path="/blog" element={<BlogHub />} />

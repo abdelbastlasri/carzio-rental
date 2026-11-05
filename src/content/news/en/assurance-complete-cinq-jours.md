@@ -5,8 +5,8 @@ category: assurance-caution
 title: "Full insurance from 5 days: how it works"
 description: "Standard insurance included, full insurance optional from 5 billed days. The plain version, with a worked example."
 date: 2026-11-03
-image: /images/renault-clio-5.jpg
-imageAlt: "Carzio Renault Clio 5, car rental insurance in Morocco"
+image: /images/journal/car-inspection.jpg
+imageAlt: "Red car engine during a mechanical inspection"
 readingTime: 4
 featured: true
 published: true

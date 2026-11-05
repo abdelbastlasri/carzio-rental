@@ -5,8 +5,8 @@ category: flotte-modeles
 title: "GPS et écran tactile : quels modèles Carzio en sont équipés"
 description: "Six modèles avec GPS, huit avec écran tactile. La liste exacte pour choisir votre voiture avant de réserver à Agadir."
 date: 2026-11-03
-image: /images/renault-clio-5.jpg
-imageAlt: "Renault Clio 5 Carzio avec écran tactile"
+image: /images/journal/dashboard.jpg
+imageAlt: "Tableau de bord d'une Mercedes-Benz C250"
 readingTime: 3
 featured: false
 published: true

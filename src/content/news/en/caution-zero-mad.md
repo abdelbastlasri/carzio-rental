@@ -5,8 +5,8 @@ category: reservation-documents
 title: "0 MAD deposit: how payment works"
 description: "No deposit, no card hold, debit cards accepted. Payment at key handover, plus the documents to bring."
 date: 2026-11-03
-image: /images/renault-clio-5.jpg
-imageAlt: "Handing over the keys of a Carzio Renault Clio 5 in Agadir"
+image: /images/journal/moroccan-passport.jpg
+imageAlt: "Moroccan passport"
 readingTime: 3
 featured: false
 published: true

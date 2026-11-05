@@ -9,9 +9,80 @@ export interface FaqCategory {
   short: string;
   description: string;
   entries: FaqEntry[];
+  image?: string;
+  imageAlt?: string;
+}
+
+interface FaqCategoryImage {
+  image: string;
+  alt: Record<FaqLang, string>;
 }
 
 type FaqLang = 'fr' | 'en' | 'de' | 'es' | 'pl';
+
+const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = {
+  reservation: {
+    image: '/images/journal/car-keys.jpg',
+    alt: {
+      fr: 'Clés de voiture, début de votre réservation',
+      en: 'Car keys at the start of your booking',
+      de: 'Autoschlüssel bei der Übergabe Ihres Mietwagens',
+      es: 'Llaves del coche para recoger tu alquiler',
+      pl: 'Kluczyki do samochodu przy odbiorze auta',
+    },
+  },
+  conditions: {
+    image: '/images/journal/young-driver.jpg',
+    alt: {
+      fr: 'Femme au volant d’une voiture au Maroc',
+      en: 'Young woman at the wheel in Morocco',
+      de: 'Junge Frau am Steuer eines Autos in Marokko',
+      es: 'Mujer joven al volante de un coche en Marruecos',
+      pl: 'Młoda kobieta za kierownicą samochodu w Maroku',
+    },
+  },
+  assurance: {
+    image: '/images/journal/car-inspection.jpg',
+    alt: {
+      fr: 'Moteur d’une voiture rouge en cours d’inspection',
+      en: 'Red car engine during a mechanical inspection',
+      de: 'Motor eines roten Autos bei der Prüfung',
+      es: 'Motor de un coche rojo durante una inspección',
+      pl: 'Silnik czerwonego samochodu podczas kontroli',
+    },
+  },
+  'carburant-livraison': {
+    image: '/images/journal/agadir-airport-terminal.jpg',
+    alt: {
+      fr: 'Terminal de l’aéroport Agadir Al Massira',
+      en: 'Agadir Al Massira airport terminal',
+      de: 'Terminal des Flughafens Agadir Al Massira',
+      es: 'Terminal del aeropuerto de Agadir Al Massira',
+      pl: 'Terminal lotniska Agadir Al Massira',
+    },
+  },
+  'conduite-maroc': {
+    image: '/images/journal/coastal-road.jpg',
+    alt: {
+      fr: 'Route côtière du Maroc le long de l’Atlantique',
+      en: 'Morocco’s coastal road along the Atlantic',
+      de: 'Küstenstraße Marokkos entlang des Atlantiks',
+      es: 'Carretera costera de Marruecos a lo largo del Atlántico',
+      pl: 'Nadmorska droga Maroka wzdłuż Atlantyku',
+    },
+  },
+};
+
+const withCategoryImages = (categories: FaqCategory[], lang: FaqLang): FaqCategory[] =>
+  categories.map((category) => {
+    const visual = CATEGORY_IMAGES[category.slug];
+    if (!visual) return category;
+    return {
+      ...category,
+      image: visual.image,
+      imageAlt: visual.alt[lang],
+    };
+  });
 
 const fr: FaqCategory[] = [
   {
@@ -863,7 +934,13 @@ const pl: FaqCategory[] = [
   },
 ];
 
-const CATS: Record<FaqLang, FaqCategory[]> = { fr, en, de, es, pl };
+const CATS: Record<FaqLang, FaqCategory[]> = {
+  fr: withCategoryImages(fr, 'fr'),
+  en: withCategoryImages(en, 'en'),
+  de: withCategoryImages(de, 'de'),
+  es: withCategoryImages(es, 'es'),
+  pl: withCategoryImages(pl, 'pl'),
+};
 
 export function getFaqCategories(lang: string): FaqCategory[] {
   const key = (lang.slice(0, 2) || 'en') as FaqLang;

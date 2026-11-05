@@ -5,8 +5,8 @@ category: evenements
 title: "Quand louer une voiture à Agadir : saisons, vacances et affluence"
 description: "Haute saison, vacances scolaires, Ramadan et fêtes : les périodes à anticiper pour réserver votre voiture à Agadir sans stress."
 date: 2026-11-05
-image: /images/renault-clio-5.jpg
-imageAlt: "Renault Clio 5 Carzio à Agadir"
+image: /images/journal/agadir-beach.jpg
+imageAlt: "Plage d'Agadir au crépuscule"
 readingTime: 5
 published: true
 ---

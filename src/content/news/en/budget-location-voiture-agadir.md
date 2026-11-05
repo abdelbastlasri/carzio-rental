@@ -5,8 +5,8 @@ category: budget-conseils
 title: "Car rental budget in Agadir: what is included and what to plan for"
 description: "Insurance, deposit, mileage, delivery, fuel and tolls: the real cost of renting a car in Agadir, with no hidden fees."
 date: 2026-11-05
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Carzio Dacia Sandero Stepway, Agadir car rental"
+image: /images/journal/moroccan-dirham.jpg
+imageAlt: "Moroccan dirham banknotes"
 readingTime: 6
 published: true
 ---

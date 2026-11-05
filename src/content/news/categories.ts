@@ -5,6 +5,8 @@ export interface NewsCategoryCopy {
 
 export interface NewsCategory {
   slug: string;
+  image: string;
+  imageAlt: { fr: string; en: string };
   fr: NewsCategoryCopy;
   en: NewsCategoryCopy;
 }
@@ -17,6 +19,8 @@ export interface NewsCategory {
 export const newsCategories: NewsCategory[] = [
   {
     slug: 'conduite-maroc',
+    image: '/images/journal/coastal-road.jpg',
+    imageAlt: { fr: "Route côtière du Maroc le long de l'Atlantique", en: "Morocco’s coastal road along the Atlantic" },
     fr: {
       name: 'Conduire au Maroc',
       description:
@@ -30,6 +34,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'securite-regles',
+    image: '/images/journal/seatbelt.jpg',
+    imageAlt: { fr: "Ceinture de sécurité bouclée", en: "Buckling a seatbelt" },
     fr: {
       name: 'Sécurité & règles',
       description:
@@ -43,6 +49,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'assurance-caution',
+    image: '/images/journal/car-inspection.jpg',
+    imageAlt: { fr: "Moteur d'une voiture rouge en cours d'inspection", en: "Red car engine during a mechanical inspection" },
     fr: {
       name: 'Assurance & caution',
       description:
@@ -56,6 +64,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'reservation-documents',
+    image: '/images/journal/moroccan-passport.jpg',
+    imageAlt: { fr: "Passeport marocain", en: "Moroccan passport" },
     fr: {
       name: 'Réservation & documents',
       description:
@@ -69,6 +79,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'aeroports-livraison',
+    image: '/images/journal/agadir-airport-terminal.jpg',
+    imageAlt: { fr: "Terminal de l’aéroport Agadir Al Massira", en: "Agadir Al Massira airport terminal" },
     fr: {
       name: 'Aéroports & livraison',
       description:
@@ -82,6 +94,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'villes-visites',
+    image: '/images/journal/marrakech-medina.jpg',
+    imageAlt: { fr: "Fabricant de lampes dans la médina de Marrakech", en: "Lamp maker in the Marrakech medina" },
     fr: {
       name: 'Villes & visites',
       description:
@@ -95,6 +109,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'road-trips',
+    image: '/images/journal/paradise-valley.jpg',
+    imageAlt: { fr: "Souk de palmiers de la vallée du Paradis au Maroc", en: "Palm oasis in Morocco’s Paradise Valley" },
     fr: {
       name: 'Road trips & itinéraires',
       description:
@@ -108,6 +124,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'voyage-famille',
+    image: '/images/journal/child-seat.jpg',
+    imageAlt: { fr: "Siège auto Inglesina Marco Polo pour enfant", en: "Inglesina Marco Polo child car seat" },
     fr: {
       name: 'Voyage en famille',
       description:
@@ -121,6 +139,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'flotte-modeles',
+    image: '/images/journal/dashboard.jpg',
+    imageAlt: { fr: "Tableau de bord d’une Mercedes-Benz C250", en: "Mercedes-Benz C250 dashboard" },
     fr: {
       name: 'Flotte & modèles',
       description:
@@ -134,6 +154,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'evenements',
+    image: '/images/journal/agadir-beach.jpg',
+    imageAlt: { fr: "Plage d’Agadir au crépuscule", en: "Agadir beach at dusk" },
     fr: {
       name: 'Événements & saisons',
       description:
@@ -147,6 +169,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'budget-conseils',
+    image: '/images/journal/moroccan-dirham.jpg',
+    imageAlt: { fr: "Billets en dirhams marocains", en: "Moroccan dirham banknotes" },
     fr: {
       name: 'Budget & conseils',
       description:

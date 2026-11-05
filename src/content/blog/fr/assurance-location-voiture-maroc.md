@@ -5,8 +5,8 @@ category: assurance
 title: "Assurance standard ou complète : que faut-il choisir ?"
 description: "Assurance standard incluse dans le tarif, assurance complète en option à partir de 5 jours. Explications claires, exemples et conseils pour décider."
 date: 2026-11-03
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Dacia Sandero Stepway Carzio, assurance location Maroc"
+image: /images/journal/mechanic.jpg
+imageAlt: "Mécanicien en train d'inspecter un moteur de voiture"
 readingTime: 5
 featured: true
 published: true

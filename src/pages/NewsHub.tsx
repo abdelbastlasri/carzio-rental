@@ -2,6 +2,7 @@ import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import NewsCard from '../components/NewsCard';
+import ImageCategoryCard from '../components/ImageCategoryCard';
 import BlogBreadcrumbs from '../components/BlogBreadcrumbs';
 import RentalTrustChips from '../components/RentalTrustChips';
 import BookingFacts from '../components/BookingFacts';
@@ -55,9 +56,17 @@ export default function NewsHub() {
         jsonLd={[breadcrumbs, collectionLd]}
       />
       <div className="pt-28 md:pt-32">
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black" />
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
+        <section className="relative min-h-[30rem] overflow-hidden md:min-h-[34rem]">
+          <img
+            src="/images/journal/agadir-corniche.jpg"
+            alt={t('news.heroAlt')}
+            width={1600}
+            height={777}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/60 to-zinc-950/5" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/15 to-transparent" />
+          <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-10 pt-8 md:pb-14">
             <BlogBreadcrumbs
               items={[
                 { label: t('blog.breadcrumbHome'), to: '/' },
@@ -107,28 +116,20 @@ export default function NewsHub() {
               {newsCategories.length} {t('news.topics')}
             </span>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {newsCategories.map((category) => {
               const count = counts[category.slug] || 0;
               const copy = category[contentLang];
               return (
                 <li key={category.slug}>
-                  <LangLink
+                  <ImageCategoryCard
                     to={`/news/categorie/${category.slug}`}
-                    className="group flex h-full flex-col rounded-xl border border-white/10 bg-zinc-950/50 p-4 transition hover:border-gold/40 hover:bg-zinc-900/60"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <span className="font-heading text-sm font-semibold text-white transition group-hover:text-gold">
-                        {copy.name}
-                      </span>
-                      <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[10px] tabular-nums text-white/60">
-                        {count}
-                      </span>
-                    </div>
-                    <span className="mt-2 text-xs leading-relaxed text-white/50">
-                      {copy.description}
-                    </span>
-                  </LangLink>
+                    image={category.image}
+                    alt={category.imageAlt[contentLang]}
+                    title={copy.name}
+                    description={copy.description}
+                    badge={count}
+                  />
                 </li>
               );
             })}

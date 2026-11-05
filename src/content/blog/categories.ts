@@ -5,6 +5,8 @@ export interface BlogCategoryCopy {
 
 export interface BlogCategory {
   slug: string;
+  image: string;
+  imageAlt: { fr: string; en: string };
   fr: BlogCategoryCopy;
   en: BlogCategoryCopy;
 }
@@ -12,6 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
+    image: '/images/journal/car-keys.jpg',
+    imageAlt: { fr: "Clés de voiture, le début de la réservation", en: "Car keys at the start of a rental booking" },
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -25,6 +29,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
+    image: '/images/journal/mechanic.jpg',
+    imageAlt: { fr: "Mécanicien en train d’inspecter un moteur de voiture", en: "Mechanic inspecting a car engine" },
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -38,6 +44,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
+    image: '/images/journal/young-driver.jpg',
+    imageAlt: { fr: "Femme au volant d’une voiture au Maroc", en: "Young woman at the wheel of a car in Morocco" },
     fr: {
       name: 'Âge, permis & conduite',
       description:

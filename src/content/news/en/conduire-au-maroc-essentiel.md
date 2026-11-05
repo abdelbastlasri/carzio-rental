@@ -5,8 +5,8 @@ category: conduite-maroc
 title: "Driving in Morocco: what to know before you rent"
 description: "Roads, parking, safety and local habits: the key points for driving calmly in a rental car in Morocco."
 date: 2026-11-05
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Carzio Dacia Sandero Stepway on a coastal road in Morocco"
+image: /images/journal/coastal-road.jpg
+imageAlt: "Morocco coastal road along the Atlantic"
 readingTime: 5
 published: true
 ---

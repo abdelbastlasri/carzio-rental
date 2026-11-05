@@ -3,8 +3,7 @@ import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import BlogCard from '../components/BlogCard';
-import BlogBreadcrumbs from '../components/BlogBreadcrumbs';
-import RentalTrustChips from '../components/RentalTrustChips';
+import JournalCategoryHero from '../components/JournalCategoryHero';
 import { getPostsByCategory } from '../content/blog/loader';
 import { findBlogCategory } from '../content/blog/categories';
 
@@ -71,53 +70,29 @@ export default function BlogCategory() {
         canonical={canonical}
         jsonLd={[breadcrumbs, collectionLd]}
       />
-      <div className="pt-28 md:pt-32">
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black" />
-          <div className="relative z-10 mx-auto max-w-6xl px-4">
-            <BlogBreadcrumbs
-              items={[
-                { label: t('blog.breadcrumbHome'), to: '/' },
-                { label: t('blog.breadcrumbBlog'), to: '/blog' },
-                { label: copy.name },
-              ]}
-            />
-            <p className="mt-5 text-xs uppercase tracking-[0.4em] text-gold">{t('blog.categoryLabel')}</p>
-            <h1
-              lang={contentLang}
-              className="mt-4 font-heading text-3xl font-bold tracking-tight text-white md:text-5xl"
-            >
-              {copy.name}
-            </h1>
-            <p lang={contentLang} className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
-              {copy.description}
+      <JournalCategoryHero
+        image={category.image}
+        imageAlt={category.imageAlt[contentLang]}
+        language={contentLang}
+        eyebrow={t('blog.categoryLabel')}
+        title={copy.name}
+        description={copy.description}
+        breadcrumbs={[
+          { label: t('blog.breadcrumbHome'), to: '/' },
+          { label: t('blog.breadcrumbBlog'), to: '/blog' },
+          { label: copy.name },
+        ]}
+        meta={
+          showLanguageNotice ? (
+            <p className="inline-flex rounded-lg border border-white/15 bg-black/45 px-3 py-2 text-xs text-white/70 backdrop-blur-[2px]">
+              {t('blog.languageNotice')}
             </p>
-            <RentalTrustChips className="mt-5" />
-            <div className="mt-6 flex flex-wrap gap-3">
-              <LangLink
-                to="/cars"
-                className="rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gold-light"
-              >
-                {t('blog.heroCta')}
-              </LangLink>
-              <a
-                href="https://wa.me/212680318003"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-gold"
-              >
-                {t('blog.heroWhatsapp')}
-              </a>
-            </div>
-            {showLanguageNotice && (
-              <p className="mt-4 inline-flex rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/50">
-                {t('blog.languageNotice')}
-              </p>
-            )}
-          </div>
-        </section>
+          ) : undefined
+        }
+      />
 
-        <section className="mx-auto max-w-6xl px-4 pb-16">
+      <div className="relative">
+        <section className="mx-auto max-w-6xl px-4 pb-10 pt-10 md:pt-12">
           {posts.length ? (
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

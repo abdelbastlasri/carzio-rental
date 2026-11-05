@@ -18,31 +18,32 @@ export default function BlogCard({ post, contentLang }: BlogCardProps) {
       to={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 transition hover:border-gold/40 focus-visible:border-gold"
     >
-      <div className="aspect-[16/10] overflow-hidden bg-zinc-900">
+      <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900">
         <img
           src={post.image}
           alt={post.imageAlt}
           width={640}
-          height={400}
+          height={480}
           loading="lazy"
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="absolute inset-0 h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
         />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950/85 via-zinc-950/10 to-zinc-950/45" />
+        <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold backdrop-blur-[2px]">
+          {category.name}
+        </span>
+        <time dateTime={post.date} className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/65 px-3 py-1 text-[11px] text-white/80 backdrop-blur-[2px]">
+          {formatBlogDate(post.date, post.lang)}
+        </time>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap items-center gap-2 text-xs text-white/60">
-          <span className="rounded-full border border-gold/30 px-2.5 py-1 text-gold">
-            {category.name}
-          </span>
-          <span>{t('blog.minRead', { count: post.readingTime })}</span>
-        </div>
-        <h3 className="mt-3 font-heading text-lg font-semibold leading-snug text-white transition group-hover:text-gold">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="font-heading text-lg font-semibold leading-snug text-white transition group-hover:text-gold">
           {post.title}
         </h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{post.description}</p>
         <div className="mt-4 flex items-center justify-between gap-3">
-          <time dateTime={post.date} className="text-xs text-white/50">
-            {formatBlogDate(post.date, post.lang)}
-          </time>
+          <span className="text-xs text-white/50">
+            {t('blog.minRead', { count: post.readingTime })}
+          </span>
           <span className="inline-flex items-center gap-2 text-sm font-medium text-gold">
             {t('blog.readMore')}
             <svg

@@ -5,8 +5,8 @@ category: budget-conseils
 title: "Budget location de voiture à Agadir : ce qui est inclus et ce qu'il faut prévoir"
 description: "Assurance, caution, kilométrage, livraison, carburant et péages : le vrai budget d'une location de voiture à Agadir, sans frais cachés."
 date: 2026-11-05
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Dacia Sandero Stepway Carzio, location à Agadir"
+image: /images/journal/moroccan-dirham.jpg
+imageAlt: "Billets en dirhams marocains"
 readingTime: 6
 published: true
 ---

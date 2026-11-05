@@ -5,8 +5,8 @@ category: securite-regles
 title: "Sécurité routière au Maroc : les règles essentielles"
 description: "Vitesses, contrôles, stationnement et bons réflexes en cas d'incident : l'essentiel sécurité pour louer et conduire une voiture au Maroc."
 date: 2026-11-05
-image: /images/renault-clio-5.jpg
-imageAlt: "Carzio Renault Clio 5, sécurité routière au Maroc"
+image: /images/journal/seatbelt.jpg
+imageAlt: "Ceinture de sécurité bouclée"
 readingTime: 5
 published: true
 ---

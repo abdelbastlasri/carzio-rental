@@ -5,8 +5,8 @@ category: voyage-famille
 title: "Louer une voiture en famille au Maroc : nos conseils"
 description: "Sièges enfants gratuits, SUV 7 places et conseils familles : comment choisir et organiser votre location de voiture à Agadir et au Maroc."
 date: 2026-11-05
-image: /images/dacia-logan.jpg
-imageAlt: "Dacia Logan Carzio, location de voiture en famille"
+image: /images/journal/child-seat.jpg
+imageAlt: "Siège auto Inglesina Marco Polo pour enfant"
 readingTime: 5
 published: true
 ---

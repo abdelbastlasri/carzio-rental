@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
+import JournalCategoryHero from '../components/JournalCategoryHero';
 import { findFaqCategory } from '../data/faq';
 
 export default function FaqPage() {
@@ -51,20 +52,22 @@ export default function FaqPage() {
         canonical={`https://www.carzio.ma/faq/${category.slug}`}
         jsonLd={[faqLd, breadcrumbs]}
       />
-      <div className="pt-28 md:pt-32">
-        <section className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black" />
-          <div className="relative z-10 mx-auto max-w-4xl px-4">
-            <LangLink to="/faq" className="text-xs text-white/55 hover:text-white">
-              ← {t('faq.allFaq')}
-            </LangLink>
-            <p className="mt-4 text-xs uppercase tracking-[0.4em] text-gold">FAQ</p>
-            <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-white md:text-4xl">{category.title}</h1>
-            <p className="mt-3 text-sm text-white/60">{category.description}</p>
-          </div>
-        </section>
+      <JournalCategoryHero
+        image={category.image ?? '/images/journal/car-keys.jpg'}
+        imageAlt={category.imageAlt ?? category.title}
+        language={i18n.language.slice(0, 2)}
+        eyebrow="FAQ"
+        title={category.title}
+        description={category.description}
+        breadcrumbs={[
+          { label: t('nav.home'), to: '/' },
+          { label: 'FAQ', to: '/faq' },
+          { label: category.title },
+        ]}
+      />
+      <div className="relative">
 
-        <section className="mx-auto max-w-4xl px-4 pb-16">
+        <section className="mx-auto max-w-4xl px-4 pb-16 pt-8 md:pt-12">
           <div className="divide-y divide-white/5 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60">
             {category.entries.map((entry) => (
               <details key={entry.q} className="group p-6">

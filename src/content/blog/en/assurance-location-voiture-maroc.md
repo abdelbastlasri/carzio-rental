@@ -5,8 +5,8 @@ category: assurance
 title: "Standard or full insurance: which should you choose?"
 description: "Standard insurance included in every rate, full insurance optional from 5 billed days. Clear explanations, examples and advice to decide."
 date: 2026-11-03
-image: /images/dacia-sandero-stepway.jpg
-imageAlt: "Dacia Sandero Stepway Carzio, car rental insurance in Morocco"
+image: /images/journal/mechanic.jpg
+imageAlt: "Mechanic inspecting a car engine"
 readingTime: 5
 featured: true
 published: true

@@ -5,8 +5,8 @@ category: assurance-caution
 title: "Assurance complète dès 5 jours : comment ça marche"
 description: "Assurance standard incluse, assurance complète en option à partir de 5 jours facturés. Le point en clair, avec un exemple de calcul."
 date: 2026-11-03
-image: /images/renault-clio-5.jpg
-imageAlt: "Renault Clio 5 Carzio, assurance location Maroc"
+image: /images/journal/car-inspection.jpg
+imageAlt: "Moteur d'une voiture rouge en cours d'inspection"
 readingTime: 4
 featured: true
 published: true
