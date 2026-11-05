@@ -6,8 +6,8 @@ title: "Réserver une voiture à Agadir : le guide complet"
 description: "De la demande en ligne à la remise des clés : durée minimale, documents, paiement, livraison à l'aéroport et annulation. Le guide Carzio pour réserver sans surprise."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/agadir-airport.jpg
-imageAlt: "Voiture de location Carzio à l'aéroport Agadir Al Massira"
+image: /images/dacia-sandero-stepway.jpg
+imageAlt: "Dacia Sandero Stepway Carzio à l'aéroport Agadir Al Massira"
 readingTime: 9
 featured: true
 published: true
@@ -53,7 +53,7 @@ Le conducteur doit avoir **23 ans minimum**. Ces conditions s'appliquent à tous
 
 ## Livraison et retour : ce qu'il faut prévoir
 
-La livraison est gratuite à l'aéroport Agadir Al Massira et à notre agence, N208 MAG N2 Avenue Al Khaouarizmi. Pour Marrakech et Casablanca, comptez **80 € par trajet** : le tarif s'applique à la livraison et, si la voiture est reprise sur place, au retour.
+La livraison est gratuite à l'aéroport Agadir Al Massira et à notre agence, MAG N2, Agadir Airport. Pour Marrakech et Casablanca, comptez **80 € par trajet** : le tarif s'applique à la livraison et, si la voiture est reprise sur place, au retour.
 
 Taghazout, Tamraght et Essaouira sont desservis **sur demande**. Le tarif est confirmé avant la réservation, en fonction du lieu exact et de l'horaire.
 

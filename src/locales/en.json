@@ -81,7 +81,8 @@
     "searchCars": "Search Available Cars",
     "noHiddenFees": "No hidden fees",
     "freeCancellation": "Free cancellation",
-    "secureBooking": "Secure booking"
+    "secureBooking": "Secure booking",
+    "standardInsuranceIncluded": "Standard insurance included — vehicle, glass, tyres and mirrors covered"
   },
   "dateRange": {
     "label": "Rental dates",
@@ -105,7 +106,7 @@
   "fleet": {
     "title": "Available Cars in Our Agency Rental",
     "featuredTitle": "Featured Vehicles",
-    "subtitle": "Browse our selection of premium vehicles — comfort, style and reliability for every journey.",
+    "subtitle": "Handpicked selection of our most popular vehicles for every journey.",
     "featuredSubtitle": "Handpicked selection of our most popular vehicles for every journey."
   },
   "carCard": {
@@ -181,7 +182,13 @@
     "subtitle": "Real stories from travellers who trusted us with their journey across Morocco.",
     "previous": "Previous review",
     "next": "Next review",
-    "ofReviews": "{{current}} of {{total}}"
+    "ofReviews": "{{current}} of {{total}}",
+    "googleCta": "See all our reviews on Google",
+    "trustTitle": "TRUSTED BY OUR CLIENTS",
+    "trustSubtitle": "What our clients say.",
+    "googleVerified": "Verified Google reviews",
+    "basedOn": "Based on {{count}} Google reviews",
+    "googleLogoAlt": "Google Maps"
   },
   "contact": {
     "mapTitle": "Find Us on the Map",
@@ -189,7 +196,7 @@
     "getInTouch": "Get in Touch",
     "helpText": "Reach out anytime — we're here to help.",
     "ourAddress": "Our Address",
-    "addressValue": "Airport Agadir, Agadir 80000",
+    "addressValue": "MAG N2, Agadir Airport",
     "callUs": "Call Us",
     "phoneValue": "+212 680-318003",
     "emailUs": "Email Us",
@@ -249,7 +256,7 @@
     "ageRequired": "23+, licence held 4+ years",
     "transportFee": "Transport/Delivery Fee",
     "transportFeeFree": "Free",
-    "transportFeeMessage": "An additional €{{fee}} transportation fee applies.",
+    "transportFeeMessage": "An additional delivery fee of {{fee}} applies.",
     "onRequestNote": "On request — price confirmed before booking.",
     "transportFeeOnRequest": "On request",
     "selectCarRequired": "Please choose a car first.",
@@ -259,10 +266,10 @@
     "insuranceTitle": "Insurance",
     "standardInsurance": "Standard Insurance",
     "included": "Included",
-    "standardInsuranceDesc": "{{excess}} MAD excess in case of damage. Glass, tyres and mirrors covered.",
+    "standardInsuranceDesc": "Standard Insurance included. Glass, tyres and mirrors covered.",
     "fullInsurance": "Full Insurance",
     "fullInsuranceDesc": "Excess reduced to 0 MAD: nothing to pay in case of damage.",
-    "fullInsurancePrice": "+€{{price}} / day",
+    "fullInsurancePrice": "+{{price}} / day",
     "fullInsuranceFrom": "Available from {{days}} rental days.",
     "paymentMethod": "Payment Method",
     "paymentUponDelivery": "Payment Upon Delivery",
@@ -331,9 +338,11 @@
     "section14Title": "14. No Security Deposit Policy",
     "section14Content": "No security deposit, caution, or guarantee amount shall be required from the customer at the time of booking or vehicle reservation. The customer shall not be obligated to pay, block, or hold any deposit or security amount in connection with the booking of a vehicle, except where expressly stated otherwise in writing by the agency.",
     "section15Title": "15. Standard Insurance",
-    "section15Content": "Standard insurance is included in the rental price. It covers the vehicle, including glass, tyres and mirrors. In the event of covered damage, an excess remains your responsibility: 5,000 MAD when the daily rate is €39 or less, and 8,000 MAD from €40. The daily rate is the one shown on the car card. The minimum rental is 72 hours, billed in 24-hour blocks; any started block counts as a full day. Cancellation is free up to 24 h before pickup.",
+    "section15Content": "Standard insurance is included in the rental price. It covers the vehicle, including glass, tyres and mirrors. In the event of covered damage, an excess remains your responsibility; its amount is stated in the rental contract signed at key handover. The daily car rental price is the one shown on the car card. The minimum rental is 72 hours, billed in 24-hour blocks; any started block counts as a full day. Cancellation is free up to 24 h before pickup.",
     "section16Title": "16. Full Insurance (all-risk / Full Insurance)",
-    "section16Content": "Full Insurance (all-risk) reduces the excess to 0 MAD. It is offered only from 5 billed days: a surcharge of €10 per day when the daily rate is €39 or less, and €15 per day from €40. Rentals are billed in 24-hour blocks; a started block counts as a full day. The option is never pre-selected and is automatically removed when the duration falls below 5 billed days. The exact surcharge is always shown before confirmation."
+    "section16Content": "Full Insurance (all-risk) reduces the excess to 0 MAD. It is offered only from 5 billed days: a surcharge of €10 per day when the daily rate is €39 or less, and €15 per day from €40. Rentals are billed in 24-hour blocks; a started block counts as a full day. The option is never pre-selected and is automatically removed when the duration falls below 5 billed days. The exact surcharge is always shown before confirmation.",
+    "section17Title": "17. Notice — why Full Risk insurance is worth it",
+    "section17Content": "With Standard insurance, in case of damage, an excess of 5,000 MAD or 8,000 MAD remains your responsibility depending on the vehicle. That amount can exceed the total price of your rental. Full Risk insurance covers everything: the excess drops to 0 MAD and, in case of covered damage, nothing remains your responsibility. It costs only €10 or €15 per day depending on the vehicle, and that amount is already included in the total shown before you confirm. For a few euros a day, you drive with complete peace of mind."
   },
   "blog": {
     "label": "Tips & guides",
@@ -393,7 +402,9 @@
     "notFoundText": "This article does not exist or has not been published yet.",
     "backToNews": "Back to news",
     "breadcrumbNews": "News",
-    "latestStories": "Latest stories"
+    "latestStories": "Latest stories",
+    "categoriesIntro": "Eleven topics to help you plan your stay and your car rental in Agadir.",
+    "topics": "topics"
   },
   "footer": {
     "tagline": "Premium vehicle solutions for discerning clients. Experience the road in unparalleled style and comfort.",
@@ -406,7 +417,7 @@
     "news": "News",
     "contact": "Contact",
     "getInTouch": "Get in Touch",
-    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
+    "address": "MAG N2, Agadir Airport",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mon–Sun: 24/7 at Agadir Al Massira airport",
@@ -492,9 +503,18 @@
     "notFoundDesc": "This page does not exist or has been moved.",
     "notFoundLead": "The link may be outdated. Find our cars and news from the home page.",
     "contactTitle": "Contact | Carzio — Car rental in Agadir",
-    "contactDesc": "Contact Carzio in Agadir: WhatsApp +212 680 318003, email contact@carzio.ma, agency N208 MAG N2 Avenue Al Khaouarizmi. Reply within 24 h.",
+    "contactDesc": "Contact Carzio in Agadir: WhatsApp +212 680 318003, email contact@carzio.ma, agency MAG N2, Agadir Airport. Reply within 24 h.",
     "termsTitle": "Terms &amp; Conditions | Carzio",
     "termsDesc": "Carzio rental terms: minimum age 23, licence held for 4 years, 0 MAD deposit, insurance included, free cancellation up to 24 h.",
     "notFoundTitle": "Page not found | Carzio"
+  },
+  "currency": {
+    "switch": "Change currency",
+    "name": {
+      "mad": "Dirham",
+      "eur": "Euro",
+      "usd": "US Dollar",
+      "gbp": "Pound sterling"
+    }
   }
 }

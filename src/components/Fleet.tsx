@@ -11,7 +11,10 @@ interface FleetProps {
 export default function Fleet({ onBook, featured }: FleetProps) {
   const { t } = useTranslation();
   const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
-  const cars = featured ? fleet.slice(0, 4) : fleet;
+  // Homepage shows 8 cars, all under €50/day; the Cars page still shows all 12.
+  const cars = featured
+    ? fleet.filter((car) => car.pricePerDay < 50).slice(0, 8)
+    : fleet;
 
   useEffect(() => {
     fetch('/api/car-prices')

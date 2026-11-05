@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
+import { useCurrency } from '../lib/currency';
 import DateRangePicker from './DateRangePicker';
 
 interface BookingFormData {
@@ -20,6 +21,7 @@ interface BookingFormProps {
 
 export default function BookingForm({ onOpenBooking, formData, setFormData }: BookingFormProps) {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
   const pickupLoc = locations.find(l => l.id === formData.pickupLocation);
   const dropoffLoc = locations.find(l => l.id === formData.dropoffLocation);
@@ -58,7 +60,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               </select>
               {(pickupLoc?.transportFee || 0) > 0 && (
                 <p className="text-amber-400 text-xs mt-1">
-                  {t('bookingModal.transportFeeMessage', { fee: pickupLoc?.transportFee })}
+                  {t('bookingModal.transportFeeMessage', { fee: formatPrice(pickupLoc?.transportFee || 0) })}
                 </p>
               )}
               {pickupLoc?.onRequest && (
@@ -80,7 +82,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               </select>
               {(dropoffLoc?.transportFee || 0) > 0 && (
                 <p className="text-amber-400 text-xs mt-1">
-                  {t('bookingModal.transportFeeMessage', { fee: dropoffLoc?.transportFee })}
+                  {t('bookingModal.transportFeeMessage', { fee: formatPrice(dropoffLoc?.transportFee || 0) })}
                 </p>
               )}
               {dropoffLoc?.onRequest && (
@@ -117,7 +119,7 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
               >
                 <option value="">{t('bookingForm.selectCar')}</option>
                 {fleet.map(car => (
-                  <option key={car.id} value={car.id}>{car.name} — {priceOverrides[car.id] ?? car.pricePerDay}€{t('common.perDay')}</option>
+                  <option key={car.id} value={car.id}>{car.name} — {formatPrice(priceOverrides[car.id] ?? car.pricePerDay)}{t('common.perDay')}</option>
                 ))}
               </select>
               <button
@@ -130,6 +132,12 @@ export default function BookingForm({ onOpenBooking, formData, setFormData }: Bo
             </div>
           </div>
           <p className="text-gray-500 text-xs text-center mt-4 flex items-center justify-center gap-3 flex-wrap">
+            <span className="inline-flex items-center gap-1">
+              <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              {t('bookingForm.standardInsuranceIncluded')}
+            </span>
             <span className="inline-flex items-center gap-1">
               <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />

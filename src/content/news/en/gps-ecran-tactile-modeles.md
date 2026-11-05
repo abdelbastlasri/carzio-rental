@@ -5,8 +5,8 @@ category: flotte-modeles
 title: "GPS and touchscreen: which Carzio models have them"
 description: "Six models with GPS, eight with a touchscreen. The exact list so you can choose your car before booking in Agadir."
 date: 2026-11-03
-image: /images/vw-troc-new.jpg
-imageAlt: "Carzio Volkswagen T-Roc with GPS and touchscreen"
+image: /images/renault-clio-5.jpg
+imageAlt: "Carzio Renault Clio 5 with touchscreen"
 readingTime: 3
 featured: false
 published: true

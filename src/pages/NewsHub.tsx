@@ -96,37 +96,37 @@ export default function NewsHub() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 pb-10" aria-labelledby="news-topics">
-          <h2 id="news-topics" className="mb-4 font-heading text-xl font-semibold text-white">
-            {t('news.categories')}
-          </h2>
-          <ul className="flex flex-wrap gap-2">
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 id="news-topics" className="font-heading text-xl font-semibold text-white">
+                {t('news.categories')}
+              </h2>
+              <p className="mt-1 text-sm text-white/50">{t('news.categoriesIntro')}</p>
+            </div>
+            <span className="text-xs uppercase tracking-[0.2em] text-white/40">
+              {newsCategories.length} {t('news.topics')}
+            </span>
+          </div>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {newsCategories.map((category) => {
               const count = counts[category.slug] || 0;
               const copy = category[contentLang];
-              if (count === 0) {
-                return (
-                  <li key={category.slug}>
-                    <span
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs text-white/55"
-                      title={t('news.comingSoon')}
-                    >
-                      {copy.name}
-                      <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] uppercase tracking-wide">
-                        {t('news.comingSoon')}
-                      </span>
-                    </span>
-                  </li>
-                );
-              }
               return (
                 <li key={category.slug}>
                   <LangLink
                     to={`/news/categorie/${category.slug}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-2 text-xs text-white/70 transition hover:border-gold hover:text-white"
+                    className="group flex h-full flex-col rounded-xl border border-white/10 bg-zinc-950/50 p-4 transition hover:border-gold/40 hover:bg-zinc-900/60"
                   >
-                    {copy.name}
-                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-white/60">
-                      {count}
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="font-heading text-sm font-semibold text-white transition group-hover:text-gold">
+                        {copy.name}
+                      </span>
+                      <span className="shrink-0 rounded-full bg-white/10 px-2 py-0.5 text-[10px] tabular-nums text-white/60">
+                        {count}
+                      </span>
+                    </div>
+                    <span className="mt-2 text-xs leading-relaxed text-white/50">
+                      {copy.description}
                     </span>
                   </LangLink>
                 </li>

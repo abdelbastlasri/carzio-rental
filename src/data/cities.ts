@@ -41,11 +41,11 @@ const fr: Record<string, CityPage> = {
     description:
       "Louez une voiture à Agadir avec Carzio : livraison gratuite à l'aéroport Agadir Al Massira et à l'agence, bons tarifs pour nos clients, kilométrage illimité.",
     intro: [
-      "Carzio est basé à Agadir. Nous remettons les voitures à l'aéroport Agadir Al Massira et à notre agence du quartier Al Khaouarizmi, sans frais de livraison.",
+      "Carzio est basé à Agadir. Nous remettons les voitures à l'aéroport Agadir Al Massira et à notre agence de MAG N2, Agadir Airport, sans frais de livraison.",
       "La ville se parcourt facilement en voiture : la corniche, le port et le centre sont reliés par de grands axes. Pour une journée, les routes qui longent la côte vers Taghazout et Tamraght sont parmi les plus agréables de la région.",
       "Toute la flotte est disponible au départ d'Agadir, de la citadine au SUV familial, à bons tarifs pour nos clients.",
     ],
-    pickup: "Aéroport Agadir Al Massira (AGA) ou agence Carzio, N208 MAG N2 Avenue Al Khaouarizmi.",
+    pickup: "Aéroport Agadir Al Massira (AGA) ou agence Carzio, MAG N2, Agadir Airport.",
     fee: 'Livraison gratuite',
     feeNote: "Aucun frais de livraison à Agadir et à l'aéroport Al Massira.",
     highlights: [
@@ -300,11 +300,11 @@ const CATS_EN: Record<string, CityPage> = {
     description:
       'Rent a car in Agadir with Carzio: free delivery at Agadir Al Massira airport and agency, good prices for our clients, unlimited mileage.',
     intro: [
-      'Carzio is based in Agadir. We hand over cars at Agadir Al Massira airport and at our Al Khaouarizmi agency, with no delivery fee.',
+      'Carzio is based in Agadir. We hand over cars at Agadir Al Massira airport and at our MAG N2, Agadir Airport agency, with no delivery fee.',
       'The city is easy to explore by car: the seafront, the port and the centre are linked by main roads. For a day out, the roads along the coast towards Taghazout and Tamraght are among the most beautiful in the region.',
       'The whole fleet is available from Agadir, from the city car to the family SUV, at good prices for our clients.',
     ],
-    pickup: 'Agadir Al Massira (AGA) airport or Carzio agency, N208 MAG N2 Avenue Al Khaouarizmi.',
+    pickup: 'Agadir Al Massira (AGA) airport or Carzio agency, MAG N2, Agadir Airport.',
     fee: 'Free delivery',
     feeNote: 'No delivery fee at Agadir and Agadir Al Massira airport.',
     highlights: [
@@ -556,11 +556,11 @@ const CATS_DE: Record<string, CityPage> = {
     title: 'Autovermietung in Agadir | Carzio',
     description: 'Mieten Sie ein Auto in Agadir bei Carzio: kostenlose Lieferung am Flughafen Agadir Al Massira und in der Agentur, gute Preise für unsere Kunden, unbegrenzte Kilometer.',
     intro: [
-      'Carzio hat seinen Sitz in Agadir. Wir übergeben die Fahrzeuge am Flughafen Agadir Al Massira und in unserer Agentur im Viertel Al Khaouarizmi – ohne Liefergebühr.',
+      'Carzio hat seinen Sitz in Agadir. Wir übergeben die Fahrzeuge am Flughafen Agadir Al Massira und in unserer Agentur MAG N2, Agadir Airport – ohne Liefergebühr.',
       'Die Stadt lässt sich problemlos mit dem Auto erkunden: Strandpromenade, Hafen und Zentrum sind über Hauptachsen verbunden. Für einen Tagesausflug gehören die Küstenstraßen nach Taghazout und Tamraght zu den schönsten der Region.',
       'Die gesamte Flotte steht ab Agadir zur Verfügung, vom Stadtauto bis zum Familien-SUV, zu guten Preisen für unsere Kunden.',
     ],
-    pickup: 'Flughafen Agadir Al Massira (AGA) oder Carzio-Agentur, N208 MAG N2 Avenue Al Khaouarizmi.',
+    pickup: 'Flughafen Agadir Al Massira (AGA) oder Carzio-Agentur, MAG N2, Agadir Airport.',
     fee: 'Kostenlose Lieferung', feeNote: 'Keine Liefergebühr in Agadir und am Flughafen Al Massira.',
     highlights: [
       { name: 'Taghazout', detail: 'der legendäre Surfspot — Anchor Point, Killer Point, Banana Beach' },
@@ -791,11 +791,11 @@ const CATS_ES: Record<string, CityPage> = {
     title: 'Alquiler de coches en Agadir | Carzio',
     description: 'Alquila un coche en Agadir con Carzio: entrega gratuita en el aeropuerto Agadir Al Massira y en la agencia, buenos precios para nuestros clientes, kilometraje ilimitado.',
     intro: [
-      'Carzio tiene su sede en Agadir. Entregamos los coches en el aeropuerto Agadir Al Massira y en nuestra agencia del barrio Al Khaouarizmi, sin coste de entrega.',
+      'Carzio tiene su sede en Agadir. Entregamos los coches en el aeropuerto Agadir Al Massira y en nuestra agencia MAG N2, Agadir Airport, sin coste de entrega.',
       'La ciudad es fácil de recorrer en coche: la cornisa, el puerto y el centro están conectados por grandes ejes. Para un día, las carreteras costeras hacia Taghazout y Tamraght están entre las más agradables de la región.',
       'Toda la flota está disponible desde Agadir, desde el urbano hasta el SUV familiar, a buenos precios para nuestros clientes.',
     ],
-    pickup: 'Aeropuerto Agadir Al Massira (AGA) o agencia Carzio, N208 MAG N2 Avenue Al Khaouarizmi.',
+    pickup: 'Aeropuerto Agadir Al Massira (AGA) o agencia Carzio, MAG N2, Agadir Airport.',
     fee: 'Entrega gratuita', feeNote: 'Ningún coste de entrega en Agadir y en el aeropuerto Al Massira.',
     highlights: [
       { name: 'Taghazout', detail: 'el mítico pueblo surf — Anchor Point, Killer Point, Banana Beach' },
@@ -1026,11 +1026,11 @@ const CATS_PL: Record<string, CityPage> = {
     title: 'Wynajem samochodu w Agadirze | Carzio',
     description: 'Wynajmij auto w Agadirze z Carzio: bezpłatna dostawa na lotnisko Agadir Al Massira i do agencji, dobre ceny dla naszych klientów, nielimitowany przebieg.',
     intro: [
-      'Carzio ma swoją siedzibę w Agadirze. Przekazujemy auta na lotnisku Agadir Al Massira i w naszej agencji w dzielnicy Al Khaouarizmi, bez opłaty za dostawę.',
+      'Carzio ma swoją siedzibę w Agadirze. Przekazujemy auta na lotnisku Agadir Al Massira i w naszej agencji MAG N2, Agadir Airport, bez opłaty za dostawę.',
       'Po mieście łatwo poruszać się samochodem: promenada, port i centrum połączone są głównymi arteriami. Na cały dzień trasy wzdłuż wybrzeża w kierunku Taghazout i Tamraght należą do najprzyjemniejszych w regionie.',
       'Cała flota jest dostępna od Agadiru, od miejskiego po rodzinnego SUV-a, w dobre ceny dla naszych klientów.',
     ],
-    pickup: 'Lotnisko Agadir Al Massira (AGA) lub agencja Carzio, N208 MAG N2 Avenue Al Khaouarizmi.',
+    pickup: 'Lotnisko Agadir Al Massira (AGA) lub agencja Carzio, MAG N2, Agadir Airport.',
     fee: 'Bezpłatna dostawa', feeNote: 'Brak opłaty za dostawę w Agadirze i na lotnisku Al Massira.',
     highlights: [
       { name: 'Taghazout', detail: 'legendarne surfujące miasteczko — Anchor Point, Killer Point, Banana Beach' },

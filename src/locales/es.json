@@ -81,7 +81,8 @@
     "searchCars": "Buscar Coches Disponibles",
     "noHiddenFees": "Sin cargos ocultos",
     "freeCancellation": "Cancelación gratuita",
-    "secureBooking": "Reserva segura"
+    "secureBooking": "Reserva segura",
+    "standardInsuranceIncluded": "Seguro Standard incluido — vehículo, cristales, neumáticos y retrovisores cubiertos"
   },
   "dateRange": {
     "label": "Fechas de alquiler",
@@ -181,7 +182,13 @@
     "subtitle": "Historias reales de viajeros que confiaron en nosotros para su viaje por Marruecos.",
     "previous": "Reseña anterior",
     "next": "Reseña siguiente",
-    "ofReviews": "{{current}} de {{total}}"
+    "ofReviews": "{{current}} de {{total}}",
+    "googleCta": "Ver todas nuestras reseñas en Google",
+    "trustTitle": "NUESTROS CLIENTES CONFÍAN EN NOSOTROS",
+    "trustSubtitle": "La opinión de nuestros clientes.",
+    "googleVerified": "Reseñas verificadas de Google",
+    "basedOn": "Basado en {{count}} reseñas de Google",
+    "googleLogoAlt": "Google Maps"
   },
   "contact": {
     "mapTitle": "Encuéntranos en el Mapa",
@@ -189,7 +196,7 @@
     "getInTouch": "Ponte en Contacto",
     "helpText": "Contáctanos en cualquier momento — estamos aquí para ayudarte.",
     "ourAddress": "Nuestra Dirección",
-    "addressValue": "Aeropuerto de Agadir, Agadir 80000",
+    "addressValue": "MAG N2, Agadir Airport",
     "callUs": "Llámanos",
     "phoneValue": "+212 680-318003",
     "emailUs": "Envíanos un Email",
@@ -249,7 +256,7 @@
     "ageRequired": "Mínimo 23 años, carnet con 4 años de antigüedad",
     "transportFee": "Tarifa de Transporte/Entrega",
     "transportFeeFree": "Gratis",
-    "transportFeeMessage": "Se aplica una tarifa de transporte adicional de €{{fee}}.",
+    "transportFeeMessage": "Se aplica una tarifa de entrega adicional de {{fee}}.",
     "onRequestNote": "Bajo petición — precio confirmado antes de la reserva.",
     "transportFeeOnRequest": "Bajo petición",
     "selectCarRequired": "Elija primero un coche.",
@@ -259,10 +266,10 @@
     "insuranceTitle": "Seguro",
     "standardInsurance": "Seguro Estándar",
     "included": "Incluido",
-    "standardInsuranceDesc": "Franquicia de {{excess}} MAD en caso de daños. Cristales, neumáticos y espejos cubiertos.",
+    "standardInsuranceDesc": "Seguro Standard incluido. Cristales, neumáticos y espejos cubiertos.",
     "fullInsurance": "Seguro Completo",
     "fullInsuranceDesc": "Franquicia reducida a 0 MAD: nada que pagar en caso de daños.",
-    "fullInsurancePrice": "+{{price}} € / día",
+    "fullInsurancePrice": "+{{price}} / día",
     "fullInsuranceFrom": "Disponible a partir de {{days}} días de alquiler.",
     "paymentMethod": "Método de Pago",
     "paymentUponDelivery": "Pago al Recibir",
@@ -331,9 +338,11 @@
     "section14Title": "14. Política de Depósito de Garantía",
     "section14Content": "No se exigirá al cliente ningún depósito de garantía, fianza o importe de garantía en el momento de la reserva o alquiler del vehículo. El cliente no estará obligado a pagar, bloquear o mantener ningún depósito o importe de garantía en relación con la reserva de un vehículo, excepto cuando se indique expresamente lo contrario por escrito por parte de la agencia.",
     "section15Title": "15. Seguro Standard",
-    "section15Content": "El seguro Standard está incluido en el precio del alquiler. Cubre el vehículo, incluidos los cristales, los neumáticos y los retrovisores. En caso de daño cubierto, la franquicia corre por cuenta del cliente: 5.000 MAD si la tarifa diaria es de 39 € o menos, y 8.000 MAD a partir de 40 €. La tarifa diaria es la indicada en la ficha del vehículo. La duración mínima es de 72 horas, facturadas en bloques de 24 horas; un bloque empezado cuenta como un día completo. La cancelación es gratuita hasta 24 h antes de la recogida.",
+    "section15Content": "El seguro Standard está incluido en el precio del alquiler. Cubre el vehículo, incluidos los cristales, los neumáticos y los retrovisores. En caso de daño cubierto, la franquicia corre por cuenta del cliente; su importe figura en el contrato de alquiler firmado en la entrega de llaves. La tarifa diaria de alquiler de coche es la indicada en la ficha del vehículo. La duración mínima es de 72 horas, facturadas en bloques de 24 horas; un bloque empezado cuenta como un día completo. La cancelación es gratuita hasta 24 h antes de la recogida.",
     "section16Title": "16. Seguro completo (todo riesgo / Full Insurance)",
-    "section16Content": "El seguro completo (todo riesgo) reduce la franquicia a 0 MAD. Solo está disponible a partir de 5 días facturados: suplemento de 10 € al día si la tarifa diaria es de 39 € o menos, y de 15 € al día a partir de 40 €. El alquiler se factura en bloques de 24 horas; un bloque empezado cuenta como un día completo. La opción nunca viene preseleccionada y se retira automáticamente por debajo de 5 días facturados. El importe exacto siempre se muestra antes de la confirmación."
+    "section16Content": "El seguro completo (todo riesgo) reduce la franquicia a 0 MAD. Solo está disponible a partir de 5 días facturados: suplemento de 10 € al día si la tarifa diaria es de 39 € o menos, y de 15 € al día a partir de 40 €. El alquiler se factura en bloques de 24 horas; un bloque empezado cuenta como un día completo. La opción nunca viene preseleccionada y se retira automáticamente por debajo de 5 días facturados. El importe exacto siempre se muestra antes de la confirmación.",
+    "section17Title": "17. Aviso — por qué merece la pena el seguro completo",
+    "section17Content": "Con el seguro Standard, en caso de daño, una franquicia de 5.000 MAD u 8.000 MAD queda a su cargo según el vehículo. Ese importe puede superar el precio total de su alquiler. El seguro completo lo cubre todo: la franquicia baja a 0 MAD y, en caso de daño cubierto, nada queda a su cargo. Cuesta solo 10 € o 15 € al día según el vehículo, y ese importe ya está incluido en el total que se muestra antes de confirmar. Por unos euros al día, conduce con total tranquilidad."
   },
   "blog": {
     "label": "Consejos y guías",
@@ -393,7 +402,9 @@
     "notFoundText": "Este artículo no existe o aún no se ha publicado.",
     "backToNews": "Volver a las noticias",
     "breadcrumbNews": "Noticias",
-    "latestStories": "Lo más reciente"
+    "latestStories": "Lo más reciente",
+    "categoriesIntro": "Once temas para preparar tu estancia y tu alquiler de coche en Agadir.",
+    "topics": "temas"
   },
   "footer": {
     "tagline": "Soluciones de vehículos premium para clientes exigentes. Experimenta la carretera con un estilo y confort inigualables.",
@@ -406,7 +417,7 @@
     "news": "Noticias",
     "contact": "Contacto",
     "getInTouch": "Contacto",
-    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
+    "address": "MAG N2, Agadir Airport",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Lun–Dom: 24/7 en el aeropuerto Agadir Al Massira",
@@ -492,9 +503,18 @@
     "notFoundDesc": "Esta página no existe o ha sido movida.",
     "notFoundLead": "El enlace puede estar desactualizado. Encuentra nuestros coches y noticias desde la página de inicio.",
     "contactTitle": "Contacto | Carzio — Alquiler de coches en Agadir",
-    "contactDesc": "Contacta con Carzio en Agadir: WhatsApp +212 680 318003, email contact@carzio.ma, agencia N208 MAG N2 Avenue Al Khaouarizmi. Respuesta en 24 h.",
+    "contactDesc": "Contacta con Carzio en Agadir: WhatsApp +212 680 318003, email contact@carzio.ma, agencia MAG N2, Agadir Airport. Respuesta en 24 h.",
     "termsTitle": "Términos y Condiciones | Carzio",
     "termsDesc": "Términos de alquiler de Carzio: edad mínima 23 años, carné desde hace 4 años, 0 MAD de fianza, seguro incluido, cancelación gratuita hasta 24 h antes.",
     "notFoundTitle": "Página no encontrada | Carzio"
+  },
+  "currency": {
+    "switch": "Cambiar moneda",
+    "name": {
+      "mad": "Dirham",
+      "eur": "Euro",
+      "usd": "Dólar US",
+      "gbp": "Libra esterlina"
+    }
   }
 }

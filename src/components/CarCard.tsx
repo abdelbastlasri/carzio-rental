@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Car } from '../types';
+import { useCurrency } from '../lib/currency';
 import CarAd from './CarAd';
 
 interface CarCardProps {
@@ -42,6 +43,7 @@ function Spec({ icon, label }: { icon: string; label: string }) {
 export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCardProps) {
   const displayPrice = overridePrice ?? car.pricePerDay;
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const typeLabel = t('carCard.type.' + car.type.toLowerCase());
 
   return (
@@ -73,7 +75,7 @@ export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCa
         />
 
         <div className="absolute bottom-0 right-0 flex items-baseline gap-0.5 rounded-tl-xl bg-zinc-950 px-3 py-2 text-white">
-          <span className="font-heading text-xl font-bold leading-none text-gold">{displayPrice}€</span>
+          <span className="font-heading text-xl font-bold leading-none text-gold">{formatPrice(displayPrice)}</span>
           <span className="text-[11px] text-white/60">{t('common.perDay')}</span>
         </div>
       </div>

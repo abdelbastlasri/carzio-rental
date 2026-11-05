@@ -3,6 +3,7 @@ import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
+import { useCurrency } from '../lib/currency';
 import DateRangePicker from './DateRangePicker';
 import CarAd from './CarAd';
 import { billedDays, hasStartedBlock, insuranceQuote, isValidRental, FULL_INSURANCE_MIN_DAYS } from '../lib/rental';
@@ -19,6 +20,7 @@ interface BookingModalProps {
 
 export default function BookingModal({ isOpen, onClose, preselectedCar, preselectedLocation, preselectedDropoffLocation, preselectedPickupDate, preselectedDropoffDate }: BookingModalProps) {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -279,7 +281,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 >
                   <option value="">{t('bookingModal.selectCarLabel')}</option>
                   {fleet.map((fleetCar) => (
-                    <option key={fleetCar.id} value={fleetCar.id}>{fleetCar.name} — {fleetCar.pricePerDay}€{t('common.perDay')}</option>
+                    <option key={fleetCar.id} value={fleetCar.id}>{fleetCar.name} — {formatPrice(fleetCar.pricePerDay)}{t('common.perDay')}</option>
                   ))}
                 </select>
               </div>
@@ -361,7 +363,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 </div>
                 <div className="flex-1">
                   <h3 className="text-white font-heading font-bold text-xl">{car.name}</h3>
-                  <p className="text-gold font-heading font-bold text-lg">{effectivePricePerDay.toFixed(2)}€ <span className="text-gray-400 text-sm font-normal">{t('common.perDay')}</span></p>
+                  <p className="text-gold font-heading font-bold text-lg">{formatPrice(effectivePricePerDay)} <span className="text-gray-400 text-sm font-normal">{t('common.perDay')}</span></p>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400 mt-2">
                     {car.ac && <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{t('bookingModal.airConditioner')}</span>}
                     <span className="flex items-center gap-1"><svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>{t('bookingModal.doorHatchback', { doors: car.doors })}</span>
@@ -384,28 +386,28 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   <div className="border-t border-zinc-800 pt-1 mt-1 space-y-1">
                     <div className="flex justify-between">
                       <span>{t('bookingModal.carRental')} ({days} {t(days > 1 ? 'bookingModal.days' : 'bookingModal.day')})</span>
-                      <span>{totalCarPrice}€</span>
+                      <span>{formatPrice(totalCarPrice)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t('bookingModal.transportFee')}</span>
-                      <span>{hasOnRequest && transportFee === 0 ? t('bookingModal.transportFeeOnRequest') : transportFee === 0 ? t('bookingModal.transportFeeFree') : `${transportFee}€`}</span>
+                      <span>{hasOnRequest && transportFee === 0 ? t('bookingModal.transportFeeOnRequest') : transportFee === 0 ? t('bookingModal.transportFeeFree') : formatPrice(transportFee)}</span>
                     </div>
                     {insurance.fullPrice > 0 && (
                       <div className="flex justify-between">
                         <span>{t('bookingModal.fullInsurance')} ({days} {t('bookingModal.days')})</span>
-                        <span>{insurance.fullPrice}€</span>
+                        <span>{formatPrice(insurance.fullPrice)}</span>
                       </div>
                     )}
                     <div className="flex justify-between font-bold text-white pt-1 border-t border-zinc-800">
                       <span>{t('bookingModal.totalAmount')}</span>
-                      <span className="text-gold">{totalPrice}€</span>
+                      <span className="text-gold">{formatPrice(totalPrice)}</span>
                     </div>
                   </div>
                   {hasStartedBlock(pickupDate, dropoffDate, pickupTime, dropoffTime) && (
                     <p className="text-[11px] text-gray-500">{t('dateRange.billedNote')}</p>
                   )}
                   {transportFee > 0 && (
-                    <p className="text-amber-400 text-xs mt-1">{t('bookingModal.transportFeeMessage', { fee: transportFee })}</p>
+                    <p className="text-amber-400 text-xs mt-1">{t('bookingModal.transportFeeMessage', { fee: formatPrice(transportFee) })}</p>
                   )}
                   {hasOnRequest && (
                     <p className="text-amber-400 text-xs mt-1">{t('bookingModal.onRequestNote')}</p>
@@ -504,7 +506,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                 <div className="flex items-start justify-between gap-4 rounded-lg border border-zinc-800 bg-black/60 p-3">
                   <div>
                     <p className="text-sm font-medium text-white">{t('bookingModal.standardInsurance')} <span className="ml-2 text-xs text-gold">{t('bookingModal.included')}</span></p>
-                    <p className="mt-1 text-xs text-gray-400">{t('bookingModal.standardInsuranceDesc', { excess: insurance.excess })}</p>
+                    <p className="mt-1 text-xs text-gray-400">{t('bookingModal.standardInsuranceDesc')}</p>
                   </div>
                 </div>
                 {insurance.eligible ? (
@@ -521,7 +523,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                         <p className="mt-1 text-xs text-gray-400">{t('bookingModal.fullInsuranceDesc')}</p>
                       </div>
                     </div>
-                    <span className="whitespace-nowrap text-xs text-gold">{t('bookingModal.fullInsurancePrice', { price: insurance.fullPerDay })}</span>
+                    <span className="whitespace-nowrap text-xs text-gold">{t('bookingModal.fullInsurancePrice', { price: formatPrice(insurance.fullPerDay) })}</span>
                   </label>
                 ) : (
                   <div className="rounded-lg border border-white/5 p-3">
@@ -547,7 +549,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                       <span className="text-sm text-gray-200">{t(`extras.${extra.name}`, extra.name)}</span>
                     </div>
                     <span className="text-xs text-gray-500">
-                      {extra.price > 0 ? `${extra.price}€` : t('bookingModal.free')} {t('bookingModal.perDay')}
+                      {extra.price > 0 ? formatPrice(extra.price) : t('bookingModal.free')} {t('bookingModal.perDay')}
                     </span>
                   </label>
                 ))}

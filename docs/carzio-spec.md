@@ -11,7 +11,7 @@ Dernière mise à jour : 2 novembre 2026.
 | Site | https://www.carzio.ma (canonique, avec `www`) |
 | Domaine admin | https://admin.carzio.ma |
 | Activité | Location de voitures à Agadir, aéroport Agadir Al Massira (AGA) |
-| Adresse | N208, MAG N2, Avenue Al Khaouarizmi, Agadir 80000 |
+| Adresse | MAG N2, Agadir Airport |
 | Téléphone / WhatsApp | +212 680 318003 (numéro unique partout) |
 | E-mail client | contact@carzio.ma |
 | Langues prévues | FR, EN, DE, ES, PL (i18n côté client aujourd'hui) |

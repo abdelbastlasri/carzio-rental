@@ -20,7 +20,7 @@ const localBusinessLd = {
   email: 'contact@carzio.ma',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'N208, MAG N2 Avenue Al Khaouarizmi',
+    streetAddress: 'MAG N2, Agadir Airport',
     addressLocality: 'Agadir',
     postalCode: '80000',
     addressCountry: 'MA',
@@ -62,8 +62,8 @@ export default function Home() {
         formData={formData}
         setFormData={setFormData}
       />
-      <Locations />
       <Fleet onBook={handleBook} featured />
+      <Locations />
       <ExploreAgadir />
       <HowItWorks />
       <WhyChooseUs />

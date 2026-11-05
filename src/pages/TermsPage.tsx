@@ -5,7 +5,7 @@ import Seo from '../components/Seo';
 export default function TermsPage() {
   const { t } = useTranslation();
 
-  const sections = Array.from({ length: 16 }, (_, i) => ({
+  const sections = Array.from({ length: 17 }, (_, i) => ({
     title: t(`termsPage.section${i + 1}Title`),
     content: t(`termsPage.section${i + 1}Content`),
   }));

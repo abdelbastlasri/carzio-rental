@@ -16,6 +16,10 @@
     { "source": "/blog/(.*)", "destination": "/index.html" },
     { "source": "/news", "destination": "/index.html" },
     { "source": "/news/(.*)", "destination": "/index.html" },
-    { "source": "/location-voiture-(.*)", "destination": "/index.html" }
+    { "source": "/location-voiture-(.*)", "destination": "/index.html" },
+    { "source": "/dashboard", "destination": "/index.html" },
+    { "source": "/bookings", "destination": "/index.html" },
+    { "source": "/pricing", "destination": "/index.html" },
+    { "source": "/login", "destination": "/index.html" }
   ]
 }

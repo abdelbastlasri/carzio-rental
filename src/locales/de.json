@@ -81,7 +81,8 @@
     "searchCars": "Verfügbare Autos suchen",
     "noHiddenFees": "Keine versteckten Gebühren",
     "freeCancellation": "Kostenlose Stornierung",
-    "secureBooking": "Sichere Buchung"
+    "secureBooking": "Sichere Buchung",
+    "standardInsuranceIncluded": "Standardversicherung inklusive — Fahrzeug, Scheiben, Reifen und Spiegel abgedeckt"
   },
   "dateRange": {
     "label": "Mietdaten",
@@ -181,7 +182,13 @@
     "subtitle": "Echte Geschichten von Reisenden, die uns ihre Reise durch Marokko anvertraut haben.",
     "previous": "Vorherige Bewertung",
     "next": "Nächste Bewertung",
-    "ofReviews": "{{current}} von {{total}}"
+    "ofReviews": "{{current}} von {{total}}",
+    "googleCta": "Alle unsere Bewertungen auf Google ansehen",
+    "trustTitle": "UNSERE KUNDEN VERTRAUEN UNS",
+    "trustSubtitle": "Das sagen unsere Kunden.",
+    "googleVerified": "Verifizierte Google-Bewertungen",
+    "basedOn": "Basierend auf {{count}} Google-Bewertungen",
+    "googleLogoAlt": "Google Maps"
   },
   "contact": {
     "mapTitle": "Finden Sie Uns auf der Karte",
@@ -189,7 +196,7 @@
     "getInTouch": "Kontaktieren Sie Uns",
     "helpText": "Kontaktieren Sie uns jederzeit — wir sind hier, um zu helfen.",
     "ourAddress": "Unsere Adresse",
-    "addressValue": "Flughafen Agadir, Agadir 80000",
+    "addressValue": "MAG N2, Agadir Airport",
     "callUs": "Rufen Sie Uns An",
     "phoneValue": "+212 680-318003",
     "emailUs": "E-Mail",
@@ -249,7 +256,7 @@
     "ageRequired": "Mindestens 23, Führerschein seit 4 Jahren",
     "transportFee": "Transport-/Liefergebühr",
     "transportFeeFree": "Kostenlos",
-    "transportFeeMessage": "Eine zusätzliche Transportgebühr von €{{fee}} wird erhoben.",
+    "transportFeeMessage": "Eine zusätzliche Liefergebühr von {{fee}} wird erhoben.",
     "onRequestNote": "Auf Anfrage — Preis wird vor der Buchung bestätigt.",
     "transportFeeOnRequest": "Auf Anfrage",
     "selectCarRequired": "Bitte wählen Sie zuerst ein Auto.",
@@ -259,10 +266,10 @@
     "insuranceTitle": "Versicherung",
     "standardInsurance": "Standardversicherung",
     "included": "Inklusive",
-    "standardInsuranceDesc": "{{excess}} MAD Selbstbeteiligung bei Schäden. Glas, Reifen und Spiegel sind abgedeckt.",
+    "standardInsuranceDesc": "Standardversicherung inklusive. Glas, Reifen und Spiegel abgedeckt.",
     "fullInsurance": "Vollversicherung",
     "fullInsuranceDesc": "Selbstbeteiligung auf 0 MAD reduziert: keine Kosten bei Schäden.",
-    "fullInsurancePrice": "+{{price}} € / Tag",
+    "fullInsurancePrice": "+{{price}} / Tag",
     "fullInsuranceFrom": "Verfügbar ab {{days}} Miettagen.",
     "paymentMethod": "Zahlungsmethode",
     "paymentUponDelivery": "Zahlung bei Lieferung",
@@ -331,9 +338,11 @@
     "section14Title": "14. Richtlinie zur Kaution",
     "section14Content": "Vom Kunden wird bei der Buchung oder Fahrzeugreservierung keine Kaution, Sicherheitsleistung oder Garantiesumme verlangt. Der Kunde ist nicht verpflichtet, im Zusammenhang mit der Buchung eines Fahrzeugs eine Kaution oder Sicherheitsleistung zu zahlen, zu sperren oder zu hinterlegen, es sei denn, die Agentur hat ausdrücklich schriftlich etwas anderes bestimmt.",
     "section15Title": "15. Standardversicherung",
-    "section15Content": "Die Standardversicherung ist im Mietpreis enthalten. Sie deckt das Fahrzeug ab, einschließlich der Scheiben, Reifen und Spiegel. Bei einem gedeckten Schaden bleibt ein Selbstbehalt: 5.000 MAD bei einem Tagestarif von 39 € oder weniger, und 8.000 MAD ab 40 €. Der Tagestarif ist der auf der Fahrzeugkarte angezeigte. Die Mindestmietdauer beträgt 72 Stunden, berechnet in 24-Stunden-Blöcken; ein begonnener Block zählt als voller Tag. Kostenlose Stornierung bis 24 h vor Übernahme.",
+    "section15Content": "Die Standardversicherung ist im Mietpreis enthalten. Sie deckt das Fahrzeug ab, einschließlich der Scheiben, Reifen und Spiegel. Bei einem gedeckten Schaden bleibt ein Selbstbehalt: dessen Höhe steht im Mietvertrag, den Sie bei der Schlüsselübergabe unterschreiben. Der Tagestarif der Autovermietung ist der auf der Fahrzeugkarte angezeigte. Die Mindestmietdauer beträgt 72 Stunden, berechnet in 24-Stunden-Blöcken; ein begonnener Block zählt als voller Tag. Kostenlose Stornierung bis 24 h vor Übernahme.",
     "section16Title": "16. Vollkasko (beste Versicherung / Full Insurance)",
-    "section16Content": "Die Vollkasko reduziert den Selbstbehalt auf 0 MAD. Sie wird nur ab 5 berechneten Tagen angeboten: ein Aufpreis von 10 € pro Tag bei einem Tagestarif von 39 € oder weniger, und 15 € pro Tag ab 40 €. Berechnet wird in 24-Stunden-Blöcken; ein begonnener Block zählt als voller Tag. Die Option wird nie vorausgewählt und automatisch entfernt, wenn weniger als 5 Tage berechnet werden. Der genaue Aufpreis wird immer vor der Bestätigung angezeigt."
+    "section16Content": "Die Vollkasko reduziert den Selbstbehalt auf 0 MAD. Sie wird nur ab 5 berechneten Tagen angeboten: ein Aufpreis von 10 € pro Tag bei einem Tagestarif von 39 € oder weniger, und 15 € pro Tag ab 40 €. Berechnet wird in 24-Stunden-Blöcken; ein begonnener Block zählt als voller Tag. Die Option wird nie vorausgewählt und automatisch entfernt, wenn weniger als 5 Tage berechnet werden. Der genaue Aufpreis wird immer vor der Bestätigung angezeigt.",
+    "section17Title": "17. Hinweis — warum sich die Vollkasko lohnt",
+    "section17Content": "Bei der Standardversicherung bleibt im Schadensfall ein Selbstbehalt von 5.000 MAD oder 8.000 MAD je nach Fahrzeug bei Ihnen. Dieser Betrag kann den Gesamtpreis Ihrer Miete übersteigen. Die Vollkasko deckt alles ab: Der Selbstbehalt sinkt auf 0 MAD und bei einem gedeckten Schaden bleibt nichts bei Ihnen. Sie kostet je nach Fahrzeug nur 10 € oder 15 € pro Tag, und dieser Betrag ist bereits im Gesamtpreis vor der Bestätigung enthalten. Für wenige Euro pro Tag fahren Sie völlig beruhigt."
   },
   "blog": {
     "label": "Tipps & Ratgeber",
@@ -393,7 +402,9 @@
     "notFoundText": "Dieser Artikel existiert nicht oder ist noch nicht veröffentlicht.",
     "backToNews": "Zurück zu den Neuigkeiten",
     "breadcrumbNews": "Neuigkeiten",
-    "latestStories": "Neueste Beiträge"
+    "latestStories": "Neueste Beiträge",
+    "categoriesIntro": "Elf Themen zur Vorbereitung Ihrer Reise und Ihrer Mietwagenbuchung in Agadir.",
+    "topics": "Themen"
   },
   "footer": {
     "tagline": "Premium-Fahrzeuglösungen für anspruchsvolle Kunden. Erleben Sie die Straße mit unvergleichlichem Stil und Komfort.",
@@ -406,7 +417,7 @@
     "news": "Neuigkeiten",
     "contact": "Kontakt",
     "getInTouch": "Kontakt",
-    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
+    "address": "MAG N2, Agadir Airport",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Mo–So: 24/7 am Flughafen Agadir Al Massira",
@@ -492,9 +503,18 @@
     "notFoundDesc": "Diese Seite existiert nicht oder wurde verschoben.",
     "notFoundLead": "Der Link ist möglicherweise veraltet. Finden Sie unsere Autos und Neuigkeiten ab der Startseite.",
     "contactTitle": "Kontakt | Carzio — Autovermietung in Agadir",
-    "contactDesc": "Kontaktieren Sie Carzio in Agadir: WhatsApp +212 680 318003, E-Mail contact@carzio.ma, Agentur N208 MAG N2 Avenue Al Khaouarizmi. Antwort innerhalb von 24 h.",
+    "contactDesc": "Kontaktieren Sie Carzio in Agadir: WhatsApp +212 680 318003, E-Mail contact@carzio.ma, Agentur MAG N2, Agadir Airport. Antwort innerhalb von 24 h.",
     "termsTitle": "AGB | Carzio",
     "termsDesc": "Carzio Mietbedingungen: Mindestalter 23 Jahre, Führerschein seit 4 Jahren, 0 MAD Kaution, Versicherung inklusive, kostenlose Stornierung bis 24 h davor.",
     "notFoundTitle": "Seite nicht gefunden | Carzio"
+  },
+  "currency": {
+    "switch": "Währung wechseln",
+    "name": {
+      "mad": "Dirham",
+      "eur": "Euro",
+      "usd": "US-Dollar",
+      "gbp": "Britisches Pfund"
+    }
   }
 }

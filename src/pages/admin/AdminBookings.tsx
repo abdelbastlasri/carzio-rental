@@ -177,9 +177,7 @@ export default function AdminBookings() {
                     {booking.insurance_type && (
                       <p>
                         <span className="text-gray-500">Insurance:</span>{' '}
-                        {booking.insurance_type === 'full' ? 'Full' : 'Standard'}
-                        {booking.insurance_franchise !== undefined && ` — franchise ${booking.insurance_franchise} MAD`}
-                        {booking.insurance_price ? ` (+€${booking.insurance_price})` : ''}
+                        {booking.insurance_type === 'full' ? 'Full Risk' : 'Standard'} — included in the total price
                       </p>
                     )}
                     <p><span className="text-gray-500">Contact:</span> {booking.customer_phone} | {booking.customer_email}</p>

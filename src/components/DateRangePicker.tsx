@@ -11,6 +11,7 @@ import {
   todayISO,
   toISO,
 } from '../lib/rental';
+import { convertFromEur, useCurrency } from '../lib/currency';
 
 export interface DateRangeValue {
   pickupDate: string;
@@ -45,6 +46,7 @@ export default function DateRangePicker({
   error,
 }: DateRangePickerProps) {
   const { t, i18n } = useTranslation();
+  const { currency } = useCurrency();
   const [open, setOpen] = useState(false);
   const [cursor, setCursor] = useState(() => {
     const base = value.pickupDate || todayISO();
@@ -143,11 +145,11 @@ export default function DateRangePicker({
   };
 
   const summary = start && end ? `${formatShort(start)} → ${formatShort(end)}` : '';
-  const priceFormatter = useMemo(
-    () => new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }),
-    [locale],
-  );
-  const price = pricePerDay && days > 0 ? pricePerDay * days : null;
+  const priceFormatter = useMemo(() => {
+    const intlCurrency = currency === 'MAD' ? 'MAD' : currency;
+    return new Intl.NumberFormat(locale, { style: 'currency', currency: intlCurrency, maximumFractionDigits: 0 });
+  }, [locale, currency]);
+  const price = pricePerDay && days > 0 ? convertFromEur(pricePerDay * days, currency) : null;
 
   const panel = (
     <div

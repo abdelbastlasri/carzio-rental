@@ -4,6 +4,7 @@ import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { stripLangPrefix, withLangPrefix, type Lang } from '../lib/i18nRouting';
+import CurrencySwitcher from './CurrencySwitcher';
 
 const WHATSAPP_URL = 'https://wa.me/212680318003';
 
@@ -99,10 +100,12 @@ export default function Header() {
             >
               {t('common.bookNow')}
             </LangLink>
+            <CurrencySwitcher />
           </div>
 
           {/* Language Selector */}
-          <div className="relative">
+          <div className="md:hidden mr-1"><CurrencySwitcher /></div>
+          <div className="relative ml-1 lg:ml-2">
             <button
               onClick={() => setLangOpen(!langOpen)}
               className="text-white/70 hover:text-gold text-sm font-medium transition flex items-center gap-1 px-2 py-1.5 rounded-lg hover:bg-white/5"

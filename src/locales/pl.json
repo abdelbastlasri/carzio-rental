@@ -81,7 +81,8 @@
     "searchCars": "Szukaj Dostępnych Samochodów",
     "noHiddenFees": "Bez ukrytych opłat",
     "freeCancellation": "Darmowa rezygnacja",
-    "secureBooking": "Bezpieczna rezerwacja"
+    "secureBooking": "Bezpieczna rezerwacja",
+    "standardInsuranceIncluded": "Ubezpieczenie Standard w cenie — pojazd, szyby, opony i lusterka objęte ochroną"
   },
   "dateRange": {
     "label": "Daty wynajmu",
@@ -181,7 +182,13 @@
     "subtitle": "Prawdziwe historie podróżnych, którzy powierzyli nam swoją podróż po Maroku.",
     "previous": "Poprzednia opinia",
     "next": "Następna opinia",
-    "ofReviews": "{{current}} z {{total}}"
+    "ofReviews": "{{current}} z {{total}}",
+    "googleCta": "Zobacz wszystkie nasze opinie na Google",
+    "trustTitle": "KLIENCI NAM ZAUFAJĄ",
+    "trustSubtitle": "Opinie naszych klientów.",
+    "googleVerified": "Zweryfikowane opinie Google",
+    "basedOn": "Na podstawie {{count}} opinii Google",
+    "googleLogoAlt": "Google Maps"
   },
   "contact": {
     "mapTitle": "Znajdź Nas na Mapie",
@@ -189,7 +196,7 @@
     "getInTouch": "Skontaktuj się",
     "helpText": "Skontaktuj się z nami w każdej chwili — jesteśmy tutaj, aby pomóc.",
     "ourAddress": "Nasz Adres",
-    "addressValue": "Lotnisko Agadir, Agadir 80000",
+    "addressValue": "MAG N2, Agadir Airport",
     "callUs": "Zadzwoń",
     "phoneValue": "+212 680-318003",
     "emailUs": "Wyślij Email",
@@ -249,7 +256,7 @@
     "ageRequired": "Min. 23 lata, prawo jazdy od 4 lat",
     "transportFee": "Opłata Transportowa/Dostawa",
     "transportFeeFree": "Bezpłatnie",
-    "transportFeeMessage": "Dodatkowa opłata transportowa w wysokości €{{fee}} ma zastosowanie.",
+    "transportFeeMessage": "Dodatkowa opłata za dostawę w wysokości {{fee}} ma zastosowanie.",
     "onRequestNote": "Na życzenie — cena potwierdzona przed rezerwacją.",
     "transportFeeOnRequest": "Na życzenie",
     "selectCarRequired": "Najpierw wybierz samochód.",
@@ -259,10 +266,10 @@
     "insuranceTitle": "Ubezpieczenie",
     "standardInsurance": "Ubezpieczenie Standardowe",
     "included": "W cenie",
-    "standardInsuranceDesc": "Udział własny {{excess}} MAD w razie szkody. Szyby, opony i lusterka objęte ochroną.",
+    "standardInsuranceDesc": "Ubezpieczenie Standard w cenie. Szyby, opony i lusterka objęte ochroną.",
     "fullInsurance": "Ubezpieczenie Pełne",
     "fullInsuranceDesc": "Udział własny obniżony do 0 MAD: brak kosztów w razie szkody.",
-    "fullInsurancePrice": "+{{price}} € / dzień",
+    "fullInsurancePrice": "+{{price}} / dzień",
     "fullInsuranceFrom": "Dostępne od {{days}} dni wynajmu.",
     "paymentMethod": "Metoda Płatności",
     "paymentUponDelivery": "Płatność przy Odbiorze",
@@ -331,9 +338,11 @@
     "section14Title": "14. Polityka Depozytu",
     "section14Content": "Żadna kaucja, depozyt ani kwota gwarancyjna nie będą wymagane od klienta w momencie rezerwacji lub wynajmu pojazdu. Klient nie ma obowiązku płacenia, blokowania ani utrzymywania jakiegokolwiek depozytu lub kwoty zabezpieczającej w związku z rezerwacją pojazdu, z wyjątkiem przypadków wyraźnie określonych na piśmie przez agencję.",
     "section15Title": "15. Ubezpieczenie Standard",
-    "section15Content": "Ubezpieczenie standard jest wliczone w cenę wynajmu. Obejmuje pojazd, w tym szyby, opony i lusterka. W razie objętej szkody franczyza pozostaje po stronie klienta: 5 000 MAD, gdy stawka dzienna wynosi 39 € lub mniej, oraz 8 000 MAD od 40 €. Stawka dzienna to ta pokazana na karcie pojazdu. Minimalny wynajem to 72 godziny, rozliczane blokami 24 h; rozpoczęty blok liczy się jako pełny dzień. Anulowanie jest bezpłatne do 24 h przed odbiorem.",
+    "section15Content": "Ubezpieczenie standard jest wliczone w cenę wynajmu. Obejmuje pojazd, w tym szyby, opony i lusterka. W razie objętej szkody franczyza pozostaje po stronie klienta; jej wysokość jest podana w umowie najmu podpisanej przy przekazaniu kluczy. Stawka dzienna najmu samochodu to ta pokazana na karcie pojazdu. Minimalny wynajem to 72 godziny, rozliczane blokami 24 h; rozpoczęty blok liczy się jako pełny dzień. Anulowanie jest bezpłatne do 24 h przed odbiorem.",
     "section16Title": "16. Pełne ubezpieczenie (full risk / Full Insurance)",
-    "section16Content": "Pełne ubezpieczenie (Full Insurance) sprowadza franczyzę do 0 MAD. Dostępne jest wyłącznie od 5 naliczonych dni: dopłata 10 € za dzień, gdy stawka dzienna wynosi 39 € lub mniej, oraz 15 € za dzień od 40 €. Rozliczenie blokowe co 24 h; rozpoczęty blok to pełny dzień. Opcja nigdy nie jest zaznaczona automatycznie i odznacza się, gdy naliczone dni spadną poniżej 5. Dokładna dopłata jest zawsze pokazywana przed potwierdzeniem."
+    "section16Content": "Pełne ubezpieczenie (Full Insurance) sprowadza franczyzę do 0 MAD. Dostępne jest wyłącznie od 5 naliczonych dni: dopłata 10 € za dzień, gdy stawka dzienna wynosi 39 € lub mniej, oraz 15 € za dzień od 40 €. Rozliczenie blokowe co 24 h; rozpoczęty blok to pełny dzień. Opcja nigdy nie jest zaznaczona automatycznie i odznacza się, gdy naliczone dni spadną poniżej 5. Dokładna dopłata jest zawsze pokazywana przed potwierdzeniem.",
+    "section17Title": "17. Informacja — dlaczego warto wybrać pełne ubezpieczenie",
+    "section17Content": "Przy ubezpieczeniu Standard w razie szkody franczyza w wysokości 5 000 MAD lub 8 000 MAD pozostaje po Twojej stronie, w zależności od pojazdu. Kwota ta może przekroczyć całkowitą cenę wynajmu. Pełne ubezpieczenie obejmuje wszystko: franczyza spada do 0 MAD, a w razie objętej szkody nic nie pozostaje po Twojej stronie. Kosztuje tylko 10 € lub 15 € dziennie w zależności od pojazdu, a ta kwota jest już wliczona w sumę pokazywaną przed potwierdzeniem. Za kilka euro dziennie jedziesz ze spokojną głową."
   },
   "blog": {
     "label": "Porady i przewodniki",
@@ -393,7 +402,9 @@
     "notFoundText": "Ten artykuł nie istnieje lub nie został jeszcze opublikowany.",
     "backToNews": "Powrót do aktualności",
     "breadcrumbNews": "Aktualności",
-    "latestStories": "Najnowsze"
+    "latestStories": "Najnowsze",
+    "categoriesIntro": "Jedenaście tematów, które pomogą przygotować pobyt i wynajem samochodu w Agadirze.",
+    "topics": "tematy"
   },
   "footer": {
     "tagline": "Premium rozwiązania pojazdowe dla wymagających klientów. Doświadcz drogi w niezrównanym stylu i komforcie.",
@@ -406,7 +417,7 @@
     "news": "Aktualności",
     "contact": "Kontakt",
     "getInTouch": "Kontakt",
-    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
+    "address": "MAG N2, Agadir Airport",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Pon–Niedz: 24/7 na lotnisku Agadir Al Massira",
@@ -492,9 +503,18 @@
     "notFoundDesc": "Ta strona nie istnieje lub została przeniesiona.",
     "notFoundLead": "Link może być nieaktualny. Znajdź nasze auta i wiadomości na stronie głównej.",
     "contactTitle": "Kontakt | Carzio — Wynajem auta w Agadirze",
-    "contactDesc": "Skontaktuj się z Carzio w Agadirze: WhatsApp +212 680 318003, e-mail contact@carzio.ma, agencja N208 MAG N2 Avenue Al Khaouarizmi. Odpowiedź w 24 h.",
+    "contactDesc": "Skontaktuj się z Carzio w Agadirze: WhatsApp +212 680 318003, e-mail contact@carzio.ma, agencja MAG N2, Agadir Airport. Odpowiedź w 24 h.",
     "termsTitle": "Warunki i zasady | Carzio",
     "termsDesc": "Warunki wynajmu Carzio: minimum 23 lata, prawo jazdy od 4 lat, 0 MAD kaucji, ubezpieczenie w cenie, bezpłatna anulacja do 24 h przed.",
     "notFoundTitle": "Nie znaleziono strony | Carzio"
+  },
+  "currency": {
+    "switch": "Zmień walutę",
+    "name": {
+      "mad": "Dirham",
+      "eur": "Euro",
+      "usd": "Dolar US",
+      "gbp": "Funt brytyjski"
+    }
   }
 }

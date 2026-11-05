@@ -6,8 +6,8 @@ title: "Renting a car in Agadir: the complete guide"
 description: "From the online request to key handover: minimum duration, documents, payment, airport delivery and cancellation. Carzio's guide to booking without surprises."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/agadir-airport.jpg
-imageAlt: "Carzio rental car at Agadir Al Massira airport"
+image: /images/dacia-sandero-stepway.jpg
+imageAlt: "Carzio Dacia Sandero Stepway at Agadir Al Massira airport"
 readingTime: 9
 featured: true
 published: true
@@ -53,7 +53,7 @@ The driver must be **at least 23 years old**. These conditions apply to every ca
 
 ## Delivery and return: what to plan for
 
-Delivery is free at Agadir Al Massira airport and at our agency, N208 MAG N2 Avenue Al Khaouarizmi. For Marrakech and Casablanca, allow **€80 per trip**: the fee applies to delivery and, if the car is returned there, to the return trip.
+Delivery is free at Agadir Al Massira airport and at our agency, MAG N2, Agadir Airport. For Marrakech and Casablanca, allow **€80 per trip**: the fee applies to delivery and, if the car is returned there, to the return trip.
 
 Taghazout, Tamraght and Essaouira are served **on request**. The price is confirmed before booking, depending on the exact address and time.
 

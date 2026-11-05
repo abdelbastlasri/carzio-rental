@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { detectLangFromPath, stripLangPrefix } from './lib/i18nRouting';
+import { CurrencyProvider } from './lib/currency';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -42,7 +43,7 @@ function App() {
   }
 
   return (
-    <>
+    <CurrencyProvider>
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-gold focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-black"
@@ -77,7 +78,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </CurrencyProvider>
   );
 }
 

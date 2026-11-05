@@ -416,14 +416,10 @@ function billedDaysJs(pickupDate, dropoffDate, pickupTime, dropoffTime) {
 
 function insuranceRow(b) {
   if (!b.insuranceType) return '';
-  const franchise = Number(b.insuranceFranchise) || 0;
-  const price = Number(b.insurancePrice);
-  const priceLabel = b.fullInsurance && price > 0 ? ` (+${price} EUR)` : '';
-  const label = b.fullInsurance ? 'Full Insurance' : (b.insuranceType === 'full' ? 'Full Insurance' : 'Standard Insurance');
-  return row(
-    'Insurance',
-    `${label} — ${franchise} MAD excess${priceLabel}`,
-  );
+  const full = b.fullInsurance || b.insuranceType === 'full';
+  const label = full ? 'Full Risk Insurance' : 'Standard Insurance';
+  const note = full ? 'Included in the total price' : 'Included';
+  return row('Insurance', `${label} — ${note}`);
 }
 
 function row(label, valueHtml) {
@@ -489,7 +485,7 @@ ${greeting}
 ${bookingDetailRows(b)}
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
-<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; MAG N2, Agadir Airport</p>
 <p style="margin:0">contact@carzio.ma &#8212; +212 680-318003</p>
 </td></tr></table>
 </td></tr></table>
@@ -530,7 +526,7 @@ ${bookingDetailRows(b)}
 <p style="margin:0;color:#92400e;font-size:13px"><strong>Action required:</strong> Log in to <a href="https://admin.carzio.ma" style="color:#b8860b">admin.carzio.ma</a> to confirm or reject.</p>
 </td></tr></table>
 <table cellpadding="0" cellspacing="0" style="width:100%"><tr><td style="text-align:center;color:#9ca3af;font-size:11px;padding-top:20px">
-<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000</p>
+<p style="margin:0 0 4px 0"><strong>Carzio</strong> &#8212; MAG N2, Agadir Airport</p>
 <p style="margin:0">contact@carzio.ma &#8212; +212 680-318003</p>
 </td></tr></table>
 </td></tr></table>

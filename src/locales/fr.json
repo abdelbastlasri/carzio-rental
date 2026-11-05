@@ -81,7 +81,8 @@
     "searchCars": "Rechercher des Voitures",
     "noHiddenFees": "Pas de frais cachés",
     "freeCancellation": "Annulation gratuite",
-    "secureBooking": "Réservation sécurisée"
+    "secureBooking": "Réservation sécurisée",
+    "standardInsuranceIncluded": "Assurance Standard incluse — véhicule, vitres, pneus et rétroviseurs couverts"
   },
   "dateRange": {
     "label": "Dates de location",
@@ -181,7 +182,13 @@
     "subtitle": "Des histoires réelles de voyageurs qui nous ont confié leur voyage à travers le Maroc.",
     "previous": "Avis précédent",
     "next": "Avis suivant",
-    "ofReviews": "{{current}} sur {{total}}"
+    "ofReviews": "{{current}} sur {{total}}",
+    "googleCta": "Voir tous nos avis sur Google",
+    "trustTitle": "ILS NOUS FONT CONFIANCE",
+    "trustSubtitle": "L'avis de nos clients.",
+    "googleVerified": "Avis Google vérifiés",
+    "basedOn": "D'après {{count}} avis Google",
+    "googleLogoAlt": "Google Maps"
   },
   "contact": {
     "mapTitle": "Trouvez-Nous sur la Carte",
@@ -189,7 +196,7 @@
     "getInTouch": "Prenez Contact",
     "helpText": "Contactez-nous à tout moment — nous sommes là pour vous aider.",
     "ourAddress": "Notre Adresse",
-    "addressValue": "Aéroport d'Agadir, Agadir 80000",
+    "addressValue": "MAG N2, Agadir Airport",
     "callUs": "Appelez-Nous",
     "phoneValue": "+212 680-318003",
     "emailUs": "Envoyez-nous un Email",
@@ -249,7 +256,7 @@
     "ageRequired": "23 ans minimum, permis depuis 4 ans",
     "transportFee": "Frais de Transport/Livraison",
     "transportFeeFree": "Gratuit",
-    "transportFeeMessage": "Des frais de transport supplémentaires de €{{fee}} s'appliquent.",
+    "transportFeeMessage": "Des frais de livraison supplémentaires de {{fee}} s'appliquent.",
     "onRequestNote": "Sur demande — tarif confirmé avant la réservation.",
     "transportFeeOnRequest": "Sur demande",
     "selectCarRequired": "Veuillez d’abord choisir une voiture.",
@@ -259,10 +266,10 @@
     "insuranceTitle": "Assurance",
     "standardInsurance": "Assurance Standard",
     "included": "Incluse",
-    "standardInsuranceDesc": "Franchise de {{excess}} MAD en cas de dommage. Vitres, pneus et rétroviseurs couverts.",
+    "standardInsuranceDesc": "Assurance Standard incluse. Vitres, pneus et rétroviseurs couverts.",
     "fullInsurance": "Assurance Complète",
     "fullInsuranceDesc": "Franchise ramenée à 0 MAD : aucun montant à votre charge en cas de dommage.",
-    "fullInsurancePrice": "+{{price}} € / jour",
+    "fullInsurancePrice": "+{{price}} / jour",
     "fullInsuranceFrom": "Disponible à partir de {{days}} jours de location.",
     "paymentMethod": "Méthode de Paiement",
     "paymentUponDelivery": "Paiement à la Livraison",
@@ -331,9 +338,11 @@
     "section14Title": "14. Politique de Dépôt de Garantie",
     "section14Content": "Aucun dépôt de garantie, caution ou montant de garantie ne sera exigé du client au moment de la réservation ou de la location du véhicule. Le client n'est pas obligé de payer, bloquer ou détenir un dépôt ou un montant de garantie en lien avec la réservation d'un véhicule, sauf indication contraire expresse et écrite de l'agence.",
     "section15Title": "15. Assurance Standard",
-    "section15Content": "L'assurance Standard est incluse dans le prix de la location. Elle couvre le véhicule, y compris les vitres, les pneus et les rétroviseurs. En cas de dommage couvert, une franchise reste à la charge du client : 5 000 MAD lorsque le tarif journalier est de 39 € ou moins, et 8 000 MAD à partir de 40 €. Le tarif journalier est celui affiché sur la fiche du véhicule. La durée minimale de location est de 72 heures, facturée par blocs de 24 heures ; tout bloc entamé compte comme un jour complet. L'annulation est gratuite jusqu'à 24 h avant la prise en charge.",
+    "section15Content": "L'assurance Standard est incluse dans le prix de la location. Elle couvre le véhicule, y compris les vitres, les pneus et les rétroviseurs. En cas de dommage couvert, une franchise reste à la charge du client ; son montant est indiqué dans le contrat de location signé à la remise des clés. Le tarif de location de voiture journalier est celui affiché sur la fiche du véhicule. La durée minimale de location est de 72 heures, facturée par blocs de 24 heures ; tout bloc entamé compte comme un jour complet. L'annulation est gratuite jusqu'à 24 h avant la prise en charge.",
     "section16Title": "16. Assurance Complète (tous risques / Full Insurance)",
-    "section16Content": "L'Assurance Complète (tous risques / Full Insurance) ramène la franchise à 0 MAD. Elle est proposée uniquement à partir de 5 jours facturés : en supplément de 10 € par jour lorsque le tarif journalier est de 39 € ou moins, et de 15 € par jour à partir de 40 €. La location est facturée par blocs de 24 heures ; un bloc commencé compte comme un jour complet. L'option n'est jamais pré-cochée et se décoche automatiquement lorsque la durée descend sous 5 jours facturés. Le montant exact du supplément est toujours indiqué avant la confirmation."
+    "section16Content": "L'Assurance Complète (tous risques / Full Insurance) ramène la franchise à 0 MAD. Elle est proposée uniquement à partir de 5 jours facturés : en supplément de 10 € par jour lorsque le tarif journalier est de 39 € ou moins, et de 15 € par jour à partir de 40 €. La location est facturée par blocs de 24 heures ; un bloc commencé compte comme un jour complet. L'option n'est jamais pré-cochée et se décoche automatiquement lorsque la durée descend sous 5 jours facturés. Le montant exact du supplément est toujours indiqué avant la confirmation.",
+    "section17Title": "17. Avis — pourquoi choisir l'Assurance Complète",
+    "section17Content": "Avec l'assurance Standard, en cas de dommage, une franchise de 5 000 MAD ou 8 000 MAD reste à votre charge selon le véhicule. Ce montant peut dépasser le prix total de votre location. L'Assurance Complète couvre tout : la franchise est ramenée à 0 MAD et, en cas de dommage couvert, aucun montant ne reste à votre charge. Elle coûte seulement 10 € ou 15 € par jour selon le véhicule, et ce montant est déjà inclus dans le total affiché avant votre confirmation. Pour quelques euros par jour, vous roulez l'esprit tranquille."
   },
   "blog": {
     "label": "Conseils & guides",
@@ -393,7 +402,9 @@
     "notFoundText": "Cette actualité n'existe pas ou n'a pas encore été publiée.",
     "backToNews": "Retour aux actualités",
     "breadcrumbNews": "Actualités",
-    "latestStories": "À la une récemment"
+    "latestStories": "À la une récemment",
+    "categoriesIntro": "Onze rubriques pour préparer votre séjour et votre location à Agadir.",
+    "topics": "rubriques"
   },
   "footer": {
     "tagline": "Des solutions de véhicules premium pour une clientèle exigeante. Vivez la route avec un style et un confort inégalés.",
@@ -406,7 +417,7 @@
     "news": "Actualités",
     "contact": "Contact",
     "getInTouch": "Contactez-Nous",
-    "address": "N208, MAG N2 Avenue Al khaouarizmi, Agadir 80000",
+    "address": "MAG N2, Agadir Airport",
     "phone": "+212 680-318003",
     "email": "contact@carzio.ma",
     "hours": "Lun–Dim : 24/7 à l’aéroport Agadir Al Massira",
@@ -492,9 +503,18 @@
     "notFoundDesc": "Cette page n'existe pas ou a été déplacée.",
     "notFoundLead": "Le lien est peut-être ancien. Retrouvez nos voitures et nos actualités depuis l’accueil.",
     "contactTitle": "Contact | Carzio - Location de voiture Agadir",
-    "contactDesc": "Contactez Carzio à Agadir : WhatsApp +212 680 318003, e-mail contact@carzio.ma, agence N208 MAG N2 Avenue Al Khaouarizmi. Réponse sous 24 h.",
+    "contactDesc": "Contactez Carzio à Agadir : WhatsApp +212 680 318003, e-mail contact@carzio.ma, agence MAG N2, Agadir Airport. Réponse sous 24 h.",
     "termsTitle": "Conditions générales | Carzio",
     "termsDesc": "Conditions générales de location Carzio : âge minimum 23 ans, permis depuis 4 ans, 0 MAD de caution, assurance incluse, annulation gratuite jusqu’à 24 h.",
     "notFoundTitle": "Page introuvable | Carzio"
+  },
+  "currency": {
+    "switch": "Changer de devise",
+    "name": {
+      "mad": "Dirham",
+      "eur": "Euro",
+      "usd": "Dollar US",
+      "gbp": "Livre sterling"
+    }
   }
 }

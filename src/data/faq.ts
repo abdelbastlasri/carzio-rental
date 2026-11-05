@@ -80,24 +80,25 @@ const fr: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'assurance',
     title: 'Assurance & franchise',
-    short: 'Ce qui est couvert et comment réduire la franchise à 0.',
+    short: 'Ce qui est couvert, et comment passer à 0 MAD en cas de dommage.',
     description:
-      'Assurance standard incluse, franchise de 5 000 ou 8 000 MAD selon le véhicule, et Assurance Complète à 0 MAD de franchise disponible à partir de 5 jours de location.',
+      'Assurance standard incluse, et Assurance Complète (franchise 0 MAD) disponible à partir de 5 jours de location.',
     entries: [
       {
         q: "L'assurance est-elle incluse dans le prix ?",
-        a: "Oui. L'assurance standard est incluse dans tous les tarifs. Elle couvre notamment les vitres, les pneus et les rétroviseurs, avec une franchise en cas de dommage.",
+        a: "Oui. L'assurance Standard est incluse dans chaque tarif. Elle couvre la structure du véhicule, les vitres, les pneus et les rétroviseurs.",
       },
       {
-        q: 'Quel est le montant de la franchise ?',
-        a: "5 000 MAD pour les véhicules dont le tarif est de 39 € par jour ou moins. 8 000 MAD pour les véhicules à partir de 40 € par jour. Le montant exact figure sur votre contrat.",
+        q: "Que se passe-t-il en cas de dommage avec l'assurance Standard ?",
+        a: "Une franchise est à votre charge en cas de dommage couvert. Le montant de cette franchise est indiqué dans le contrat que vous signez à la remise des clés.",
       },
       {
         q: "Qu'est-ce que l'Assurance Complète ?",
-        a: "C'est une option qui ramène la franchise à 0 MAD : aucun montant ne reste à votre charge en cas de dommage couvert. Elle est disponible à partir de 5 jours de location et coûte 10 € par jour pour la franchise de 5 000 MAD, ou 15 € par jour pour celle de 8 000 MAD.",
+        a: "C'est l'option que vous pouvez choisir à partir de 5 jours de location. Elle ramène la franchise à 0 MAD : aucun montant ne reste à votre charge en cas de dommage couvert. Le supplément (10 € ou 15 € par jour selon le tarif du véhicule) est toujours affiché avant la confirmation.",
       },
       {
         q: "À partir de quand puis-je prendre l'Assurance Complète ?",
@@ -105,7 +106,7 @@ const fr: FaqCategory[] = [
       },
       {
         q: "Que couvre exactement l'assurance standard ?",
-        a: "Les dommages au véhicule, les vitres, les pneus et les rétroviseurs, dans les limites du contrat. Les exclusions et le montant de la franchise sont détaillés dans le contrat remis à la prise en charge.",
+        a: "Les dommages au véhicule, les vitres, les pneus et les rétroviseurs, dans les limites du contrat. Les exclusions et le montant éventuel de la franchise sont détaillés dans le contrat remis à la prise en charge.",
       },
       {
         q: 'Que faire en cas de dommage ou d’accident ?',
@@ -113,6 +114,7 @@ const fr: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'carburant-livraison',
     title: 'Carburant, kilométrage & livraison',
@@ -248,24 +250,25 @@ const en: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'assurance',
     title: 'Insurance & excess',
-    short: 'What is covered and how to reduce the excess to 0.',
+    short: 'What is covered, and how to drop to 0 in case of damage.',
     description:
-      'Standard insurance included, excess of 5,000 or 8,000 MAD depending on the vehicle, and Full Insurance with a 0 MAD excess available from 5 days of rental.',
+      'Standard insurance included, and Full Insurance (0 excess) available from 5 days of rental.',
     entries: [
       {
         q: 'Is insurance included in the price?',
-        a: 'Yes. Standard insurance is included in every rate. It especially covers windows, tyres and mirrors, with an excess in case of damage.',
+        a: 'Yes. Standard insurance is included in every rate. It covers the body of the vehicle, the windows, tyres and mirrors.',
       },
       {
-        q: 'What is the excess amount?',
-        a: '5,000 MAD for vehicles whose rate is €39 per day or less. 8,000 MAD for vehicles from €40 per day. The exact amount is stated in your contract.',
+        q: 'What happens in case of damage under Standard insurance?',
+        a: 'An excess remains your responsibility in case of covered damage. The amount of that excess is stated in the contract you sign at key handover.',
       },
       {
         q: 'What is Full Insurance?',
-        a: 'It is an option that reduces the excess to 0 MAD: nothing remains your responsibility in case of covered damage. It is available from 5 days of rental and costs €10 per day for the 5,000 MAD excess, or €15 per day for the 8,000 MAD one.',
+        a: 'It is the option you may choose from 5 days of rental. It reduces the excess to 0: nothing remains your responsibility in case of covered damage. The surcharge (€10 or €15 per day depending on the vehicle rate) is always shown before confirmation.',
       },
       {
         q: 'From when can I take Full Insurance?',
@@ -273,7 +276,7 @@ const en: FaqCategory[] = [
       },
       {
         q: 'What exactly does standard insurance cover?',
-        a: 'Damage to the vehicle, windows, tyres and mirrors, within the limits of the contract. Exclusions and the excess amount are detailed in the contract handed over at pickup.',
+        a: 'Damage to the vehicle, windows, tyres and mirrors, within the limits of the contract. Exclusions and any excess are detailed in the contract handed over at pickup.',
       },
       {
         q: 'What should I do if the car is damaged or I have an accident?',
@@ -281,6 +284,7 @@ const en: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'carburant-livraison',
     title: 'Fuel, mileage & delivery',
@@ -416,39 +420,41 @@ const de: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'assurance',
     title: 'Versicherung & Selbstbehalt',
-    short: 'Was gedeckt ist und wie Sie den Selbstbehalt auf 0 reduzieren.',
+    short: 'Was gedeckt ist, und wie Sie auf 0 kommen.',
     description:
-      'Standardversicherung inklusive, Selbstbehalt von 5.000 oder 8.000 MAD je nach Fahrzeug, und Vollkasko (Selbstbehalt 0 MAD) ab 5 Miettagen erhältlich.',
+      'Standardversicherung inklusive, und Vollkasko (0 Selbstbehalt) ab 5 Miettagen erhältlich.',
     entries: [
       {
         q: 'Ist die Versicherung im Preis enthalten?',
-        a: 'Ja. Die Standardversicherung ist in jedem Tarif enthalten. Sie deckt insbesondere Scheiben, Reifen und Spiegel ab — mit einem Selbstbehalt bei Schaden.',
+        a: 'Ja. Die Standardversicherung ist in jedem Tarif enthalten. Sie deckt die Karosserie, Scheiben, Reifen und Spiegel ab.',
       },
       {
-        q: 'Wie hoch ist der Selbstbehalt?',
-        a: '5.000 MAD für Fahrzeuge mit einem Tagestarif von 39 € oder weniger. 8.000 MAD für Fahrzeuge ab 40 € pro Tag. Der genaue Betrag steht in Ihrem Vertrag.',
+        q: 'Was passiert bei einem Schaden mit der Standardversicherung?',
+        a: 'Ein Selbstbehalt bleibt bei gedecktem Schaden zu Ihren Lasten. Die Höhe dieses Selbstbehalts steht in dem Vertrag, den Sie bei der Schlüsselübergabe unterschreiben.',
       },
       {
-        q: 'Was ist die Vollkaskoversicherung?',
-        a: 'Eine Option, die den Selbstbehalt auf 0 MAD reduziert: Nichts bleibt zu Ihren Lasten im Fall eines gedeckten Schadens. Erhältlich ab 5 Miettagen, für 10 € pro Tag beim Selbstbehalt von 5.000 MAD, oder 15 € pro Tag beim Selbstbehalt von 8.000 MAD.',
+        q: 'Was ist die Vollkasko?',
+        a: 'Eine Option, die Sie ab 5 Miettagen wählen können. Sie reduziert den Selbstbehalt auf 0: Nichts bleibt zu Ihren Lasten im Fall eines gedeckten Schadens. Der Aufpreis (10 € oder 15 € pro Tag je nach Fahrzeugtarif) wird immer vor der Bestätigung angezeigt.',
       },
       {
-        q: 'Ab wann kann ich die Vollkasko wählen?',
-        a: 'Nur ab 5 Miettagen, also 120 Stunden. Sie wird nie vorausgewählt und automatisch entfernt, wenn die Mietdauer unter 5 Tage fällt.',
+        q: 'Ab wann kann ich die Vollkasko nehmen?',
+        a: 'Nur ab 5 Miettagen, also 120 Stunden. Sie ist niemals vorausgewählt und wird automatisch entfernt, wenn die Dauer unter 5 Tage fällt.',
       },
       {
-        q: 'Was deckt die Standardversicherung genau ab?',
-        a: 'Schäden am Fahrzeug, Scheiben, Reifen und Spiegel, innerhalb der Vertragsgrenzen. Ausschlüsse und die Höhe des Selbstbehalts sind im übergebenen Vertrag detailliert.',
+        q: 'Was genau deckt die Standardversicherung ab?',
+        a: 'Schäden am Fahrzeug, Scheiben, Reifen und Spiegel, innerhalb der Vertragsgrenzen. Ausschlüsse und ein eventueller Selbstbehalt sind im übergebenen Vertrag detailliert.',
       },
       {
         q: 'Was tun bei Schaden oder Unfall?',
-        a: 'Sichern Sie Fahrzeug und Personen, rufen Sie die Polizei (190) falls nötig, dann Carzio unter +212 680 318003. Verlassen Sie den Ort nicht und reparieren Sie das Fahrzeug nicht ohne unser Einverständnis.',
+        a: 'Sichern Sie Fahrzeug und Personen, rufen Sie bei Bedarf die Polizei unter 190 und informieren Sie Carzio unter +212 680 318003. Verlassen Sie den Unfallort nicht und lassen Sie das Fahrzeug nicht ohne unsere Zustimmung reparieren.',
       },
     ],
   },
+
   {
     slug: 'carburant-livraison',
     title: 'Kraftstoff, km & Lieferung',
@@ -584,39 +590,41 @@ const es: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'assurance',
     title: 'Seguro y franquicia',
-    short: 'Qué está cubierto y cómo reducir la franquicia a 0.',
+    short: 'Qué está cubierto, y cómo llegar a 0 en caso de daño.',
     description:
-      'Seguro Standard incluido, franquicia de 5 000 o 8 000 MAD según el vehículo, y seguro completo con franquicia de 0 MAD disponible a partir de 5 días de alquiler.',
+      'Seguro Standard incluido, y seguro completo (franquicia 0) disponible a partir de 5 días de alquiler.',
     entries: [
       {
         q: '¿El seguro está incluido en el precio?',
-        a: 'Sí. El seguro Standard está incluido en todas las tarifas. Cubre, especialmente, cristales, neumáticos y retrovisores, con una franquicia en caso de daño.',
+        a: 'Sí. El seguro Standard está incluido en todas las tarifas. Cubre la carrocería del vehículo, los cristales, los neumáticos y los retrovisores.',
       },
       {
-        q: '¿Cuál es el importe de la franquicia?',
-        a: '5 000 MAD para vehículos de tarifa de 39 € al día o menos. 8 000 MAD para vehículos desde 40 € al día. El importe exacto figura en su contrato.',
+        q: '¿Qué ocurre en caso de daño con el seguro Standard?',
+        a: 'Una franquicia queda a su cargo en caso de daño cubierto. El importe de esa franquicia figura en el contrato que firma en la entrega de llaves.',
       },
       {
         q: '¿Qué es el seguro completo?',
-        a: 'Una opción que reduce la franquicia a 0 MAD: nada queda a su cargo en caso de daño cubierto. Disponible a partir de 5 días de alquiler y cuesta 10 € al día para la franquicia de 5 000 MAD, o 15 € al día para la de 8 000 MAD.',
+        a: 'La opción que puede elegir a partir de 5 días de alquiler. Reduce la franquicia a 0: nada queda a su cargo en caso de daño cubierto. El suplemento (10 € o 15 € al día según la tarifa del vehículo) siempre se muestra antes de la confirmación.',
       },
       {
-        q: '¿Desde cuándo puedo coger el seguro completo?',
-        a: 'Solo a partir de 5 días de alquiler, o sea 120 horas. Nunca viene marcada por defecto y se retira automáticamente si la duración baja de 5 días.',
+        q: '¿Desde cuándo puedo contratar el seguro completo?',
+        a: 'Solo a partir de 5 días de alquiler, es decir, 120 horas. Nunca viene preseleccionado y se retira automáticamente si la duración baja de 5 días.',
       },
       {
         q: '¿Qué cubre exactamente el seguro Standard?',
-        a: 'Daños al vehículo, cristales, neumáticos y retrovisores, dentro de los límites del contrato. Las exclusiones y el importe de la franquicia se detallan en el contrato entregado en la recogida.',
+        a: 'Daños al vehículo, cristales, neumáticos y retrovisores, dentro de los límites del contrato. Las exclusiones y una posible franquicia se detallan en el contrato entregado en la recogida.',
       },
       {
-        q: '¿Qué hacer en caso de daño o accidente?',
-        a: 'Asegure el vehículo y las personas, llame a la policía (190) si es necesario, después a Carzio al +212 680 318003. No abandone el lugar y no repare el vehículo sin nuestro acuerdo.',
+        q: '¿Qué hago en caso de daño o accidente?',
+        a: 'Ponga a salvo el vehículo y las personas, llame a la policía al 190 si es necesario y avise a Carzio al +212 680 318003. No abandone el lugar ni haga reparar el vehículo sin nuestro acuerdo.',
       },
     ],
   },
+
   {
     slug: 'carburant-livraison',
     title: 'Combustible, km y entrega',
@@ -752,39 +760,41 @@ const pl: FaqCategory[] = [
       },
     ],
   },
+
   {
     slug: 'assurance',
     title: 'Ubezpieczenie i franczyza',
-    short: 'Co jest objęte i jak zmniejszyć franczyzę do 0.',
+    short: 'Co jest objęte, i jak zejść do 0 przy szkodzie.',
     description:
-      'Ubezpieczenie standardowe w cenie, franczyza 5 000 lub 8 000 MAD w zależności od pojazdu, oraz ubezpieczenie pełne z franczyzą 0 MAD dostępne od 5 dni wynajmu.',
+      'Ubezpieczenie Standard w cenie, oraz pełne ubezpieczenie (franczyza 0) od 5 dni wynajmu.',
     entries: [
       {
         q: 'Czy ubezpieczenie jest wliczone w cenę?',
-        a: 'Tak. Ubezpieczenie standardowe jest wliczone we wszystkie taryfy. Szczególnie obejmuje szyby, opony i lusterka, z franczyzą w razie szkody.',
+        a: 'Tak. Ubezpieczenie Standard jest wliczone w każdą taryfę. Obejmuje karoserię pojazdu, szyby, opony i lusterka.',
       },
       {
-        q: 'Ile wynosi franczyza?',
-        a: '5 000 MAD dla pojazdów z taryfą 39 € za dzień lub mniej. 8 000 MAD dla pojazdów od 40 € za dzień. Dokładna kwota widnieje w Twojej umowie.',
+        q: 'Co się dzieje w razie szkody przy ubezpieczeniu Standard?',
+        a: 'Franczyza obciąża Ciebie w razie objętej szkody. Wysokość tej franczyzy jest podana w umowie podpisanej przy przekazaniu kluczy.',
       },
       {
-        q: 'Czym jest ubezpieczenie pełne?',
-        a: 'To opcja, która redukuje franczyzę do 0 MAD: w przypadku objętej szkody nic nie pozostaje w Twojej gestii. Dostępne od 5 dni wynajmu i kosztuje 10 € dziennie przy franczyzie 5 000 MAD, albo 15 € dziennie przy 8 000 MAD.',
+        q: 'Czym jest ubezpieczenie Full Risk?',
+        a: 'To opcja, którą możesz wybrać od 5 dni wynajmu. Redukuje franczyzę do 0: nic nie pozostaje w Twojej gestii w razie objętej szkody. Dopłata (10 € lub 15 € dziennie w zależności od taryfy pojazdu) jest zawsze pokazana przed potwierdzeniem.',
       },
       {
-        q: 'Od kiedy mogę wziąć ubezpieczenie pełne?',
-        a: 'Wyłącznie od 5 dni wynajmu, czyli 120 godzin. Nigdy nie jest zaznaczone domyślnie i znika automatycznie, gdy długość spadnie poniżej 5 dni.',
+        q: 'Od kiedy mogę wykupić ubezpieczenie pełne?',
+        a: 'Tylko od 5 dni wynajmu, czyli 120 godzin. Opcja nigdy nie jest zaznaczona automatycznie i odznacza się, gdy czas wynajmu spada poniżej 5 dni.',
       },
       {
-        q: 'Co dokładnie obejmuje ubezpieczenie standardowe?',
-        a: 'Szkody pojazdu, szyby, opony i lusterka, w granicach umowy. Wyłączenia i wysokość franczyzy są opisane w umowie przekazanej przy odbiorze.',
+        q: 'Co dokładnie obejmuje ubezpieczenie Standard?',
+        a: 'Szkody pojazdu, szyby, opony i lusterka, w granicach umowy. Wyłączenia i ewentualna franczyza są szczegółowo opisane w umowie wręczanej przy odbiorze.',
       },
       {
         q: 'Co zrobić w razie szkody albo wypadku?',
-        a: 'Zabezpiecz pojazd i osoby, zadzwoń po policję (190) jeśli trzeba, a następnie do Carzio pod +212 680 318003. Nie oddalaj się i nie naprawiaj pojazdu bez naszej zgody.',
+        a: 'Zabezpiecz pojazd i ludzi, w razie potrzeby dzwoń na policję pod numer 190, a potem powiadom Carzio pod +212 680 318003. Nie oddalaj się z miejsca i nie oddawaj pojazdu do naprawy bez naszej zgody.',
       },
     ],
   },
+
   {
     slug: 'carburant-livraison',
     title: 'Paliwo, kilometry i dostawa',
