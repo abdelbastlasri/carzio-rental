@@ -123,8 +123,17 @@ export default function NewsHub() {
                 <li key={category.slug}>
                   <LangLink
                     to={`/news/categorie/${category.slug}`}
-                    className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/60 px-4 py-2 text-sm text-white/70 transition hover:border-gold/50 hover:text-white"
+                    className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/60 py-1.5 pl-1.5 pr-4 text-sm text-white/70 transition hover:border-gold/50 hover:text-white"
                   >
+                    <img
+                      src={category.image}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      width={28}
+                      height={28}
+                      className="h-7 w-7 rounded-full object-cover object-center ring-1 ring-white/10 transition group-hover:ring-gold/50"
+                    />
                     {copy.name}
                     {count > 0 && (
                       <span className="rounded-full bg-gold/15 px-2 py-0.5 text-xs font-semibold text-gold">

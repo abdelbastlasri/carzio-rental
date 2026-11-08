@@ -478,7 +478,11 @@
     "guideInsurance": "Assurance standard ou complète",
     "guideAge": "Âge, permis et conducteurs",
     "guideAgadir": "Location de voiture à Agadir",
-    "heroAlt": "Voiture Carzio prête pour votre location à Agadir"
+    "heroAlt": "Voiture Carzio prête pour votre location à Agadir",
+    "extraEyebrow": "Depuis Agadir",
+    "extraTitle": "Votre location commence à Agadir",
+    "extraText": "Retrouvez nos réponses sur la réservation, l'assurance, le carburant et la conduite au Maroc, réunies dans les rubriques ci-dessus.",
+    "extraAlt": "Marina d'Agadir, point de départ de votre location"
   },
   "city": {
     "backToHome": "Retour à l’accueil",

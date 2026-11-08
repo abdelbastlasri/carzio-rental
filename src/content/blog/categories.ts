@@ -14,8 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/journal/carzio-car-2.jpg',
-    imageAlt: { fr: "Voiture Carzio prête pour la remise des clés à Agadir", en: "Carzio car ready for key handover in Agadir" },
+    image: '/images/hero/agadir-airport-arrival.jpg',
+    imageAlt: { fr: "Arrivée à l'aéroport d'Agadir, départ de votre location Carzio", en: "Arrival at Agadir airport, where your Carzio rental starts" },
     fr: {
       name: 'Réservation & paiement',
       description:

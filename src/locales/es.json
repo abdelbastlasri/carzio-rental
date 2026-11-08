@@ -478,7 +478,11 @@
     "guideInsurance": "Seguro Standard o completo",
     "guideAge": "Edad, permiso y conductores",
     "guideAgadir": "Alquiler de coches en Agadir",
-    "heroAlt": "Coche de Carzio listo para tu alquiler en Agadir"
+    "heroAlt": "Coche de Carzio listo para tu alquiler en Agadir",
+    "extraEyebrow": "Desde Agadir",
+    "extraTitle": "Su alquiler empieza en Agadir",
+    "extraText": "Encuentre nuestras respuestas sobre la reserva, el seguro, el combustible y la conducción en Marruecos en las secciones anteriores.",
+    "extraAlt": "Marina de Agadir, punto de partida de su alquiler"
   },
   "city": {
     "backToHome": "Volver al inicio",

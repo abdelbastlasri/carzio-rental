@@ -31,6 +31,13 @@ export const photoCredits: PhotoCredit[] = [
     source: 'https://commons.wikimedia.org/wiki/File:Corniche%20from%20Agadir%20Kasbah.jpg',
   },
   {
+    file: 'agadir-marina.jpg',
+    title: 'Agadir marina - panoramio.jpg',
+    author: 'michiel1972',
+    license: 'CC BY-SA 3.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Agadir%20marina%20-%20panoramio.jpg',
+  },
+  {
     file: 'car-inspection.jpg',
     title: 'Engine components displayed in a red car during a mechanical inspection process at a garage.jpg',
     author: 'Shixart1985',
@@ -92,6 +99,13 @@ export const photoCredits: PhotoCredit[] = [
     author: 'Berdaiothmane10',
     license: 'CC0',
     source: 'https://commons.wikimedia.org/wiki/File:Moroccan%20dirham%2010.jpg',
+  },
+  {
+    file: 'morocco-motorway.jpg',
+    title: 'A7 motorway in Morocco.JPG',
+    author: 'Makary',
+    license: 'CC BY 3.0',
+    source: 'https://commons.wikimedia.org/wiki/File:A7%20motorway%20in%20Morocco.JPG',
   },
   {
     file: 'paradise-valley.jpg',

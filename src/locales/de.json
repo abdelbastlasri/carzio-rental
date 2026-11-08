@@ -478,7 +478,11 @@
     "guideInsurance": "Standard- oder Vollkaskoversicherung",
     "guideAge": "Alter, Führerschein und Fahrer",
     "guideAgadir": "Autovermietung in Agadir",
-    "heroAlt": "Carzio-Auto bereit für Ihre Miete in Agadir"
+    "heroAlt": "Carzio-Auto bereit für Ihre Miete in Agadir",
+    "extraEyebrow": "Aus Agadir",
+    "extraTitle": "Ihre Miete beginnt in Agadir",
+    "extraText": "Antworten zu Buchung, Versicherung, Kraftstoff und Fahren in Marokko finden Sie in den Abschnitten oben.",
+    "extraAlt": "Marina von Agadir, Ausgangspunkt Ihrer Miete"
   },
   "city": {
     "backToHome": "Zurück zur Startseite",

@@ -62,6 +62,28 @@ export default function FaqHub() {
               />
             ))}
           </div>
+
+          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
+            <div className="relative min-h-[16rem]">
+              <img
+                src="/images/journal/agadir-marina.jpg"
+                alt={t('faq.extraAlt')}
+                width={1600}
+                height={1200}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-zinc-950/10" />
+              <div className="relative z-10 flex min-h-[16rem] flex-col justify-end p-6 md:p-8">
+                <p className="text-xs uppercase tracking-[0.3em] text-gold">{t('faq.extraEyebrow')}</p>
+                <h2 className="mt-2 font-heading text-xl font-semibold text-white md:text-2xl">
+                  {t('faq.extraTitle')}
+                </h2>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/65">{t('faq.extraText')}</p>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-10 rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
             <h2 className="font-heading text-lg font-semibold text-white">{t('blog.guidesTitle')}</h2>
             <p className="mt-2 text-sm text-white/60">

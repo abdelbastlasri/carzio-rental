@@ -19,8 +19,8 @@ export interface NewsCategory {
 export const newsCategories: NewsCategory[] = [
   {
     slug: 'conduite-maroc',
-    image: '/images/journal/carzio-car-1.jpg',
-    imageAlt: { fr: "Voiture Carzio sur la route près d’Agadir", en: "Carzio car on the road near Agadir" },
+    image: '/images/journal/morocco-motorway.jpg',
+    imageAlt: { fr: "Autoroute A7 au Maroc", en: "A7 motorway in Morocco" },
     fr: {
       name: 'Conduire au Maroc',
       description:
@@ -94,8 +94,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'villes-visites',
-    image: '/images/journal/carzio-airport-bordeaux.jpg',
-    imageAlt: { fr: "Vol vers Agadir au départ de l’aéroport de Bordeaux", en: "Flight to Agadir from Bordeaux airport" },
+    image: '/images/journal/marrakech-medina.jpg',
+    imageAlt: { fr: "Artisan de lampes dans la médina de Marrakech", en: "Lamp maker in the Marrakech medina" },
     fr: {
       name: 'Villes & visites',
       description:

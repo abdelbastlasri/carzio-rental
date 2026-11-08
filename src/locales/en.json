@@ -478,7 +478,11 @@
     "guideInsurance": "Standard or Full Insurance",
     "guideAge": "Age, licence and drivers",
     "guideAgadir": "Car rental in Agadir",
-    "heroAlt": "Carzio car ready for your rental in Agadir"
+    "heroAlt": "Carzio car ready for your rental in Agadir",
+    "extraEyebrow": "From Agadir",
+    "extraTitle": "Your rental starts in Agadir",
+    "extraText": "Find our answers on booking, insurance, fuel and driving in Morocco, gathered in the sections above.",
+    "extraAlt": "Agadir marina, where your rental begins"
   },
   "city": {
     "backToHome": "Back to home",

@@ -478,7 +478,11 @@
     "guideInsurance": "Ubezpieczenie Standard czy Pełne",
     "guideAge": "Wiek, prawo jazdy i kierowcy",
     "guideAgadir": "Wynajem auta w Agadirze",
-    "heroAlt": "Samochód Carzio gotowy do wynajmu w Agadirze"
+    "heroAlt": "Samochód Carzio gotowy do wynajmu w Agadirze",
+    "extraEyebrow": "Z Agadiru",
+    "extraTitle": "Twój wynajem zaczyna się w Agadirze",
+    "extraText": "Odpowiedzi dotyczące rezerwacji, ubezpieczenia, paliwa i jazdy po Maroku znajdziesz w sekcjach powyżej.",
+    "extraAlt": "Marina w Agadirze, miejsce rozpoczęcia wynajmu"
   },
   "city": {
     "backToHome": "Powrót do strony głównej",
