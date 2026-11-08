@@ -14,8 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/hero/agadir-airport-arrival.jpg',
-    imageAlt: { fr: "Arrivée à l'aéroport d'Agadir, départ de votre location Carzio", en: "Arrival at Agadir airport, where your Carzio rental starts" },
+    image: '/images/journal/payment-terminal.jpg',
+    imageAlt: { fr: 'Paiement par carte bancaire à la remise des clés', en: 'Card payment at key handover' },
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -29,8 +29,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
-    image: '/images/journal/carzio-car-wash.jpg',
-    imageAlt: { fr: "Voiture Carzio lavée et contrôlée avant la location", en: "Carzio car washed and checked before rental" },
+    image: '/images/journal/insurance-certificate.jpg',
+    imageAlt: { fr: "Certificat d'assurance d'un véhicule", en: 'Vehicle insurance certificate' },
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -44,8 +44,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
-    image: '/images/dacia-sandero.jpg',
-    imageAlt: { fr: "Dacia Sandero de la flotte Carzio", en: "Dacia Sandero from the Carzio fleet" },
+    image: '/images/journal/driving-licence.jpg',
+    imageAlt: { fr: 'Permis de conduire européen (spécimen)', en: 'European driving licence (specimen)' },
     fr: {
       name: 'Âge, permis & conduite',
       description:

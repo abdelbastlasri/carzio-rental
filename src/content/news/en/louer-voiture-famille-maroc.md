@@ -5,8 +5,8 @@ category: voyage-famille
 title: "Renting a car with children in Morocco: our family tips"
 description: "Free child seats, 7-seater options and practical advice: how to choose and organise your family car rental in Agadir and across Morocco."
 date: 2026-11-05
-image: /images/journal/child-seat.jpg
-imageAlt: "Inglesina Marco Polo child's car seat"
+image: /images/journal/family-airport-luggage.jpg
+imageAlt: "Family and luggage at the airport before departure"
 readingTime: 5
 published: true
 ---

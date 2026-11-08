@@ -28,7 +28,7 @@ export default function FaqHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[28rem] overflow-hidden md:min-h-[32rem]">
           <img
-            src="/images/journal/carzio-car-4.jpg"
+            src="/images/journal/airport-info-desk.jpg"
             alt={t('faq.heroAlt')}
             width={1600}
             height={1200}
@@ -53,7 +53,7 @@ export default function FaqHub() {
               <ImageCategoryCard
                 key={category.slug}
                 to={`/faq/${category.slug}`}
-                image={category.image ?? '/images/journal/car-keys.jpg'}
+                image={category.image ?? '/images/journal/airport-info-desk.jpg'}
                 alt={category.imageAlt ?? category.title}
                 title={category.title}
                 description={category.short}

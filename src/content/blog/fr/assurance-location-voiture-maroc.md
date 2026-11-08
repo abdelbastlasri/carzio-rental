@@ -5,8 +5,8 @@ category: assurance
 title: "Assurance standard ou complète : que faut-il choisir ?"
 description: "Assurance standard incluse dans le tarif, assurance complète en option à partir de 5 jours. Explications claires, exemples et conseils pour décider."
 date: 2026-11-03
-image: /images/journal/mechanic.jpg
-imageAlt: "Mécanicien en train d'inspecter un moteur de voiture"
+image: /images/journal/car-damage.jpg
+imageAlt: "Portière de voiture endommagée, un dégât que l’assurance peut couvrir"
 readingTime: 5
 featured: true
 published: true

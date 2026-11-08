@@ -40,35 +40,35 @@
       "subhead": "Escape a la Playa",
       "desc": "Taghazout te espera. Tu viaje de surf perfecto comienza con el vehículo ideal."
     },
-    "slideTaghazoutNight": {
-      "headline": "Playa de Taghazout",
-      "subhead": "Olas Que Hablan",
-      "desc": "Taghazout es un lugar donde las olas no solo rompen, sino que hablan."
+    "slideCar": {
+      "headline": "Tu coche en Agadir",
+      "subhead": "Lista para explorar",
+      "desc": "Un coche limpio y revisado te espera: la costa, el zoco y las montañas están a un trayecto de distancia."
     },
     "slideJogger": {
-      "headline": "Espacio para todos",
+      "headline": "Toda la familia, cómoda",
       "subhead": "Dacia Jogger",
-      "desc": "Siete plazas, un maletero amplio y sitio para cada maleta: recógelo en el aeropuerto de Agadir."
+      "desc": "Siete plazas, un maletero amplio y sitio para cada maleta: tu Jogger te espera en el aeropuerto de Agadir."
     },
-    "slide1": {
-      "headline": "Libertad Costera",
-      "subhead": "Vistas Infinitas",
-      "desc": "Recorre la costa de Agadir con el viento en tu cabello y el sol en tu piel."
+    "slideBordeaux": {
+      "headline": "Burdeos → Agadir",
+      "subhead": "Nueva ruta directa",
+      "desc": "Una nueva conexión directa te acerca al sol: tu coche te espera en Agadir Al Massira."
     },
     "slideAirport": {
       "headline": "Aterriza. Recoge. Conduce.",
       "subhead": "Agadir Al Massira",
-      "desc": "Nuestro equipo te espera en la terminal y te entrega las llaves en minutos, 24/7."
+      "desc": "Nuestro equipo te espera en la terminal y te entrega las llaves en minutos, 24/7 en el aeropuerto de Agadir."
     },
     "slideReady": {
       "headline": "Listo cuando tú lo estés",
       "subhead": "Tu coche en Agadir",
-      "desc": "Limpio, revisado y listo en el aeropuerto o en nuestra agencia de la N2."
+      "desc": "Limpio, revisado y listo en el aeropuerto o en nuestra agencia en MAG N2, Agadir Airport."
     },
-    "slide6": {
-      "headline": "Murallas Antiguas",
-      "subhead": "La Historia Espera",
-      "desc": "Descubre Agadir Oufella y el rico patrimonio de la región de Souss."
+    "slideMilan": {
+      "headline": "Milán → Agadir",
+      "subhead": "Nueva ruta directa",
+      "desc": "La nueva ruta directa de Ryanair aterriza en Agadir Al Massira: tu coche te espera a la llegada."
     }
   },
   "bookingForm": {
@@ -395,7 +395,7 @@
     "modelsTitle": "Los modelos más reservados",
     "modelsIntro": "Los coches más solicitados en Agadir: precios claros y sin fianza.",
     "modelsCta": "Ver todos los coches",
-    "heroAlt": "Carretera costera de Marruecos a lo largo del Atlántico"
+    "heroAlt": "Vista de la cornisa de Agadir a lo largo del Atlántico"
   },
   "news": {
     "label": "Notas desde Agadir",
@@ -420,7 +420,7 @@
     "latestStories": "Lo más reciente",
     "categoriesIntro": "Once temas para preparar tu estancia y tu alquiler de coche en Agadir.",
     "topics": "temas",
-    "heroAlt": "Vista del paseo marítimo de Agadir de noche"
+    "heroAlt": "Vista panorámica de Agadir desde la montaña"
   },
   "footer": {
     "tagline": "Soluciones de vehículos premium para clientes exigentes. Experimenta la carretera con un estilo y confort inigualables.",
@@ -478,7 +478,7 @@
     "guideInsurance": "Seguro Standard o completo",
     "guideAge": "Edad, permiso y conductores",
     "guideAgadir": "Alquiler de coches en Agadir",
-    "heroAlt": "Coche de Carzio listo para tu alquiler en Agadir",
+    "heroAlt": "Mostrador de información y asistencia del aeropuerto",
     "extraEyebrow": "Desde Agadir",
     "extraTitle": "Su alquiler empieza en Agadir",
     "extraText": "Encuentre nuestras respuestas sobre la reserva, el seguro, el combustible y la conducción en Marruecos en las secciones anteriores.",

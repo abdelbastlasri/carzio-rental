@@ -5,8 +5,8 @@ category: assurance-caution
 title: "Full insurance from 5 days: how it works"
 description: "Standard insurance included, full insurance optional from 5 billed days. The plain version, with a worked example."
 date: 2026-11-03
-image: /images/journal/car-inspection.jpg
-imageAlt: "Red car engine during a mechanical inspection"
+image: /images/journal/rental-contract.jpg
+imageAlt: "Rental contract stating the insurance terms"
 readingTime: 4
 featured: true
 published: true

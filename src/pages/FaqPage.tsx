@@ -53,7 +53,7 @@ export default function FaqPage() {
         jsonLd={[faqLd, breadcrumbs]}
       />
       <JournalCategoryHero
-        image={category.image ?? '/images/journal/car-keys.jpg'}
+        image={category.image ?? '/images/journal/airport-info-desk.jpg'}
         imageAlt={category.imageAlt ?? category.title}
         language={i18n.language.slice(0, 2)}
         eyebrow="FAQ"

@@ -5,8 +5,8 @@ category: aeroports-livraison
 title: "Livraison à l'aéroport Agadir Al Massira : ce qui est gratuit"
 description: "Prise en charge gratuite à Agadir Al Massira et à l'agence. Marrakech et Casablanca à 80 € par trajet. Taghazout, Tamraght et Essaouira sur demande."
 date: 2026-11-03
-image: /images/journal/agadir-airport-terminal.jpg
-imageAlt: "Terminal de l'aéroport Agadir Al Massira"
+image: /images/journal/carzio-airport-agadir.jpg
+imageAlt: "Signalétique de l’aéroport Agadir Al Massira"
 readingTime: 3
 featured: false
 published: true

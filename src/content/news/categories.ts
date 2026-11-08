@@ -20,7 +20,7 @@ export const newsCategories: NewsCategory[] = [
   {
     slug: 'conduite-maroc',
     image: '/images/journal/morocco-motorway.jpg',
-    imageAlt: { fr: "Autoroute A7 au Maroc", en: "A7 motorway in Morocco" },
+    imageAlt: { fr: 'Autoroute A7 au Maroc', en: 'A7 motorway in Morocco' },
     fr: {
       name: 'Conduire au Maroc',
       description:
@@ -34,8 +34,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'securite-regles',
-    image: '/images/journal/carzio-car-3.jpg',
-    imageAlt: { fr: "Voiture Carzio contrôlée avant le départ", en: "Carzio car checked before departure" },
+    image: '/images/journal/seatbelt.jpg',
+    imageAlt: { fr: 'Conductrice qui attache sa ceinture de sécurité', en: 'Driver buckling her seatbelt' },
     fr: {
       name: 'Sécurité & règles',
       description:
@@ -49,8 +49,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'assurance-caution',
-    image: '/images/journal/carzio-car-wash.jpg',
-    imageAlt: { fr: "Voiture Carzio lavée et préparée avant la location", en: "Carzio car washed and prepared before rental" },
+    image: '/images/journal/car-inspection.jpg',
+    imageAlt: { fr: "Contrôle mécanique d'un véhicule dans un garage", en: 'Vehicle being inspected in a garage' },
     fr: {
       name: 'Assurance & caution',
       description:
@@ -64,8 +64,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'reservation-documents',
-    image: '/images/journal/carzio-car-2.jpg',
-    imageAlt: { fr: "Voiture Carzio prête pour la remise des clés", en: "Carzio car ready for key handover" },
+    image: '/images/journal/moroccan-passport.jpg',
+    imageAlt: { fr: 'Passeport marocain biométrique', en: 'Moroccan biometric passport' },
     fr: {
       name: 'Réservation & documents',
       description:
@@ -79,8 +79,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'aeroports-livraison',
-    image: '/images/journal/carzio-airport-agadir.jpg',
-    imageAlt: { fr: "Signalétique de l’aéroport Agadir Al Massira", en: "Agadir Al Massira airport signage" },
+    image: '/images/journal/agadir-airport-terminal.jpg',
+    imageAlt: { fr: "Terminal de l'aéroport Agadir Al Massira", en: 'Agadir Al Massira airport terminal' },
     fr: {
       name: 'Aéroports & livraison',
       description:
@@ -109,8 +109,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'road-trips',
-    image: '/images/journal/carzio-winter-routes.jpg',
-    imageAlt: { fr: "Nouvelles liaisons hivernales vers Agadir", en: "New winter routes to Agadir" },
+    image: '/images/journal/paradise-valley.jpg',
+    imageAlt: { fr: "Paradise Valley près d'Agadir", en: 'Paradise Valley near Agadir' },
     fr: {
       name: 'Road trips & itinéraires',
       description:
@@ -124,8 +124,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'voyage-famille',
-    image: '/images/journal/carzio-car-4.jpg',
-    imageAlt: { fr: "Voiture Carzio adaptée aux voyages en famille", en: "Carzio car suited to family trips" },
+    image: '/images/journal/child-seat.jpg',
+    imageAlt: { fr: 'Siège enfant installé dans une voiture', en: 'Child seat installed in a car' },
     fr: {
       name: 'Voyage en famille',
       description:
@@ -139,8 +139,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'flotte-modeles',
-    image: '/images/journal/carzio-car-5.jpg',
-    imageAlt: { fr: "Voiture de la flotte Carzio à Agadir", en: "Carzio fleet car in Agadir" },
+    image: '/images/journal/touchscreen-carplay.jpg',
+    imageAlt: { fr: "Écran tactile connecté d'une voiture moderne", en: 'Connected touchscreen in a modern car' },
     fr: {
       name: 'Flotte & modèles',
       description:
@@ -154,8 +154,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'evenements',
-    image: '/images/journal/carzio-milan-route.jpg',
-    imageAlt: { fr: "Nouvelle liaison directe Milan – Agadir", en: "New direct Milan–Agadir route" },
+    image: '/images/journal/agadir-beach.jpg',
+    imageAlt: { fr: "Plage d'Agadir vue depuis la corniche", en: 'Agadir beach seen from the seafront' },
     fr: {
       name: 'Événements & saisons',
       description:
@@ -169,8 +169,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'budget-conseils',
-    image: '/images/dacia-logan.png',
-    imageAlt: { fr: "Dacia Logan de la flotte Carzio", en: "Dacia Logan from the Carzio fleet" },
+    image: '/images/journal/moroccan-dirham.jpg',
+    imageAlt: { fr: 'Billet de dirham marocain', en: 'Moroccan dirham banknote' },
     fr: {
       name: 'Budget & conseils',
       description:

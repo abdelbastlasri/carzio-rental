@@ -62,7 +62,7 @@ export default function BlogHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[30rem] overflow-hidden md:min-h-[34rem]">
           <img
-            src="/images/journal/coastal-road.jpg"
+            src="/images/journal/agadir-corniche.jpg"
             alt={t('blog.heroAlt')}
             width={1600}
             height={1200}

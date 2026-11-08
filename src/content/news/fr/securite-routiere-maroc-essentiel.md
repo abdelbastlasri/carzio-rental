@@ -5,8 +5,8 @@ category: securite-regles
 title: "Sécurité routière au Maroc : les règles essentielles"
 description: "Vitesses, contrôles, stationnement et bons réflexes en cas d'incident : l'essentiel sécurité pour louer et conduire une voiture au Maroc."
 date: 2026-11-05
-image: /images/journal/seatbelt.jpg
-imageAlt: "Ceinture de sécurité bouclée"
+image: /images/journal/pedestrian-signs-agadir.jpg
+imageAlt: "Panneaux de passage piéton à Agadir"
 readingTime: 5
 published: true
 ---

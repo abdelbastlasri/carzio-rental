@@ -5,8 +5,8 @@ category: securite-regles
 title: "Road safety in Morocco: the essential rules"
 description: "Speed limits, checks, parking and the right reflexes if something happens: safety essentials for renting and driving in Morocco."
 date: 2026-11-05
-image: /images/journal/seatbelt.jpg
-imageAlt: "Buckling a seatbelt"
+image: /images/journal/pedestrian-signs-agadir.jpg
+imageAlt: "Pedestrian crossing signs in Agadir"
 readingTime: 5
 published: true
 ---

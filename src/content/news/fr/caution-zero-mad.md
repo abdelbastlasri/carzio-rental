@@ -5,8 +5,8 @@ category: reservation-documents
 title: "0 MAD de caution : comment se passe le paiement"
 description: "Aucune caution, aucun blocage de carte, carte de débit acceptée. Le paiement se fait à la remise des clés, avec les documents à prévoir."
 date: 2026-11-03
-image: /images/journal/moroccan-passport.jpg
-imageAlt: "Passeport marocain"
+image: /images/journal/credit-cards.jpg
+imageAlt: "Cartes bancaires acceptées pour le paiement à la remise des clés"
 readingTime: 3
 featured: false
 published: true

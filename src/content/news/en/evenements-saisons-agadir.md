@@ -5,8 +5,8 @@ category: evenements
 title: "When to rent a car in Agadir: seasons, holidays and busy periods"
 description: "High season, school holidays, Ramadan and festive dates: the periods to plan for so your Agadir car rental goes smoothly."
 date: 2026-11-05
-image: /images/journal/agadir-beach.jpg
-imageAlt: "Agadir beach at dusk"
+image: /images/journal/agadir-ferris-wheel.jpg
+imageAlt: "Ferris wheel on Agadir beach in the evening"
 readingTime: 5
 published: true
 ---

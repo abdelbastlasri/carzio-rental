@@ -6,8 +6,8 @@ title: "Réserver une voiture à Agadir : le guide complet"
 description: "De la demande en ligne à la remise des clés : durée minimale, documents, paiement, livraison à l'aéroport et annulation. Le guide Carzio pour réserver sans surprise."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/journal/car-keys.jpg
-imageAlt: "Clés de voiture, le début de la réservation de location"
+image: /images/journal/booking-laptop.jpg
+imageAlt: "Préparer sa réservation de voiture en ligne sur un ordinateur portable"
 readingTime: 9
 featured: true
 published: true
