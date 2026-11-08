@@ -46,7 +46,7 @@ export default function Fleet({ onBook, featured }: FleetProps) {
             </p>
           )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+        <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 ${featured ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}`}>
           {cars.map((car, i) => (
             <CarCard key={car.id} car={car} onBook={onBook} index={i} overridePrice={priceOverrides[car.id]} />
           ))}

@@ -18,12 +18,12 @@ export default function NewsCard({ post, contentLang }: NewsCardProps) {
       to={`/news/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 transition hover:border-gold/40 focus-visible:border-gold"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+      <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
         <img
           src={post.image}
           alt={post.imageAlt}
-          width={640}
-          height={480}
+          width={1600}
+          height={900}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
         />

@@ -5,8 +5,8 @@ category: budget-conseils
 title: "Car rental budget in Agadir: what is included and what to plan for"
 description: "Insurance, deposit, mileage, delivery, fuel and tolls: the real cost of renting a car in Agadir, with no hidden fees."
 date: 2026-11-05
-image: /images/journal/cash-or-card.jpg
-imageAlt: "Cash and bank card for planning a rental budget"
+image: /images/fleet/hyundai-i10.webp
+imageAlt: "Hyundai i10, a compact and economical model"
 readingTime: 6
 published: true
 ---

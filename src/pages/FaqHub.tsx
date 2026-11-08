@@ -28,10 +28,11 @@ export default function FaqHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[28rem] overflow-hidden md:min-h-[32rem]">
           <img
-            src="/images/journal/airport-info-desk.jpg"
+            src="/images/journal/faq-airport-assistance.webp"
             alt={t('faq.heroAlt')}
             width={1600}
-            height={1200}
+            height={900}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/65 to-zinc-950/5" />
@@ -53,7 +54,7 @@ export default function FaqHub() {
               <ImageCategoryCard
                 key={category.slug}
                 to={`/faq/${category.slug}`}
-                image={category.image ?? '/images/journal/airport-info-desk.jpg'}
+                image={category.image ?? '/images/journal/faq-airport-assistance.webp'}
                 alt={category.imageAlt ?? category.title}
                 title={category.title}
                 description={category.short}
@@ -66,10 +67,10 @@ export default function FaqHub() {
           <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
             <div className="relative min-h-[16rem]">
               <img
-                src="/images/journal/agadir-marina.jpg"
+                src="/images/journal/faq-agadir-terminal.webp"
                 alt={t('faq.extraAlt')}
                 width={1600}
-                height={1200}
+                height={900}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />

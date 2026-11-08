@@ -57,10 +57,11 @@ export default function NewsHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[30rem] overflow-hidden md:min-h-[34rem]">
           <img
-            src="/images/journal/agadir-panorama.jpg"
+            src="/images/journal/carzio-new-routes.webp"
             alt={t('news.heroAlt')}
             width={1600}
-            height={777}
+            height={900}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/60 to-zinc-950/5" />
@@ -159,8 +160,8 @@ export default function NewsHub() {
                 <img
                   src={featured.image}
                   alt={featured.imageAlt}
-                  width={800}
-                  height={500}
+                  width={1600}
+                  height={900}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>

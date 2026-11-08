@@ -19,8 +19,8 @@ export interface NewsCategory {
 export const newsCategories: NewsCategory[] = [
   {
     slug: 'conduite-maroc',
-    image: '/images/journal/morocco-motorway.jpg',
-    imageAlt: { fr: 'Autoroute A7 au Maroc', en: 'A7 motorway in Morocco' },
+    image: '/images/journal/news-country-road.webp',
+    imageAlt: { fr: "Voiture sur une route de campagne", en: "Car on a country road" },
     fr: {
       name: 'Conduire au Maroc',
       description:
@@ -34,8 +34,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'securite-regles',
-    image: '/images/journal/seatbelt.jpg',
-    imageAlt: { fr: 'Conductrice qui attache sa ceinture de sécurité', en: 'Driver buckling her seatbelt' },
+    image: '/images/journal/news-headlight-safety.webp',
+    imageAlt: { fr: "Phare de voiture allumé au coucher du soleil", en: "Car headlight switched on at sunset" },
     fr: {
       name: 'Sécurité & règles',
       description:
@@ -49,8 +49,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'assurance-caution',
-    image: '/images/journal/car-inspection.jpg',
-    imageAlt: { fr: "Contrôle mécanique d'un véhicule dans un garage", en: 'Vehicle being inspected in a garage' },
+    image: '/images/journal/carzio-inspection-pair.webp',
+    imageAlt: { fr: "Deux voitures inspectées sur le parking de l'aéroport", en: 'Two cars inspected in the airport car park' },
     fr: {
       name: 'Assurance & caution',
       description:
@@ -64,8 +64,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'reservation-documents',
-    image: '/images/journal/moroccan-passport.jpg',
-    imageAlt: { fr: 'Passeport marocain biométrique', en: 'Moroccan biometric passport' },
+    image: '/images/journal/carzio-documents-airport.webp',
+    imageAlt: { fr: "Voyageur avec sa voiture de location à l'aéroport d'Agadir", en: "Traveller with a rental car at Agadir airport" },
     fr: {
       name: 'Réservation & documents',
       description:
@@ -79,8 +79,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'aeroports-livraison',
-    image: '/images/journal/agadir-airport-terminal.jpg',
-    imageAlt: { fr: "Terminal de l'aéroport Agadir Al Massira", en: 'Agadir Al Massira airport terminal' },
+    image: '/images/journal/carzio-airport-fleet.webp',
+    imageAlt: { fr: "Voitures de location devant le terminal Agadir Al Massira", en: "Rental cars in front of Agadir Al Massira terminal" },
     fr: {
       name: 'Aéroports & livraison',
       description:
@@ -94,8 +94,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'villes-visites',
-    image: '/images/journal/marrakech-medina.jpg',
-    imageAlt: { fr: "Artisan de lampes dans la médina de Marrakech", en: "Lamp maker in the Marrakech medina" },
+    image: '/images/journal/news-taghazout-night.webp',
+    imageAlt: { fr: "Taghazout illuminée en bord de mer", en: "Taghazout lit up by the sea" },
     fr: {
       name: 'Villes & visites',
       description:
@@ -109,8 +109,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'road-trips',
-    image: '/images/journal/paradise-valley.jpg',
-    imageAlt: { fr: "Paradise Valley près d'Agadir", en: 'Paradise Valley near Agadir' },
+    image: '/images/journal/news-tamraght-coast.webp',
+    imageAlt: { fr: "Côte de Tamraght près d'Agadir", en: "Tamraght coast near Agadir" },
     fr: {
       name: 'Road trips & itinéraires',
       description:
@@ -124,8 +124,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'voyage-famille',
-    image: '/images/journal/child-seat.jpg',
-    imageAlt: { fr: 'Siège enfant installé dans une voiture', en: 'Child seat installed in a car' },
+    image: '/images/journal/carzio-luggage-cars.webp',
+    imageAlt: { fr: "Voyageurs et deux SUV prêts pour un départ", en: "Travellers and two SUVs ready for departure" },
     fr: {
       name: 'Voyage en famille',
       description:
@@ -139,8 +139,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'flotte-modeles',
-    image: '/images/journal/touchscreen-carplay.jpg',
-    imageAlt: { fr: "Écran tactile connecté d'une voiture moderne", en: 'Connected touchscreen in a modern car' },
+    image: '/images/journal/touchscreen-carplay.webp',
+    imageAlt: { fr: "Écran tactile Apple CarPlay dans une voiture", en: "Apple CarPlay touchscreen inside a car" },
     fr: {
       name: 'Flotte & modèles',
       description:
@@ -154,8 +154,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'evenements',
-    image: '/images/journal/agadir-beach.jpg',
-    imageAlt: { fr: "Plage d'Agadir vue depuis la corniche", en: 'Agadir beach seen from the seafront' },
+    image: '/images/journal/carzio-junior-pro.webp',
+    imageAlt: { fr: "Affiche Junior Pro Taghazout Bay 2026", en: "Junior Pro Taghazout Bay 2026 poster" },
     fr: {
       name: 'Événements & saisons',
       description:
@@ -169,8 +169,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'budget-conseils',
-    image: '/images/journal/moroccan-dirham.jpg',
-    imageAlt: { fr: 'Billet de dirham marocain', en: 'Moroccan dirham banknote' },
+    image: '/images/fleet/dacia-sandero-streetway.webp',
+    imageAlt: { fr: "Dacia Sandero Streetway, modèle économique", en: "Dacia Sandero Streetway, an economical model" },
     fr: {
       name: 'Budget & conseils',
       description:

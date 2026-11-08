@@ -14,8 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/journal/payment-terminal.jpg',
-    imageAlt: { fr: 'Paiement par carte bancaire à la remise des clés', en: 'Card payment at key handover' },
+    image: '/images/journal/blog-fleet-airport.webp',
+    imageAlt: { fr: "Voitures de location Carzio à l'aéroport d'Agadir", en: "Carzio rental cars at Agadir airport" },
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -29,8 +29,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
-    image: '/images/journal/insurance-certificate.jpg',
-    imageAlt: { fr: "Certificat d'assurance d'un véhicule", en: 'Vehicle insurance certificate' },
+    image: '/images/journal/blog-insurance-inspection.webp',
+    imageAlt: { fr: "Voiture avec portières ouvertes pour inspection", en: "Car with open doors for inspection" },
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -44,8 +44,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
-    image: '/images/journal/driving-licence.jpg',
-    imageAlt: { fr: 'Permis de conduire européen (spécimen)', en: 'European driving licence (specimen)' },
+    image: '/images/journal/blog-driver-map.webp',
+    imageAlt: { fr: "Conductrice avec une carte routière à côté de sa voiture", en: "Driver with a road map beside her car" },
     fr: {
       name: 'Âge, permis & conduite',
       description:

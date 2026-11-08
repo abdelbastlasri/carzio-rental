@@ -55,7 +55,7 @@ export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCa
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/70 shadow-xl shadow-black/40 transition-colors hover:border-gold/30"
     >
-      <div className="relative bg-white">
+      <div className="relative aspect-[16/9] overflow-hidden bg-white">
         <div className="absolute left-3 top-3 z-10 flex items-center gap-1.5">
           <span className="rounded-full bg-zinc-900/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
             {typeLabel}
@@ -69,9 +69,9 @@ export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCa
           src={car.image}
           alt={`${car.name} — ${typeLabel}, ${t('carCard.orSimilar')}`}
           loading="lazy"
-          width={640}
-          height={360}
-          className="h-44 w-full object-contain p-4 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-48"
+          width={1600}
+          height={900}
+          className="h-full w-full object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:p-3"
         />
 
         <div className="absolute bottom-0 right-0 flex items-baseline gap-0.5 rounded-tl-xl bg-zinc-950 px-3 py-2 text-white">

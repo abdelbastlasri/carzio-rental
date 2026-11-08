@@ -62,10 +62,11 @@ export default function BlogHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[30rem] overflow-hidden md:min-h-[34rem]">
           <img
-            src="/images/journal/agadir-corniche.jpg"
+            src="/images/journal/blog-agadir-aerial.webp"
             alt={t('blog.heroAlt')}
             width={1600}
-            height={1200}
+            height={900}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/60 to-zinc-950/5" />
@@ -117,6 +118,8 @@ export default function BlogHub() {
                 <img
                   src={featured.image}
                   alt={featured.imageAlt}
+                  width={1600}
+                  height={900}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
@@ -200,13 +203,13 @@ export default function BlogHub() {
                 to="/cars"
                 className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 transition hover:border-gold/40"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-white">
+                <div className="aspect-[16/9] overflow-hidden bg-white">
                   <img
                     src={car.image}
                     alt={car.name}
                     loading="lazy"
-                    width={400}
-                    height={300}
+                    width={1600}
+                    height={900}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>

@@ -5,8 +5,8 @@ category: flotte-modeles
 title: "GPS and touchscreen: which Carzio models have them"
 description: "Six models with GPS, eight with a touchscreen. The exact list so you can choose your car before booking in Agadir."
 date: 2026-11-03
-image: /images/journal/touchscreen-navigation.jpg
-imageAlt: "Touchscreen with navigation inside a car"
+image: /images/journal/touchscreen-navigation.webp
+imageAlt: "Touchscreen with Apple CarPlay and navigation"
 readingTime: 3
 featured: false
 published: true

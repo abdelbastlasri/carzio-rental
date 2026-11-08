@@ -395,7 +395,7 @@
     "modelsTitle": "Najczęściej rezerwowane modele",
     "modelsIntro": "Najpopularniejsze samochody w Agadirze — jasne ceny, bez kaucji.",
     "modelsCta": "Zobacz wszystkie samochody",
-    "heroAlt": "Widok na promenadę Agadiru wzdłuż Atlantyku"
+    "heroAlt": "Widok z lotu ptaka na Agadir i jego zatokę"
   },
   "news": {
     "label": "Notatki z Agadiru",
@@ -420,7 +420,7 @@
     "latestStories": "Najnowsze",
     "categoriesIntro": "Jedenaście tematów, które pomogą przygotować pobyt i wynajem samochodu w Agadirze.",
     "topics": "tematy",
-    "heroAlt": "Panorama Agadiru widziana z góry"
+    "heroAlt": "Nowe bezpośrednie połączenia z Agadirem"
   },
   "footer": {
     "tagline": "Premium rozwiązania pojazdowe dla wymagających klientów. Doświadcz drogi w niezrównanym stylu i komforcie.",
@@ -478,11 +478,11 @@
     "guideInsurance": "Ubezpieczenie Standard czy Pełne",
     "guideAge": "Wiek, prawo jazdy i kierowcy",
     "guideAgadir": "Wynajem auta w Agadirze",
-    "heroAlt": "Lotniskowe stanowisko informacji i pomocy",
+    "heroAlt": "Terminal lotniska jako punkt powitania podróżnych",
     "extraEyebrow": "Z Agadiru",
     "extraTitle": "Twój wynajem zaczyna się w Agadirze",
     "extraText": "Odpowiedzi dotyczące rezerwacji, ubezpieczenia, paliwa i jazdy po Maroku znajdziesz w sekcjach powyżej.",
-    "extraAlt": "Marina w Agadirze, miejsce rozpoczęcia wynajmu"
+    "extraAlt": "Lotnisko Agadir Al Massira nocą"
   },
   "city": {
     "backToHome": "Powrót do strony głównej",

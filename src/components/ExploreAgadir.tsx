@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    image: '/images/puerto-deportivo-agadir.jpg',
-    title: 'Agadir Marina',
-    subtitle: 'Puerto Deportivo',
+    image: '/images/tamraght.jpg',
+    title: 'Tamraght Beach',
+    subtitle: 'Côte d\u2019Agadir',
   },
   {
     image: '/images/cable-car.jpg',
@@ -15,9 +15,9 @@ const slides = [
     subtitle: 'Cable Car',
   },
   {
-    image: '/images/agadir-oufella.jpg',
-    title: 'Agadir Oufella',
-    subtitle: 'Kasbah Hilltop',
+    image: '/images/agadir-airport.jpg',
+    title: 'Agadir Airport',
+    subtitle: 'Agadir Al Massira',
   },
 ];
 

@@ -5,8 +5,8 @@ category: conduite-maroc
 title: "Conduire au Maroc : ce qu'il faut savoir avant de louer"
 description: "Routes, stationnement, sécurité et habitudes locales : les points clés pour conduire sereinement une voiture de location au Maroc."
 date: 2026-11-05
-image: /images/journal/coastal-road.jpg
-imageAlt: "Route côtière du Maroc le long de l'Atlantique"
+image: /images/journal/news-desert-road.webp
+imageAlt: "Voiture sur une route ouverte au coucher du soleil"
 readingTime: 5
 published: true
 ---

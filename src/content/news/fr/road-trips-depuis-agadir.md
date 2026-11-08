@@ -5,8 +5,8 @@ category: road-trips
 title: "Road trips depuis Agadir : 3 itinéraires à faire en voiture"
 description: "Trois itinéraires au départ d'Agadir : la boucle côtière Taghazout–Tamraght–Essaouira, la journée Marrakech et le détour vers Paradise Valley."
 date: 2026-11-05
-image: /images/journal/atlas-mountain-road.jpg
-imageAlt: "Route de montagne dans l’Anti-Atlas près de Tiznit"
+image: /images/journal/news-beach-convoy.webp
+imageAlt: "Voitures sur la plage pendant une excursion"
 readingTime: 6
 published: true
 ---

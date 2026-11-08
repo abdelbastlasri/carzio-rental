@@ -28,8 +28,8 @@ export default function ImageCategoryCard({
       <img
         src={image}
         alt={alt}
-        width={800}
-        height={500}
+        width={1600}
+        height={900}
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
       />

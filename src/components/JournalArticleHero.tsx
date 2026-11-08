@@ -39,7 +39,8 @@ export default function JournalArticleHero({
         src={image}
         alt={imageAlt}
         width={1600}
-        height={1066}
+        height={900}
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/60 to-zinc-950/5" />

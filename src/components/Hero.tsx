@@ -90,7 +90,7 @@ export default function Hero() {
           initial={false}
           animate={{
             opacity: i === current ? 1 : 0,
-            scale: i === current ? [1, 1.2] : 1.2,
+            scale: i === current ? [1, 1.03] : 1.03,
           }}
           transition={{
             opacity: { duration: 0.8, ease: 'easeInOut' },
