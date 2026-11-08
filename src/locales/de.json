@@ -45,25 +45,25 @@
       "subhead": "Sprechende Wellen",
       "desc": "Taghazout ist ein Ort, an dem Wellen nicht nur brechen, sondern sprechen."
     },
-    "slideTamraght": {
-      "headline": "Tamraght Strand",
-      "subhead": "Stille Ufer",
-      "desc": "Das Leben fühlt sich leichter an, wo die Wellen von Tamraght das Ufer berühren."
+    "slideJogger": {
+      "headline": "Platz für die ganze Familie",
+      "subhead": "Dacia Jogger",
+      "desc": "Sieben Sitze, großer Kofferraum und Platz für jeden Koffer — Abholung am Flughafen Agadir."
     },
     "slide1": {
       "headline": "Küstenfreiheit",
       "subhead": "Endlose Aussichten",
       "desc": "Fahren Sie entlang der Küste von Agadir mit dem Wind im Haar und der Sonne auf der Haut."
     },
-    "slide2": {
-      "headline": "Steigen Sie Höher",
-      "subhead": "Neue Perspektiven",
-      "desc": "Nehmen Sie die malerische Route durch das Anti-Atlas-Gebirge mit Stil und Zuversicht."
+    "slideAirport": {
+      "headline": "Landen. Abholen. Losfahren.",
+      "subhead": "Agadir Al Massira",
+      "desc": "Unser Team empfängt Sie im Terminal und übergibt die Schlüssel in wenigen Minuten, rund um die Uhr."
     },
-    "slide5": {
-      "headline": "Goldene Stunden",
-      "subhead": "Entspannen Sie mit Stil",
-      "desc": "Beenden Sie Ihren Tag mit einer Sonnenuntergangsfahrt entlang der schönsten Küste Marokkos."
+    "slideReady": {
+      "headline": "Bereit, wenn Sie es sind",
+      "subhead": "Ihr Auto in Agadir",
+      "desc": "Gepflegt, geprüft und bereit am Flughafen oder in unserer Agentur an der N2."
     },
     "slide6": {
       "headline": "Alte Mauern",
@@ -188,7 +188,18 @@
     "trustSubtitle": "Das sagen unsere Kunden.",
     "googleVerified": "Verifizierte Google-Bewertungen",
     "basedOn": "Basierend auf {{count}} Google-Bewertungen",
-    "googleLogoAlt": "Google Maps"
+    "googleLogoAlt": "Google Maps",
+    "writeTitle": "Teilen Sie Ihre Erfahrung",
+    "writeIntro": "Bei Carzio gebucht? Schreiben Sie Ihre Bewertung hier, kopieren Sie sie und fügen Sie sie dann in unserem Google-Eintrag ein.",
+    "writePlaceholder": "Erzählen Sie anderen Reisenden, wie Ihre Miete war…",
+    "writeRatingLabel": "Ihre Bewertung",
+    "writeStarLabel": "{{count}} von 5 Sternen",
+    "copyButton": "Bewertung kopieren",
+    "copiedButton": "Kopiert",
+    "googleButton": "Weiter zu Google",
+    "writeHint": "Google erlaubt kein Vorausfüllen des Bewertungstextes. Kopieren Sie Ihren Text oben und fügen Sie ihn bei Google ein.",
+    "copyError": "Automatisches Kopieren fehlgeschlagen. Markieren Sie Ihren Text und kopieren Sie ihn manuell.",
+    "writeEmptyError": "Schreiben Sie zuerst ein paar Worte."
   },
   "contact": {
     "mapTitle": "Finden Sie Uns auf der Karte",
@@ -381,6 +392,9 @@
     "heroWhatsapp": "Frage stellen",
     "guidesTitle": "Wichtige Ratgeber",
     "guidesIntro": "Mehr Informationen vor der Buchung.",
+    "modelsTitle": "Die beliebtesten Modelle",
+    "modelsIntro": "Die am häufigsten gebuchten Autos in Agadir — klare Preise, keine Kaution.",
+    "modelsCta": "Alle Autos ansehen",
     "heroAlt": "Küstenstraße Marokkos entlang des Atlantiks"
   },
   "news": {
@@ -464,7 +478,7 @@
     "guideInsurance": "Standard- oder Vollkaskoversicherung",
     "guideAge": "Alter, Führerschein und Fahrer",
     "guideAgadir": "Autovermietung in Agadir",
-    "heroAlt": "Autoschlüssel bei der Übergabe Ihres Mietwagens in Agadir"
+    "heroAlt": "Carzio-Auto bereit für Ihre Miete in Agadir"
   },
   "city": {
     "backToHome": "Zurück zur Startseite",

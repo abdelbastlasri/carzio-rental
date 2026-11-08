@@ -765,6 +765,15 @@ app.get('/api/admin/bookings', requireAuth, async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
+app.get('/api/admin/contacts', requireAuth, async (req, res) => {
+  try {
+    if (!supabase) return res.json([]);
+    const { data, error } = await supabase.from('contacts').select('*').order('submitted_at', { ascending: false });
+    if (error) throw error;
+    res.json(data || []);
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
 app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });

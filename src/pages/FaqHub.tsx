@@ -28,7 +28,7 @@ export default function FaqHub() {
       <div className="pt-28 md:pt-32">
         <section className="relative min-h-[28rem] overflow-hidden md:min-h-[32rem]">
           <img
-            src="/images/journal/car-keys.jpg"
+            src="/images/journal/carzio-car-4.jpg"
             alt={t('faq.heroAlt')}
             width={1600}
             height={1200}

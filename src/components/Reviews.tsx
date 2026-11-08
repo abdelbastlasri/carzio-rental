@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { reviews } from '../data/reviews';
 
 const INTERVAL = 7000;
+const GOOGLE_REVIEW_URL = 'https://g.page/r/Ceh5utSp0ckqEBM/review';
 const GOOGLE_LISTING_URL =
   'https://www.google.com/maps/place/CARZIO+Car+Rental+Agadir+Airport/@30.3316319,-9.4113071,18.5z/data=!4m16!1m9!3m8!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!2sCARZIO+Car+Rental+Agadir+Airport!8m2!3d30.3315284!4d-9.4104744!9m1!1b1!16s%2Fg%2F11zbkvdfgj!3m5!1s0xafb78533426f6bf3:0x2ac9d1a9d4ba79e8!8m2!3d30.3315284!4d-9.4104744!16s%2Fg%2F11zbkvdfgj?entry=ttu';
 
@@ -38,8 +39,27 @@ export default function Reviews() {
   const { t, i18n } = useTranslation();
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [draft, setDraft] = useState('');
+  const [draftRating, setDraftRating] = useState(5);
+  const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState('');
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const copyDraft = async () => {
+    setCopyError('');
+    if (!draft.trim()) {
+      setCopyError(t('reviews.writeEmptyError'));
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(draft.trim());
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopyError(t('reviews.copyError'));
+    }
+  };
 
   // Only 4.5-star and 5-star reviews are displayed, as requested.
   const rated = useMemo(() => reviews.filter((review) => review.rating >= 4.5), []);
@@ -231,6 +251,87 @@ export default function Reviews() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H8m9 0v9" />
             </svg>
           </a>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-zinc-950/60 p-6 text-left md:p-8">
+          <h3 className="font-heading text-lg font-semibold text-white md:text-xl">
+            {t('reviews.writeTitle')}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-white/60">{t('reviews.writeIntro')}</p>
+
+          <div className="mt-5">
+            <span className="text-xs uppercase tracking-[0.2em] text-white/50">
+              {t('reviews.writeRatingLabel')}
+            </span>
+            <div className="mt-2 flex items-center gap-1.5" role="group" aria-label={t('reviews.writeRatingLabel')}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setDraftRating(star)}
+                  aria-label={t('reviews.writeStarLabel', { count: star })}
+                  aria-pressed={draftRating === star}
+                  className="rounded p-0.5 transition hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                >
+                  <svg
+                    className={`h-7 w-7 ${star <= draftRating ? 'text-gold' : 'text-white/20'}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <label htmlFor="review-draft" className="sr-only">
+            {t('reviews.writePlaceholder')}
+          </label>
+          <textarea
+            id="review-draft"
+            value={draft}
+            onChange={(event) => {
+              setDraft(event.target.value);
+              setCopied(false);
+            }}
+            rows={4}
+            maxLength={1200}
+            placeholder={t('reviews.writePlaceholder')}
+            className="mt-4 w-full resize-y rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold/60 focus:outline-none focus:ring-1 focus:ring-gold/40"
+          />
+
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              onClick={copyDraft}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white transition hover:border-gold/40 hover:bg-white/[0.08]"
+            >
+              <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V5a2 2 0 012-2h9a2 2 0 012 2v9a2 2 0 01-2 2h-2M5 9h9a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9a2 2 0 012-2z" />
+              </svg>
+              {copied ? t('reviews.copiedButton') : t('reviews.copyButton')}
+            </button>
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-gold-light"
+            >
+              {t('reviews.googleButton')}
+              <svg aria-hidden="true" className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H8m9 0v9" />
+              </svg>
+            </a>
+          </div>
+
+          <p className="mt-3 text-xs leading-relaxed text-white/45">{t('reviews.writeHint')}</p>
+          {copyError && (
+            <p className="mt-2 text-xs text-red-400" role="alert">
+              {copyError}
+            </p>
+          )}
         </div>
       </div>
     </section>

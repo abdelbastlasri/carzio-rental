@@ -45,25 +45,25 @@
       "subhead": "Waves That Speak",
       "desc": "Taghazout is a place where waves don't just break but they speak."
     },
-    "slideTamraght": {
-      "headline": "Tamraght Beach",
-      "subhead": "Quiet Shores",
-      "desc": "Life feels lighter where Tamraght's waves touch the shore."
+    "slideJogger": {
+      "headline": "Room for the Whole Crew",
+      "subhead": "Dacia Jogger",
+      "desc": "Seven seats, a generous boot and space for every suitcase — collect it at Agadir airport."
     },
     "slide1": {
       "headline": "Coastal Freedom",
       "subhead": "Endless Views",
       "desc": "Cruise the Agadir shoreline with the wind in your hair and the sun on your skin."
     },
-    "slide2": {
-      "headline": "Ascend Higher",
-      "subhead": "New Perspectives",
-      "desc": "Take the scenic route through the Anti-Atlas mountains in style and confidence."
+    "slideAirport": {
+      "headline": "Land. Collect. Drive.",
+      "subhead": "Agadir Al Massira",
+      "desc": "Our team meets you at the terminal and hands over the keys in minutes, 24/7."
     },
-    "slide5": {
-      "headline": "Golden Hours",
-      "subhead": "Unwind in Style",
-      "desc": "End your day with a sunset drive along Morocco's most beautiful coastline."
+    "slideReady": {
+      "headline": "Ready When You Are",
+      "subhead": "Your Car in Agadir",
+      "desc": "Clean, checked and waiting at the airport or at our agency on the N2."
     },
     "slide6": {
       "headline": "Ancient Walls",
@@ -188,7 +188,18 @@
     "trustSubtitle": "What our clients say.",
     "googleVerified": "Verified Google reviews",
     "basedOn": "Based on {{count}} Google reviews",
-    "googleLogoAlt": "Google Maps"
+    "googleLogoAlt": "Google Maps",
+    "writeTitle": "Share your experience",
+    "writeIntro": "Booked with Carzio? Write your review here, copy it, then paste it on our Google listing.",
+    "writePlaceholder": "Tell other travellers how your rental went…",
+    "writeRatingLabel": "Your rating",
+    "writeStarLabel": "{{count}} out of 5 stars",
+    "copyButton": "Copy review",
+    "copiedButton": "Copied",
+    "googleButton": "Continue to Google",
+    "writeHint": "Google does not allow review text to be pre-filled. Copy your text above and paste it on Google.",
+    "copyError": "Could not copy automatically. Select your text and copy it manually.",
+    "writeEmptyError": "Write a few words before copying."
   },
   "contact": {
     "mapTitle": "Find Us on the Map",
@@ -381,6 +392,9 @@
     "heroWhatsapp": "Ask a question",
     "guidesTitle": "Essential guides",
     "guidesIntro": "Go further before you book.",
+    "modelsTitle": "Most booked models",
+    "modelsIntro": "The cars travellers ask for most in Agadir — clear prices, no deposit.",
+    "modelsCta": "See all cars",
     "heroAlt": "Morocco coastal road along the Atlantic"
   },
   "news": {
@@ -464,7 +478,7 @@
     "guideInsurance": "Standard or Full Insurance",
     "guideAge": "Age, licence and drivers",
     "guideAgadir": "Car rental in Agadir",
-    "heroAlt": "Car keys for your Agadir rental pickup"
+    "heroAlt": "Carzio car ready for your rental in Agadir"
   },
   "city": {
     "backToHome": "Back to home",

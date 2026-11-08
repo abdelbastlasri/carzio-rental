@@ -1,26 +1,41 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookingRecord } from '../../types';
+import { BookingRecord, ContactRecord } from '../../types';
 
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
+  const [contacts, setContacts] = useState<ContactRecord[]>([]);
 
   useEffect(() => {
+    const token = localStorage.getItem('admin_token');
+    const headers = { Authorization: `Bearer ${token}` };
+
     const fetchBookings = async () => {
       try {
-        const token = localStorage.getItem('admin_token');
-        const res = await fetch('/api/admin/bookings', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await fetch('/api/admin/bookings', { headers });
         if (res.ok) {
           const data = await res.json();
-          setBookings(data);
+          setBookings(Array.isArray(data) ? data : []);
         }
       } catch (err) {
         console.error('Failed to fetch bookings:', err);
       }
     };
+
+    const fetchContacts = async () => {
+      try {
+        const res = await fetch('/api/admin/contacts', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          setContacts(Array.isArray(data) ? data : []);
+        }
+      } catch (err) {
+        console.error('Failed to fetch contacts:', err);
+      }
+    };
+
     fetchBookings();
+    fetchContacts();
   }, []);
 
   const stats = {
@@ -55,7 +70,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
         <Link to="/bookings" className={`${cardClass} hover:border-gold/30 transition flex items-center justify-between`}>
           <div>
             <p className="text-white font-heading font-semibold">Manage Bookings</p>
@@ -63,6 +78,17 @@ export default function AdminDashboard() {
           </div>
           <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+        </Link>
+        <Link to="/contacts" className={`${cardClass} hover:border-gold/30 transition flex items-center justify-between`}>
+          <div>
+            <p className="text-white font-heading font-semibold">Contact Messages</p>
+            <p className="text-gray-400 text-xs mt-1">
+              {contacts.length > 0 ? `${contacts.length} message${contacts.length === 1 ? '' : 's'} received` : 'Messages from the contact form'}
+            </p>
+          </div>
+          <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
         </Link>
         <Link to="/pricing" className={`${cardClass} hover:border-gold/30 transition flex items-center justify-between`}>

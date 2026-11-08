@@ -4,6 +4,7 @@ import AdminLogin from './AdminLogin';
 import AdminLayout from './AdminLayout';
 import AdminDashboard from './AdminDashboard';
 import AdminBookings from './AdminBookings';
+import AdminContacts from './AdminContacts';
 import AdminPricing from './AdminPricing';
 
 export default function AdminRoutes() {
@@ -29,6 +30,7 @@ export default function AdminRoutes() {
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/bookings" element={<AdminBookings />} />
+        <Route path="/contacts" element={<AdminContacts />} />
         <Route path="/pricing" element={<AdminPricing />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>

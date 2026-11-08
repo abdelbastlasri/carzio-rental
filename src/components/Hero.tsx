@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 const slides = [
   { image: '/images/55.jpg', key: 'hero.slideSurf' },
   { image: '/images/Taghazout-by-night.jpg', key: 'hero.slideTaghazoutNight' },
-  { image: '/images/tamraght_beach.webp', key: 'hero.slideTamraght' },
+  { image: '/images/hero/dacia-jogger-airport.jpg', key: 'hero.slideJogger' },
   { image: '/images/2.jpg', key: 'hero.slide1' },
-  { image: '/images/3.jpg', key: 'hero.slide2' },
-  { image: '/images/66.jpg', key: 'hero.slide5' },
+  { image: '/images/hero/agadir-airport-arrival.jpg', key: 'hero.slideAirport' },
+  { image: '/images/hero/carzio-pickup.jpg', key: 'hero.slideReady' },
   { image: '/images/7.jpg', key: 'hero.slide6' },
 ];
 

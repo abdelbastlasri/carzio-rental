@@ -14,8 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/journal/car-keys.jpg',
-    imageAlt: { fr: "Clés de voiture, le début de la réservation", en: "Car keys at the start of a rental booking" },
+    image: '/images/journal/carzio-car-2.jpg',
+    imageAlt: { fr: "Voiture Carzio prête pour la remise des clés à Agadir", en: "Carzio car ready for key handover in Agadir" },
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -29,8 +29,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
-    image: '/images/journal/mechanic.jpg',
-    imageAlt: { fr: "Mécanicien en train d’inspecter un moteur de voiture", en: "Mechanic inspecting a car engine" },
+    image: '/images/journal/carzio-car-wash.jpg',
+    imageAlt: { fr: "Voiture Carzio lavée et contrôlée avant la location", en: "Carzio car washed and checked before rental" },
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -44,8 +44,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
-    image: '/images/journal/young-driver.jpg',
-    imageAlt: { fr: "Femme au volant d’une voiture au Maroc", en: "Young woman at the wheel of a car in Morocco" },
+    image: '/images/dacia-sandero.jpg',
+    imageAlt: { fr: "Dacia Sandero de la flotte Carzio", en: "Dacia Sandero from the Carzio fleet" },
     fr: {
       name: 'Âge, permis & conduite',
       description:

@@ -2,7 +2,6 @@ import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import NewsCard from '../components/NewsCard';
-import ImageCategoryCard from '../components/ImageCategoryCard';
 import BlogBreadcrumbs from '../components/BlogBreadcrumbs';
 import RentalTrustChips from '../components/RentalTrustChips';
 import BookingFacts from '../components/BookingFacts';
@@ -116,20 +115,23 @@ export default function NewsHub() {
               {newsCategories.length} {t('news.topics')}
             </span>
           </div>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="flex flex-wrap gap-2.5">
             {newsCategories.map((category) => {
               const count = counts[category.slug] || 0;
               const copy = category[contentLang];
               return (
                 <li key={category.slug}>
-                  <ImageCategoryCard
+                  <LangLink
                     to={`/news/categorie/${category.slug}`}
-                    image={category.image}
-                    alt={category.imageAlt[contentLang]}
-                    title={copy.name}
-                    description={copy.description}
-                    badge={count}
-                  />
+                    className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/60 px-4 py-2 text-sm text-white/70 transition hover:border-gold/50 hover:text-white"
+                  >
+                    {copy.name}
+                    {count > 0 && (
+                      <span className="rounded-full bg-gold/15 px-2 py-0.5 text-xs font-semibold text-gold">
+                        {count}
+                      </span>
+                    )}
+                  </LangLink>
                 </li>
               );
             })}

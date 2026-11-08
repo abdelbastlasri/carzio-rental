@@ -9,12 +9,20 @@ import BookingFacts from '../components/BookingFacts';
 import { getPosts } from '../content/blog/loader';
 import { formatBlogDate } from '../content/blog/format';
 import { blogCategories } from '../content/blog/categories';
+import { fleet } from '../data/fleet';
+import { useCurrency } from '../lib/currency';
+
+const MODEL_STRIP_IDS = ['dacia-sandero-stepway', 'dacia-logan', 'renault-clio-5', 'peugeot-208'];
 
 export default function BlogHub() {
   const { t, i18n } = useTranslation();
+  const { formatPrice } = useCurrency();
   const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
   const posts = getPosts(contentLang);
   const [featured, ...rest] = posts;
+  const models = MODEL_STRIP_IDS
+    .map((id) => fleet.find((car) => car.id === id))
+    .filter((car): car is (typeof fleet)[number] => Boolean(car));
   const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
 
   const breadcrumbs = {
@@ -176,28 +184,41 @@ export default function BlogHub() {
         <BookingFacts />
 
         <section className="mx-auto max-w-6xl px-4 pb-16">
-          <h2 className="font-heading text-xl font-semibold text-white">{t('blog.guidesTitle')}</h2>
-          <p className="mt-1 text-sm text-white/50">{t('blog.guidesIntro')}</p>
-          <div className="mt-5 grid gap-4 sm:grid-cols-3">
-            {posts.slice(0, 3).map((post) => (
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="font-heading text-xl font-semibold text-white">{t('blog.modelsTitle')}</h2>
+              <p className="mt-1 text-sm text-white/50">{t('blog.modelsIntro')}</p>
+            </div>
+            <LangLink to="/cars" className="text-sm font-medium text-gold underline underline-offset-4">
+              {t('blog.modelsCta')}
+            </LangLink>
+          </div>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {models.map((car) => (
               <LangLink
-                key={`${contentLang}-${post.slug}`}
-                to={`/blog/${post.slug}`}
+                key={car.id}
+                to="/cars"
                 className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 transition hover:border-gold/40"
               >
-                <div className="aspect-[16/9] overflow-hidden bg-zinc-900">
+                <div className="aspect-[4/3] overflow-hidden bg-white">
                   <img
-                    src={post.image}
-                    alt={post.imageAlt}
+                    src={car.image}
+                    alt={car.name}
                     loading="lazy"
                     width={400}
-                    height={225}
+                    height={300}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
-                <p className="px-4 py-3 text-sm font-medium text-white transition group-hover:text-gold">
-                  {post.title}
-                </p>
+                <div className="p-4">
+                  <p className="font-heading text-sm font-semibold text-white transition group-hover:text-gold">
+                    {car.name}
+                  </p>
+                  <p className="mt-1 text-xs text-white/50">
+                    {formatPrice(car.pricePerDay)}
+                    <span className="text-white/40">{t('common.perDay')}</span>
+                  </p>
+                </div>
               </LangLink>
             ))}
           </div>

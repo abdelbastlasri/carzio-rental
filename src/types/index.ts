@@ -77,6 +77,15 @@ export interface BookingRecord {
   submitted_at?: string;
 }
 
+export interface ContactRecord {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+  submitted_at?: string;
+}
+
 export interface Review {
   id: string;
   name: string;

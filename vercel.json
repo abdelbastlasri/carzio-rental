@@ -20,6 +20,7 @@
     { "source": "/location-voiture-(.*)", "destination": "/index.html" },
     { "source": "/dashboard", "destination": "/index.html" },
     { "source": "/bookings", "destination": "/index.html" },
+    { "source": "/contacts", "destination": "/index.html" },
     { "source": "/pricing", "destination": "/index.html" },
     { "source": "/login", "destination": "/index.html" }
   ]
