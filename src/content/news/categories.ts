@@ -50,7 +50,7 @@ export const newsCategories: NewsCategory[] = [
   {
     slug: 'assurance-caution',
     image: '/images/journal/carzio-inspection-pair.webp',
-    imageAlt: { fr: "Deux voitures inspectées sur le parking de l'aéroport", en: 'Two cars inspected in the airport car park' },
+    imageAlt: { fr: "Deux voitures inspectées sur le parking de l'aéroport", en: "Two cars inspected in the airport car park" },
     fr: {
       name: 'Assurance & caution',
       description:
@@ -125,7 +125,7 @@ export const newsCategories: NewsCategory[] = [
   {
     slug: 'voyage-famille',
     image: '/images/journal/carzio-luggage-cars.webp',
-    imageAlt: { fr: "Voyageurs et deux SUV prêts pour un départ", en: "Travellers and two SUVs ready for departure" },
+    imageAlt: { fr: "Deux voitures avec coffres ouverts pour les bagages", en: "Two cars with open boots for luggage" },
     fr: {
       name: 'Voyage en famille',
       description:

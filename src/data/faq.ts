@@ -62,13 +62,13 @@ const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = {
     },
   },
   'conduite-maroc': {
-    image: '/images/journal/faq-duster-sand.webp',
+    image: '/images/journal/carzio-bordeaux-sign.webp',
     alt: {
-      fr: 'Dacia Duster roulant sur une piste de sable',
-      en: 'Dacia Duster driving on a sandy track',
-      de: 'Dacia Duster auf einer Sandpiste',
-      es: 'Dacia Duster circulando por una pista de arena',
-      pl: 'Dacia Duster jadąca piaszczystą drogą',
+      fr: "Panneau Agadir Al Massira à l'aéroport",
+      en: 'Agadir Al Massira airport sign',
+      de: 'Schild am Flughafen Agadir Al Massira',
+      es: 'Señal del aeropuerto Agadir Al Massira',
+      pl: 'Znak lotniska Agadir Al Massira',
     },
   },
 };

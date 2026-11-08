@@ -12,7 +12,7 @@ import { blogCategories } from '../content/blog/categories';
 import { fleet } from '../data/fleet';
 import { useCurrency } from '../lib/currency';
 
-const MODEL_STRIP_IDS = ['dacia-sandero-stepway', 'dacia-logan', 'renault-clio-5', 'peugeot-208'];
+const MODEL_STRIP_IDS = ['dacia-sandero-stepway', 'dacia-sandero-streetway', 'dacia-logan', 'dacia-duster-bva', 'dacia-duster-manual', 'dacia-jogger'];
 
 export default function BlogHub() {
   const { t, i18n } = useTranslation();
@@ -196,7 +196,7 @@ export default function BlogHub() {
               {t('blog.modelsCta')}
             </LangLink>
           </div>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {models.map((car) => (
               <LangLink
                 key={car.id}

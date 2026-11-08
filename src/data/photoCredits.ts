@@ -10,13 +10,6 @@ export interface PhotoCredit {
 
 export const photoCredits: PhotoCredit[] = [
   {
-    file: 'age-driving-licence.webp',
-    title: 'UK driving licence (Pexels photo 45113)',
-    author: 'Dom J',
-    license: 'Pexels License (free to use, attribution not required)',
-    source: 'https://www.pexels.com/photo/uk-driving-license-45113/',
-  },
-  {
     file: 'touchscreen-carplay.webp',
     title: '2023 Volkswagen ID.4 running wireless CarPlay.jpg',
     author: 'Sunnyboy122',

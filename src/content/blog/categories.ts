@@ -14,8 +14,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/journal/blog-fleet-airport.webp',
-    imageAlt: { fr: "Voitures de location Carzio à l'aéroport d'Agadir", en: "Carzio rental cars at Agadir airport" },
+    image: '/images/journal/carzio-grey-fleet-side.webp',
+    imageAlt: { fr: "Flotte de location à l'aéroport d'Agadir", en: "Rental fleet at Agadir airport" },
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -29,8 +29,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
-    image: '/images/journal/blog-insurance-inspection.webp',
-    imageAlt: { fr: "Voiture avec portières ouvertes pour inspection", en: "Car with open doors for inspection" },
+    image: '/images/journal/carzio-grey-fleet-airport.webp',
+    imageAlt: { fr: "Voitures inspectées avant la location", en: "Cars inspected before rental" },
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -44,8 +44,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
-    image: '/images/journal/blog-driver-map.webp',
-    imageAlt: { fr: "Conductrice avec une carte routière à côté de sa voiture", en: "Driver with a road map beside her car" },
+    image: '/images/journal/carzio-grey-fleet-vertical.webp',
+    imageAlt: { fr: "Véhicules disponibles pour la location", en: "Vehicles available for rental" },
     fr: {
       name: 'Âge, permis & conduite',
       description:

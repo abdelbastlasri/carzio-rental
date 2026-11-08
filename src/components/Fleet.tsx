@@ -12,8 +12,16 @@ export default function Fleet({ onBook, featured }: FleetProps) {
   const { t } = useTranslation();
   const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
   // Homepage shows 8 cars, all under €50/day; the Cars page still shows all 12.
+  const featuredIds = [
+    'dacia-sandero-stepway',
+    'dacia-sandero-streetway',
+    'dacia-logan',
+    'dacia-duster-bva',
+    'dacia-duster-manual',
+    'dacia-jogger',
+  ];
   const cars = featured
-    ? fleet.filter((car) => car.pricePerDay < 50).slice(0, 8)
+    ? fleet.filter((car) => featuredIds.includes(car.id))
     : fleet;
 
   useEffect(() => {
@@ -46,7 +54,7 @@ export default function Fleet({ onBook, featured }: FleetProps) {
             </p>
           )}
         </div>
-        <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 ${featured ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}`}>
+        <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 ${featured ? 'xl:grid-cols-3' : 'xl:grid-cols-3'}`}>
           {cars.map((car, i) => (
             <CarCard key={car.id} car={car} onBook={onBook} index={i} overridePrice={priceOverrides[car.id]} />
           ))}

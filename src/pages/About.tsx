@@ -86,7 +86,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div
               className="h-80 md:h-96 rounded-2xl bg-cover bg-center shadow-2xl"
-              style={{ backgroundImage: "url('/images/about.jpg')" }}
+              style={{ backgroundImage: "url('/images/about-new.webp')" }}
             />
             <div>
               <span className="text-gold font-heading font-bold text-lg">{t('about.experience')}</span>

@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   { image: '/images/55.jpg', key: 'hero.slideSurf' },
-  { image: '/images/journal/carzio-car-1.jpg?v=2', key: 'hero.slideCar' },
-  { image: '/images/hero/dacia-jogger-airport.jpg?v=2', key: 'hero.slideJogger' },
-  { image: '/images/journal/carzio-airport-bordeaux.jpg?v=2', key: 'hero.slideBordeaux' },
-  { image: '/images/hero/agadir-airport-arrival.jpg?v=2', key: 'hero.slideAirport' },
-  { image: '/images/hero/carzio-pickup.jpg?v=2', key: 'hero.slideReady' },
-  { image: '/images/journal/carzio-milan-route.jpg?v=2', key: 'hero.slideMilan' },
+  { image: '/images/hero/new-slide-2.webp', key: 'hero.slideCar' },
+  { image: '/images/hero/new-slide-3.webp', key: 'hero.slideJogger' },
+  { image: '/images/hero/new-slide-4.webp', key: 'hero.slideBordeaux' },
+  { image: '/images/hero/new-slide-5.webp', key: 'hero.slideAirport' },
+  { image: '/images/hero/new-slide-6.webp', key: 'hero.slideReady' },
+  { image: '/images/hero/new-slide-7.webp', key: 'hero.slideMilan' },
 ];
 
 const INTERVAL = 5000;

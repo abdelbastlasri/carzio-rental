@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { stripLangPrefix, withLangPrefix, type Lang } from '../lib/i18nRouting';
 import CurrencySwitcher from './CurrencySwitcher';
+import { blogCategories } from '../content/blog/categories';
+import { newsCategories } from '../content/news/categories';
 
 const WHATSAPP_URL = 'https://wa.me/212680318003';
 
@@ -35,6 +37,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [dropdown, setDropdown] = useState<'blog' | 'news' | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const basePath = stripLangPrefix(location.pathname);
@@ -51,6 +55,16 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 w-full z-50 transition-colors duration-500"
       style={{ background: scrolled ? 'rgba(0,0,0,0.85)' : 'transparent' }}
@@ -64,20 +78,79 @@ export default function Header() {
           </LangLink>
 
           {/* Desktop Nav */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-4 text-sm font-medium lg:gap-7">
-            {navLinks.map((link) => (
-              <LangLink
-                key={link.path}
-                to={link.path}
-                className={`relative whitespace-nowrap transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-gold after:transition-[width] after:duration-300 ${
-                  isActive(link.path)
-                    ? 'text-gold after:w-full'
-                    : 'text-white/80 hover:text-gold after:w-0 hover:after:w-full'
-                }`}
-              >
-                {t(link.label)}
-              </LangLink>
-            ))}
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-4 text-sm font-medium lg:gap-7" ref={dropdownRef}>
+            {navLinks.map((link) => {
+              if (link.path === '/blog' || link.path === '/news') {
+                const categories = link.path === '/blog' ? blogCategories : newsCategories;
+                const isOpen = dropdown === (link.path === '/blog' ? 'blog' : 'news');
+                return (
+                  <div key={link.path} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setDropdown(isOpen ? null : link.path === '/blog' ? 'blog' : 'news')}
+                      onMouseEnter={() => setDropdown(link.path === '/blog' ? 'blog' : 'news')}
+                      className={`relative whitespace-nowrap transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-gold after:transition-[width] after:duration-300 ${
+                        isActive(link.path) ? 'text-gold after:w-full' : 'text-white/80 hover:text-gold after:w-0 hover:after:w-full'
+                      }`}
+                      aria-expanded={isOpen}
+                      aria-haspopup="menu"
+                    >
+                      {t(link.label)}
+                    </button>
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.16 }}
+                          className="absolute left-0 top-full z-50 mt-3 w-72 overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-2 shadow-2xl backdrop-blur-xl"
+                          role="menu"
+                          onMouseLeave={() => setDropdown(null)}
+                        >
+                          <LangLink
+                            to={link.path}
+                            onClick={() => setDropdown(null)}
+                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-gold transition hover:bg-white/5"
+                            role="menuitem"
+                          >
+                            {t(link.label)}
+                          </LangLink>
+                          <div className="my-1 h-px bg-white/5" />
+                          {categories.map((category) => {
+                            const copy = category[i18n.language.startsWith('fr') ? 'fr' : 'en'];
+                            return (
+                              <LangLink
+                                key={category.slug}
+                                to={`${link.path}/categorie/${category.slug}`}
+                                onClick={() => setDropdown(null)}
+                                className="block rounded-xl px-3 py-2 text-sm text-white/75 transition hover:bg-white/5 hover:text-gold"
+                                role="menuitem"
+                              >
+                                {copy.name}
+                              </LangLink>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+              return (
+                <LangLink
+                  key={link.path}
+                  to={link.path}
+                  className={`relative whitespace-nowrap transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-gold after:transition-[width] after:duration-300 ${
+                    isActive(link.path)
+                      ? 'text-gold after:w-full'
+                      : 'text-white/80 hover:text-gold after:w-0 hover:after:w-full'
+                  }`}
+                >
+                  {t(link.label)}
+                </LangLink>
+              );
+            })}
           </nav>
 
           {/* Desktop Right Side */}
@@ -192,14 +265,32 @@ export default function Header() {
           >
             <nav aria-label="Mobile navigation" className="px-4 py-4 flex flex-col items-center gap-1 text-base font-medium">
               {mobileNavLinks.map((link) => (
-                <LangLink
-                  key={link.path}
-                  to={link.path}
-                  className={`flex min-h-[44px] w-full items-center justify-center rounded-lg px-3 transition ${isActive(link.path) ? 'text-gold' : 'text-white/80 hover:bg-white/5 hover:text-gold'}`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t(link.label)}
-                </LangLink>
+                <div key={link.path} className="w-full">
+                  <LangLink
+                    to={link.path}
+                    className={`flex min-h-[44px] w-full items-center justify-center rounded-lg px-3 transition ${isActive(link.path) ? 'text-gold' : 'text-white/80 hover:bg-white/5 hover:text-gold'}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {t(link.label)}
+                  </LangLink>
+                  {(link.path === '/blog' || link.path === '/news') && (
+                    <div className="mb-2 flex flex-col gap-1 pl-4">
+                      {(link.path === '/blog' ? blogCategories : newsCategories).map((category) => {
+                        const copy = category[i18n.language.startsWith('fr') ? 'fr' : 'en'];
+                        return (
+                          <LangLink
+                            key={category.slug}
+                            to={`${link.path}/categorie/${category.slug}`}
+                            className="flex min-h-[40px] w-full items-center justify-center rounded-lg px-3 text-sm text-white/60 transition hover:bg-white/5 hover:text-gold"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            {copy.name}
+                          </LangLink>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               ))}
 
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center justify-center text-gold font-medium text-center">{t('common.callUs')}</a>
