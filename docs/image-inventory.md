@@ -24,8 +24,8 @@ Both are 16:9 WebP derivatives with a subtle Carzio logo watermark.
 | `carzio-grey-fleet-airport.webp` | `news blog/16.24.23.jpeg` | Blog category: Insurance & excess |
 | `carzio-grey-fleet-vertical.webp` | `news blog/16.24.24 (2).jpeg` | Blog category: Age, licence & driving |
 | `carzio-new-routes.webp` | `New image/16.24.24.jpeg` | News hub hero |
-| `news-country-road.webp` | `public/images/5.jpg` | News category: Driving in Morocco |
-| `news-headlight-safety.webp` | `public/images/4.jpg` | News category: Safety & rules |
+| `news-driving-morocco.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.44.jpeg` | News category: Driving in Morocco |
+| `news-road-signs.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg` | News category: Safety & rules |
 | `carzio-inspection-pair.webp` | `news blog/16.24.24 (1).jpeg` | News category: Insurance & deposit |
 | `carzio-documents-airport.webp` | `New image/16.22.14 (3).jpeg` | News category: Booking & paperwork |
 | `carzio-airport-fleet.webp` | `New image/16.24.24 (2).jpeg` | News category: Airports & pickup |
@@ -36,16 +36,16 @@ Both are 16:9 WebP derivatives with a subtle Carzio logo watermark.
 | `carzio-junior-pro.webp` | `inspiration/19.10.45.jpeg` | News category: Events & seasons |
 | `dacia-sandero-streetway.webp` | `public/images/dacia-sandero-streetway.jpg` | News category: Budget & practical tips |
 | `news-agadir-marina.webp` | `public/images/puerto-deportivo-agadir.jpg` | News: Agadir, Marrakech, Essaouira |
-| `carzio-sportage-white.webp` | `inspiration/19.10.46 (7).jpeg` | News: Full insurance from 5 days |
+| `news-family-airport.webp` | `news blog/Carzio at Agadir Airport.png` | News: Full insurance from 5 days |
 | `hyundai-i10.webp` | `public/images/hyundai-i10-bva.png` | News: Car rental budget in Agadir |
-| `news-key-handover.webp` | `public/images/2.jpg` | News: 0 MAD deposit |
-| `news-desert-road.webp` | `public/images/111.jpg` | News: Driving in Morocco |
+| `news-payment-terminal.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg` | News: 0 MAD deposit |
+| `news-driving-road.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.46.jpeg` | News: Driving in Morocco |
 | `carzio-munich-route.webp` | `inspiration/19.10.45 (1).jpeg` | News: When to rent a car in Agadir |
 | `touchscreen-navigation.webp` | internet (see above) | News: GPS and touchscreen |
 | `carzio-airport-jogger.webp` | `inspiration/19.10.44 (2).jpeg` | News: Agadir Al Massira airport delivery |
 | `carzio-boot-check.webp` | `inspiration/19.10.47.jpeg` | News: Renting a car with children |
 | `news-beach-convoy.webp` | `public/images/tamraght_beach.png` | News: Road trips from Agadir |
-| `news-duster-track.webp` | `public/images/7.jpg` | News: Road safety in Morocco |
+| `news-pedestrian-safety.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.05.33.jpeg` | News: Road safety in Morocco |
 | `faq-rental-advisor.webp` | `public/images/about.jpg` | FAQ category: Booking & payment |
 | `carzio-grey-fleet-front.webp` | `inspiration/19.10.45 (4).jpeg` | FAQ category: Age, licence & drivers |
 | `faq-car-ready.webp` | `public/images/55.jpg` | FAQ category: Insurance & excess |
@@ -61,7 +61,7 @@ All car-card images are 16:9 WebP on a pure white background, trimmed and enlarg
 
 `dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`, `dacia-logan.webp`, `dacia-duster-automatic-2025.webp`, `dacia-duster-manual-2026.webp`, `dacia-jogger.webp`, `renault-clio-5.webp`, `peugeot-208.webp`, `hyundai-i10.webp`, `vw-troc.webp`, `kia-sportage.webp`, `hyundai-tucson.webp`.
 
-The Kia Sportage derivative has a clean white Moroccan-style plate with no readable registration number.
+The Kia Sportage derivative has a clean white plate with black `CARZIO` lettering in place of the registration number.
 
 ## Hero slides
 

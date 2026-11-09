@@ -5,8 +5,8 @@ category: reservation-documents
 title: "0 MAD deposit: how payment works"
 description: "No deposit, no card hold, debit cards accepted. Payment at key handover, plus the documents to bring."
 date: 2026-11-03
-image: /images/journal/news-key-handover.webp
-imageAlt: "Key handover at the rental desk"
+image: /images/journal/news-payment-terminal.webp
+imageAlt: "Carzio booking page with a price in MAD"
 readingTime: 3
 featured: false
 published: true

@@ -5,8 +5,8 @@ category: conduite-maroc
 title: "Driving in Morocco: what to know before you rent"
 description: "Roads, parking, safety and local habits: the key points for driving calmly in a rental car in Morocco."
 date: 2026-11-05
-image: /images/journal/news-desert-road.webp
-imageAlt: "Car on an open road at sunset"
+image: /images/journal/news-driving-road.webp
+imageAlt: "Carzio poster for the new Milan–Agadir direct route"
 readingTime: 5
 published: true
 ---

@@ -5,8 +5,8 @@ category: securite-regles
 title: "Road safety in Morocco: the essential rules"
 description: "Speed limits, checks, parking and the right reflexes if something happens: safety essentials for renting and driving in Morocco."
 date: 2026-11-05
-image: /images/journal/news-duster-track.webp
-imageAlt: "Dacia Duster on a dirt track"
+image: /images/journal/news-pedestrian-safety.webp
+imageAlt: "Navigation apps on a phone"
 readingTime: 5
 published: true
 ---

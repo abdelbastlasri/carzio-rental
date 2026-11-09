@@ -91,6 +91,17 @@ const fr: Record<string, CarAd> = {
       "Service 24/7 uniquement à l'aéroport Agadir Al Massira",
     ],
   },
+  'dacia-duster-manual': {
+    pitch:
+      "Le Duster 2026 en boîte manuelle : le SUV cinq places polyvalent pour Agadir, la côte et les routes de l'Atlas. Coffre généreux, climatisation et kilométrage illimité.",
+    bullets: [
+      'Bons tarifs pour nos clients',
+      'SUV 5 places, boîte manuelle',
+      'Coffre généreux pour les bagages',
+      "Livraison gratuite à l'aéroport d'Agadir et à l'agence",
+      "Service 24/7 uniquement à l'aéroport Agadir Al Massira",
+    ],
+  },
   'dacia-jogger': {
     pitch:
       "La voiture 7 places la plus maligne pour les familles et les amis : espace XXL pour les bagages, kilométrage illimité et confort royal.",
@@ -222,6 +233,17 @@ const en: Record<string, CarAd> = {
       'Good prices for our clients',
       'Rugged automatic SUV',
       'Built-in GPS and touchscreen',
+      'Free delivery at Agadir airport & agency',
+      '24/7 service only at Agadir Al Massira airport',
+    ],
+  },
+  'dacia-duster-manual': {
+    pitch:
+      'The 2026 Duster with manual gearbox: a versatile five-seat SUV for Agadir, the coast and the Atlas roads. Generous boot, air conditioning and unlimited mileage.',
+    bullets: [
+      'Good prices for our clients',
+      'Five-seat manual SUV',
+      'Generous boot for luggage',
       'Free delivery at Agadir airport & agency',
       '24/7 service only at Agadir Al Massira airport',
     ],
@@ -361,6 +383,17 @@ const de: Record<string, CarAd> = {
       '24/7 Service nur am Flughafen Agadir Al Massira',
     ],
   },
+  'dacia-duster-manual': {
+    pitch:
+      'Der Duster 2026 mit Schaltgetriebe: ein vielseitiges Fünf-Sitzer-SUV für Agadir, die Küste und die Atlasstraßen. Großzügiger Kofferraum, Klimaanlage und unbegrenzte Kilometer.',
+    bullets: [
+      'Gute Preise für unsere Kunden',
+      'Fünf-Sitzer-SUV mit Schaltgetriebe',
+      'Großzügiger Kofferraum für Gepäck',
+      'Kostenlose Lieferung am Flughafen Agadir & in der Agentur',
+      '24/7 Service nur am Flughafen Agadir Al Massira',
+    ],
+  },
   'dacia-jogger': {
     pitch:
       'Das cleverste 7-Sitzer für große Familien und Gruppen: XL-Gepäckraum, unbegrenzte Kilometer und exzellenter Komfort.',
@@ -492,6 +525,17 @@ const es: Record<string, CarAd> = {
       'Buenos precios para nuestros clientes',
       'SUV robusto, automático',
       'GPS integrado y pantalla táctil',
+      'Entrega gratuita en el aeropuerto de Agadir y en la agencia',
+      'Servicio 24/7 solo en el aeropuerto Agadir Al Massira',
+    ],
+  },
+  'dacia-duster-manual': {
+    pitch:
+      'El Duster 2026 con cambio manual: un SUV versátil de cinco plazas para Agadir, la costa y las carreteras del Atlas. Maletero amplio, aire acondicionado y kilometraje ilimitado.',
+    bullets: [
+      'Buenos precios para nuestros clientes',
+      'SUV de cinco plazas, cambio manual',
+      'Maletero amplio para el equipaje',
       'Entrega gratuita en el aeropuerto de Agadir y en la agencia',
       'Servicio 24/7 solo en el aeropuerto Agadir Al Massira',
     ],
@@ -631,6 +675,17 @@ const pl: Record<string, CarAd> = {
       'Serwis 24/7 tylko na lotnisku Agadir Al Massira',
     ],
   },
+  'dacia-duster-manual': {
+    pitch:
+      'Duster 2026 z manualną skrzynią biegów: wszechstronny pięciomiejscowy SUV na Agadir, wybrzeże i trasy Atlasu. Pojemny bagażnik, klimatyzacja i nielimitowany przebieg.',
+    bullets: [
+      'Dobre ceny dla naszych klientów',
+      'Pięciomiejscowy SUV z manualną skrzynią',
+      'Pojemny bagażnik na bagaże',
+      'Bezpłatna dostawa na lotnisko Agadir i do agencji',
+      'Serwis 24/7 tylko na lotnisku Agadir Al Massira',
+    ],
+  },
   'dacia-jogger': {
     pitch:
       'Najmądrzejszy 7-miejscowy dla dużych rodzin i grup: XXL przestrzeń na bagaż, nielimitowany przebieg i pierwszorzędny komfort.',
@@ -696,6 +751,7 @@ export const carAds: Record<string, Record<CarAdLang, CarAd>> = {
   'peugeot-208': { fr: fr['peugeot-208'], en: en['peugeot-208'], de: de['peugeot-208'], es: es['peugeot-208'], pl: pl['peugeot-208'] },
   'renault-clio-5': { fr: fr['renault-clio-5'], en: en['renault-clio-5'], de: de['renault-clio-5'], es: es['renault-clio-5'], pl: pl['renault-clio-5'] },
   'dacia-duster-bva': { fr: fr['dacia-duster-bva'], en: en['dacia-duster-bva'], de: de['dacia-duster-bva'], es: es['dacia-duster-bva'], pl: pl['dacia-duster-bva'] },
+  'dacia-duster-manual': { fr: fr['dacia-duster-manual'], en: en['dacia-duster-manual'], de: de['dacia-duster-manual'], es: es['dacia-duster-manual'], pl: pl['dacia-duster-manual'] },
   'dacia-jogger': { fr: fr['dacia-jogger'], en: en['dacia-jogger'], de: de['dacia-jogger'], es: es['dacia-jogger'], pl: pl['dacia-jogger'] },
   'kia-sportage': { fr: fr['kia-sportage'], en: en['kia-sportage'], de: de['kia-sportage'], es: es['kia-sportage'], pl: pl['kia-sportage'] },
   'vw-troc-automatic': { fr: fr['vw-troc-automatic'], en: en['vw-troc-automatic'], de: de['vw-troc-automatic'], es: es['vw-troc-automatic'], pl: pl['vw-troc-automatic'] },

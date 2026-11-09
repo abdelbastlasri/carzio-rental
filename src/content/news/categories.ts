@@ -19,8 +19,8 @@ export interface NewsCategory {
 export const newsCategories: NewsCategory[] = [
   {
     slug: 'conduite-maroc',
-    image: '/images/journal/news-country-road.webp',
-    imageAlt: { fr: "Voiture sur une route de campagne", en: "Car on a country road" },
+    image: '/images/journal/news-driving-morocco.webp',
+    imageAlt: { fr: "Voiture Carzio avec des voyageurs", en: "Carzio car with travellers" },
     fr: {
       name: 'Conduire au Maroc',
       description:
@@ -34,8 +34,8 @@ export const newsCategories: NewsCategory[] = [
   },
   {
     slug: 'securite-regles',
-    image: '/images/journal/news-headlight-safety.webp',
-    imageAlt: { fr: "Phare de voiture allumé au coucher du soleil", en: "Car headlight switched on at sunset" },
+    image: '/images/journal/news-road-signs.webp',
+    imageAlt: { fr: "Kia Sportage blanc de la flotte Carzio", en: "White Kia Sportage from the Carzio fleet" },
     fr: {
       name: 'Sécurité & règles',
       description:
