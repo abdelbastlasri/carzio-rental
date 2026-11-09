@@ -32,13 +32,13 @@ const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = {
     },
   },
   conditions: {
-    image: '/images/journal/carzio-driver-dacia.webp',
+    image: '/images/journal/carzio-grey-fleet-front.webp',
     alt: {
-      fr: "Conducteur avec sa Dacia à l'aéroport d'Agadir",
-      en: 'Driver with a Dacia at Agadir airport',
-      de: 'Fahrer mit einem Dacia am Flughafen Agadir',
-      es: 'Conductor con un Dacia en el aeropuerto de Agadir',
-      pl: 'Kierowca z Dacią na lotnisku w Agadirze',
+      fr: "Voitures de location prêtes à l'aéroport d'Agadir",
+      en: 'Rental cars ready at Agadir airport',
+      de: 'Mietwagen bereit am Flughafen Agadir',
+      es: 'Coches de alquiler listos en el aeropuerto de Agadir',
+      pl: 'Samochody na wynajem gotowe na lotnisku w Agadirze',
     },
   },
   assurance: {
@@ -62,13 +62,13 @@ const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = {
     },
   },
   'conduite-maroc': {
-    image: '/images/journal/carzio-bordeaux-sign.webp',
+    image: '/images/journal/faq-duster-sand.webp',
     alt: {
-      fr: "Panneau Agadir Al Massira à l'aéroport",
-      en: 'Agadir Al Massira airport sign',
-      de: 'Schild am Flughafen Agadir Al Massira',
-      es: 'Señal del aeropuerto Agadir Al Massira',
-      pl: 'Znak lotniska Agadir Al Massira',
+      fr: 'Dacia Duster roulant sur une piste de sable',
+      en: 'Dacia Duster driving on a sandy track',
+      de: 'Dacia Duster auf einer Sandpiste',
+      es: 'Dacia Duster circulando por una pista de arena',
+      pl: 'Dacia Duster jadąca piaszczystą drogą',
     },
   },
 };

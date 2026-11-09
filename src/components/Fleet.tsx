@@ -11,7 +11,7 @@ interface FleetProps {
 export default function Fleet({ onBook, featured }: FleetProps) {
   const { t } = useTranslation();
   const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
-  // Homepage shows 8 cars, all under €50/day; the Cars page still shows all 12.
+  // Homepage features six Dacia models; the Cars page shows the full rental fleet.
   const featuredIds = [
     'dacia-sandero-stepway',
     'dacia-sandero-streetway',

@@ -66,9 +66,9 @@
       "desc": "Clean, checked and waiting at the airport or at our agency at MAG N2, Agadir Airport."
     },
     "slideMilan": {
-      "headline": "Milan → Agadir",
-      "subhead": "New Direct Route",
-      "desc": "Ryanair's new direct route lands at Agadir Al Massira — your car is waiting when you arrive."
+      "headline": "Agadir Al Massira",
+      "subhead": "Pickup Point",
+      "desc": "Land at Agadir airport and collect your car — our team is waiting at the terminal."
     }
   },
   "bookingForm": {
@@ -392,8 +392,8 @@
     "heroWhatsapp": "Ask a question",
     "guidesTitle": "Essential guides",
     "guidesIntro": "Go further before you book.",
-    "modelsTitle": "Most booked models",
-    "modelsIntro": "The cars travellers ask for most in Agadir — clear prices, no deposit.",
+    "modelsTitle": "Dacia models in our fleet",
+    "modelsIntro": "A selection of Dacia models available from Agadir — clear prices, no deposit.",
     "modelsCta": "See all cars",
     "heroAlt": "Aerial view of Agadir and its bay"
   },

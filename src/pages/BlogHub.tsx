@@ -150,18 +150,6 @@ export default function BlogHub() {
           </section>
         )}
 
-        <section className="mx-auto max-w-6xl px-4 pb-12">
-          <div className="mb-5 flex items-end justify-between gap-4">
-            <h2 className="font-heading text-xl font-semibold text-white">{t('blog.allArticles')}</h2>
-            <span className="text-sm text-white/55">{t('blog.articlesCount', { count: posts.length })}</span>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {rest.map((post) => (
-              <BlogCard key={`${post.lang}-${post.slug}`} post={post} contentLang={contentLang} />
-            ))}
-          </div>
-        </section>
-
         <section className="mx-auto max-w-6xl px-4 pb-16">
           <h2 className="mb-5 font-heading text-xl font-semibold text-white">{t('blog.categories')}</h2>
           <div className="grid gap-4 md:grid-cols-3">
@@ -181,6 +169,18 @@ export default function BlogHub() {
                 />
               );
             })}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <h2 className="font-heading text-xl font-semibold text-white">{t('blog.allArticles')}</h2>
+            <span className="text-sm text-white/55">{t('blog.articlesCount', { count: posts.length })}</span>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {rest.map((post) => (
+              <BlogCard key={`${post.lang}-${post.slug}`} post={post} contentLang={contentLang} />
+            ))}
           </div>
         </section>
 

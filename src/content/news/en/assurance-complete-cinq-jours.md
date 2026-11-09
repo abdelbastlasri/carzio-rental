@@ -5,8 +5,8 @@ category: assurance-caution
 title: "Full insurance from 5 days: how it works"
 description: "Standard insurance included, full insurance optional from 5 billed days. The plain version, with a worked example."
 date: 2026-11-03
-image: /images/journal/carzio-grey-fleet-vertical.webp
-imageAlt: "Vehicles inspected before rental"
+image: /images/journal/carzio-sportage-white.webp
+imageAlt: "White Kia Sportage ready for rental"
 readingTime: 4
 featured: true
 published: true

@@ -66,9 +66,9 @@
       "desc": "Gepflegt, geprüft und bereit am Flughafen oder in unserer Agentur am MAG N2, Agadir Airport."
     },
     "slideMilan": {
-      "headline": "Mailand → Agadir",
-      "subhead": "Neue Direktverbindung",
-      "desc": "Die neue Ryanair-Direktverbindung landet in Agadir Al Massira — Ihr Auto wartet bei Ihrer Ankunft."
+      "headline": "Agadir Al Massira",
+      "subhead": "Abholpunkt",
+      "desc": "Landen Sie am Flughafen Agadir und holen Sie Ihr Auto ab — unser Team wartet am Terminal."
     }
   },
   "bookingForm": {
@@ -392,8 +392,8 @@
     "heroWhatsapp": "Frage stellen",
     "guidesTitle": "Wichtige Ratgeber",
     "guidesIntro": "Mehr Informationen vor der Buchung.",
-    "modelsTitle": "Die beliebtesten Modelle",
-    "modelsIntro": "Die am häufigsten gebuchten Autos in Agadir — klare Preise, keine Kaution.",
+    "modelsTitle": "Dacia-Modelle in unserer Flotte",
+    "modelsIntro": "Eine Auswahl an Dacia-Modellen in Agadir — klare Preise, keine Kaution.",
     "modelsCta": "Alle Autos ansehen",
     "heroAlt": "Luftaufnahme von Agadir und seiner Bucht"
   },

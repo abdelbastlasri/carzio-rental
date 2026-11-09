@@ -6,8 +6,8 @@ title: "Age, licence and drivers: who can rent a car in Morocco?"
 description: "Minimum age 23, licence held for 4 years, free second driver, foreign licences accepted and free baby seats. Carzio's requirements explained."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/journal/carzio-grey-fleet-front.webp
-imageAlt: "Rental cars ready for key handover"
+image: /images/journal/carzio-driver-dacia.webp
+imageAlt: "Driver with a Dacia at Agadir airport"
 readingTime: 7
 featured: true
 published: true

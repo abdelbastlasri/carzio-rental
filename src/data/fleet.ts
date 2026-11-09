@@ -92,7 +92,7 @@ const fleetModels: CarModel[] = [
     ac: true,
     km: 'Unlimited',
     model: '2026',
-    description: 'New 2026 Dacia Duster with manual transmission and a diesel engine, ready for city driving and longer trips.',
+    description: 'The 2026 Dacia Duster with manual transmission: a practical five-seat SUV for city driving and longer trips around Morocco. It offers generous luggage space, air conditioning and unlimited mileage.',
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },
@@ -231,25 +231,6 @@ const fleetModels: CarModel[] = [
       { name: 'Booster Seat', price: 0, perDay: true },
     ],
   },
-  {
-    id: 'volkswagen-touareg',
-    name: 'VOLKSWAGEN TOUAREG',
-    type: 'SUV',
-    pricePerDay: 100,
-    image: '/images/fleet/volkswagen-touareg.webp',
-    seats: 5,
-    doors: 5,
-    suitcases: 5,
-    transmission: 'Automatic',
-    ac: true,
-    km: 'Unlimited',
-    model: '2026',
-    description: 'Luxury SUV with premium comfort and powerful performance.',
-    extras: [
-      { name: 'Baby Seat', price: 0, perDay: true },
-      { name: 'Booster Seat', price: 0, perDay: true },
-    ],
-  },
 ];
 
 const carFeatures: Record<string, { gps: boolean; touchscreen: boolean }> = {
@@ -265,7 +246,6 @@ const carFeatures: Record<string, { gps: boolean; touchscreen: boolean }> = {
   'kia-sportage': { gps: true, touchscreen: true },
   'vw-troc-automatic': { gps: true, touchscreen: true },
   'hyundai-tucson': { gps: true, touchscreen: true },
-  'volkswagen-touareg': { gps: true, touchscreen: true },
 };
 
 export const fleet: Car[] = fleetModels.map((car) => ({

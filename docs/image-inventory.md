@@ -1,76 +1,72 @@
-# Content image inventory
+# Carzio content image inventory
 
-Last updated: 2026-11-08
+Last updated: 2026-11-09
 
-This file tracks the photographs used on the Blog, News and FAQ pages. No photograph is reused on more than one of those pages. The only exceptions are the brand logo and small interface icons.
+This is the image map used by the Blog, News and FAQ pages. No photograph is reused between those pages (FR and EN versions of the same article intentionally share one cover image).
 
-## Legend
+## Internet photographs used (2)
 
-- **Source**: `owner` = owner-supplied photograph in `New image/`, `news blog/` or `inspiration/`; `project` = existing project asset under `public/images`; `internet` = third-party photograph downloaded into `public/images/journal`.
-- **Processed**: every `public/images/journal/*.webp` and `public/images/fleet/*.webp` is 1600×900 WebP, 16:9, with the subject kept inside the frame.
+| File | Source | Author | License |
+|---|---|---|---|
+| `public/images/journal/touchscreen-carplay.webp` | [2023 Volkswagen ID.4 running wireless CarPlay](https://commons.wikimedia.org/wiki/File:2023_Volkswagen_ID.4_running_wireless_CarPlay.jpg) | Sunnyboy122 | CC0 |
+| `public/images/journal/touchscreen-navigation.webp` | [Toyota Aygo Mid 2018 Apple Carplay Integration](https://commons.wikimedia.org/wiki/File:Toyota_Aygo_Mid_2018_Apple_Carplay_Integration.jpg) | Butterhimmel | CC BY-SA 4.0 |
 
-## Internet photographs (3 only)
+Both are 16:9 WebP derivatives with a subtle Carzio logo watermark.
 
-| File | Source title | Author | License | Used on |
-|---|---|---|---|---|
-| `public/images/journal/age-driving-licence.webp` | UK driving licence (Pexels photo 45113) | Dom J | Pexels License | Blog article: Age, licence and drivers |
-| `public/images/journal/touchscreen-carplay.webp` | 2023 Volkswagen ID.4 running wireless CarPlay | Sunnyboy122 | CC0 | News category: Fleet & models |
-| `public/images/journal/touchscreen-navigation.webp` | Toyota Aygo Mid 2018 Apple CarPlay integration | Butterhimmel | CC BY-SA 4.0 | News article: GPS and touchscreen |
+## Owner-supplied and project photographs
 
-## Owner-supplied photographs used
-
-| Output file | Original source | Used on |
+| Output | Source | Used on |
 |---|---|---|
-| `carzio-booking-pickup.webp` | `New image/16.22.14 (1).jpeg` | Blog article: Renting a car in Agadir |
-| `carzio-wash-inspection.webp` | `news blog/16.24.24.jpeg` | Blog article: Standard or full insurance |
-| `carzio-airport-jogger.webp` | `New image/16.22.14 (2).jpeg` | News article: Agadir Al Massira airport delivery |
-| `carzio-documents-airport.webp` | `New image/16.22.14 (3).jpeg` | News category: Booking & paperwork |
-| `carzio-airport-fleet.webp` | `New image/16.24.24 (2).jpeg` | News category: Airports & pickup |
+| `carzio-booking-pickup.webp` | `New image/16.22.14 (1).jpeg` | Blog: Renting a car in Agadir |
+| `carzio-wash-inspection.webp` | `news blog/16.24.24.jpeg` | Blog: Standard or full insurance |
+| `carzio-driver-dacia.webp` | `inspiration/19.04.24.jpeg` | Blog: Age, licence and drivers |
+| `carzio-grey-fleet-side.webp` | `inspiration/19.10.45 (3).jpeg` | Blog category: Booking & payment |
+| `carzio-grey-fleet-airport.webp` | `news blog/16.24.23.jpeg` | Blog category: Insurance & excess |
+| `carzio-grey-fleet-vertical.webp` | `news blog/16.24.24 (2).jpeg` | Blog category: Age, licence & driving |
 | `carzio-new-routes.webp` | `New image/16.24.24.jpeg` | News hub hero |
-| `carzio-inspection-pair.webp` | `news blog/16.24.24 (1).jpeg` | News category: Insurance & deposit |
-| `news-family-group.webp` | `public/images/3.jpg` | News article: Full insurance from 5 days |
-| `carzio-luggage-cars.webp` | `news blog/16.24.25.jpeg` | News category: Family travel |
-| `carzio-boot-check.webp` | `inspiration/19.10.47.jpeg` | News article: Renting a car with children |
-| `carzio-munich-route.webp` | `inspiration/19.10.45 (1).jpeg` | News article: When to rent a car in Agadir |
-| `carzio-junior-pro.webp` | `inspiration/19.10.45.jpeg` | News category: Events & seasons |
-| `carzio-driver-dacia.webp` | `inspiration/19.04.24.jpeg` | FAQ category: Age, licence & drivers |
-| `faq-car-ready.webp` | `public/images/55.jpg` | FAQ category: Insurance & excess |
-| `carzio-airport-peugeot.webp` | `news blog/16.24.25 (1).jpeg` | FAQ category: Fuel, mileage & delivery |
-
-## Project assets used
-
-| Output file | Original source | Used on |
-|---|---|---|
-| `blog-agadir-aerial.webp` | `public/images/agadir-oufella.jpg` | Blog hub hero |
-| `blog-fleet-airport.webp` | `public/images/1.jpg` | Blog category: Booking & payment |
-| `blog-insurance-inspection.webp` | `public/images/11.jpg` | Blog category: Insurance & excess |
-| `blog-driver-map.webp` | `public/images/6.jpg` | Blog category: Age, licence & driving |
 | `news-country-road.webp` | `public/images/5.jpg` | News category: Driving in Morocco |
 | `news-headlight-safety.webp` | `public/images/4.jpg` | News category: Safety & rules |
+| `carzio-inspection-pair.webp` | `news blog/16.24.24 (1).jpeg` | News category: Insurance & deposit |
+| `carzio-documents-airport.webp` | `New image/16.22.14 (3).jpeg` | News category: Booking & paperwork |
+| `carzio-airport-fleet.webp` | `New image/16.24.24 (2).jpeg` | News category: Airports & pickup |
 | `news-taghazout-night.webp` | `public/images/Taghazout-by-night.jpg` | News category: Cities & sightseeing |
 | `news-tamraght-coast.webp` | `public/images/tamraght.jpg` | News category: Road trips & itineraries |
-| `news-family-group.webp` | `public/images/3.jpg` | News category: Family travel |
-| `news-agadir-marina.webp` | `public/images/puerto-deportivo-agadir.jpg` | News article: Agadir, Marrakech, Essaouira |
-| `news-desert-road.webp` | `public/images/111.jpg` | News article: Driving in Morocco |
-| `news-duster-track.webp` | `public/images/7.jpg` | News article: Road safety in Morocco |
-| `news-beach-convoy.webp` | `public/images/tamraght_beach.png` | News article: Road trips from Agadir |
-| `news-key-handover.webp` | `public/images/2.jpg` | News article: 0 MAD deposit |
-| `faq-rental-advisor.webp` | `public/images/about.jpg` | FAQ hub hero |
-| `faq-agadir-terminal.webp` | `public/images/agadir-airport.jpg` | FAQ extra band |
-| `faq-airport-assistance.webp` | `public/images/casablanca-airport.jpg` | FAQ hero |
+| `carzio-luggage-cars.webp` | `news blog/16.24.25.jpeg` | News category: Family travel |
+| `touchscreen-carplay.webp` | internet (see above) | News category: Fleet & models |
+| `carzio-junior-pro.webp` | `inspiration/19.10.45.jpeg` | News category: Events & seasons |
+| `dacia-sandero-streetway.webp` | `public/images/dacia-sandero-streetway.jpg` | News category: Budget & practical tips |
+| `news-agadir-marina.webp` | `public/images/puerto-deportivo-agadir.jpg` | News: Agadir, Marrakech, Essaouira |
+| `carzio-sportage-white.webp` | `inspiration/19.10.46 (7).jpeg` | News: Full insurance from 5 days |
+| `hyundai-i10.webp` | `public/images/hyundai-i10-bva.png` | News: Car rental budget in Agadir |
+| `news-key-handover.webp` | `public/images/2.jpg` | News: 0 MAD deposit |
+| `news-desert-road.webp` | `public/images/111.jpg` | News: Driving in Morocco |
+| `carzio-munich-route.webp` | `inspiration/19.10.45 (1).jpeg` | News: When to rent a car in Agadir |
+| `touchscreen-navigation.webp` | internet (see above) | News: GPS and touchscreen |
+| `carzio-airport-jogger.webp` | `inspiration/19.10.44 (2).jpeg` | News: Agadir Al Massira airport delivery |
+| `carzio-boot-check.webp` | `inspiration/19.10.47.jpeg` | News: Renting a car with children |
+| `news-beach-convoy.webp` | `public/images/tamraght_beach.png` | News: Road trips from Agadir |
+| `news-duster-track.webp` | `public/images/7.jpg` | News: Road safety in Morocco |
+| `faq-rental-advisor.webp` | `public/images/about.jpg` | FAQ category: Booking & payment |
+| `carzio-grey-fleet-front.webp` | `inspiration/19.10.45 (4).jpeg` | FAQ category: Age, licence & drivers |
+| `faq-car-ready.webp` | `public/images/55.jpg` | FAQ category: Insurance & excess |
+| `carzio-airport-peugeot.webp` | `news blog/16.24.25 (1).jpeg` | FAQ category: Fuel, mileage & delivery |
 | `faq-duster-sand.webp` | `public/images/66.jpg` | FAQ category: Driving in Morocco |
+| `faq-airport-assistance.webp` | `public/images/casablanca-airport.jpg` | FAQ hub hero |
+| `faq-extra-taghazout.webp` | `public/images/taghazout-beach.jpg` | FAQ extra band |
+| `blog-agadir-aerial.webp` | `public/images/agadir-oufella.jpg` | Blog hub hero |
 
-## Fleet images used in content
+## Fleet images
 
-| Output file | Used on |
-|---|---|
-| `public/images/fleet/dacia-sandero-streetway.webp` | News category: Budget & practical tips |
-| `public/images/fleet/hyundai-i10.webp` | News article: Car rental budget in Agadir |
+All car-card images are 16:9 WebP on a pure white background, trimmed and enlarged inside the frame:
 
-The Blog model strip uses `dacia-sandero-stepway.webp`, `dacia-logan.webp`, `renault-clio-5.webp` and `peugeot-208.webp` from the same fleet set. These appear on the Blog page and the Our Cars page, which is allowed.
+`dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`, `dacia-logan.webp`, `dacia-duster-automatic-2025.webp`, `dacia-duster-manual-2026.webp`, `dacia-jogger.webp`, `renault-clio-5.webp`, `peugeot-208.webp`, `hyundai-i10.webp`, `vw-troc.webp`, `kia-sportage.webp`, `hyundai-tucson.webp`.
 
-## Removed
+The Kia Sportage derivative has a clean white Moroccan-style plate with no readable registration number.
 
-- `public/images/journal/car-keys.jpg` deleted (Ferrari/BMW/Porsche keys, not relevant and misleading).
-- All previous Wikimedia internet images removed from Blog/News/FAQ content except the three internet photographs listed above. Their credit entries were removed from `src/data/photoCredits.ts`.
-- `public/images/journal/agadir-marina.jpg` is no longer used on Blog/News/FAQ; it remains available for other pages.
+## Hero slides
+
+`public/images/hero/new-slide-2.webp` through `new-slide-7.webp`, in filename order from `new 6 home page`. Slide 1 remains `/images/55.jpg`.
+
+## About
+
+`public/images/about-new.webp` from `new about foto/Carzio_ Drive with Confidence.png`.

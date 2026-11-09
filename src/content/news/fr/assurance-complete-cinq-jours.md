@@ -5,8 +5,8 @@ category: assurance-caution
 title: "Assurance complète dès 5 jours : comment ça marche"
 description: "Assurance standard incluse, assurance complète en option à partir de 5 jours facturés. Le point en clair, avec un exemple de calcul."
 date: 2026-11-03
-image: /images/journal/carzio-grey-fleet-vertical.webp
-imageAlt: "Véhicules inspectés avant la location"
+image: /images/journal/carzio-sportage-white.webp
+imageAlt: "Kia Sportage blanche prête pour la location"
 readingTime: 4
 featured: true
 published: true

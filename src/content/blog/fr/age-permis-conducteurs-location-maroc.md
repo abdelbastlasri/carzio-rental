@@ -6,8 +6,8 @@ title: "Âge, permis et conducteurs : qui peut louer une voiture au Maroc ?"
 description: "23 ans minimum, permis détenu depuis 4 ans, deuxième conducteur gratuit, permis étranger accepté et siège bébé offert. Les conditions Carzio expliquées."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/journal/carzio-grey-fleet-front.webp
-imageAlt: "Voitures de location prêtes pour la remise des clés"
+image: /images/journal/carzio-driver-dacia.webp
+imageAlt: "Conducteur avec sa Dacia à l'aéroport d'Agadir"
 readingTime: 7
 featured: true
 published: true
