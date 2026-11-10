@@ -28,12 +28,12 @@
   },
   {
     "output": "blog-post-age-permis.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "Public domain",
-    "author": "Lyntha Scott Eiler",
+    "source": "news blog/Carzio at Agadir Airport.png",
+    "folder": "news blog",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
     "watermark": false,
-    "kb": 71.3
+    "kb": 177.8
   },
   {
     "output": "blog-post-assurance.webp",
@@ -82,21 +82,21 @@
   },
   {
     "output": "news-cat-reservation-documents.webp",
-    "source": "news blog/Carzio at Agadir Airport.png",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
+    "source": "https://commons.wikimedia.org/wiki/File:Central_customer_service_center_of_Austin_Station_(20181013192640).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "N509FZ",
     "watermark": false,
-    "kb": 177.8
+    "kb": 226.5
   },
   {
     "output": "news-cat-aeroports-livraison.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
+    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Abdeaitali",
     "watermark": false,
-    "kb": 199.5
+    "kb": 163.3
   },
   {
     "output": "news-cat-villes-visites.webp",
@@ -118,12 +118,12 @@
   },
   {
     "output": "news-cat-voyage-famille.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg",
-    "folder": "New image",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
-    "watermark": true,
-    "kb": 205.3
+    "watermark": false,
+    "kb": 168.9
   },
   {
     "output": "news-cat-flotte-modeles.webp",
@@ -181,12 +181,12 @@
   },
   {
     "output": "news-post-caution-zero-mad.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Paying_with_a_Credit_Card_(28886645201).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Businesswoman_making_a_payment_with_cash_while_using_a_smartphone_in_a_modern_office_setting.jpg",
     "folder": "Wikimedia Commons",
     "licence": "CC BY 2.0",
-    "author": "Hloom Templates",
+    "author": "Shixart1985",
     "watermark": false,
-    "kb": 51.8
+    "kb": 76.5
   },
   {
     "output": "news-post-gps-ecran-tactile.webp",
@@ -217,12 +217,12 @@
   },
   {
     "output": "news-post-louer-voiture-famille.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Packing_Luggage_into_the_Car_for_a_Holiday.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Familydestinationsguide.com Images",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
     "watermark": false,
-    "kb": 283.6
+    "kb": 198.9
   },
   {
     "output": "news-post-road-trips.webp",
@@ -253,12 +253,12 @@
   },
   {
     "output": "faq-cat-reservation.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Abdeaitali",
-    "watermark": false,
-    "kb": 163.3
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 89.6
   },
   {
     "output": "faq-cat-conditions.webp",
@@ -271,12 +271,12 @@
   },
   {
     "output": "faq-cat-assurance.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Mechanic_works_on_car_engine_performing_routine_maintenance_and_inspections_on_vehicle_parts.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Car_damage_on_fender_observed_in_a_parking_lot.jpg",
     "folder": "Wikimedia Commons",
     "licence": "CC BY 2.0",
     "author": "Shixart1985",
     "watermark": false,
-    "kb": 71.4
+    "kb": 38.7
   },
   {
     "output": "faq-cat-carburant-livraison.webp",

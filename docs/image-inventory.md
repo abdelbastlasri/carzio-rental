@@ -36,34 +36,34 @@ be assigned in one place.
 | Blog — category "Réservation & paiement" | `blog-cat-reservation.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg` | no |
 | Blog — category "Assurance & franchise" | `blog-cat-assurance.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.24.jpeg` | yes |
 | Blog — category "Âge, permis & conduite" | `blog-cat-conditions.webp` | Wikimedia Commons — File:Safe kids teach car seat installation 120623-F-HJ874-0019.jpg | no |
-| Blog — "Âge, permis et conducteurs : qui peut louer une voiture au Maroc ?" | `blog-post-age-permis.webp` | Wikimedia Commons — File:PUBLIC WORKS EMPLOYEE AT AN AUTO EMISSION INSPECTION STATION IN NORWOOD, OHIO, GIVES A DRIVER TIPS ON HOW HE CAN... - NARA - 557864.jpg | no |
+| Blog — "Âge, permis et conducteurs : qui peut louer une voiture au Maroc ?" | `blog-post-age-permis.webp` | `news blog/Carzio at Agadir Airport.png` | no |
 | Blog — "Assurance standard ou complète : que faut-il choisir ?" | `blog-post-assurance.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.47.jpeg` | yes |
 | Blog — "Réserver une voiture à Agadir : le guide complet" | `blog-post-reserver.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg` | yes |
 | News — topic "Conduire au Maroc" | `news-cat-conduite-maroc.webp` | Wikimedia Commons — File:A7 motorway in Morocco.JPG | no |
 | News — topic "Sécurité & règles" | `news-cat-securite-regles.webp` | Wikimedia Commons — File:Road signs Agadir 2020.jpg | no |
 | News — topic "Assurance & caution" | `news-cat-assurance-caution.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg` | yes |
-| News — topic "Booking & paperwork" | `news-cat-reservation-documents.webp` | `news blog/Carzio at Agadir Airport.png` | no |
-| News — topic "Airports & pickup" | `news-cat-aeroports-livraison.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg` | no |
+| News — topic "Booking & paperwork" | `news-cat-reservation-documents.webp` | Wikimedia Commons — File:Central customer service center of Austin Station (20181013192640).jpg | no |
+| News — topic "Airports & pickup" | `news-cat-aeroports-livraison.webp` | Wikimedia Commons — File:Agadir Airport 2020.jpg | no |
 | News — topic "Cities & sightseeing" | `news-cat-villes-visites.webp` | Wikimedia Commons — File:Agadir bay.jpg | no |
 | News — topic "Road trips & itineraries" | `news-cat-road-trips.webp` | Wikimedia Commons — File:Taghazout 2.jpg | no |
-| News — topic "Family travel" | `news-cat-voyage-famille.webp` | `New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg` | yes |
+| News — topic "Family travel" | `news-cat-voyage-famille.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg` | no |
 | News — topic "Fleet & models" | `news-cat-flotte-modeles.webp` | Wikimedia Commons — File:Toyota Aygo Mid 2018 Apple Carplay Integration.jpg | no |
 | News — topic "Events & seasons" | `news-cat-evenements.webp` | `New image/WhatsApp Image 2026-11-05 at 16.24.24.jpeg` | no |
 | News — topic "Budget & practical tips" | `news-cat-budget-conseils.webp` | Wikimedia Commons — File:Highway morocco pay checkpoint.jpg | no |
 | News — "Conduire au Maroc : ce qu’il faut savoir avant de louer" | `news-post-conduire-au-maroc.webp` | Wikimedia Commons — File:R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg | no |
 | News — "Sécurité routière au Maroc : les règles essentielles" | `news-post-securite-routiere.webp` | Wikimedia Commons — File:Road signs pedestrians Agadir 2020.jpg | no |
 | News — "Assurance complète dès 5 jours : comment ça marche" | `news-post-assurance-complete.webp` | `New image/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg` | yes |
-| News — "0 MAD de caution : comment se passe le paiement" | `news-post-caution-zero-mad.webp` | Wikimedia Commons — File:Paying with a Credit Card (28886645201).jpg | no |
+| News — "0 MAD de caution : comment se passe le paiement" | `news-post-caution-zero-mad.webp` | Wikimedia Commons — File:Businesswoman making a payment with cash while using a smartphone in a modern office setting.jpg | no |
 | News — "GPS et écran tactile : quels modèles Carzio en sont équipés" | `news-post-gps-ecran-tactile.webp` | Wikimedia Commons — File:2023 Volkswagen ID.4 running wireless CarPlay.jpg | no |
 | News — "Quand louer une voiture à Agadir : saisons, vacances et affluence" | `news-post-evenements-saisons.webp` | Wikimedia Commons — File:Agadir Beach Sunset (Summer time).jpg | no |
 | News — "Livraison à l’aéroport Agadir Al Massira : ce qui est gratuit" | `news-post-livraison-aeroport.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (4).jpeg` | no |
-| News — "Louer une voiture en famille au Maroc : nos conseils" | `news-post-louer-voiture-famille.webp` | Wikimedia Commons — File:Packing Luggage into the Car for a Holiday.jpg | no |
+| News — "Louer une voiture en famille au Maroc : nos conseils" | `news-post-louer-voiture-famille.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg` | no |
 | News — "Road trips depuis Agadir : 3 itinéraires à faire en voiture" | `news-post-road-trips.webp` | Wikimedia Commons — File:Red car morocco Marina Agadir.jpg | no |
 | News — "Agadir, Marrakech, Essaouira : visiter en voiture" | `news-post-agadir-marrakech-essaouira.webp` | Wikimedia Commons — File:Skala du Port, Essaouira 01.jpg | no |
 | News — "Budget location de voiture à Agadir : ce qui est inclus" | `news-post-budget-location.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg` | yes |
-| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | Wikimedia Commons — File:Agadir Airport 2020.jpg | no |
+| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg` | yes |
 | FAQ — "Age, licence & drivers" | `faq-cat-conditions.webp` | Wikimedia Commons — File:DE Licence 2013 Front.jpg | no |
-| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | Wikimedia Commons — File:Mechanic works on car engine performing routine maintenance and inspections on vehicle parts.jpg | no |
+| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | Wikimedia Commons — File:Car damage on fender observed in a parking lot.jpg | no |
 | FAQ — "Fuel, mileage & delivery" | `faq-cat-carburant-livraison.webp` | Wikimedia Commons — File:Afriquia Station - Bouznika - October 2023.jpg | no |
 | FAQ — "Driving in Morocco" | `faq-cat-conduite-maroc.webp` | Wikimedia Commons — File:A7 motorway in Morocco 2.JPG | no |
 
@@ -72,24 +72,23 @@ be assigned in one place.
 | File | Original | Author | Licence | Source page |
 |---|---|---|---|---|
 | `blog-cat-conditions.webp` | File:Safe kids teach car seat installation 120623-F-HJ874-0019.jpg | Airman 1st Class Krystal Wright | Public domain | https://commons.wikimedia.org/wiki/File:Safe_kids_teach_car_seat_installation_120623-F-HJ874-0019.jpg |
-| `blog-post-age-permis.webp` | File:PUBLIC WORKS EMPLOYEE AT AN AUTO EMISSION INSPECTION STATION IN NORWOOD, OHIO, GIVES A DRIVER TIPS ON HOW HE CAN... - NARA - 557864.jpg | Lyntha Scott Eiler | Public domain | https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg |
 | `news-cat-conduite-maroc.webp` | File:A7 motorway in Morocco.JPG | Makary | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco.JPG |
 | `news-cat-securite-regles.webp` | File:Road signs Agadir 2020.jpg | Abdeaitali | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Road_signs_Agadir_2020.jpg |
+| `news-cat-reservation-documents.webp` | File:Central customer service center of Austin Station (20181013192640).jpg | N509FZ | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Central_customer_service_center_of_Austin_Station_(20181013192640).jpg |
+| `news-cat-aeroports-livraison.webp` | File:Agadir Airport 2020.jpg | Abdeaitali | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg |
 | `news-cat-villes-visites.webp` | File:Agadir bay.jpg | AJSPARK4444 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Agadir_bay.jpg |
 | `news-cat-road-trips.webp` | File:Taghazout 2.jpg | AJSPARK4444 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Taghazout_2.jpg |
 | `news-cat-flotte-modeles.webp` | File:Toyota Aygo Mid 2018 Apple Carplay Integration.jpg | Butterhimmel | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Toyota_Aygo_Mid_2018_Apple_Carplay_Integration.jpg |
 | `news-cat-budget-conseils.webp` | File:Highway morocco pay checkpoint.jpg | Ministère de l'Équipement et du Transport | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Highway_morocco_pay_checkpoint.jpg |
 | `news-post-conduire-au-maroc.webp` | File:R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg | Timothy A. Gonsalves | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:R212_MZouda_Shishawa_Morocco_Oct25_A7CR_08374.jpg |
 | `news-post-securite-routiere.webp` | File:Road signs pedestrians Agadir 2020.jpg | Abdeaitali | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Road_signs_pedestrians_Agadir_2020.jpg |
-| `news-post-caution-zero-mad.webp` | File:Paying with a Credit Card (28886645201).jpg | Hloom Templates | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Paying_with_a_Credit_Card_(28886645201).jpg |
+| `news-post-caution-zero-mad.webp` | File:Businesswoman making a payment with cash while using a smartphone in a modern office setting.jpg | Shixart1985 | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Businesswoman_making_a_payment_with_cash_while_using_a_smartphone_in_a_modern_office_setting.jpg |
 | `news-post-gps-ecran-tactile.webp` | File:2023 Volkswagen ID.4 running wireless CarPlay.jpg | Sunnyboy122 | CC0 | https://commons.wikimedia.org/wiki/File:2023_Volkswagen_ID.4_running_wireless_CarPlay.jpg |
 | `news-post-evenements-saisons.webp` | File:Agadir Beach Sunset (Summer time).jpg | Hatim.laajini | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Agadir_Beach_Sunset_(Summer_time).jpg |
-| `news-post-louer-voiture-famille.webp` | File:Packing Luggage into the Car for a Holiday.jpg | Familydestinationsguide.com Images | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Packing_Luggage_into_the_Car_for_a_Holiday.jpg |
 | `news-post-road-trips.webp` | File:Red car morocco Marina Agadir.jpg | MustaSensei | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Red_car_morocco_Marina_Agadir.jpg |
 | `news-post-agadir-marrakech-essaouira.webp` | File:Skala du Port, Essaouira 01.jpg | Adam Harangozó | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Skala_du_Port,_Essaouira_01.jpg |
-| `faq-cat-reservation.webp` | File:Agadir Airport 2020.jpg | Abdeaitali | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg |
 | `faq-cat-conditions.webp` | File:DE Licence 2013 Front.jpg | Bundesrepublik Deutschland, Bundesministerium | Public domain | https://commons.wikimedia.org/wiki/File:DE_Licence_2013_Front.jpg |
-| `faq-cat-assurance.webp` | File:Mechanic works on car engine performing routine maintenance and inspections on vehicle parts.jpg | Shixart1985 | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Mechanic_works_on_car_engine_performing_routine_maintenance_and_inspections_on_vehicle_parts.jpg |
+| `faq-cat-assurance.webp` | File:Car damage on fender observed in a parking lot.jpg | Shixart1985 | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Car_damage_on_fender_observed_in_a_parking_lot.jpg |
 | `faq-cat-carburant-livraison.webp` | File:Afriquia Station - Bouznika - October 2023.jpg | Anass Sedrati | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Afriquia_Station_-_Bouznika_-_October_2023.jpg |
 | `faq-cat-conduite-maroc.webp` | File:A7 motorway in Morocco 2.JPG | Makary | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco_2.JPG |
 

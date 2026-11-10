@@ -25,13 +25,6 @@ export const photoCredits: PhotoCredit[] = [
     source: 'https://commons.wikimedia.org/wiki/File:Safe_kids_teach_car_seat_installation_120623-F-HJ874-0019.jpg',
   },
   {
-    file: 'blog-post-age-permis.webp',
-    title: 'PUBLIC WORKS EMPLOYEE AT AN AUTO EMISSION INSPECTION STATION IN NORWOOD, OHIO, GIVES A DRIVER TIPS ON HOW HE CAN... - NARA - 557864.jpg',
-    author: 'Lyntha Scott Eiler',
-    license: 'Public domain',
-    source: 'https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg',
-  },
-  {
     file: 'news-cat-conduite-maroc.webp',
     title: 'A7 motorway in Morocco.JPG',
     author: 'Makary',
@@ -44,6 +37,20 @@ export const photoCredits: PhotoCredit[] = [
     author: 'Abdeaitali',
     license: 'CC BY-SA 4.0',
     source: 'https://commons.wikimedia.org/wiki/File:Road_signs_Agadir_2020.jpg',
+  },
+  {
+    file: 'news-cat-reservation-documents.webp',
+    title: 'Central customer service center of Austin Station (20181013192640).jpg',
+    author: 'N509FZ',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Central_customer_service_center_of_Austin_Station_(20181013192640).jpg',
+  },
+  {
+    file: 'news-cat-aeroports-livraison.webp',
+    title: 'Agadir Airport 2020.jpg',
+    author: 'Abdeaitali',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg',
   },
   {
     file: 'news-cat-villes-visites.webp',
@@ -89,10 +96,10 @@ export const photoCredits: PhotoCredit[] = [
   },
   {
     file: 'news-post-caution-zero-mad.webp',
-    title: 'Paying with a Credit Card (28886645201).jpg',
-    author: 'Hloom Templates',
+    title: 'Businesswoman making a payment with cash while using a smartphone in a modern office setting.jpg',
+    author: 'Shixart1985',
     license: 'CC BY 2.0',
-    source: 'https://commons.wikimedia.org/wiki/File:Paying_with_a_Credit_Card_(28886645201).jpg',
+    source: 'https://commons.wikimedia.org/wiki/File:Businesswoman_making_a_payment_with_cash_while_using_a_smartphone_in_a_modern_office_setting.jpg',
   },
   {
     file: 'news-post-gps-ecran-tactile.webp',
@@ -109,13 +116,6 @@ export const photoCredits: PhotoCredit[] = [
     source: 'https://commons.wikimedia.org/wiki/File:Agadir_Beach_Sunset_(Summer_time).jpg',
   },
   {
-    file: 'news-post-louer-voiture-famille.webp',
-    title: 'Packing Luggage into the Car for a Holiday.jpg',
-    author: 'Familydestinationsguide.com Images',
-    license: 'CC BY 2.0',
-    source: 'https://commons.wikimedia.org/wiki/File:Packing_Luggage_into_the_Car_for_a_Holiday.jpg',
-  },
-  {
     file: 'news-post-road-trips.webp',
     title: 'Red car morocco Marina Agadir.jpg',
     author: 'MustaSensei',
@@ -130,13 +130,6 @@ export const photoCredits: PhotoCredit[] = [
     source: 'https://commons.wikimedia.org/wiki/File:Skala_du_Port,_Essaouira_01.jpg',
   },
   {
-    file: 'faq-cat-reservation.webp',
-    title: 'Agadir Airport 2020.jpg',
-    author: 'Abdeaitali',
-    license: 'CC BY-SA 4.0',
-    source: 'https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg',
-  },
-  {
     file: 'faq-cat-conditions.webp',
     title: 'DE Licence 2013 Front.jpg',
     author: 'Bundesrepublik Deutschland, Bundesministerium',
@@ -145,10 +138,10 @@ export const photoCredits: PhotoCredit[] = [
   },
   {
     file: 'faq-cat-assurance.webp',
-    title: 'Mechanic works on car engine performing routine maintenance and inspections on vehicle parts.jpg',
+    title: 'Car damage on fender observed in a parking lot.jpg',
     author: 'Shixart1985',
     license: 'CC BY 2.0',
-    source: 'https://commons.wikimedia.org/wiki/File:Mechanic_works_on_car_engine_performing_routine_maintenance_and_inspections_on_vehicle_parts.jpg',
+    source: 'https://commons.wikimedia.org/wiki/File:Car_damage_on_fender_observed_in_a_parking_lot.jpg',
   },
   {
     file: 'faq-cat-carburant-livraison.webp',
