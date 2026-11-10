@@ -18,6 +18,20 @@ export interface PhotoCredit {
  */
 export const photoCredits: PhotoCredit[] = [
   {
+    file: 'blog-cat-reservation.webp',
+    title: 'ATW Car Rental Center.jpg',
+    author: 'KDTW Flyer',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:ATW_Car_Rental_Center.jpg',
+  },
+  {
+    file: 'faq-cat-reservation.webp',
+    title: 'Enterprise, Alamo and National Car Rental Counter.jpg',
+    author: 'Rusty Clark ~ 100K Photos',
+    license: 'CC BY 2.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Enterprise,_Alamo_and_National_Car_Rental_Counter.jpg',
+  },
+  {
     file: 'news-cat-conduite-maroc.webp',
     title: 'A7 motorway in Morocco.JPG',
     author: 'Makary',

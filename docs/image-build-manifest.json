@@ -1,39 +1,39 @@
 [
   {
     "output": "blog-cat-reservation.webp",
-    "source": "news blog/Carzio at Agadir Airport.png",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
+    "source": "https://commons.wikimedia.org/wiki/File:ATW_Car_Rental_Center.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "KDTW Flyer",
     "watermark": false,
-    "kb": 177.8
+    "kb": 99.3
   },
   {
     "output": "blog-cat-assurance.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.24.jpeg",
-    "folder": "news blog",
+    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg",
+    "folder": "New image",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 72.1
+    "kb": 202.0
   },
   {
     "output": "blog-cat-conditions.webp",
-    "source": "news blog/Carzio at Agadir Airport.png",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 179.9
-  },
-  {
-    "output": "blog-post-age-permis.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
     "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 191.3
+    "kb": 201.1
+  },
+  {
+    "output": "blog-post-age-permis.webp",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (3).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 68.1
   },
   {
     "output": "blog-post-assurance.webp",
@@ -82,21 +82,21 @@
   },
   {
     "output": "news-cat-reservation-documents.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
-    "folder": "news blog",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 70.1
+    "kb": 193.1
   },
   {
     "output": "news-cat-aeroports-livraison.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Abdeaitali",
-    "watermark": false,
-    "kb": 163.3
+    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg",
+    "folder": "New image",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 222.5
   },
   {
     "output": "news-cat-villes-visites.webp",
@@ -181,12 +181,12 @@
   },
   {
     "output": "news-post-caution-zero-mad.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.44 (2).jpeg",
-    "folder": "inspiration",
+    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14.jpeg",
+    "folder": "New image",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 208.6
+    "kb": 222.8
   },
   {
     "output": "news-post-gps-ecran-tactile.webp",
@@ -208,12 +208,12 @@
   },
   {
     "output": "news-post-livraison-aeroport.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (4).jpeg",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (1).jpeg",
     "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
-    "watermark": false,
-    "kb": 87.2
+    "watermark": true,
+    "kb": 76.8
   },
   {
     "output": "news-post-louer-voiture-famille.webp",
@@ -253,39 +253,39 @@
   },
   {
     "output": "faq-cat-reservation.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 86.5
+    "source": "https://commons.wikimedia.org/wiki/File:Enterprise,_Alamo_and_National_Car_Rental_Counter.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Rusty Clark ~ 100K Photos",
+    "watermark": false,
+    "kb": 88.6
   },
   {
     "output": "faq-cat-conditions.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.44 (2).jpeg",
     "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 201.1
+    "kb": 209.7
   },
   {
     "output": "faq-cat-assurance.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 125.9
-  },
-  {
-    "output": "faq-cat-carburant-livraison.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.44 (3).jpeg",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg",
     "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 189.0
+    "kb": 191.2
+  },
+  {
+    "output": "faq-cat-carburant-livraison.webp",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (5).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 118.7
   },
   {
     "output": "faq-cat-conduite-maroc.webp",
@@ -295,5 +295,23 @@
     "author": "Makary",
     "watermark": false,
     "kb": 114.0
+  },
+  {
+    "output": "faq-airport-assistance.webp",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (4).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 83.4
+  },
+  {
+    "output": "faq-agadir-terminal.webp",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 79.1
   }
 ]

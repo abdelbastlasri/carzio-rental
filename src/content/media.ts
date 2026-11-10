@@ -31,18 +31,18 @@ const J = (file: string) => `/images/journal/${file}`;
 export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   reservation: {
     file: 'blog-cat-reservation.webp',
-    source: 'news blog',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un client reçoit sa carte et ses clés Carzio à côté de sa voiture, à l'aéroport d'Agadir",
-      en: 'A customer receives his Carzio card and keys beside his car at Agadir airport',
+      fr: 'Comptoir de location de voitures dans un aeroport, pret pour la prise en charge',
+      en: 'Car rental counter at an airport, ready for pickup',
     },
   },
   assurance: {
     file: 'blog-cat-assurance.webp',
-    source: 'news blog',
+    source: 'New image',
     alt: {
-      fr: 'Une Dacia Sandero Stepway blanche inspectée dans un parking souterrain',
-      en: 'A white Dacia Sandero Stepway inspected in an underground car park',
+      fr: "Une voiture Carzio et ses clients a l'aeroport d'Agadir, prets pour la prise en charge",
+      en: 'A Carzio car and its customers at Agadir airport, ready for pickup',
     },
   },
   conditions: {
@@ -271,13 +271,13 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
 export const faqCategoryMedia: Record<string, MediaEntry> = {
   reservation: {
     file: 'faq-cat-reservation.webp',
-    source: 'news blog',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Le terminal de l'aéroport Agadir Al Massira, où Carzio effectue la prise en charge des clients",
-      en: 'The Agadir Al Massira airport terminal, where Carzio meets customers for pickup',
-      de: 'Das Terminal des Flughafens Agadir Al Massira, wo Carzio die Kunden abholt',
-      es: 'La terminal del aeropuerto de Agadir Al Massira, donde Carzio recoge a los clientes',
-      pl: 'Terminal lotniska Agadir Al Massira, gdzie Carzio odbiera klientów',
+      fr: 'Comptoir de location de voitures a l aeroport, prise en charge des clients',
+      en: 'Car rental counter at the airport, customer pickup',
+      de: 'Mietwagenschalter am Flughafen, Kundenabholung',
+      es: 'Mostrador de alquiler de coches en el aeropuerto, recogida de clientes',
+      pl: 'Stoisko wypozyczalni samochodow na lotnisku, odbior klientow',
     },
   },
   conditions: {
