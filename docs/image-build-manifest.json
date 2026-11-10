@@ -1,12 +1,12 @@
 [
   {
     "output": "blog-cat-reservation.webp",
-    "source": "news blog/Carzio at Agadir Airport.png",
-    "folder": "news blog",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": false,
-    "kb": 177.7
+    "kb": 24.6
   },
   {
     "output": "blog-cat-assurance.webp",
@@ -28,12 +28,12 @@
   },
   {
     "output": "blog-post-age-permis.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Mom_checks_on_the_kids_(52083043949).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg",
     "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Oregon Department of Transportation",
+    "licence": "Public domain",
+    "author": "Lyntha Scott Eiler",
     "watermark": false,
-    "kb": 223.8
+    "kb": 71.3
   },
   {
     "output": "blog-post-assurance.webp",
@@ -82,12 +82,12 @@
   },
   {
     "output": "news-cat-reservation-documents.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg",
-    "folder": "New image",
+    "source": "news blog/Carzio at Agadir Airport.png",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": false,
-    "kb": 218.4
+    "kb": 177.8
   },
   {
     "output": "news-cat-aeroports-livraison.webp",
@@ -181,12 +181,12 @@
   },
   {
     "output": "news-post-caution-zero-mad.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
+    "source": "https://commons.wikimedia.org/wiki/File:Paying_with_a_Credit_Card_(28886645201).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Hloom Templates",
     "watermark": false,
-    "kb": 24.6
+    "kb": 51.8
   },
   {
     "output": "news-post-gps-ecran-tactile.webp",
@@ -208,21 +208,21 @@
   },
   {
     "output": "news-post-livraison-aeroport.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Abdeaitali",
-    "watermark": false,
-    "kb": 163.3
-  },
-  {
-    "output": "news-post-louer-voiture-famille.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (4).jpeg",
     "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": false,
-    "kb": 168.9
+    "kb": 87.2
+  },
+  {
+    "output": "news-post-louer-voiture-famille.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Packing_Luggage_into_the_Car_for_a_Holiday.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Familydestinationsguide.com Images",
+    "watermark": false,
+    "kb": 283.6
   },
   {
     "output": "news-post-road-trips.webp",
@@ -253,39 +253,39 @@
   },
   {
     "output": "faq-cat-reservation.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 117.1
+    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Abdeaitali",
+    "watermark": false,
+    "kb": 163.3
   },
   {
     "output": "faq-cat-conditions.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Happy,_safe_kids_(52081770862).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:DE_Licence_2013_Front.jpg",
     "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Oregon Department of Transportation",
+    "licence": "Public domain",
+    "author": "Bundesrepublik Deutschland, Bundesministerium",
     "watermark": false,
-    "kb": 175.9
+    "kb": 261.6
   },
   {
     "output": "faq-cat-assurance.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 94.0
+    "source": "https://commons.wikimedia.org/wiki/File:Mechanic_works_on_car_engine_performing_routine_maintenance_and_inspections_on_vehicle_parts.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Shixart1985",
+    "watermark": false,
+    "kb": 71.4
   },
   {
     "output": "faq-cat-carburant-livraison.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (3).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 85.8
+    "source": "https://commons.wikimedia.org/wiki/File:Afriquia_Station_-_Bouznika_-_October_2023.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Anass Sedrati",
+    "watermark": false,
+    "kb": 137.9
   },
   {
     "output": "faq-cat-conduite-maroc.webp",

@@ -31,10 +31,10 @@ const J = (file: string) => `/images/journal/${file}`;
 export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   reservation: {
     file: 'blog-cat-reservation.webp',
-    source: 'news blog',
+    source: 'inspiration',
     alt: {
-      fr: "Un client reçoit sa clé et sa carte Carzio devant une voiture à l'aéroport d'Agadir",
-      en: 'A customer receives the Carzio key folder and card next to a car at Agadir airport',
+      fr: 'La page de réservation Carzio avec une voiture et les prix en dirhams',
+      en: 'The Carzio booking page with a car and prices in dirhams',
     },
   },
   assurance: {
@@ -60,8 +60,8 @@ export const blogPostMedia: Record<string, BlogCategoryMedia> = {
     file: 'blog-post-age-permis.webp',
     source: 'Wikimedia Commons',
     alt: {
-      fr: 'Un parent installant son enfant dans un siège auto',
-      en: 'A parent securing a child in a car seat',
+      fr: 'Un contrôleur vérifie le véhicule et conseille le conducteur avant la location',
+      en: 'An inspector checks the vehicle and advises the driver before the rental',
     },
   },
   'assurance-location-voiture-maroc': {
@@ -111,10 +111,10 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'reservation-documents': {
     file: 'news-cat-reservation-documents.webp',
-    source: 'New image',
+    source: 'news blog',
     alt: {
-      fr: 'Affiche Carzio de la nouvelle liaison directe Milan–Agadir, avec réservation en ligne',
-      en: 'Carzio poster for the new Milan–Agadir direct route, with online booking',
+      fr: "Un client reçoit sa carte et ses clés Carzio à l'aéroport d'Agadir",
+      en: 'A customer receives the Carzio card and keys at Agadir airport',
     },
   },
   'aeroports-livraison': {
@@ -202,10 +202,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'caution-zero-mad': {
     file: 'news-post-caution-zero-mad.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'La page de réservation Carzio affichant un prix en dirhams',
-      en: 'The Carzio booking page showing a price in dirhams',
+      fr: 'Un client règle par carte bancaire, sans caution à déposer',
+      en: 'A customer paying by bank card, with no deposit to leave',
     },
   },
   'gps-ecran-tactile-modeles': {
@@ -226,18 +226,18 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'livraison-aeroport-agadir': {
     file: 'news-post-livraison-aeroport.webp',
-    source: 'Wikimedia Commons',
+    source: 'inspiration',
     alt: {
-      fr: "Le terminal de l'aéroport d'Agadir Al Massira, point de remise des clés",
-      en: 'The Agadir Al Massira airport terminal, where the keys are handed over',
+      fr: "Les voitures de location alignées au parking de l'aéroport d'Agadir Al Massira",
+      en: 'The rental cars lined up in the car park at Agadir Al Massira airport',
     },
   },
   'louer-voiture-famille-maroc': {
     file: 'news-post-louer-voiture-famille.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Affiche Carzio Junior Pro Taghazout Bay 2026 avec une Dacia Duster blanche',
-      en: 'Carzio Junior Pro Taghazout Bay 2026 poster with a white Dacia Duster',
+      fr: 'Une famille européenne chargeant ses bagages dans le coffre avant les vacances',
+      en: 'A European family loading their luggage into the car boot before the holiday',
     },
   },
   'road-trips-depuis-agadir': {
@@ -271,10 +271,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
 export const faqCategoryMedia: Record<string, MediaEntry> = {
   reservation: {
     file: 'faq-cat-reservation.webp',
-    source: 'news blog',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Voitures alignées au parking de l’aéroport d’Agadir',
-      en: 'Cars lined up in the car park at Agadir airport',
+      fr: "Le terminal de l'aéroport d'Agadir Al Massira, où le client récupère sa voiture",
+      en: 'The Agadir Al Massira airport terminal, where the customer collects the car',
       de: 'Fahrzeuge auf dem Parkplatz am Flughafen Agadir',
       es: 'Coches aparcados en el aparcamiento del aeropuerto de Agadir',
       pl: 'Samochody zaparkowane na parkingu lotniska w Agadirze',
@@ -284,8 +284,8 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
     file: 'faq-cat-conditions.webp',
     source: 'Wikimedia Commons',
     alt: {
-      fr: 'Des enfants installés dans des sièges auto, dans la voiture',
-      en: 'Children secured in car seats inside a car',
+      fr: 'Une carte de permis de conduire européenne',
+      en: 'A European driving licence card',
       de: 'Ein Fahrer vor den Mietwagen am Flughafen Agadir',
       es: 'Un conductor delante de los coches de alquiler en el aeropuerto de Agadir',
       pl: 'Kierowca przed samochodami na wynajem na lotnisku w Agadirze',
@@ -293,10 +293,10 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
   },
   assurance: {
     file: 'faq-cat-assurance.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Une Kia Sportage blanche de la flotte Carzio à l’aéroport d’Agadir',
-      en: 'A white Kia Sportage from the Carzio fleet at Agadir airport',
+      fr: 'Un mécanicien contrôle le moteur et les pièces du véhicule',
+      en: 'A mechanic inspecting the engine and the vehicle parts',
       de: 'Ein weißer Kia Sportage aus der Carzio-Flotte am Flughafen Agadir',
       es: 'Un Kia Sportage blanco de la flota Carzio en el aeropuerto de Agadir',
       pl: 'Biały Kia Sportage z floty Carzio na lotnisku w Agadirze',
@@ -304,10 +304,10 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
   },
   'carburant-livraison': {
     file: 'faq-cat-carburant-livraison.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Rangées de voitures de location prêtes au départ à l’aéroport d’Agadir',
-      en: 'Rows of rental cars ready to go at Agadir airport',
+      fr: 'Une station-service Afriquia au Maroc',
+      en: 'An Afriquia fuel station in Morocco',
       de: 'Reihen von Mietwagen, startklar am Flughafen Agadir',
       es: 'Filas de coches de alquiler listos para salir en el aeropuerto de Agadir',
       pl: 'Rzędy samochodów na wynajem gotowych do wyjazdu na lotnisku w Agadirze',
