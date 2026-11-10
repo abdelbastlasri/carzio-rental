@@ -47,10 +47,10 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   conditions: {
     file: 'blog-cat-conditions.webp',
-    source: 'news blog',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un conducteur marchant entre les voitures disponibles à l'aéroport d'Agadir",
-      en: 'A driver walking between the cars available at Agadir airport',
+      fr: "Installation d'une ceinture de sécurité et d'un siège enfant dans une voiture",
+      en: 'Fitting a seat belt and a child seat in a car',
     },
   },
 };
@@ -58,10 +58,10 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
 export const blogPostMedia: Record<string, BlogCategoryMedia> = {
   'age-permis-conducteurs-location-maroc': {
     file: 'blog-post-age-permis.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un client avec ses bagages devant sa Dacia Sandero blanche à l'aéroport d'Agadir",
-      en: 'A customer with their luggage in front of a white Dacia Sandero at Agadir airport',
+      fr: 'Un parent installant son enfant dans un siège auto',
+      en: 'A parent securing a child in a car seat',
     },
   },
   'assurance-location-voiture-maroc': {
@@ -74,10 +74,10 @@ export const blogPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'reserver-voiture-agadir-guide': {
     file: 'blog-post-reserver.webp',
-    source: 'inspiration',
+    source: 'news blog',
     alt: {
-      fr: 'La page de réservation Carzio affichant une voiture et les prix en dirhams',
-      en: 'The Carzio booking page showing a car and prices in dirhams',
+      fr: "Une voiture de location garée devant le terminal de l'aéroport d'Agadir Al Massira",
+      en: 'A rental car parked in front of the Agadir Al Massira airport terminal',
     },
   },
 };
@@ -135,10 +135,10 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'road-trips': {
     file: 'news-cat-road-trips.webp',
-    source: 'New image',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Une Dacia Sandero Stepway à l’aéroport d’Agadir, avec surf et liaison Bordeaux–Agadir',
-      en: 'A Dacia Sandero Stepway at Agadir airport, with a surfboard and the Bordeaux–Agadir route',
+      fr: 'La baie de Taghazout et ses montagnes, point de départ de la boucle côtière',
+      en: 'The bay of Taghazout and its mountains, the start of the coastal loop',
     },
   },
   'voyage-famille': {
@@ -202,10 +202,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'caution-zero-mad': {
     file: 'news-post-caution-zero-mad.webp',
-    source: 'New image',
+    source: 'inspiration',
     alt: {
-      fr: 'Une cliente récupère sa voiture à l’aéroport d’Agadir, sans caution à déposer',
-      en: 'A customer collecting her car at Agadir airport, with no deposit to leave',
+      fr: 'La page de réservation Carzio affichant un prix en dirhams',
+      en: 'The Carzio booking page showing a price in dirhams',
     },
   },
   'gps-ecran-tactile-modeles': {
@@ -226,10 +226,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'livraison-aeroport-agadir': {
     file: 'news-post-livraison-aeroport.webp',
-    source: 'news blog',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Voiture de location garée devant le terminal de l’aéroport d’Agadir Al Massira',
-      en: 'A rental car parked in front of the Agadir Al Massira airport terminal',
+      fr: "Le terminal de l'aéroport d'Agadir Al Massira, point de remise des clés",
+      en: 'The Agadir Al Massira airport terminal, where the keys are handed over',
     },
   },
   'louer-voiture-famille-maroc': {
@@ -244,8 +244,8 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
     file: 'news-post-road-trips.webp',
     source: 'Wikimedia Commons',
     alt: {
-      fr: 'Vue panoramique sur la plage de Taghazout',
-      en: 'Panoramic view over Taghazout beach',
+      fr: 'Une voiture rouge garée près de la marina d’Agadir',
+      en: 'A red car parked near the Agadir marina',
     },
   },
   'agadir-marrakech-essaouira-voiture': {
@@ -282,10 +282,10 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
   },
   conditions: {
     file: 'faq-cat-conditions.webp',
-    source: 'inspiration',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Un conducteur devant les voitures de location à l’aéroport d’Agadir',
-      en: 'A driver in front of the rental cars at Agadir airport',
+      fr: 'Des enfants installés dans des sièges auto, dans la voiture',
+      en: 'Children secured in car seats inside a car',
       de: 'Ein Fahrer vor den Mietwagen am Flughafen Agadir',
       es: 'Un conductor delante de los coches de alquiler en el aeropuerto de Agadir',
       pl: 'Kierowca przed samochodami na wynajem na lotnisku w Agadirze',

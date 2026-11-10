@@ -19,21 +19,21 @@
   },
   {
     "output": "blog-cat-conditions.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 137.9
+    "source": "https://commons.wikimedia.org/wiki/File:Safe_kids_teach_car_seat_installation_120623-F-HJ874-0019.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "Public domain",
+    "author": "Airman 1st Class Krystal Wright",
+    "watermark": false,
+    "kb": 37.3
   },
   {
     "output": "blog-post-age-permis.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.44 (2).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 213.6
+    "source": "https://commons.wikimedia.org/wiki/File:Mom_checks_on_the_kids_(52083043949).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Oregon Department of Transportation",
+    "watermark": false,
+    "kb": 223.8
   },
   {
     "output": "blog-post-assurance.webp",
@@ -46,12 +46,12 @@
   },
   {
     "output": "blog-post-reserver.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg",
-    "folder": "inspiration",
+    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
-    "watermark": false,
-    "kb": 24.6
+    "watermark": true,
+    "kb": 100.8
   },
   {
     "output": "news-cat-conduite-maroc.webp",
@@ -109,12 +109,12 @@
   },
   {
     "output": "news-cat-road-trips.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14.jpeg",
-    "folder": "New image",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 225.0
+    "source": "https://commons.wikimedia.org/wiki/File:Taghazout_2.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "AJSPARK4444",
+    "watermark": false,
+    "kb": 134.5
   },
   {
     "output": "news-cat-voyage-famille.webp",
@@ -181,12 +181,12 @@
   },
   {
     "output": "news-post-caution-zero-mad.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (1).jpeg",
-    "folder": "New image",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
-    "watermark": true,
-    "kb": 166.4
+    "watermark": false,
+    "kb": 24.6
   },
   {
     "output": "news-post-gps-ecran-tactile.webp",
@@ -208,12 +208,12 @@
   },
   {
     "output": "news-post-livraison-aeroport.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 100.8
+    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Airport_2020.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Abdeaitali",
+    "watermark": false,
+    "kb": 163.3
   },
   {
     "output": "news-post-louer-voiture-famille.webp",
@@ -226,12 +226,12 @@
   },
   {
     "output": "news-post-road-trips.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Vue_panoramique_de_la_plage_%22_TAGHAZOUT%22.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Red_car_morocco_Marina_Agadir.jpg",
     "folder": "Wikimedia Commons",
     "licence": "CC BY-SA 4.0",
-    "author": "Mouad aguenaou",
+    "author": "MustaSensei",
     "watermark": false,
-    "kb": 149.5
+    "kb": 297.7
   },
   {
     "output": "news-post-agadir-marrakech-essaouira.webp",
@@ -262,12 +262,12 @@
   },
   {
     "output": "faq-cat-conditions.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 200.8
+    "source": "https://commons.wikimedia.org/wiki/File:Happy,_safe_kids_(52081770862).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Oregon Department of Transportation",
+    "watermark": false,
+    "kb": 175.9
   },
   {
     "output": "faq-cat-assurance.webp",
