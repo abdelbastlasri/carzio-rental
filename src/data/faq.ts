@@ -1,3 +1,5 @@
+import { faqCategoryMedia } from '../content/media';
+
 export interface FaqEntry {
   q: string;
   a: string;
@@ -20,58 +22,17 @@ interface FaqCategoryImage {
 
 type FaqLang = 'fr' | 'en' | 'de' | 'es' | 'pl';
 
-const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = {
-  reservation: {
-    image: '/images/journal/faq-rental-advisor.webp',
-    alt: {
-      fr: 'Conseiller de location présentant les documents de réservation',
-      en: 'Rental advisor presenting booking documents',
-      de: 'Mietberater mit den Buchungsunterlagen',
-      es: 'Asesor de alquiler presentando los documentos de reserva',
-      pl: 'Doradca wynajmu prezentujący dokumenty rezerwacji',
+// Photography for the FAQ categories lives in src/content/media.ts so every
+// content section shares one source of truth.
+const CATEGORY_IMAGES: Record<string, FaqCategoryImage> = Object.fromEntries(
+  Object.entries(faqCategoryMedia).map(([slug, media]) => [
+    slug,
+    {
+      image: `/images/journal/${media.file}`,
+      alt: media.alt as FaqCategoryImage['alt'],
     },
-  },
-  conditions: {
-    image: '/images/journal/carzio-grey-fleet-front.webp',
-    alt: {
-      fr: "Voitures de location prêtes à l'aéroport d'Agadir",
-      en: 'Rental cars ready at Agadir airport',
-      de: 'Mietwagen bereit am Flughafen Agadir',
-      es: 'Coches de alquiler listos en el aeropuerto de Agadir',
-      pl: 'Samochody na wynajem gotowe na lotnisku w Agadirze',
-    },
-  },
-  assurance: {
-    image: '/images/journal/faq-car-ready.webp',
-    alt: {
-      fr: "Voiture de location Carzio prête pour l'assurance",
-      en: 'Carzio rental car ready for insurance',
-      de: 'Carzio-Mietwagen bereit für die Versicherung',
-      es: 'Coche de alquiler Carzio listo para el seguro',
-      pl: 'Samochód Carzio gotowy do ubezpieczenia',
-    },
-  },
-  'carburant-livraison': {
-    image: '/images/journal/carzio-airport-peugeot.webp',
-    alt: {
-      fr: "Voiture de location prête à l'aéroport d'Agadir",
-      en: 'Rental car ready at Agadir airport',
-      de: 'Mietwagen bereit am Flughafen Agadir',
-      es: 'Coche de alquiler listo en el aeropuerto de Agadir',
-      pl: 'Samochód na wynajem gotowy na lotnisku w Agadirze',
-    },
-  },
-  'conduite-maroc': {
-    image: '/images/journal/faq-duster-sand.webp',
-    alt: {
-      fr: 'Dacia Duster roulant sur une piste de sable',
-      en: 'Dacia Duster driving on a sandy track',
-      de: 'Dacia Duster auf einer Sandpiste',
-      es: 'Dacia Duster circulando por una pista de arena',
-      pl: 'Dacia Duster jadąca piaszczystą drogą',
-    },
-  },
-};
+  ]),
+);
 
 const withCategoryImages = (categories: FaqCategory[], lang: FaqLang): FaqCategory[] =>
   categories.map((category) => {
@@ -80,7 +41,7 @@ const withCategoryImages = (categories: FaqCategory[], lang: FaqLang): FaqCatego
     return {
       ...category,
       image: visual.image,
-      imageAlt: visual.alt[lang],
+      imageAlt: visual.alt[lang] || visual.alt.en,
     };
   });
 

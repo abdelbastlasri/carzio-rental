@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fleet } from '../data/fleet';
+import { useCarPrices } from '../lib/useCarPrices';
 import CarCard from './CarCard';
 
 interface FleetProps {
@@ -10,7 +10,7 @@ interface FleetProps {
 
 export default function Fleet({ onBook, featured }: FleetProps) {
   const { t } = useTranslation();
-  const [priceOverrides, setPriceOverrides] = useState<Record<string, number>>({});
+  const priceOverrides = useCarPrices();
   // Homepage features six Dacia models; the Cars page shows the full rental fleet.
   const featuredIds = [
     'dacia-sandero-stepway',
@@ -23,19 +23,6 @@ export default function Fleet({ onBook, featured }: FleetProps) {
   const cars = featured
     ? fleet.filter((car) => featuredIds.includes(car.id))
     : fleet;
-
-  useEffect(() => {
-    fetch('/api/car-prices')
-      .then(r => r.json())
-      .then(data => {
-        const map: Record<string, number> = {};
-        data.forEach((p: { car_id: string; price_per_day: number }) => {
-          map[p.car_id] = p.price_per_day;
-        });
-        setPriceOverrides(map);
-      })
-      .catch(() => {});
-  }, []);
 
   return (
     <section id="cars" className="py-16 md:py-24 relative overflow-hidden">

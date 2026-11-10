@@ -28,6 +28,7 @@ export default function Footer() {
                 { label: 'footer.news', to: '/news' },
                 { label: 'footer.contact', to: '/contact' },
                 { label: 'footer.terms', to: '/terms' },
+    { label: 'footer.privacy', to: '/privacy' },
                 { label: 'footer.photoCredits', to: '/credits' },
               ].map((link) => (
                 <li key={link.label}>

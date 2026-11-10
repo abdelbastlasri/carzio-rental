@@ -442,7 +442,8 @@
     "terms": "AGB",
     "openInMaps": "In Google Maps öffnen",
     "destinations": "Wir liefern auch nach",
-    "photoCredits": "Bildnachweise"
+    "photoCredits": "Bildnachweise",
+    "privacy": "Datenschutzerklärung"
   },
   "facts": {
     "title": "Was Sie vor der Buchung wissen sollten",
@@ -538,5 +539,34 @@
       "usd": "US-Dollar",
       "gbp": "Britisches Pfund"
     }
+  },
+  "privacyPage": {
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "Zuletzt aktualisiert: 10.11.2026",
+    "intro": "Diese Seite erklärt, welche personenbezogenen Daten Carzio über diese Website erhebt, warum, wie lange wir sie speichern und wie Sie Ihre Rechte ausüben.",
+    "section1Title": "1. Verantwortlicher",
+    "section1Content": "Carzio, Autovermietung am Flughafen Agadir Al Massira (MAG N2, Flughafen Agadir Al Massira, Agadir, Marokko). Sie erreichen uns unter contact@carzio.ma oder +212 680-318003.",
+    "section2Title": "2. Welche Daten wir erheben",
+    "section2Content": "Kontaktformular: Name, E-Mail-Adresse, Telefonnummer und Nachricht. Buchungsformular: Name, E-Mail-Adresse, Telefonnummer, Abhol- und Rückgabedaten, gewähltes Fahrzeug, Versicherungsoptionen, Flugnummer, gewünschte Ausstattung, Sonderwünsche und das Alter des Fahrers. Nutzungsdaten: besuchte Seiten und von Google Analytics erzeugte Nutzungsstatistiken.",
+    "section3Title": "3. Wofür wir sie nutzen",
+    "section3Content": "Um Ihre Anfragen zu beantworten, Verfügbarkeit und Mietbedingungen zu bestätigen, das Fahrzeug vorzubereiten und zu übergeben, den Mietvertrag zu erstellen und unseren buchhalterischen und gesetzlichen Pflichten nachzukommen.",
+    "section4Title": "4. Zahlung",
+    "section4Content": "Auf dieser Website erfolgt keine Zahlung und es werden keine Kartendaten gespeichert. Bezahlt wird bei der Fahrzeugübergabe mit Bankkarte.",
+    "section5Title": "5. Wer sie ebenfalls sieht",
+    "section5Content": "Ihre Daten sind nur für das Carzio-Team einsehbar. Wir geben sie an die von uns genutzten technischen Dienstleister weiter: Hosting und Datenbank, E-Mail-Versand, Reichweitenmessung (Google Analytics) und die Google-Maps-Karte. Wir verkaufen oder vermieten Ihre Daten nicht an Dritte.",
+    "section6Title": "6. Cookies",
+    "section6Content": "Diese Website setzt Reichweitenmessungs-Cookies (Google Analytics), die zeigen, welche Seiten besucht werden. Sie können diese in Ihren Browsereinstellungen blockieren oder löschen.",
+    "section7Title": "7. Speicherdauer",
+    "section7Content": "Kontaktanfragen und Buchungen werden für die Dauer der Geschäftsbeziehung aufbewahrt und danach so lange, wie es unsere gesetzlichen und buchhalterischen Pflichten erfordern.",
+    "section8Title": "8. Ihre Rechte",
+    "section8Content": "Sie können Auskunft, Berichtigung oder Löschung Ihrer Daten verlangen oder Ihre Einwilligung jederzeit widerrufen, indem Sie an contact@carzio.ma schreiben. Sie können sich auch bei der zuständigen Datenschutzbehörde beschweren.",
+    "section9Title": "9. Sicherheit",
+    "section9Content": "Daten werden per HTTPS übertragen und in einer Datenbank gespeichert, auf die nur berechtigte Personen zugreifen können.",
+    "section10Title": "10. Minderjährige",
+    "section10Content": "Diese Website richtet sich an Erwachsene. Wir erheben wissentlich keine Daten von Personen unter 18 Jahren.",
+    "section11Title": "11. Änderungen",
+    "section11Content": "Diese Erklärung kann aktualisiert werden; das Datum der letzten Aktualisierung steht oben auf der Seite.",
+    "backToHome": "Zurück zur Startseite",
+    "contactLine": "Fragen zu Ihren Daten: contact@carzio.ma"
   }
 }

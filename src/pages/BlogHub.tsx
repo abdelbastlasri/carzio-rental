@@ -11,12 +11,16 @@ import { formatBlogDate } from '../content/blog/format';
 import { blogCategories } from '../content/blog/categories';
 import { fleet } from '../data/fleet';
 import { useCurrency } from '../lib/currency';
+import { useCarPrices } from '../lib/useCarPrices';
 
 const MODEL_STRIP_IDS = ['dacia-sandero-stepway', 'dacia-sandero-streetway', 'dacia-logan', 'dacia-duster-bva', 'dacia-duster-manual', 'dacia-jogger'];
 
 export default function BlogHub() {
   const { t, i18n } = useTranslation();
   const { formatPrice } = useCurrency();
+  // Same live price source as /cars — the Blog strip must never show a
+  // different daily rate than the fleet page.
+  const priceOverrides = useCarPrices();
   const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
   const posts = getPosts(contentLang);
   const [featured, ...rest] = posts;
@@ -218,7 +222,7 @@ export default function BlogHub() {
                     {car.name}
                   </p>
                   <p className="mt-1 text-xs text-white/50">
-                    {formatPrice(car.pricePerDay)}
+                    {formatPrice(priceOverrides[car.id] ?? car.pricePerDay)}
                     <span className="text-white/40">{t('common.perDay')}</span>
                   </p>
                 </div>

@@ -5,8 +5,6 @@ category: villes-visites
 title: "Agadir, Marrakech, Essaouira : visiter en voiture"
 description: "Agadir, Essaouira et Marrakech en voiture de location : itinéraires, temps de trajet, frais de livraison et bons plans pour un séjour réussi."
 date: 2026-11-05
-image: /images/journal/news-agadir-marina.webp
-imageAlt: "Marina d'Agadir et ses bateaux"
 readingTime: 6
 published: true
 ---

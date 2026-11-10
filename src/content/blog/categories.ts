@@ -3,6 +3,8 @@ export interface BlogCategoryCopy {
   description: string;
 }
 
+import { blogCategoryMedia } from '../media';
+
 export interface BlogCategory {
   slug: string;
   image: string;
@@ -14,8 +16,8 @@ export interface BlogCategory {
 export const blogCategories: BlogCategory[] = [
   {
     slug: 'reservation',
-    image: '/images/journal/carzio-grey-fleet-side.webp',
-    imageAlt: { fr: "Flotte de location à l'aéroport d'Agadir", en: "Rental fleet at Agadir airport" },
+    image: `/images/journal/${blogCategoryMedia.reservation.file}`,
+    imageAlt: blogCategoryMedia.reservation.alt,
     fr: {
       name: 'Réservation & paiement',
       description:
@@ -29,8 +31,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'assurance',
-    image: '/images/journal/carzio-grey-fleet-airport.webp',
-    imageAlt: { fr: "Voitures inspectées avant la location", en: "Cars inspected before rental" },
+    image: `/images/journal/${blogCategoryMedia.assurance.file}`,
+    imageAlt: blogCategoryMedia.assurance.alt,
     fr: {
       name: 'Assurance & franchise',
       description:
@@ -44,8 +46,8 @@ export const blogCategories: BlogCategory[] = [
   },
   {
     slug: 'conditions',
-    image: '/images/journal/carzio-grey-fleet-vertical.webp',
-    imageAlt: { fr: "Véhicules disponibles pour la location", en: "Vehicles available for rental" },
+    image: `/images/journal/${blogCategoryMedia.conditions.file}`,
+    imageAlt: blogCategoryMedia.conditions.alt,
     fr: {
       name: 'Âge, permis & conduite',
       description:

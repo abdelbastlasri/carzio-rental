@@ -29,6 +29,7 @@
 - About: https://www.carzio.ma/about
 - Contact: https://www.carzio.ma/contact
 - Terms and conditions: https://www.carzio.ma/terms
+- Privacy policy: https://www.carzio.ma/privacy
 - FAQ: https://www.carzio.ma/faq
 - Blog: https://www.carzio.ma/blog
 - News: https://www.carzio.ma/news

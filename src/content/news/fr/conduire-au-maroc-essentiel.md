@@ -5,8 +5,6 @@ category: conduite-maroc
 title: "Conduire au Maroc : ce qu'il faut savoir avant de louer"
 description: "Routes, stationnement, sécurité et habitudes locales : les points clés pour conduire sereinement une voiture de location au Maroc."
 date: 2026-11-05
-image: /images/journal/news-driving-road.webp
-imageAlt: "Affiche Carzio de la nouvelle route directe Milan–Agadir"
 readingTime: 5
 published: true
 ---

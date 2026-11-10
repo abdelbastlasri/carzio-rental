@@ -5,8 +5,6 @@ category: road-trips
 title: "Road trips from Agadir: 3 itineraries to drive"
 description: "Three itineraries from Agadir: the Taghazout–Tamraght–Essaouira coastal loop, a Marrakech weekend and a Paradise Valley day trip."
 date: 2026-11-05
-image: /images/journal/news-beach-convoy.webp
-imageAlt: "Cars on the beach during a day trip"
 readingTime: 6
 published: true
 ---

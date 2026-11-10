@@ -1,4 +1,5 @@
 import type { NewsLang, NewsPost } from './types';
+import { newsPostMedia } from '../media';
 
 const files = import.meta.glob(['./fr/*.md', './en/*.md'], {
   query: '?raw',
@@ -34,17 +35,21 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; body: st
 function toPost(path: string, raw: string): NewsPost {
   const { data, body } = parseFrontmatter(raw);
   const pathLang = path.includes('/en/') ? 'en' : 'fr';
+  const lang = (data.lang as NewsLang) || pathLang;
+  // Photography lives in one place (src/content/media.ts). The frontmatter is
+  // kept as a fallback so an unpublished draft never loses its image.
+  const media = newsPostMedia[data.slug];
 
   return {
     slug: data.slug,
-    lang: (data.lang as NewsLang) || pathLang,
+    lang,
     category: data.category,
     title: data.title,
     description: data.description,
     date: data.date,
     updated: data.updated || undefined,
-    image: data.image,
-    imageAlt: data.imageAlt,
+    image: media ? `/images/journal/${media.file}` : data.image,
+    imageAlt: media ? media.alt[lang] || media.alt.en : data.imageAlt,
     readingTime: Number(data.readingTime) || 4,
     featured: data.featured === 'true',
     published: data.published === 'true',

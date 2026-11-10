@@ -12,6 +12,7 @@ import Cars from './pages/Cars';
 import About from './pages/About';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
 import FaqHub from './pages/FaqHub';
 import FaqPage from './pages/FaqPage';
 import BlogHub from './pages/BlogHub';
@@ -65,6 +66,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/credits" element={<PhotoCredits />} />
           <Route path="/faq" element={<FaqHub />} />
           <Route path="/faq/:slug" element={<FaqPage />} />

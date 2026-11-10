@@ -442,7 +442,8 @@
     "terms": "Términos y Condiciones",
     "openInMaps": "Abrir en Google Maps",
     "destinations": "También entregamos en",
-    "photoCredits": "Créditos fotográficos"
+    "photoCredits": "Créditos fotográficos",
+    "privacy": "Política de privacidad"
   },
   "facts": {
     "title": "Lo que debes saber antes de reservar",
@@ -538,5 +539,34 @@
       "usd": "Dólar US",
       "gbp": "Libra esterlina"
     }
+  },
+  "privacyPage": {
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: 10/11/2026",
+    "intro": "Esta página explica qué información personal recoge Carzio a través de este sitio, por qué, cuánto tiempo la conservamos y cómo ejercer sus derechos.",
+    "section1Title": "1. Responsable",
+    "section1Content": "Carzio, alquiler de coches en el aeropuerto de Agadir Al Massira (MAG N2, Aeropuerto Agadir Al Massira, Agadir, Marruecos). Puede escribirnos a contact@carzio.ma o al +212 680-318003.",
+    "section2Title": "2. Qué recogemos",
+    "section2Content": "Formulario de contacto: nombre, correo electrónico, teléfono y mensaje. Formulario de reserva: nombre, correo electrónico, teléfono, fechas, horas y lugares de recogida y devolución, el modelo elegido, opciones de seguro, número de vuelo, equipamiento solicitado, peticiones especiales y la edad del conductor. Datos de navegación: páginas visitadas y estadísticas de uso de Google Analytics.",
+    "section3Title": "3. Para qué los usamos",
+    "section3Content": "Responder a sus solicitudes, confirmar la disponibilidad y las condiciones del alquiler, preparar y entregar el vehículo, redactar el contrato de alquiler y cumplir nuestras obligaciones contables y legales.",
+    "section4Title": "4. Pago",
+    "section4Content": "No se realiza ningún pago en este sitio ni se guardan datos de tarjeta. El pago se efectúa en la entrega de las llaves, con tarjeta bancaria.",
+    "section5Title": "5. Quién más accede a ellos",
+    "section5Content": "Sus datos solo son accesibles para el equipo de Carzio. Los compartimos con los proveedores técnicos que utilizamos: alojamiento y base de datos, envío de correos, medición de audiencia (Google Analytics) y el mapa de Google Maps. Nunca vendemos ni alquilamos sus datos a terceros.",
+    "section6Title": "6. Cookies",
+    "section6Content": "Este sitio instala cookies de medición de audiencia (Google Analytics) que nos muestran qué páginas se visitan. Puede bloquearlas o borrarlas desde los ajustes de su navegador.",
+    "section7Title": "7. Conservación",
+    "section7Content": "Las solicitudes de contacto y las reservas se conservan durante la relación comercial y después el tiempo necesario para cumplir nuestras obligaciones legales y contables.",
+    "section8Title": "8. Sus derechos",
+    "section8Content": "Puede solicitar ver, rectificar o suprimir sus datos, o retirar su consentimiento en cualquier momento escribiendo a contact@carzio.ma. También puede presentar una reclamación ante la autoridad competente en materia de protección de datos.",
+    "section9Title": "9. Seguridad",
+    "section9Content": "Los datos se transmiten por HTTPS y se guardan en una base de datos accesible solo a personal autorizado.",
+    "section10Title": "10. Menores",
+    "section10Content": "Este sitio está dirigido a adultos. No recopilamos conscientemente datos de menores de 18 años.",
+    "section11Title": "11. Cambios",
+    "section11Content": "Esta política puede actualizarse; la fecha de la última actualización aparece arriba de la página.",
+    "backToHome": "Volver al inicio",
+    "contactLine": "Preguntas sobre sus datos: contact@carzio.ma"
   }
 }

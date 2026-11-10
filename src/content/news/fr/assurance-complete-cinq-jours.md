@@ -5,8 +5,6 @@ category: assurance-caution
 title: "Assurance complète dès 5 jours : comment ça marche"
 description: "Assurance standard incluse, assurance complète en option à partir de 5 jours facturés. Le point en clair, avec un exemple de calcul."
 date: 2026-11-03
-image: /images/journal/news-family-airport.webp
-imageAlt: "Famille récupérant sa voiture à l'aéroport d'Agadir"
 readingTime: 4
 featured: true
 published: true

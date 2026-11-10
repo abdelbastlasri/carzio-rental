@@ -442,7 +442,8 @@
     "terms": "Warunki i Zasady",
     "openInMaps": "Otwórz w Google Maps",
     "destinations": "Dostarczamy również do",
-    "photoCredits": "Źródła zdjęć"
+    "photoCredits": "Źródła zdjęć",
+    "privacy": "Polityka prywatności"
   },
   "facts": {
     "title": "To, co musisz wiedzieć przed rezerwacją",
@@ -538,5 +539,34 @@
       "usd": "Dolar US",
       "gbp": "Funt brytyjski"
     }
+  },
+  "privacyPage": {
+    "title": "Polityka prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: 10.11.2026",
+    "intro": "Ta strona wyjaśnia, jakie dane osobowe Carzio zbiera przez tę witrynę, dlaczego, jak długo je przechowujemy i jak realizować swoje prawa.",
+    "section1Title": "1. Administrator danych",
+    "section1Content": "Carzio, wypożyczalnia samochodów na lotnisku Agadir Al Massira (MAG N2, Lotnisko Agadir Al Massira, Agadir, Maroko). Można się z nami skontaktować pod adresem contact@carzio.ma lub numerem +212 680-318003.",
+    "section2Title": "2. Jakie dane zbieramy",
+    "section2Content": "Formularz kontaktowy: imię i nazwisko, adres e-mail, numer telefonu i wiadomość. Formularz rezerwacji: imię i nazwisko, adres e-mail, numer telefonu, daty, godziny i miejsca odbioru i zwrotu, wybrany model, opcje ubezpieczenia, numer lotu, zamówione wyposażenie, uwagi specjalne oraz wiek kierowcy. Dane o korzystaniu: odwiedzane strony i statystyki Google Analytics.",
+    "section3Title": "3. Do czego je wykorzystujemy",
+    "section3Content": "Aby odpowiedzieć na zapytania, potwierdzić dostępność i warunki najmu, przygotować i wydać samochód, sporządzić umowę najmu oraz spełnić nasze obowiązki księgowe i prawne.",
+    "section4Title": "4. Płatności",
+    "section4Content": "Na tej witrynie nie odbywa się płatności i nie zapisujemy danych karty. Płatność następuje przy wydaniu kluczy, kartą płatniczą.",
+    "section5Title": "5. Kto jeszcze ma do nich wgląd",
+    "section5Content": "Twoje dane są dostępne wyłącznie dla zespołu Carzio. Udostępniamy je naszym dostawcom technicznym: hosting i baza danych, wysyłka e-maili, pomiar zasięgu (Google Analytics) oraz mapa Google Maps. Nigdy nie sprzedajemy ani nie wynajmujemy Twoich danych podmiotom trzecim.",
+    "section6Title": "6. Pliki cookie",
+    "section6Content": "Witryna zapisuje pliki cookie do pomiaru zasięgu (Google Analytics), które informują nas, które strony są odwiedzane. Możesz je zablokować lub usunąć w ustawieniach przeglądarki.",
+    "section7Title": "7. Okres przechowywania",
+    "section7Content": "Zapytania i rezerwacje przechowujemy przez czas trwania relacji biznesowej, a następnie tak długo, jak wymagają tego nasze obowiązki prawne i księgowe.",
+    "section8Title": "8. Twoje prawa",
+    "section8Content": "Możesz zażądać wglądu, sprostowania lub usunięcia swoich danych albo wycofać zgodę w dowolnym momencie, pisząc na contact@carzio.ma. Możesz też złożyć skargę do właściwego organu ochrony danych.",
+    "section9Title": "9. Bezpieczeństwo",
+    "section9Content": "Dane są przesyłane przez HTTPS i przechowywane w bazie danych dostępnej tylko dla upoważnionych osób.",
+    "section10Title": "10. Dzieci",
+    "section10Content": "Ta witryna jest przeznaczona dla dorosłych. Nie zbieramy świadomie danych osób poniżej 18. roku życia.",
+    "section11Title": "11. Zmiany",
+    "section11Content": "Polityka może być aktualizowana; data ostatniej aktualizacji znajduje się na górze strony.",
+    "backToHome": "Powrót na stronę główną",
+    "contactLine": "Pytania o Twoje dane: contact@carzio.ma"
   }
 }

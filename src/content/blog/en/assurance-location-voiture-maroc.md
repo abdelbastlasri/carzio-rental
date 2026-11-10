@@ -5,8 +5,6 @@ category: assurance
 title: "Standard or full insurance: which should you choose?"
 description: "Standard insurance included in every rate, full insurance optional from 5 billed days. Clear explanations, examples and advice to decide."
 date: 2026-11-03
-image: /images/journal/carzio-wash-inspection.webp
-imageAlt: "Car cleaned and inspected before rental"
 readingTime: 5
 featured: true
 published: true

@@ -5,8 +5,6 @@ category: evenements
 title: "Quand louer une voiture à Agadir : saisons, vacances et affluence"
 description: "Haute saison, vacances scolaires, Ramadan et fêtes : les périodes à anticiper pour réserver votre voiture à Agadir sans stress."
 date: 2026-11-05
-image: /images/journal/carzio-munich-route.webp
-imageAlt: "Affiche de la nouvelle liaison Munich–Agadir"
 readingTime: 5
 published: true
 ---

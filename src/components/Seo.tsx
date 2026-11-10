@@ -73,10 +73,13 @@ export default function Seo({
       a.setAttribute('data-carzio-hreflang', 'true');
       document.head.appendChild(a);
     }
+    // x-default points at the default-language version of the same page, so it
+    // never contradicts the canonical URL (the unprefixed root used to point
+    // at "/" while "/" itself canonicalised to "/en").
     const x = document.createElement('link');
     x.setAttribute('rel', 'alternate');
     x.setAttribute('hreflang', 'x-default');
-    x.setAttribute('href', `${origin}${basePath}`);
+    x.setAttribute('href', `${origin}${withLangPrefix(basePath, 'en')}`);
     x.setAttribute('data-carzio-hreflang', 'true');
     document.head.appendChild(x);
 

@@ -5,8 +5,6 @@ category: flotte-modeles
 title: "GPS et écran tactile : quels modèles Carzio en sont équipés"
 description: "Six modèles avec GPS, huit avec écran tactile. La liste exacte pour choisir votre voiture avant de réserver à Agadir."
 date: 2026-11-03
-image: /images/journal/touchscreen-navigation.webp
-imageAlt: "Écran tactile avec Apple CarPlay et navigation"
 readingTime: 3
 featured: false
 published: true

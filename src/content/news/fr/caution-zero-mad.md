@@ -5,8 +5,6 @@ category: reservation-documents
 title: "0 MAD de caution : comment se passe le paiement"
 description: "Aucune caution, aucun blocage de carte, carte de débit acceptée. Le paiement se fait à la remise des clés, avec les documents à prévoir."
 date: 2026-11-03
-image: /images/journal/news-payment-terminal.webp
-imageAlt: "Page de réservation Carzio avec un prix en MAD"
 readingTime: 3
 featured: false
 published: true

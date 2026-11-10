@@ -5,8 +5,6 @@ category: villes-visites
 title: "Agadir, Marrakech, Essaouira: sightseeing by car"
 description: "Agadir, Essaouira and Marrakech by rental car: routes, driving times, delivery fees and practical tips for a smooth trip."
 date: 2026-11-05
-image: /images/journal/news-agadir-marina.webp
-imageAlt: "Agadir marina and its boats"
 readingTime: 6
 published: true
 ---

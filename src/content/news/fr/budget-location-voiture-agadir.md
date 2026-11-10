@@ -5,8 +5,6 @@ category: budget-conseils
 title: "Budget location de voiture à Agadir : ce qui est inclus et ce qu'il faut prévoir"
 description: "Assurance, caution, kilométrage, livraison, carburant et péages : le vrai budget d'une location de voiture à Agadir, sans frais cachés."
 date: 2026-11-05
-image: /images/fleet/hyundai-i10.webp
-imageAlt: "Hyundai i10, modèle compact et économique"
 readingTime: 6
 published: true
 ---

@@ -5,8 +5,6 @@ category: assurance
 title: "Assurance standard ou complète : que faut-il choisir ?"
 description: "Assurance standard incluse dans le tarif, assurance complète en option à partir de 5 jours. Explications claires, exemples et conseils pour décider."
 date: 2026-11-03
-image: /images/journal/carzio-wash-inspection.webp
-imageAlt: "Voiture nettoyée et inspectée avant la location"
 readingTime: 5
 featured: true
 published: true

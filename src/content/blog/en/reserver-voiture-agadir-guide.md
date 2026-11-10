@@ -6,8 +6,6 @@ title: "Renting a car in Agadir: the complete guide"
 description: "From the online request to key handover: minimum duration, documents, payment, airport delivery and cancellation. Carzio's guide to booking without surprises."
 date: 2026-11-03
 updated: 2026-11-03
-image: /images/journal/carzio-booking-pickup.webp
-imageAlt: "Customer collecting a rental car at Agadir airport"
 readingTime: 9
 featured: true
 published: true

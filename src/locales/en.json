@@ -442,7 +442,8 @@
     "terms": "Terms & Conditions",
     "openInMaps": "Open in Google Maps",
     "destinations": "We also deliver to",
-    "photoCredits": "Photo credits"
+    "photoCredits": "Photo credits",
+    "privacy": "Privacy policy"
   },
   "facts": {
     "title": "What you need to know before booking",
@@ -538,5 +539,34 @@
       "usd": "US Dollar",
       "gbp": "Pound sterling"
     }
+  },
+  "privacyPage": {
+    "title": "Privacy policy",
+    "lastUpdated": "Last updated: 10/11/2026",
+    "intro": "This page explains which personal information Carzio collects through this website, why we collect it, how long we keep it and how to exercise your rights.",
+    "section1Title": "1. Who is responsible",
+    "section1Content": "Carzio, car rental at Agadir Al Massira airport (MAG N2, Agadir Al Massira Airport, Agadir, Morocco). You can reach us at contact@carzio.ma or +212 680-318003.",
+    "section2Title": "2. What we collect",
+    "section2Content": "Contact form: your name, e-mail address, phone number and message. Booking form: your name, e-mail address, phone number, pick-up and drop-off dates, times and locations, the model you choose, insurance options, flight number, requested equipment, special requests and the age of the driver. Usage data: the pages you visit and the statistics collected by Google Analytics.",
+    "section3Title": "3. Why we use it",
+    "section3Content": "To answer your requests, confirm availability and rental conditions, prepare and deliver the vehicle, draw up the rental contract, and meet our accounting and legal obligations.",
+    "section4Title": "4. Payment",
+    "section4Content": "No payment is taken on this website and no card details are stored here. Payment is made at key handover, by bank card.",
+    "section5Title": "5. Who else sees it",
+    "section5Content": "Your data is accessible to Carzio staff only. We share it with the technical providers we rely on: hosting and database, email sending, audience measurement (Google Analytics) and the Google Maps display. We never sell or rent your data to third parties.",
+    "section6Title": "6. Cookies",
+    "section6Content": "This site places audience-measurement cookies (Google Analytics) that tell us which pages are visited. You can block or delete them in your browser settings.",
+    "section7Title": "7. How long we keep it",
+    "section7Content": "Contact requests and bookings are kept for the length of the business relationship, and then for as long as needed to meet our legal and accounting obligations.",
+    "section8Title": "8. Your rights",
+    "section8Content": "You can ask to see, correct or delete your data, or withdraw your consent at any time by writing to contact@carzio.ma. You may also lodge a complaint with the competent data protection authority.",
+    "section9Title": "9. Security",
+    "section9Content": "Data is transmitted over HTTPS and stored in a database that only authorised people can access.",
+    "section10Title": "10. Children",
+    "section10Content": "This site is intended for adults. We do not knowingly collect data from anyone under 18.",
+    "section11Title": "11. Changes",
+    "section11Content": "This policy may be updated; the date of the latest update is shown at the top of the page.",
+    "backToHome": "Back to the homepage",
+    "contactLine": "Questions about your data: contact@carzio.ma"
   }
 }
