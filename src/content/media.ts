@@ -17,7 +17,7 @@ export interface MediaEntry {
   /** Alt text per language. Meaningful images always carry a description. */
   alt: Partial<Record<MediaLang, string>>;
   /** Where the original photograph comes from. */
-  source: 'news blog' | 'New image' | 'inspiration' | 'Wikimedia Commons';
+  source: 'news blog' | 'New image' | 'inspiration' | 'new fotos' | 'Wikimedia Commons';
 }
 
 export interface BlogCategoryMedia extends MediaEntry {
@@ -39,10 +39,10 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   assurance: {
     file: 'blog-cat-assurance.webp',
-    source: 'New image',
+    source: 'new fotos',
     alt: {
-      fr: "Une voiture Carzio et ses clients a l'aeroport d'Agadir, prets pour la prise en charge",
-      en: 'A Carzio car and its customers at Agadir airport, ready for pickup',
+      fr: "Une famille heureuse recupere sa voiture Carzio a l'aeroport d'Agadir",
+      en: 'A happy family collects their Carzio car at Agadir airport',
     },
   },
   conditions: {
@@ -151,26 +151,26 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'flotte-modeles': {
     file: 'news-cat-flotte-modeles.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Écran tactile de voiture avec navigation et CarPlay',
-      en: 'Car touchscreen with navigation and CarPlay',
+      fr: 'Tableau de bord Carzio avec CarPlay et navigation',
+      en: 'Carzio dashboard with CarPlay and navigation',
     },
   },
   evenements: {
     file: 'news-cat-evenements.webp',
-    source: 'New image',
+    source: 'new fotos',
     alt: {
-      fr: 'Affiche Carzio des nouvelles liaisons directes vers Agadir pour l’hiver',
-      en: 'Carzio poster for the new direct winter routes to Agadir',
+      fr: "Une famille Carzio en escapade cotiere au coucher du soleil",
+      en: 'A Carzio family on a coastal escape at golden hour',
     },
   },
   'budget-conseils': {
     file: 'news-cat-budget-conseils.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Station de péage sur une autoroute au Maroc, vue aérienne',
-      en: 'Toll plaza on a Moroccan motorway, seen from above',
+      fr: 'Planification de voyage a Agadir avec voiture Carzio',
+      en: 'Travel planning in Agadir with a Carzio car',
     },
   },
 };
@@ -210,18 +210,18 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'gps-ecran-tactile-modeles': {
     file: 'news-post-gps-ecran-tactile.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Écran tactile de voiture affichant CarPlay sans fil',
-      en: 'Car touchscreen running wireless CarPlay',
+      fr: 'Tableau de bord Dacia Duster avec CarPlay',
+      en: 'Dacia Duster dashboard with CarPlay',
     },
   },
   'evenements-saisons-agadir': {
     file: 'news-post-evenements-saisons.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Coucher de soleil sur la plage d’Agadir',
-      en: 'Sunset over Agadir beach',
+      fr: "Une famille Carzio prete pour les vacances a Agadir",
+      en: 'A Carzio family ready for the holidays in Agadir',
     },
   },
   'livraison-aeroport-agadir': {
@@ -293,13 +293,13 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
   },
   assurance: {
     file: 'faq-cat-assurance.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: "Une famille charge ses bagages dans sa voiture Carzio à l'aéroport d'Agadir, prête pour un voyage serein",
-      en: 'A family loads their luggage into their Carzio car at Agadir airport, ready for a worry-free trip',
-      de: 'Eine Familie lädt ihr Gepäck in ihr Carzio-Auto am Flughafen Agadir, bereit für eine sorgenfreie Reise',
-      es: 'Una familia carga su equipaje en su coche Carzio en el aeropuerto de Agadir, lista para un viaje tranquilo',
-      pl: 'Rodzina pakuje bagaże do samochodu Carzio na lotnisku w Agadirze, gotowa na bezstresową podróż',
+      fr: "Une famille heureuse recupere sa voiture Carzio a l'aeroport d'Agadir",
+      en: 'A happy family collects their Carzio car at Agadir airport',
+      de: 'Eine glueckliche Familie holt ihr Carzio-Auto am Flughafen Agadir ab',
+      es: 'Una familia feliz recoge su coche Carzio en el aeropuerto de Agadir',
+      pl: 'Szczesliwa rodzina odbiera samochod Carzio na lotnisku w Agadirze',
     },
   },
   'carburant-livraison': {

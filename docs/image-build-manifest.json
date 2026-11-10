@@ -10,12 +10,12 @@
   },
   {
     "output": "blog-cat-assurance.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg",
-    "folder": "New image",
+    "source": "new fotos/Agadir Airport Family Car Pickup.png",
+    "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 202.0
+    "kb": 173.2
   },
   {
     "output": "blog-cat-conditions.webp",
@@ -127,30 +127,30 @@
   },
   {
     "output": "news-cat-flotte-modeles.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Toyota_Aygo_Mid_2018_Apple_Carplay_Integration.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Butterhimmel",
-    "watermark": false,
-    "kb": 164.4
+    "source": "new fotos/Carzio CarPlay Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 144.3
   },
   {
     "output": "news-cat-evenements.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24.jpeg",
-    "folder": "New image",
+    "source": "new fotos/Golden Hour Family Escape by the Coast.png",
+    "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
-    "watermark": false,
-    "kb": 231.3
+    "watermark": true,
+    "kb": 232.5
   },
   {
     "output": "news-cat-budget-conseils.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Highway_morocco_pay_checkpoint.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Ministère de l'Équipement et du Transport",
-    "watermark": false,
-    "kb": 106.3
+    "source": "new fotos/Seaside Travel Planning in Agadir.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 186.3
   },
   {
     "output": "news-post-conduire-au-maroc.webp",
@@ -190,21 +190,21 @@
   },
   {
     "output": "news-post-gps-ecran-tactile.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:2023_Volkswagen_ID.4_running_wireless_CarPlay.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC0",
-    "author": "Sunnyboy122",
-    "watermark": false,
-    "kb": 156.6
+    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 140.2
   },
   {
     "output": "news-post-evenements-saisons.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Agadir_Beach_Sunset_(Summer_time).jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Hatim.laajini",
-    "watermark": false,
-    "kb": 45.9
+    "source": "new fotos/Carzio Family Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 217.0
   },
   {
     "output": "news-post-livraison-aeroport.webp",
@@ -271,12 +271,12 @@
   },
   {
     "output": "faq-cat-assurance.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg",
-    "folder": "inspiration",
+    "source": "new fotos/Carzio Family Pickup Agadir Airport.png",
+    "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 191.2
+    "kb": 197.6
   },
   {
     "output": "faq-cat-carburant-livraison.webp",
@@ -298,12 +298,12 @@
   },
   {
     "output": "faq-airport-assistance.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (4).jpeg",
-    "folder": "inspiration",
+    "source": "new fotos/Carzio Family Pickup at Agadir Airport.png",
+    "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 83.4
+    "kb": 196.2
   },
   {
     "output": "faq-agadir-terminal.webp",
@@ -313,5 +313,23 @@
     "author": "Carzio",
     "watermark": true,
     "kb": 79.1
+  },
+  {
+    "output": "blog-agadir-aerial.webp",
+    "source": "new fotos/Carzio Fleet at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 227.3
+  },
+  {
+    "output": "carzio-new-routes.webp",
+    "source": "new fotos/Sunny Family Holiday Departure.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 232.6
   }
 ]
