@@ -113,12 +113,13 @@ The Kia Sportage derivative uses `new kia/Modern White Kia SUV Studio Render.jpg
 normalised to pure white, the car is placed at its natural resolution without
 upscaling, and the plate carries no readable registration number.
 
-The **Dacia Duster Manual 2026** card is rebuilt from
-`inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (1).jpeg` (the authorised
-Carzio Munich–Agadir poster). The vehicle is cut out with alpha matting, the
-poster fragments are dropped by keeping only the largest silhouette, and the
-Duster is placed on a pure-white 1600×900 canvas. The previous derivative came
-from the unauthorised `new duster dacia` folder and has been removed.
+The **Dacia Duster Manual 2026** card uses the owner-supplied cut-out
+`new duster dacia/LikSts4h9HE8dJOOl0p6.jpg` (supplied by the owner on
+2026-11-10). The RGBA cut-out is composited on a pure-white 1600×900 canvas at
+its natural resolution, with the "DUSTER" plate and a natural ground shadow —
+no upscaling, no background residue. The earlier derivative built from the
+same folder with a `.webp` extension has been removed from the repository, so
+the unauthorised asset no longer ships with the code.
 
 The remaining ten car cards use the vehicle photographs that already shipped
 with the project (`public/images/*.jpg|png`), remixed onto pure white. They are
