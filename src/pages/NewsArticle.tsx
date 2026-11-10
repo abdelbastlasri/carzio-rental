@@ -96,6 +96,7 @@ export default function NewsArticle() {
       <JournalArticleHero
         image={post.image}
         imageAlt={post.imageAlt}
+        imagePosition={post.slug === 'conduire-au-maroc-essentiel' || post.slug === 'securite-routiere-maroc-essentiel' ? 'center 35%' : 'center'}
         language={post.lang}
         categoryName={category.name}
         categoryHref={`/news/categorie/${post.category}`}

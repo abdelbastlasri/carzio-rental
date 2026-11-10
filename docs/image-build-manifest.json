@@ -28,12 +28,12 @@
   },
   {
     "output": "blog-post-age-permis.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "Public domain",
-    "author": "Lyntha Scott Eiler",
-    "watermark": false,
-    "kb": 71.3
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
+    "folder": "inspiration",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "kb": 191.3
   },
   {
     "output": "blog-post-assurance.webp",
@@ -82,12 +82,12 @@
   },
   {
     "output": "news-cat-reservation-documents.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.00.13.jpeg",
-    "folder": "inspiration",
+    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 46.5
+    "kb": 70.1
   },
   {
     "output": "news-cat-aeroports-livraison.webp",

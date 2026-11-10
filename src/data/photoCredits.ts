@@ -18,13 +18,6 @@ export interface PhotoCredit {
  */
 export const photoCredits: PhotoCredit[] = [
   {
-    file: 'blog-post-age-permis.webp',
-    title: 'PUBLIC WORKS EMPLOYEE AT AN AUTO EMISSION INSPECTION STATION IN NORWOOD, OHIO, GIVES A DRIVER TIPS ON HOW HE CAN... - NARA - 557864.jpg',
-    author: 'Lyntha Scott Eiler',
-    license: 'Public domain',
-    source: 'https://commons.wikimedia.org/wiki/File:PUBLIC_WORKS_EMPLOYEE_AT_AN_AUTO_EMISSION_INSPECTION_STATION_IN_NORWOOD,_OHIO,_GIVES_A_DRIVER_TIPS_ON_HOW_HE_CAN..._-_NARA_-_557864.jpg',
-  },
-  {
     file: 'news-cat-conduite-maroc.webp',
     title: 'A7 motorway in Morocco.JPG',
     author: 'Makary',

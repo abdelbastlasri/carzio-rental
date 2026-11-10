@@ -6,6 +6,7 @@ import BlogBreadcrumbs, { type BlogCrumb } from './BlogBreadcrumbs';
 interface JournalArticleHeroProps {
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   language: string;
   breadcrumbs: BlogCrumb[];
   categoryName: string;
@@ -20,6 +21,7 @@ interface JournalArticleHeroProps {
 export default function JournalArticleHero({
   image,
   imageAlt,
+  imagePosition = 'center',
   language,
   breadcrumbs,
   categoryName,
@@ -34,14 +36,15 @@ export default function JournalArticleHero({
 
   return (
     // Header is fixed; the hero extends beneath it and controls its own safe area.
-    <section className="relative z-0 min-h-[32rem] overflow-hidden sm:min-h-[36rem] md:min-h-[42rem]">
+    <section className="relative z-0 min-h-[28rem] overflow-hidden sm:min-h-[36rem] md:min-h-[42rem]">
       <img
         src={image}
         alt={imageAlt}
         width={1600}
         height={900}
         fetchPriority="high"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        style={{ objectPosition: imagePosition }}
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-zinc-950/95 via-zinc-950/60 to-zinc-950/5" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/25 to-zinc-950/20" />

@@ -58,10 +58,10 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
 export const blogPostMedia: Record<string, BlogCategoryMedia> = {
   'age-permis-conducteurs-location-maroc': {
     file: 'blog-post-age-permis.webp',
-    source: 'Wikimedia Commons',
+    source: 'inspiration',
     alt: {
-      fr: 'Un contrôleur vérifie le véhicule et conseille le conducteur avant la location',
-      en: 'An inspector checks the vehicle and advises the driver before the rental',
+      fr: "Une voiture Carzio au point de prise en charge et de restitution a l'aeroport d'Agadir",
+      en: 'A Carzio car at the pickup and return point at Agadir airport',
     },
   },
   'assurance-location-voiture-maroc': {
@@ -111,10 +111,10 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'reservation-documents': {
     file: 'news-cat-reservation-documents.webp',
-    source: 'inspiration',
+    source: 'news blog',
     alt: {
-      fr: 'La catégorie "Réservation & paiement" du site Carzio : demande en ligne, documents et prix',
-      en: "The Carzio website's \"Booking & payment\" category: online request, documents and price",
+      fr: "Une voiture Carzio remise a un client a l'aeroport d'Agadir, documents et cles en main",
+      en: 'A Carzio car handed over to a customer at Agadir airport, documents and keys ready',
     },
   },
   'aeroports-livraison': {
