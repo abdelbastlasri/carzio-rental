@@ -61,7 +61,7 @@ All car-card images are 16:9 WebP on a pure white background, trimmed and enlarg
 
 `dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`, `dacia-logan.webp`, `dacia-duster-automatic-2025.webp`, `dacia-duster-manual-2026.webp`, `dacia-jogger.webp`, `renault-clio-5.webp`, `peugeot-208.webp`, `hyundai-i10.webp`, `vw-troc.webp`, `kia-sportage.webp`, `hyundai-tucson.webp`.
 
-The Kia Sportage derivative uses `inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg` and has a clean, blank white Moroccan-style plate with no readable registration number.
+The Kia Sportage derivative uses `new kia/Modern White Kia SUV Studio Render.jpg` (owner-authorised on 2026-11-10). The flat studio backdrop is flood-filled and normalised to pure white, the car is trimmed at its natural resolution (no upscaling) and the file carries no readable registration number.
 
 ## Hero slides
 
@@ -69,4 +69,4 @@ The Kia Sportage derivative uses `inspiration/WhatsApp Image 2026-11-08 at 19.10
 
 ## About
 
-`public/images/about-new.webp` from `new about foto/Carzio_ Drive with Confidence.png`.
+`public/images/about-new.webp` from `new about foto/Carzio_ Drive with Confidence.png` (1600×900, full poster, nothing cropped). The About page renders it in a 16:9 frame so the full composition — including the `CARZIO LOCATION DE VOITURES` wordmark at the top left and the `CARZIO` badges on the right — stays visible at every breakpoint.

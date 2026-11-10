@@ -85,7 +85,7 @@ export default function About() {
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div
-              className="h-80 md:h-96 rounded-2xl bg-cover bg-center shadow-2xl"
+              className="aspect-video rounded-2xl bg-cover bg-center shadow-2xl ring-1 ring-white/15"
               style={{ backgroundImage: "url('/images/about-new.webp')" }}
             />
             <div>
