@@ -61,7 +61,7 @@ All car-card images are 16:9 WebP on a pure white background, trimmed and enlarg
 
 `dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`, `dacia-logan.webp`, `dacia-duster-automatic-2025.webp`, `dacia-duster-manual-2026.webp`, `dacia-jogger.webp`, `renault-clio-5.webp`, `peugeot-208.webp`, `hyundai-i10.webp`, `vw-troc.webp`, `kia-sportage.webp`, `hyundai-tucson.webp`.
 
-The Kia Sportage derivative has a clean white plate with black `CARZIO` lettering in place of the registration number.
+The Kia Sportage derivative uses `inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg` and has a clean, blank white Moroccan-style plate with no readable registration number.
 
 ## Hero slides
 

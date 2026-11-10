@@ -92,7 +92,7 @@ const fleetModels: CarModel[] = [
     ac: true,
     km: 'Unlimited',
     model: '2026',
-    description: 'The 2026 Dacia Duster with manual transmission: a practical five-seat SUV for city driving and longer trips around Morocco. It offers generous luggage space, air conditioning and unlimited mileage.',
+    description: 'A versatile and comfortable SUV, the Dacia Duster is perfect for city drives and outdoor adventures. Enjoy generous space, excellent road comfort, and practicality for exploring Morocco. Ideal for couples, families, and small groups.',
     extras: [
       { name: 'Baby Seat', price: 0, perDay: true },
       { name: 'Booster Seat', price: 0, perDay: true },

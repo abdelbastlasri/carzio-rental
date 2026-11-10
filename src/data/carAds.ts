@@ -93,7 +93,7 @@ const fr: Record<string, CarAd> = {
   },
   'dacia-duster-manual': {
     pitch:
-      "Le Duster 2026 en boîte manuelle : le SUV cinq places polyvalent pour Agadir, la côte et les routes de l'Atlas. Coffre généreux, climatisation et kilométrage illimité.",
+      "Un SUV polyvalent et confortable, le Dacia Duster est parfait pour les trajets en ville et les aventures en plein air. Profitez d'un espace généreux, d'un excellent confort de route et d'une praticité idéale pour explorer le Maroc. Idéal pour les couples, les familles et les petits groupes.",
     bullets: [
       'Bons tarifs pour nos clients',
       'SUV 5 places, boîte manuelle',
@@ -239,7 +239,7 @@ const en: Record<string, CarAd> = {
   },
   'dacia-duster-manual': {
     pitch:
-      'The 2026 Duster with manual gearbox: a versatile five-seat SUV for Agadir, the coast and the Atlas roads. Generous boot, air conditioning and unlimited mileage.',
+      'A versatile and comfortable SUV, the Dacia Duster is perfect for city drives and outdoor adventures. Enjoy generous space, excellent road comfort, and practicality for exploring Morocco. Ideal for couples, families, and small groups.',
     bullets: [
       'Good prices for our clients',
       'Five-seat manual SUV',
@@ -385,7 +385,7 @@ const de: Record<string, CarAd> = {
   },
   'dacia-duster-manual': {
     pitch:
-      'Der Duster 2026 mit Schaltgetriebe: ein vielseitiges Fünf-Sitzer-SUV für Agadir, die Küste und die Atlasstraßen. Großzügiger Kofferraum, Klimaanlage und unbegrenzte Kilometer.',
+      'Ein vielseitiger und komfortabler SUV: der Dacia Duster ist perfekt für Stadt-Fahrten und Outdoor-Abenteuer. Genießen Sie großzügigen Platz, hervorragenden Fahrkomfort und Praktikabilität für die Erkundung Marokkos. Ideal für Paare, Familien und kleine Gruppen.',
     bullets: [
       'Gute Preise für unsere Kunden',
       'Fünf-Sitzer-SUV mit Schaltgetriebe',
@@ -531,7 +531,7 @@ const es: Record<string, CarAd> = {
   },
   'dacia-duster-manual': {
     pitch:
-      'El Duster 2026 con cambio manual: un SUV versátil de cinco plazas para Agadir, la costa y las carreteras del Atlas. Maletero amplio, aire acondicionado y kilometraje ilimitado.',
+      'Un SUV versátil y cómodo, el Dacia Duster es perfecto para trayectos urbanos y aventuras al aire libre. Disfruta de un espacio generoso, una excelente comodidad en carretera y practicidad para explorar Marruecos. Ideal para parejas, familias y grupos pequeños.',
     bullets: [
       'Buenos precios para nuestros clientes',
       'SUV de cinco plazas, cambio manual',
@@ -677,7 +677,7 @@ const pl: Record<string, CarAd> = {
   },
   'dacia-duster-manual': {
     pitch:
-      'Duster 2026 z manualną skrzynią biegów: wszechstronny pięciomiejscowy SUV na Agadir, wybrzeże i trasy Atlasu. Pojemny bagażnik, klimatyzacja i nielimitowany przebieg.',
+      'Wszechstronny i komfortowy SUV — Dacia Duster idealnie sprawdza się w miejskich podróżach i przygodach na świeżym powietrzu. Ciesz się przestronnym wnętrzem, doskonałym komfortem jazdy i praktycznością podczas odkrywania Maroka. Idealny dla par, rodzin i małych grup.',
     bullets: [
       'Dobre ceny dla naszych klientów',
       'Pięciomiejscowy SUV z manualną skrzynią',
