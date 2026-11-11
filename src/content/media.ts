@@ -7,6 +7,11 @@
  * third-party photograph is published any more, so `src/data/photoCredits.ts`
  * is intentionally empty.
  *
+ * Blog and FAQ never share a source, no page repeats a source internally (the
+ * News hub has two unavoidable repeats because it has 23 slots for 21 photos),
+ * and no source is used more than twice. The homepage, location cards and
+ * Explore carousel do not reuse any of these files.
+ *
  * The full provenance table lives in `docs/image-inventory.md`.
  */
 
@@ -42,8 +47,8 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
     file: 'blog-cat-assurance.webp',
     source: 'new fotos',
     alt: {
-      fr: "Une famille signe son contrat de location au comptoir Carzio de l'aéroport d'Agadir",
-      en: 'A family signs its rental contract at the Carzio desk at Agadir airport',
+      fr: "Un SUV blanc garé dans le parking de l'aéroport, coffre et portière ouverts",
+      en: 'A white SUV parked at the airport car park with its boot and door open',
     },
   },
   conditions: {
@@ -274,11 +279,11 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
     file: 'faq-cat-reservation.webp',
     source: 'new fotos',
     alt: {
-      fr: "Un agent Carzio remet une carte-clé à un couple au comptoir de l'aéroport d'Agadir",
-      en: 'A Carzio agent hands a key card to a couple at the Agadir airport desk',
-      de: 'Ein Carzio-Mitarbeiter übergibt einem Paar am Flughafenschalter in Agadir eine Schlüsselkarte',
-      es: 'Un agente de Carzio entrega una tarjeta-llave a una pareja en el mostrador del aeropuerto de Agadir',
-      pl: 'Pracownik Carzio przekazuje parze kartę-klucz przy stanowisku na lotnisku w Agadirze',
+      fr: "Un agent Carzio présente une voiture blanche à une famille avec valises devant l'aéroport d'Agadir",
+      en: 'A Carzio agent presents a white car to a family with suitcases outside Agadir airport',
+      de: 'Ein Carzio-Mitarbeiter präsentiert einer Familie mit Koffern vor dem Flughafen Agadir ein weißes Auto',
+      es: 'Un agente de Carzio presenta un coche blanco a una familia con maletas frente al aeropuerto de Agadir',
+      pl: 'Pracownik Carzio prezentuje rodzinie z walizkami biały samochód przed lotniskiem w Agadirze',
     },
   },
   conditions: {
@@ -296,11 +301,11 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
     file: 'faq-cat-assurance.webp',
     source: 'new fotos',
     alt: {
-      fr: "Un agent Carzio vérifie l'état d'un véhicule avec une checklist devant un couple",
-      en: 'A Carzio agent checks a vehicle against a checklist in front of a couple',
-      de: 'Ein Carzio-Mitarbeiter prüft ein Fahrzeug anhand einer Checkliste vor einem Paar',
-      es: 'Un agente de Carzio revisa un vehículo con una lista de control ante una pareja',
-      pl: 'Pracownik Carzio sprawdza pojazd według listy kontrolnej w obecności pary',
+      fr: "Une famille signe son contrat de location au comptoir Carzio de l'aéroport d'Agadir",
+      en: 'A family signs its rental contract at the Carzio desk at Agadir airport',
+      de: 'Eine Familie unterschreibt ihren Mietvertrag am Carzio-Schalter am Flughafen Agadir',
+      es: 'Una familia firma su contrato de alquiler en el mostrador de Carzio en el aeropuerto de Agadir',
+      pl: 'Rodzina podpisuje umowę najmu przy stanowisku Carzio na lotnisku w Agadirze',
     },
   },
   'carburant-livraison': {
@@ -318,11 +323,11 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
     file: 'faq-cat-conduite-maroc.webp',
     source: 'new fotos',
     alt: {
-      fr: "Le tableau de bord d'un Dacia Duster avec l'écran de navigation, sur une route côtière",
-      en: 'The dashboard of a Dacia Duster with the navigation screen on a coastal road',
-      de: 'Das Armaturenbrett eines Dacia Duster mit Navigationsbildschirm auf einer Küstenstraße',
-      es: 'El salpicadero de un Dacia Duster con la pantalla de navegación en una carretera costera',
-      pl: 'Deska rozdzielcza Dacii Duster z ekranem nawigacji na drodze nadmorskiej',
+      fr: "Une main utilise l'écran CarPlay du tableau de bord d'une voiture de location",
+      en: "A hand uses the CarPlay screen on a rental car's dashboard",
+      de: 'Eine Hand bedient den CarPlay-Bildschirm am Armaturenbrett eines Mietwagens',
+      es: 'Una mano usa la pantalla CarPlay del salpicadero de un coche de alquiler',
+      pl: 'Dłoń obsługuje ekran CarPlay na desce rozdzielczej wypożyczonego samochodu',
     },
   },
 };

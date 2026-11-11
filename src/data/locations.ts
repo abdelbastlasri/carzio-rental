@@ -49,10 +49,10 @@ export const locations: Location[] = [
 ];
 
 export const locationImages: Record<string, string> = {
-  agadir: '/images/locations/agadir.webp',
-  marrakech: '/images/locations/marrakech.webp',
-  essaouira: '/images/locations/essaouira.webp',
-  taghazout: '/images/locations/taghazout.webp',
-  tamraght: '/images/locations/tamraght.webp',
-  casablanca: '/images/locations/casablanca.webp',
+  agadir: '/images/agadir-airport.jpg',
+  marrakech: '/images/marrakech-airport.jpg',
+  essaouira: '/images/essaouira-airport.jpg',
+  taghazout: '/images/taghazout-beach.jpg',
+  tamraght: '/images/tamraght.jpg',
+  casablanca: '/images/casablanca-airport.jpg',
 };

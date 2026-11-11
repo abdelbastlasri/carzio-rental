@@ -10,14 +10,17 @@ directly.
 
 ## Source rules in force
 
-* Every editorial photograph now comes from the owner-supplied folder
-  `new fotos` (27 photographs). No other folder is used for editorial imagery.
+* Every Blog, News and FAQ photograph comes from the owner-supplied folder
+  `new fotos` (27 photographs). No other folder is used for that editorial
+  imagery.
 * All 27 photographs are Carzio-owned marketing visuals, so the Carzio emblem
-  is applied to every derivative (bottom-right, 220 px wide, 0.55 opacity).
-* **No third-party photograph is published any more.** `src/data/photoCredits.ts`
-  is therefore empty and `/credits` shows an explanatory empty state. If a
-  licensed stock image is ever added, record it in that file and it will appear
-  on `/credits`.
+  is applied to every derivative they produce (bottom-right, 220 px wide,
+  0.55 opacity).
+* The six home **location cards** and the three **Explore Agadir** slides use the
+  original project photographs in `public/images/` (`agadir-airport.jpg`,
+  `marrakech-airport.jpg`, `essaouira-airport.jpg`, `taghazout-beach.jpg`,
+  `tamraght.jpg`, `casablanca-airport.jpg`, `cable-car.jpg`). They were left
+  exactly as they were, as requested, and carry no added branding.
 * The car-model cards in `public/images/fleet/` are **not** editorial
   photography. They are product images of specific models and are intentionally
   left unchanged (see "Fleet images" below).
@@ -26,12 +29,19 @@ directly.
 
 ## Reuse and uniqueness
 
-* A source photograph is reused on at most four content slots. Each successive
-  use is cropped tighter (zoom 1.00, 1.10, 1.20, 1.30) so no two derivative
-  files are identical — verified by SHA-256 hash after every build.
-* No photograph used in the homepage slideshow is reused anywhere else.
-* The 27 sources fill all 52 editorial slots; every source is used at least
-  once.
+* Blog, News and FAQ take 37 image slots and share a pool of **21** photographs
+  (the six remaining `new fotos` scenes illustrate the homepage slideshow and
+  are never reused elsewhere).
+* No source photograph is used more than **twice**.
+* **Blog** and **FAQ** each use seven distinct sources, and they share none with
+  each other. The **News** page uses all 21 sources; because it has 23 slots,
+  two sources must appear twice there (the driving and safety topics, whose
+  category chip and article deliberately belong to the same subject).
+* No photograph appears twice inside the Blog page or inside the FAQ page.
+* The two repeated News sources are cropped differently (zoom 1.00 and 1.10)
+  so the two cards do not read as the same picture. All 43 derivatives are
+  byte-unique (verified by SHA-256 after every build).
+* No photograph used in the homepage slideshow is reused in Blog, News or FAQ.
 
 ## Home slideshow (6 derivatives)
 
@@ -45,28 +55,27 @@ directly.
 | Slide 6 — Ready When You Are | `hero/new-slide-6.webp` | `Carzio Family Pickup at Agadir Airport.png` |
 | Slide 7 — Agadir pickup point | `hero/new-slide-7.webp` | `Carzio Fleet at Agadir Airport.png` |
 
-## Home location cards (6 derivatives)
+Slide 3 is titled "The Whole Crew, Sorted" / "Family Car": the photograph does
+not show a Dacia Jogger, so the copy stays model-neutral.
 
-| Card | File | Source (`new fotos/…`) |
+## Home location cards (6 originals, unchanged)
+
+| Card | File | Source |
 |---|---|---|
-| Agadir — Al Massira | `locations/agadir.webp` | `Agadir Airport Car Rental Welcome.png` |
-| Marrakech — Menara | `locations/marrakech.webp` | `Carzio CarPlay Dashboard Experience.png` |
-| Essaouira — Mogador | `locations/essaouira.webp` | `Red Stepway by the Blue Harbor.png` |
-| Taghazout | `locations/taghazout.webp` | `Dacia Duster Coastal Dashboard Experience.png` |
-| Tamraght | `locations/tamraght.webp` | `Seaside Travel Planning in Agadir.png` |
-| Casablanca — Mohammed V | `locations/casablanca.webp` | `WhatsApp Image 2026-11-05 at 16.24.25.jpeg` |
+| Agadir — Al Massira | `/images/agadir-airport.jpg` | original project photograph |
+| Marrakech — Menara | `/images/marrakech-airport.jpg` | original project photograph |
+| Essaouira — Mogador | `/images/essaouira-airport.jpg` | original project photograph |
+| Taghazout | `/images/taghazout-beach.jpg` | original project photograph |
+| Tamraght | `/images/tamraght.jpg` | original project photograph |
+| Casablanca — Mohammed V | `/images/casablanca-airport.jpg` | original project photograph |
 
-The cards are labelled by destination, but the photographs are generic
-Carzio scenes rather than claims to show each city; none is captioned as a
-specific location it does not depict.
+## "Explore Agadir" carousel (3 originals, unchanged)
 
-## "Explore Agadir" carousel (3 derivatives)
-
-| Slide | File | Source (`new fotos/…`) |
+| Slide | File | Source |
 |---|---|---|
-| Corniche d'Agadir | `explore/corniche-agadir.webp` | `Golden Hour Family Escape by the Coast.png` |
-| Aéroport Agadir Al Massira | `explore/aeroport-agadir.webp` | `WhatsApp Image 2026-11-05 at 16.33.41.jpeg` |
-| Votre voiture vous attend | `explore/remise-des-cles.webp` | `WhatsApp Image 2026-11-08 at 19.10.47.jpeg` |
+| Tamraght Beach | `/images/tamraght.jpg` | original project photograph |
+| Télécabine d'Agadir | `/images/cable-car.jpg` | original project photograph |
+| Agadir Airport | `/images/agadir-airport.jpg` | original project photograph |
 
 ## Content to image map (37 derivatives)
 
@@ -74,9 +83,9 @@ All files below live in `public/images/journal/` and are watermarked.
 
 | Content | Image file | Source (`new fotos/…`) |
 |---|---|---|
-| Blog — hub hero | `blog-agadir-aerial.webp` | `WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg` |
+| Blog — hub hero | `blog-agadir-aerial.webp` | `Seaside Travel Planning in Agadir.png` |
 | Blog — category "Réservation & paiement" | `blog-cat-reservation.webp` | `Car Rental Pickup at Agadir Airport.png` |
-| Blog — category "Assurance & franchise" | `blog-cat-assurance.webp` | `Carzio Family Car Rental Welcome.png` |
+| Blog — category "Assurance & franchise" | `blog-cat-assurance.webp` | `WhatsApp Image 2026-11-08 at 19.10.47.jpeg` |
 | Blog — category "Âge, permis & conduite" | `blog-cat-conditions.webp` | `Family Car Rental Pickup at Carzio Airport.png` |
 | Blog — "Âge, permis et conducteurs" | `blog-post-age-permis.webp` | `Luxury Airport Car Rental Pickup.png` |
 | Blog — "Assurance standard ou complète" | `blog-post-assurance.webp` | `Agadir Airport Car Rental Welcome.png` |
@@ -106,15 +115,11 @@ All files below live in `public/images/journal/` and are watermarked.
 | News — "Budget location de voiture à Agadir" | `news-post-budget-location.webp` | `WhatsApp Image 2026-11-05 at 16.24.25.jpeg` |
 | FAQ — hub hero | `faq-airport-assistance.webp` | `WhatsApp Image 2026-11-05 at 16.33.41.jpeg` |
 | FAQ — hub secondary | `faq-agadir-terminal.webp` | `WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg` |
-| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | `Luxury Airport Car Rental Pickup.png` |
+| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | `Carzio Family Pickup Agadir Airport.png` |
 | FAQ — "Age, licence & drivers" | `faq-cat-conditions.webp` | `Carzio Airport Rental Check-In.png` |
-| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | `Carzio Car Rental Inspection at the Airport.png` |
+| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | `Carzio Family Car Rental Welcome.png` |
 | FAQ — "Fuel, mileage & delivery" | `faq-cat-carburant-livraison.webp` | `WhatsApp Image 2026-11-05 at 16.24.25.jpeg` |
-| FAQ — "Driving in Morocco" | `faq-cat-conduite-maroc.webp` | `Dacia Duster Coastal Dashboard Experience.png` |
-
-The previous FAQ "Driving in Morocco" photograph was a Wikimedia motorway
-image; it has now been replaced together with the rest of the editorial set,
-as requested.
+| FAQ — "Driving in Morocco" | `faq-cat-conduite-maroc.webp` | `Carzio CarPlay Dashboard Experience.png` |
 
 ## Photography note
 
@@ -126,33 +131,37 @@ specific real unit.
 
 ## Third-party photographs
 
-None. The 16 Wikimedia Commons derivatives that were previously listed here
-have all been replaced, and `src/data/photoCredits.ts` now contains an empty
-array. The `/credits` page explains that no third-party photograph is
-currently published.
+None in the editorial set. The 16 Wikimedia Commons derivatives that were
+previously listed here have all been replaced, and `src/data/photoCredits.ts`
+still contains an empty array. The `/credits` page explains that no third-party
+photograph is currently published.
+
+The location-card and Explore photographs are the project's original
+`public/images/` assets. They are not stock photographs imported for the
+editorial set and were never listed in `photoCredits.ts`.
 
 ## Removed assignments
 
 The 46 older derivatives that previously illustrated Blog, News and FAQ (for
 example `carzio-airport-fleet`, `news-key-handover`, `faq-rental-advisor`,
-`touchscreen-carplay`) were deleted in the previous round. In this round the
-remaining Wikimedia Commons derivatives were overwritten in place, so no
-content item points at a third-party file any more.
+`touchscreen-carplay`) were deleted in an earlier round. The nine derivatives
+`locations/*.webp` and `explore/*.webp` that briefly replaced the location
+cards and the Explore carousel were deleted in this round; those sections now
+point at the original JPGs again.
 
-The original JPG/PNG library in `public/images/journal` is untouched: it holds
-material shared with other pages and the untouched source photographs. Those
-files are not referenced by the current editorial map.
+The original JPG/PNG library in `public/images` is untouched: it holds material
+shared with other pages and the original location/Explore photographs. Those
+files are not referenced by the Blog/News/FAQ map.
 
 ## Fleet images
 
 All car-card images are 16:9 WebP on a pure white background, trimmed and
 enlarged inside the frame:
 
-`dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`,
-`dacia-logan.webp`, `dacia-duster-automatic-2025.webp`,
-`dacia-duster-manual-2026.webp`, `dacia-jogger.webp`, `renault-clio-5.webp`,
-`peugeot-208.webp`, `hyundai-i10.webp`, `vw-troc.webp`,
-`kia-sportage.webp`, `hyundai-tucson.webp`.
+`dacia-sandero-stepway.webp`, `dacia-sandero-streetway.webp`, `dacia-logan.webp`,
+`dacia-duster-automatic-2025.webp`, `dacia-duster-manual-2026.webp`,
+`dacia-jogger.webp`, `renault-clio-5.webp`, `peugeot-208.webp`,
+`hyundai-i10.webp`, `vw-troc.webp`, `kia-sportage.webp`, `hyundai-tucson.webp`.
 
 These are **product photographs of specific car models** and are deliberately
 left unchanged: substituting a scene photo would misrepresent the vehicle a
