@@ -11,7 +11,6 @@
     { "source": "/contact", "destination": "/index.html" },
     { "source": "/terms", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/index.html" },
-    { "source": "/credits", "destination": "/index.html" },
     { "source": "/faq", "destination": "/index.html" },
     { "source": "/faq/(.*)", "destination": "/index.html" },
     { "source": "/blog", "destination": "/index.html" },

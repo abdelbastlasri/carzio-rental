@@ -23,7 +23,6 @@ import NewsCategory from './pages/NewsCategory';
 import NewsArticle from './pages/NewsArticle';
 import CityPage from './pages/CityPage';
 import NotFound from './pages/NotFound';
-import PhotoCredits from './pages/PhotoCredits';
 import AdminRoutes from './pages/admin/AdminRoutes';
 
 function App() {
@@ -67,7 +66,6 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/credits" element={<PhotoCredits />} />
           <Route path="/faq" element={<FaqHub />} />
           <Route path="/faq/:slug" element={<FaqPage />} />
           <Route path="/blog" element={<BlogHub />} />

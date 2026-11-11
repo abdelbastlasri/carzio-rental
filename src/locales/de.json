@@ -442,7 +442,6 @@
     "terms": "AGB",
     "openInMaps": "In Google Maps öffnen",
     "destinations": "Wir liefern auch nach",
-    "photoCredits": "Bildnachweise",
     "privacy": "Datenschutzerklärung"
   },
   "facts": {
@@ -479,11 +478,11 @@
     "guideInsurance": "Standard- oder Vollkaskoversicherung",
     "guideAge": "Alter, Führerschein und Fahrer",
     "guideAgadir": "Autovermietung in Agadir",
-    "heroAlt": "Eine Reisende mit Koffer neben einem Carzio-Mietwagen am Flughafen Agadir Al Massira",
+    "heroAlt": "Ein Kunde erhält vor einem Auto am Flughafen Agadir die Carzio-Schlüsselmappe und -Karte",
     "extraEyebrow": "Aus Agadir",
     "extraTitle": "Ihre Miete beginnt in Agadir",
     "extraText": "Antworten zu Buchung, Versicherung, Kraftstoff und Fahren in Marokko finden Sie in den Abschnitten oben.",
-    "extraAlt": "Der Parkplatz vor dem Terminal des Flughafens Agadir Al Massira"
+    "extraAlt": "Ein Mietwagen vor dem Terminal des Flughafens Agadir Al Massira"
   },
   "city": {
     "backToHome": "Zurück zur Startseite",

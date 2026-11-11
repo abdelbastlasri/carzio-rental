@@ -442,7 +442,6 @@
     "terms": "Terms & Conditions",
     "openInMaps": "Open in Google Maps",
     "destinations": "We also deliver to",
-    "photoCredits": "Photo credits",
     "privacy": "Privacy policy"
   },
   "facts": {
@@ -479,11 +478,11 @@
     "guideInsurance": "Standard or Full Insurance",
     "guideAge": "Age, licence and drivers",
     "guideAgadir": "Car rental in Agadir",
-    "heroAlt": "A traveller with a suitcase beside a Carzio rental car at Agadir Al Massira airport",
+    "heroAlt": "A customer receives the Carzio key folder and card next to a car at Agadir airport",
     "extraEyebrow": "From Agadir",
     "extraTitle": "Your rental starts in Agadir",
     "extraText": "Find our answers on booking, insurance, fuel and driving in Morocco, gathered in the sections above.",
-    "extraAlt": "The car park in front of the Agadir Al Massira airport terminal"
+    "extraAlt": "A rental car parked in front of the Agadir Al Massira airport terminal"
   },
   "city": {
     "backToHome": "Back to home",

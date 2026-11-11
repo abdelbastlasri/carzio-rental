@@ -9,28 +9,58 @@ export interface PhotoCredit {
 }
 
 /**
- * Third-party photographs published on the site.
+ * Third-party photographs used on the site.
  *
  * Blog, News, FAQ, About and fleet imagery is mostly Carzio-owned. When the
  * owner folders held no photograph that genuinely illustrated a topic, a
  * Wikimedia Commons file was used instead. Every such file is listed here with
- * its author and licence, as required by the terms of use of each photograph,
- * and rendered on `/credits`.
+ * its author and licence, as required by the terms of use of each photograph.
+ *
+ * This file is an internal provenance record; the site does not publish a
+ * separate photo-credits page.
  */
 export const photoCredits: PhotoCredit[] = [
   {
-    imagePath: '/images/journal/blog-cat-assurance.webp',
-    title: 'Car damage on fender observed in a parking lot.jpg',
-    author: 'Shixart1985',
-    license: 'CC BY 2.0',
-    source: 'https://commons.wikimedia.org/wiki/File:Car_damage_on_fender_observed_in_a_parking_lot.jpg',
+    imagePath: '/images/journal/news-cat-conduite-maroc.webp',
+    title: 'A7 motorway in Morocco.JPG',
+    author: 'Makary',
+    license: 'CC BY 3.0',
+    source: 'https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco.JPG',
   },
   {
-    imagePath: '/images/journal/blog-post-assurance.webp',
-    title: "Luxembourg, Carte internationale d'assurance automobile.jpg",
-    author: 'GilPe',
+    imagePath: '/images/journal/faq-cat-conduite-maroc.webp',
+    title: 'A7 motorway in Morocco 2.JPG',
+    author: 'Makary',
+    license: 'CC BY 3.0',
+    source: 'https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco_2.JPG',
+  },
+  {
+    imagePath: '/images/journal/news-post-conduire-au-maroc.webp',
+    title: 'R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg',
+    author: 'Timothy A. Gonsalves',
     license: 'CC BY-SA 4.0',
-    source: "https://commons.wikimedia.org/wiki/File:Luxembourg,_Carte_internationale_d%27assurance_automobile.jpg",
+    source: 'https://commons.wikimedia.org/wiki/File:R212_MZouda_Shishawa_Morocco_Oct25_A7CR_08374.jpg',
+  },
+  {
+    imagePath: '/images/journal/news-cat-securite-regles.webp',
+    title: 'Road signs Agadir 2020.jpg',
+    author: 'Abdeaitali',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Road_signs_Agadir_2020.jpg',
+  },
+  {
+    imagePath: '/images/journal/news-post-securite-routiere.webp',
+    title: 'Road signs pedestrians Agadir 2020.jpg',
+    author: 'Abdeaitali',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Road_signs_pedestrians_Agadir_2020.jpg',
+  },
+  {
+    imagePath: '/images/journal/news-post-road-trips.webp',
+    title: 'Vue panoramique de la plage " TAGHAZOUT".jpg',
+    author: 'Mouad aguenaou',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Vue_panoramique_de_la_plage_%22_TAGHAZOUT%22.jpg',
   },
   {
     imagePath: '/images/journal/news-cat-assurance-caution.webp',

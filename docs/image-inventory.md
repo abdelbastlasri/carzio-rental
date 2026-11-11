@@ -10,12 +10,13 @@ directly.
 
 ## Source rules in force
 
-* The Carzio editorial core still comes from the owner-supplied folder
-  `new fotos` (27 photographs). Where that folder held no photograph that
-  genuinely illustrated a topic — or where a photo was clearly AI-generated —
-  the derivative was replaced with a genuine, properly licensed Wikimedia
-  Commons file. Those files are recorded in `src/data/photoCredits.ts` and
-  published on `/credits`.
+* Editorial photographs come from the owner-supplied folders `new fotos`,
+  `news blog`, `New image` and `inspiration`. Where those folders held no
+  photograph that genuinely illustrated a topic — or where a photo was weak,
+  mismatched or AI-generated — the derivative was replaced with a genuine,
+  properly licensed Wikimedia Commons file. Commons files are recorded in
+  `src/data/photoCredits.ts` and in this inventory as an internal provenance
+  record; the site does not publish a photo-credits page.
 * Carzio-owned derivatives carry the Carzio emblem (bottom-right, 220 px wide,
   0.55 opacity). Wikimedia Commons photographs are **never** branded or
   watermarked.
@@ -32,11 +33,15 @@ directly.
 
 ## Reuse and uniqueness
 
-* Blog, News and FAQ take 37 image slots. 29 derivatives come from `new fotos`;
-  8 are Wikimedia Commons files, each used once.
-* No source photograph is used more than **twice**, and every served derivative
+* Blog, News and FAQ take 37 image slots. 25 derivatives come from the four
+  owner folders and 12 are Wikimedia Commons files. Every slot has its own
+  source photograph.
+* The only deliberate reuse is the Blog "Insurance & excess" category, which
+  shows the owner-requested family-pickup photograph also used on hero slide 6.
+  No other Blog, News or FAQ slot repeats a source, and every served derivative
   is byte-unique (verified by SHA-256 after every build).
-* The Blog, News and FAQ pages do not reuse any homepage slideshow photograph.
+* The rest of the homepage, the location cards and the Explore carousel do not
+  reuse any of these files.
 
 ## Home slideshow (6 derivatives)
 
@@ -81,61 +86,68 @@ watermarked; Wikimedia Commons derivatives are not.
 |---|---|---|
 | Blog — hub hero | `blog-agadir-aerial.webp` | `Seaside Travel Planning in Agadir.png` |
 | Blog — category "Réservation & paiement" | `blog-cat-reservation.webp` | `Car Rental Pickup at Agadir Airport.png` |
-| Blog — category "Assurance & franchise" | `blog-cat-assurance.webp` | Commons — `Car damage on fender observed in a parking lot.jpg` |
+| Blog — category "Assurance & franchise" | `blog-cat-assurance.webp` | `new fotos/Carzio Family Pickup at Agadir Airport.png` (also hero slide 6) |
 | Blog — category "Âge, permis & conduite" | `blog-cat-conditions.webp` | `Family Car Rental Pickup at Carzio Airport.png` |
 | Blog — "Âge, permis et conducteurs" | `blog-post-age-permis.webp` | `Luxury Airport Car Rental Pickup.png` |
-| Blog — "Assurance standard ou complète" | `blog-post-assurance.webp` | Commons — `Luxembourg, Carte internationale d'assurance automobile.jpg` |
+| Blog — "Assurance standard ou complète" | `blog-post-assurance.webp` | `new fotos/Carzio Car Rental Inspection at the Airport.png` |
 | Blog — "Réserver une voiture à Agadir" | `blog-post-reserver.webp` | `Agadir Airport Family Car Pickup.png` |
 | News — hub hero / new routes | `carzio-new-routes.webp` | `WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg` |
-| News — topic "Conduire au Maroc" | `news-cat-conduite-maroc.webp` | `Dacia Duster Coastal Dashboard Experience.png` |
-| News — topic "Sécurité & règles" | `news-cat-securite-regles.webp` | `Carzio Car Rental Inspection at the Airport.png` |
+| News — topic "Conduire au Maroc" | `news-cat-conduite-maroc.webp` | Commons — `A7 motorway in Morocco.JPG` |
+| News — topic "Sécurité & règles" | `news-cat-securite-regles.webp` | Commons — `Road signs Agadir 2020.jpg` |
 | News — topic "Assurance & caution" | `news-cat-assurance-caution.webp` | Commons — `Credit-cards.jpg` |
 | News — topic "Booking & paperwork" | `news-cat-reservation-documents.webp` | `Carzio Airport Rental Check-In.png` |
 | News — topic "Airports & pickup" | `news-cat-aeroports-livraison.webp` | `WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg` |
 | News — topic "Cities & sightseeing" | `news-cat-villes-visites.webp` | `Red Stepway by the Blue Harbor.png` |
-| News — topic "Road trips & itineraries" | `news-cat-road-trips.webp` | `Seaside Travel Planning in Agadir.png` |
+| News — topic "Road trips & itineraries" | `news-cat-road-trips.webp` | `New image/WhatsApp Image 2026-11-05 at 16.24.24.jpeg` |
 | News — topic "Family travel" | `news-cat-voyage-famille.webp` | `Carzio Family Pickup Agadir Airport.png` |
 | News — topic "Fleet & models" | `news-cat-flotte-modeles.webp` | Commons — `Red car morocco Marina Agadir.jpg` |
 | News — topic "Events & seasons" | `news-cat-evenements.webp` | Commons — `Agadir Beach Sunset (Summer time).jpg` |
 | News — topic "Budget & practical tips" | `news-cat-budget-conseils.webp` | `Carzio Family Car Rental Welcome.png` |
-| News — "Conduire au Maroc : ce qu'il faut savoir" | `news-post-conduire-au-maroc.webp` | `Dacia Duster Coastal Dashboard Experience.png` |
-| News — "Sécurité routière au Maroc" | `news-post-securite-routiere.webp` | `Carzio Car Rental Inspection at the Airport.png` |
-| News — "Assurance complète dès 5 jours" | `news-post-assurance-complete.webp` | `Luxury Airport Car Rental Pickup.png` |
+| News — "Conduire au Maroc : ce qu'il faut savoir" | `news-post-conduire-au-maroc.webp` | Commons — `R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg` |
+| News — "Sécurité routière au Maroc" | `news-post-securite-routiere.webp` | Commons — `Road signs pedestrians Agadir 2020.jpg` |
+| News — "Assurance complète dès 5 jours" | `news-post-assurance-complete.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (3).jpeg` |
 | News — "0 MAD de caution" | `news-post-caution-zero-mad.webp` | Commons — `Paying with a Credit Card (28886645201).jpg` |
 | News — "GPS et écran tactile" | `news-post-gps-ecran-tactile.webp` | `Carzio CarPlay Dashboard Experience.png` |
 | News — "Quand louer une voiture à Agadir" | `news-post-evenements-saisons.webp` | `Golden Hour Family Escape by the Coast.png` |
 | News — "Livraison à l'aéroport Agadir Al Massira" | `news-post-livraison-aeroport.webp` | `WhatsApp Image 2026-11-05 at 16.33.41.jpeg` |
-| News — "Louer une voiture en famille au Maroc" | `news-post-louer-voiture-famille.webp` | `Agadir Airport Family Car Pickup.png` |
-| News — "Road trips depuis Agadir" | `news-post-road-trips.webp` | `WhatsApp Image 2026-11-08 at 19.04.24.jpeg` |
+| News — "Louer une voiture en famille au Maroc" | `news-post-louer-voiture-famille.webp` | `New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg` |
+| News — "Road trips depuis Agadir" | `news-post-road-trips.webp` | Commons — `Vue panoramique de la plage " TAGHAZOUT".jpg` |
 | News — "Agadir, Marrakech, Essaouira en voiture" | `news-post-agadir-marrakech-essaouira.webp` | Commons — `Skala du Port, Essaouira 01.jpg` |
 | News — "Budget location de voiture à Agadir" | `news-post-budget-location.webp` | `WhatsApp Image 2026-11-05 at 16.24.25.jpeg` |
-| FAQ — hub hero | `faq-airport-assistance.webp` | `WhatsApp Image 2026-11-05 at 16.33.41.jpeg` |
-| FAQ — hub secondary | `faq-agadir-terminal.webp` | `WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg` |
-| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | `Carzio Family Pickup Agadir Airport.png` |
-| FAQ — "Age, licence & drivers" | `faq-cat-conditions.webp` | `Carzio Airport Rental Check-In.png` |
-| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | `Carzio Family Car Rental Welcome.png` |
+| FAQ — hub hero | `faq-airport-assistance.webp` | `news blog/Carzio at Agadir Airport.png` |
+| FAQ — hub secondary | `faq-agadir-terminal.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg` |
+| FAQ — "Booking & payment" | `faq-cat-reservation.webp` | `news blog/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg` |
+| FAQ — "Age, licence & drivers" | `faq-cat-conditions.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg` |
+| FAQ — "Insurance & excess" | `faq-cat-assurance.webp` | `inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg` |
 | FAQ — "Fuel, mileage & delivery" | `faq-cat-carburant-livraison.webp` | Commons — `Afriquia Station - Bouznika - October 2023.jpg` |
-| FAQ — "Driving in Morocco" | `faq-cat-conduite-maroc.webp` | `Carzio CarPlay Dashboard Experience.png` |
+| FAQ — "Driving in Morocco" | `faq-cat-conduite-maroc.webp` | Commons — `A7 motorway in Morocco 2.JPG` |
 
 ## Photography note
 
-The `new fotos` set is suspected to be AI-generated Carzio scene imagery (its
-signage and branding are physically part of each scene). It is used as
-marketing imagery only, and its conflict with reality is the reason the eight
-weakest topic matches were replaced with documentary Commons photographs. Alt
-text describes what is visible and does not claim that any depicted person is a
-real customer or that a depicted vehicle is a specific real unit.
+The `new fotos`, `news blog`, `New image` and `inspiration` sets are
+owner-supplied Carzio scenes, some of them AI-generated with signage and
+branding physically part of the scene. They are used as marketing imagery only,
+and that conflict with reality is why the weakest topic matches were replaced
+with documentary Commons photographs. Alt text describes what is visible and
+does not claim that any depicted person is a real customer or that a depicted
+vehicle is a specific real unit.
 
 ## Third-party photographs
 
-Eleven Wikimedia Commons photographs are currently published. Each one is
-recorded in `src/data/photoCredits.ts` and rendered on `/credits` with its
-author, licence and source link:
+Fifteen Wikimedia Commons photographs are currently published: twelve in the
+Blog/News/FAQ set and three elsewhere (About and fleet). Each one is recorded in
+`src/data/photoCredits.ts` with its author, licence and source link. The site
+does not publish a photo-credits page; this inventory and `photoCredits.ts` are
+the provenance record.
 
 | Served derivative | Commons file | Author | Licence |
 |---|---|---|---|
-| `journal/blog-cat-assurance.webp` | Car damage on fender observed in a parking lot.jpg | Shixart1985 | CC BY 2.0 |
-| `journal/blog-post-assurance.webp` | Luxembourg, Carte internationale d'assurance automobile.jpg | GilPe | CC BY-SA 4.0 |
+| `journal/news-cat-conduite-maroc.webp` | A7 motorway in Morocco.JPG | Makary | CC BY 3.0 |
+| `journal/faq-cat-conduite-maroc.webp` | A7 motorway in Morocco 2.JPG | Makary | CC BY 3.0 |
+| `journal/news-post-conduire-au-maroc.webp` | R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg | Timothy A. Gonsalves | CC BY-SA 4.0 |
+| `journal/news-cat-securite-regles.webp` | Road signs Agadir 2020.jpg | Abdeaitali | CC BY-SA 4.0 |
+| `journal/news-post-securite-routiere.webp` | Road signs pedestrians Agadir 2020.jpg | Abdeaitali | CC BY-SA 4.0 |
+| `journal/news-post-road-trips.webp` | Vue panoramique de la plage " TAGHAZOUT".jpg | Mouad aguenaou | CC BY-SA 4.0 |
 | `journal/news-cat-assurance-caution.webp` | Credit-cards.jpg | Lotus Head | CC BY-SA 2.5 |
 | `journal/news-cat-flotte-modeles.webp` | Red car morocco Marina Agadir.jpg | MustaSensei | CC BY-SA 4.0 |
 | `journal/news-cat-evenements.webp` | Agadir Beach Sunset (Summer time).jpg | Hatim.laajini | CC BY-SA 4.0 |

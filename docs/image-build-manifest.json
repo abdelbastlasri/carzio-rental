@@ -90,13 +90,13 @@
   {
     "group": "blog",
     "output": "journal/blog-cat-assurance.webp",
-    "source": "Wikimedia Commons/Car damage on fender observed in a parking lot.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Shixart1985",
-    "watermark": false,
+    "source": "new fotos/Carzio Family Pickup at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
     "zoom": 1.0,
-    "kb": 45.5
+    "kb": 196.2
   },
   {
     "group": "blog",
@@ -123,13 +123,13 @@
   {
     "group": "blog",
     "output": "journal/blog-post-assurance.webp",
-    "source": "Wikimedia Commons/Luxembourg, Carte internationale d'assurance automobile.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "GilPe",
-    "watermark": false,
+    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
     "zoom": 1.0,
-    "kb": 261.5
+    "kb": 150.0
   },
   {
     "group": "blog",
@@ -156,24 +156,24 @@
   {
     "group": "news",
     "output": "journal/news-cat-conduite-maroc.webp",
-    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
+    "source": "Wikimedia Commons/A7 motorway in Morocco.JPG",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 3.0",
+    "author": "Makary",
+    "watermark": false,
     "zoom": 1.0,
-    "kb": 140.2
+    "kb": 114.0
   },
   {
     "group": "news",
     "output": "journal/news-cat-securite-regles.webp",
-    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
+    "source": "Wikimedia Commons/Road signs Agadir 2020.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Abdeaitali",
+    "watermark": false,
     "zoom": 1.0,
-    "kb": 150.0
+    "kb": 280.7
   },
   {
     "group": "news",
@@ -222,13 +222,13 @@
   {
     "group": "news",
     "output": "journal/news-cat-road-trips.webp",
-    "source": "new fotos/Seaside Travel Planning in Agadir.png",
-    "folder": "new fotos",
+    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24.jpeg",
+    "folder": "New image",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 179.5
+    "zoom": 1.0,
+    "kb": 231.3
   },
   {
     "group": "news",
@@ -277,35 +277,35 @@
   {
     "group": "news",
     "output": "journal/news-post-conduire-au-maroc.webp",
-    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 140.1
+    "source": "Wikimedia Commons/R212 MZouda Shishawa Morocco Oct25 A7CR 08374.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Timothy A. Gonsalves",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 172.5
   },
   {
     "group": "news",
     "output": "journal/news-post-securite-routiere.webp",
-    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 153.0
+    "source": "Wikimedia Commons/Road signs pedestrians Agadir 2020.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Abdeaitali",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 270.5
   },
   {
     "group": "news",
     "output": "journal/news-post-assurance-complete.webp",
-    "source": "new fotos/Luxury Airport Car Rental Pickup.png",
-    "folder": "new fotos",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (3).jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 166.3
+    "zoom": 1.0,
+    "kb": 85.8
   },
   {
     "group": "news",
@@ -354,24 +354,24 @@
   {
     "group": "news",
     "output": "journal/news-post-louer-voiture-famille.webp",
-    "source": "new fotos/Agadir Airport Family Car Pickup.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 163.5
-  },
-  {
-    "group": "news",
-    "output": "journal/news-post-road-trips.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
-    "folder": "new fotos",
+    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (3).jpeg",
+    "folder": "New image",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
     "zoom": 1.0,
-    "kb": 201.1
+    "kb": 205.3
+  },
+  {
+    "group": "news",
+    "output": "journal/news-post-road-trips.webp",
+    "source": "Wikimedia Commons/Vue panoramique de la plage \" TAGHAZOUT\".jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Mouad aguenaou",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 149.5
   },
   {
     "group": "news",
@@ -398,35 +398,35 @@
   {
     "group": "faq",
     "output": "journal/faq-cat-reservation.webp",
-    "source": "new fotos/Carzio Family Pickup Agadir Airport.png",
-    "folder": "new fotos",
+    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 186.0
+    "zoom": 1.0,
+    "kb": 117.1
   },
   {
     "group": "faq",
     "output": "journal/faq-cat-conditions.webp",
-    "source": "new fotos/Carzio Airport Rental Check-In.png",
-    "folder": "new fotos",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 170.5
+    "zoom": 1.0,
+    "kb": 200.8
   },
   {
     "group": "faq",
     "output": "journal/faq-cat-assurance.webp",
-    "source": "new fotos/Carzio Family Car Rental Welcome.png",
-    "folder": "new fotos",
+    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg",
+    "folder": "inspiration",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 202.6
+    "zoom": 1.0,
+    "kb": 94.0
   },
   {
     "group": "faq",
@@ -442,35 +442,35 @@
   {
     "group": "faq",
     "output": "journal/faq-cat-conduite-maroc.webp",
-    "source": "new fotos/Carzio CarPlay Dashboard Experience.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 134.8
+    "source": "Wikimedia Commons/A7 motorway in Morocco 2.JPG",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 3.0",
+    "author": "Makary",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 135.5
   },
   {
     "group": "faq",
     "output": "journal/faq-airport-assistance.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.33.41.jpeg",
-    "folder": "new fotos",
+    "source": "news blog/Carzio at Agadir Airport.png",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 151.5
+    "zoom": 1.0,
+    "kb": 177.7
   },
   {
     "group": "faq",
     "output": "journal/faq-agadir-terminal.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
-    "folder": "new fotos",
+    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg",
+    "folder": "news blog",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "zoom": 1.1,
-    "kb": 83.5
+    "zoom": 1.0,
+    "kb": 100.8
   },
   {
     "group": "about",

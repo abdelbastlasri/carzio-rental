@@ -442,7 +442,6 @@
     "terms": "Términos y Condiciones",
     "openInMaps": "Abrir en Google Maps",
     "destinations": "También entregamos en",
-    "photoCredits": "Créditos fotográficos",
     "privacy": "Política de privacidad"
   },
   "facts": {
@@ -479,11 +478,11 @@
     "guideInsurance": "Seguro Standard o completo",
     "guideAge": "Edad, permiso y conductores",
     "guideAgadir": "Alquiler de coches en Agadir",
-    "heroAlt": "Una viajera con su maleta junto a un coche de alquiler Carzio en el aeropuerto de Agadir Al Massira",
+    "heroAlt": "Un cliente recibe la carpeta de llaves y la tarjeta de Carzio junto a un coche en el aeropuerto de Agadir",
     "extraEyebrow": "Desde Agadir",
     "extraTitle": "Su alquiler empieza en Agadir",
     "extraText": "Encuentre nuestras respuestas sobre la reserva, el seguro, el combustible y la conducción en Marruecos en las secciones anteriores.",
-    "extraAlt": "El aparcamiento frente a la terminal del aeropuerto de Agadir Al Massira"
+    "extraAlt": "Un coche de alquiler aparcado frente a la terminal del aeropuerto de Agadir Al Massira"
   },
   "city": {
     "backToHome": "Volver al inicio",
