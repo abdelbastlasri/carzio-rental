@@ -33,7 +33,7 @@ export const homeFaq: Record<'fr' | 'en' | 'de' | 'es' | 'pl', HomeFaqItem[]> = 
     { q: 'Puis-je traverser la frontière en voiture de location ?', a: "Non, sauf accord écrit et assurance spécifique. Le passage de frontière sans autorisation annule la couverture. Dites-le-nous lors de la réservation : nous confirmons ce qui est possible selon l'itinéraire." },
     { q: 'Comment fonctionnent les autoroutes et les péages ?', a: 'Les autoroutes sont payantes aux péages, par espèces ou par carte. Aucune vignette n’est requise. Dans les centres-villes, les parkings surveillés (« gardiens ») sont courants : prévoyez de la monnaie.' },
     { q: 'Que faire en cas d’accident ?', a: 'Si quelqu’un est blessé, appelez le 190. Sinon, contactez-nous immédiatement au +212 680 318003 : ne déplacez pas le véhicule si ce n’est pas sûr, faites un constat, prenez des photos et prévenez la police si nécessaire.' },
-    { q: 'Boîte manuelle ou automatique, laquelle choisir ?', a: 'Les deux sont disponibles. Nos automatiques : i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson et Touareg. Même âge minimum et même ancienneté de permis requis dans les deux cas.' },
+    { q: 'Boîte manuelle ou automatique, laquelle choisir ?', a: 'Les deux sont disponibles. Nos automatiques : i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson. Même âge minimum et même ancienneté de permis requis dans les deux cas.' },
     { q: 'Quelles sont les limitations de vitesse ?', a: 'Typiquement : 40 à 60 km/h en agglomération, 80 à 100 km/h sur route, 120 km/h sur autoroute. Ceinture obligatoire pour tous les passagers ; tolérance zéro pour l’alcool au volant.' },
   ],
   en: [
@@ -58,7 +58,7 @@ export const homeFaq: Record<'fr' | 'en' | 'de' | 'es' | 'pl', HomeFaqItem[]> = 
     { q: 'Can I cross the border with the rental car?', a: 'No, not without written agreement and specific insurance. Crossing the border without authorisation voids the cover. Tell us when booking: we will confirm what is possible for your itinerary.' },
     { q: 'How do motorways and tolls work?', a: 'Toll motorways are paid at booths, in cash or by card. No vignette is needed. In city centres, supervised car parks (“gardiens”) are common — keep some small change.' },
     { q: 'What should I do after an accident?', a: 'If anyone is injured, call 190. Otherwise call us immediately on +212 680 318003: don’t move the car if unsafe, complete the accident report, take photos and contact the police if necessary.' },
-    { q: 'Manual or automatic — which should I pick?', a: 'Both are available. Our automatics: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson and Touareg. The same minimum age and licence requirements apply either way.' },
+    { q: 'Manual or automatic — which should I pick?', a: 'Both are available. Our automatics: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson. The same minimum age and licence requirements apply either way.' },
     { q: 'What are the speed limits?', a: 'Typically: 40–60 km/h in towns, 80–100 km/h on rural roads, 120 km/h on motorways. Seatbelts are mandatory for all passengers; zero tolerance for drink-driving.' },
   ],
   de: [
@@ -83,7 +83,7 @@ export const homeFaq: Record<'fr' | 'en' | 'de' | 'es' | 'pl', HomeFaqItem[]> = 
     { q: 'Kann ich mit dem Mietwagen über die Grenze fahren?', a: 'Nein, ohne schriftliche Zustimmung und spezielle Versicherung. Unbefugtes Grenzüberschreiten macht den Versicherungsschutz ungültig. Sagen Sie uns das bei der Buchung: wir bestätigen, was für Ihre Route möglich ist.' },
     { q: 'Wie laufen die Autobahnen und Mauten?', a: 'Die Autobahnen sind mautpflichtig, bezahlt wird an der Station, bar oder mit Karte. Keine Vignette. In den Stadtzentren sind bewachte Parkplätze („Gardiens“) üblich — behalten Sie Kleingeld bereit.' },
     { q: 'Was tun nach einem Unfall?', a: 'Bei Verletzten die 190. Sonst rufen Sie uns sofort an unter +212 680 318003: das Fahrzeug nicht bewegen, wenn unsicher, Gutachten ausfüllen, Fotos machen und ggf. die Polizei rufen.' },
-    { q: 'Schalt- oder Automatikgetriebe — wie entscheide ich?', a: 'Beides ist verfügbar. Unsere Automatik: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson und Touareg. Die Mindestvoraussetzungen sind in beiden Fällen gleich.' },
+    { q: 'Schalt- oder Automatikgetriebe — wie entscheide ich?', a: 'Beides ist verfügbar. Unsere Automatik: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson. Die Mindestvoraussetzungen sind in beiden Fällen gleich.' },
     { q: 'Wie hoch sind die Geschwindigkeitsbegrenzungen?', a: 'Typisch: 40 bis 60 km/h innerorts, 80 bis 100 km/h außerorts, 120 km/h auf Autobahnen. Gurt für alle Pflicht; null Toleranz bei Alkohol am Steuer.' },
   ],
   es: [
@@ -108,7 +108,7 @@ export const homeFaq: Record<'fr' | 'en' | 'de' | 'es' | 'pl', HomeFaqItem[]> = 
     { q: '¿Puedo cruzar la frontera con el coche de alquiler?', a: 'No, sin acuerdo por escrito y un seguro específico. Cruzar la frontera sin autorización anula la cobertura. Díganoslo al reservar: le confirmaremos lo que es posible según su itinerario.' },
     { q: '¿Cómo funcionan las autopistas y los peajes?', a: 'Las autopistas son de peaje, se paga en las cabinas en efectivo o con tarjeta. No hace falta viñeta. En el centro de las ciudades son comunes los aparcamientos vigilados (“guardianes”): lleve monedas.' },
     { q: '¿Qué hacer tras un accidente?', a: 'Si hay heridos, llame al 190. Si no, llámenos inmediatamente al +212 680 318003: no mueva el vehículo si no es seguro, rellene el parte, haga fotos y avise a la policía si es necesario.' },
-    { q: '¿Manual o automático, qué elijo?', a: 'Ambos están disponibles. Nuestros automáticos: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson y Touareg. Se aplican las mismas condiciones mínimas en ambos casos.' },
+    { q: '¿Manual o automático, qué elijo?', a: 'Ambos están disponibles. Nuestros automáticos: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson. Se aplican las mismas condiciones mínimas en ambos casos.' },
     { q: '¿Cuáles son los límites de velocidad?', a: 'Típicamente: 40–60 km/h en ciudad, 80–100 km/h en carretera, 120 km/h en autopista. Cinturón obligatorio para todos los pasajeros; tolerancia cero con el alcohol al volante.' },
   ],
   pl: [
@@ -133,7 +133,7 @@ export const homeFaq: Record<'fr' | 'en' | 'de' | 'es' | 'pl', HomeFaqItem[]> = 
     { q: 'Czy mogę przekroczyć granicę wynajętym autem?', a: 'Nie, bez pisemnej zgody i specjalnego ubezpieczenia. Nieautoryzowane przekroczenie granicy unieważnia ochronę. Powiedz nam to przy rezerwacji: potwierdzimy, co jest możliwe w Twojej trasie.' },
     { q: 'Jak działają autostrady i opłaty?', a: 'Autostrady są płatne na bramkach, gotówką lub kartą. Nie trzeba żadnych winiet. W centrum miejsc chronionych parkingów („gardiens”) jest powszechny — miej przy sobie drobne.' },
     { q: 'Co zrobić po wypadku?', a: 'Jeśli są osoby poszkodowane, zadzwoń pod 190. W przeciwnym razie natychmiast zadzwoń do nas pod +212 680 318003: nie przesuwaj auta, jeśli to niebezpieczne, spisz protokół, zrób zdjęcia i powiadom policję w razie potrzeby.' },
-    { q: 'Manualna czy automatyczna — którą wybrać?', a: 'Obie dostępne. Nasze automaty: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson i Touareg. Te same wymogi wiekowe i stażu prawa jazdy obowiązują w obu przypadkach.' },
+    { q: 'Manualna czy automatyczna — którą wybrać?', a: 'Obie dostępne. Nasze automaty: i10, Sandero Stepway, Clio 5, Duster, Sportage, T-Roc, Tucson. Te same wymogi wiekowe i stażu prawa jazdy obowiązują w obu przypadkach.' },
     { q: 'Jakie są ograniczenia prędkości?', a: 'Typowo: 40–60 km/h w miastach, 80–100 km/h na trasach, 120 km/h na autostradach. Pasy dla wszystkich obowiązkowe; zerowa tolerancja na alkohol.' },
   ],
 };

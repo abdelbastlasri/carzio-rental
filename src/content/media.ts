@@ -2,10 +2,11 @@
  * Single source of truth for the photography used by the Blog, News and FAQ.
  *
  * Every entry records the derivative that is served, the alt text for each
- * language, and where the underlying photograph came from. All of the imagery
- * in this file now comes from the owner-supplied `new fotos` folder; no
- * third-party photograph is published any more, so `src/data/photoCredits.ts`
- * is intentionally empty.
+ * language, and where the underlying photograph came from. Most of the imagery
+ * comes from the owner-supplied `new fotos` folder; weak, mismatched or
+ * AI-generated scenes were replaced with genuine Wikimedia Commons photographs.
+ * Every Commons file is attributed in `src/data/photoCredits.ts` and published
+ * on `/credits`.
  *
  * Blog and FAQ never share a source, no page repeats a source internally (the
  * News hub has two unavoidable repeats because it has 23 slots for 21 photos),
@@ -45,10 +46,10 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   assurance: {
     file: 'blog-cat-assurance.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un SUV blanc garé dans le parking de l'aéroport, coffre et portière ouverts",
-      en: 'A white SUV parked at the airport car park with its boot and door open',
+      fr: "Une aile de voiture endommagée et rayée, photographiée de près sur un parking",
+      en: 'A damaged, scratched car fender photographed close up in a car park',
     },
   },
   conditions: {
@@ -72,10 +73,10 @@ export const blogPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'assurance-location-voiture-maroc': {
     file: 'blog-post-assurance.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un agent Carzio remet les clés à un couple au comptoir de l'aéroport d'Agadir Al Massira",
-      en: 'A Carzio agent hands the keys to a couple at the Agadir Al Massira airport desk',
+      fr: "Une carte internationale d'assurance automobile posée sur une surface claire",
+      en: 'An international motor insurance card resting on a light surface',
     },
   },
   'reserver-voiture-agadir-guide': {
@@ -109,10 +110,10 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'assurance-caution': {
     file: 'news-cat-assurance-caution.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un agent Carzio remet les clés d'un véhicule à un couple à l'aéroport d'Agadir",
-      en: 'A Carzio agent hands a vehicle key to a couple at Agadir airport',
+      fr: 'Plusieurs cartes bancaires alignées sur une surface blanche',
+      en: 'Several credit cards laid out on a white surface',
     },
   },
   'reservation-documents': {
@@ -157,18 +158,18 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   },
   'flotte-modeles': {
     file: 'news-cat-flotte-modeles.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: 'Une voiture stationnée dans un parking couvert éclairé',
-      en: 'A car parked in a lit indoor car park',
+      fr: "Une voiture rouge garée près du port de plaisance d'Agadir",
+      en: 'A red car parked by the marina in Agadir',
     },
   },
   evenements: {
     file: 'news-cat-evenements.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un SUV blanc garé dans le parking de l'aéroport, coffre et portière ouverts",
-      en: 'A white SUV parked at the airport car park with its boot and door open',
+      fr: "Le soleil se couche sur la baie d'Agadir et sa plage",
+      en: 'The sun setting over Agadir bay and its beach',
     },
   },
   'budget-conseils': {
@@ -208,10 +209,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'caution-zero-mad': {
     file: 'news-post-caution-zero-mad.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un agent Carzio remet les clés à un couple devant le terminal de l'aéroport d'Agadir",
-      en: 'A Carzio agent hands the keys to a couple outside the Agadir airport terminal',
+      fr: 'Une main introduit une carte bancaire dans un terminal de paiement bleu',
+      en: 'A hand inserts a bank card into a blue payment terminal',
     },
   },
   'gps-ecran-tactile-modeles': {
@@ -256,10 +257,10 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   },
   'agadir-marrakech-essaouira-voiture': {
     file: 'news-post-agadir-marrakech-essaouira.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Un agent Carzio remet les documents de location à une famille au comptoir de l'aéroport",
-      en: 'A Carzio agent hands the rental documents to a family at the airport desk',
+      fr: "Les remparts et la Skala du port d'Essaouira au bord de l'Atlantique",
+      en: 'The ramparts and Skala du Port in Essaouira on the Atlantic',
     },
   },
   'budget-location-voiture-agadir': {
@@ -310,13 +311,13 @@ export const faqCategoryMedia: Record<string, MediaEntry> = {
   },
   'carburant-livraison': {
     file: 'faq-cat-carburant-livraison.webp',
-    source: 'new fotos',
+    source: 'Wikimedia Commons',
     alt: {
-      fr: "Des voitures au coffre ouvert devant une station de lavage du parking de l'aéroport d'Agadir",
-      en: 'Cars with their boots open in front of a car-wash bay in the Agadir airport car park',
-      de: 'Autos mit geöffnetem Kofferraum vor einer Waschanlage auf dem Parkplatz des Flughafens Agadir',
-      es: 'Coches con el maletero abierto frente a una zona de lavado en el aparcamiento del aeropuerto de Agadir',
-      pl: 'Samochody z otwartymi bagażnikami przed myjnią na parkingu lotniska w Agadirze',
+      fr: 'Une station-service Afriquia au Maroc, avec ses pompes sous un auvent',
+      en: 'An Afriquia petrol station in Morocco, with its pumps under a canopy',
+      de: 'Eine Afriquia-Tankstelle in Marokko mit Zapfsäulen unter einem Vordach',
+      es: 'Una gasolinera Afriquia en Marruecos, con sus surtidores bajo una marquesina',
+      pl: 'Stacja paliw Afriquia w Maroku, z dystrybutorami pod wiatą',
     },
   },
   'conduite-maroc': {

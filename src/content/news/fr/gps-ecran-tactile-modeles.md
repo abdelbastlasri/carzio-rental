@@ -3,7 +3,7 @@ slug: gps-ecran-tactile-modeles
 lang: fr
 category: flotte-modeles
 title: "GPS et écran tactile : quels modèles Carzio en sont équipés"
-description: "Six modèles avec GPS, huit avec écran tactile. La liste exacte pour choisir votre voiture avant de réserver à Agadir."
+description: "Cinq modèles avec GPS, sept avec écran tactile. La liste exacte pour choisir votre voiture avant de réserver à Agadir."
 date: 2026-11-03
 readingTime: 3
 featured: false
@@ -12,16 +12,15 @@ published: true
 
 Toutes les voitures Carzio ne sont pas équipées de la même façon. Si le GPS ou l'écran tactile compte pour votre voyage, voici les modèles concernés, d'après les équipements réels de la flotte.
 
-## Six modèles avec GPS
+## Cinq modèles avec GPS
 
 - Peugeot 208
 - Dacia Duster
 - Kia Sportage
 - VW T-Roc automatique
 - Hyundai Tucson
-- Volkswagen Touareg
 
-## Huit modèles avec écran tactile
+## Sept modèles avec écran tactile
 
 - Hyundai i10
 - Peugeot 208
@@ -30,9 +29,8 @@ Toutes les voitures Carzio ne sont pas équipées de la même façon. Si le GPS 
 - Kia Sportage
 - VW T-Roc automatique
 - Hyundai Tucson
-- Volkswagen Touareg
 
-Les modèles qui cumulent GPS et écran tactile sont donc la 208, le Duster, le Sportage, le T-Roc, le Tucson et le Touareg.
+Les modèles qui cumulent GPS et écran tactile sont donc la 208, le Duster, le Sportage, le T-Roc et le Tucson.
 
 ## Comment vérifier avant de réserver
 

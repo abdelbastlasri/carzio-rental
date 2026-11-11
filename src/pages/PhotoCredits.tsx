@@ -22,12 +22,14 @@ export default function PhotoCredits() {
               Crédits photos <span className="text-white/40">/ Photo credits</span>
             </h1>
             <p lang="fr" className="mt-4 text-sm leading-relaxed text-white/60">
-              Toutes les photographies publiées sur ce site sont des visuels appartenant à Carzio. Aucune
-              photographie de tiers n'est utilisée, aucune attribution de licence n'est donc nécessaire.
+              La plupart des photographies publiées sur ce site appartiennent à Carzio. Les images provenant
+              de tiers sont répertoriées ci-dessous avec leur auteur, leur licence et un lien vers la source
+              d'origine, conformément aux conditions de réutilisation de chaque fichier.
             </p>
             <p lang="en" className="mt-2 text-sm leading-relaxed text-white/45">
-              Every photograph published on this site is a Carzio-owned visual. No third-party photograph is
-              used, so no licence attribution is required.
+              Most photographs published on this site are Carzio-owned. Third-party images are listed below
+              with their author, licence and a link to the original source, in line with each file's reuse
+              terms.
             </p>
           </div>
         </section>
@@ -36,25 +38,24 @@ export default function PhotoCredits() {
           {photoCredits.length === 0 ? (
             <div className="rounded-2xl border border-white/10 bg-zinc-950/60 p-8 text-center md:p-12">
               <p lang="fr" className="text-sm leading-relaxed text-white/70">
-                Aucune photographie tierce n'est actuellement publiée. Cette page reste en place au cas où une
-                image sous licence serait ajoutée : son auteur, sa licence et sa source y seraient alors
-                répertoriés.
+                Aucune photographie tierce n'est actuellement répertoriée. Cette page reste en place : dès
+                qu'une image sous licence est ajoutée, son auteur, sa licence et sa source y sont consignés.
               </p>
               <p lang="en" className="mt-3 text-sm leading-relaxed text-white/45">
-                No third-party photograph is currently published. This page remains in place so that any
-                licensed image added later can be listed here with its author, licence and source.
+                No third-party photograph is currently listed. This page remains in place so that any licensed
+                image added later is recorded here with its author, licence and source.
               </p>
             </div>
           ) : (
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {photoCredits.map((photo) => (
                 <li
-                  key={photo.file}
+                  key={photo.imagePath}
                   className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 transition hover:border-gold/40"
                 >
                   <div className="relative h-40 overflow-hidden bg-white">
                     <img
-                      src={`/images/journal/${photo.file}`}
+                      src={photo.imagePath}
                       alt={photo.title}
                       loading="lazy"
                       width={400}

@@ -90,13 +90,13 @@
   {
     "group": "blog",
     "output": "journal/blog-cat-assurance.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.47.jpeg",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
+    "source": "Wikimedia Commons/Car damage on fender observed in a parking lot.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Shixart1985",
+    "watermark": false,
     "zoom": 1.0,
-    "kb": 73.9
+    "kb": 45.5
   },
   {
     "group": "blog",
@@ -123,13 +123,13 @@
   {
     "group": "blog",
     "output": "journal/blog-post-assurance.webp",
-    "source": "new fotos/Agadir Airport Car Rental Welcome.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
+    "source": "Wikimedia Commons/Luxembourg, Carte internationale d'assurance automobile.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "GilPe",
+    "watermark": false,
     "zoom": 1.0,
-    "kb": 201.2
+    "kb": 261.5
   },
   {
     "group": "blog",
@@ -178,13 +178,13 @@
   {
     "group": "news",
     "output": "journal/news-cat-assurance-caution.webp",
-    "source": "new fotos/Agadir Airport Car Rental Welcome.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 183.0
+    "source": "Wikimedia Commons/Credit-cards.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 2.5",
+    "author": "Lotus Head",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 153.3
   },
   {
     "group": "news",
@@ -244,24 +244,24 @@
   {
     "group": "news",
     "output": "journal/news-cat-flotte-modeles.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.24.jpeg",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
+    "source": "Wikimedia Commons/Red car morocco Marina Agadir.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "MustaSensei",
+    "watermark": false,
     "zoom": 1.0,
-    "kb": 73.7
+    "kb": 223.9
   },
   {
     "group": "news",
     "output": "journal/news-cat-evenements.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.47.jpeg",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 71.7
+    "source": "Wikimedia Commons/Agadir Beach Sunset (Summer time).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Hatim.laajini",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 50.9
   },
   {
     "group": "news",
@@ -310,13 +310,13 @@
   {
     "group": "news",
     "output": "journal/news-post-caution-zero-mad.webp",
-    "source": "new fotos/Car Rental Pickup at Agadir Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 137.6
+    "source": "Wikimedia Commons/Paying with a Credit Card (28886645201).jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY 2.0",
+    "author": "Hloom Templates",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 58.1
   },
   {
     "group": "news",
@@ -376,13 +376,13 @@
   {
     "group": "news",
     "output": "journal/news-post-agadir-marrakech-essaouira.webp",
-    "source": "new fotos/Family Car Rental Pickup at Carzio Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 144.7
+    "source": "Wikimedia Commons/Skala du Port, Essaouira 01.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Adam Harangozó",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 117.9
   },
   {
     "group": "news",
@@ -431,13 +431,13 @@
   {
     "group": "faq",
     "output": "journal/faq-cat-carburant-livraison.webp",
-    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "zoom": 1.1,
-    "kb": 138.0
+    "source": "Wikimedia Commons/Afriquia Station - Bouznika - October 2023.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Anass Sedrati",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 144.3
   },
   {
     "group": "faq",
@@ -475,11 +475,35 @@
   {
     "group": "about",
     "output": "about-new.webp",
-    "source": "new about foto/Carzio_ Drive with Confidence.png",
-    "folder": "new about foto",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
+    "source": "Wikimedia Commons/Agadir – Al Massira Airport 02.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Werner100359",
     "watermark": false,
-    "kb": 254.7
+    "kb": 180.4
+  },
+  {
+    "group": "fleet",
+    "output": "fleet/kia-sportage.webp",
+    "source": "Wikimedia Commons/2023 Kia Sportage (NQ5) in White, front left.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Benespit",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 128.4,
+    "note": "rembg cut-out composited on pure-white 16:9 canvas"
+  },
+  {
+    "group": "fleet",
+    "output": "fleet/vw-troc.webp",
+    "source": "Wikimedia Commons/Volkswagen T-Roc (2021) 1X7A0330.jpg",
+    "folder": "Wikimedia Commons",
+    "licence": "CC BY-SA 4.0",
+    "author": "Alexander Migl",
+    "watermark": false,
+    "zoom": 1.0,
+    "kb": 88.5,
+    "note": "rembg cut-out composited on pure-white 16:9 canvas"
   }
 ]
