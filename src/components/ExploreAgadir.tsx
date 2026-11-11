@@ -5,19 +5,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    image: '/images/tamraght.jpg',
-    title: 'Tamraght Beach',
-    subtitle: 'Côte d\u2019Agadir',
+    image: '/images/explore/corniche-agadir.webp',
+    title: "Corniche d'Agadir",
+    subtitle: 'Balade en bord de mer',
   },
   {
-    image: '/images/cable-car.jpg',
-    title: "Télécabine d'Agadir",
-    subtitle: 'Cable Car',
+    image: '/images/explore/aeroport-agadir.webp',
+    title: 'Aéroport Agadir Al Massira',
+    subtitle: 'Accueil à l\u2019arrivée',
   },
   {
-    image: '/images/agadir-airport.jpg',
-    title: 'Agadir Airport',
-    subtitle: 'Agadir Al Massira',
+    image: '/images/explore/remise-des-cles.webp',
+    title: 'Votre voiture vous attend',
+    subtitle: 'Prête pour le départ',
   },
 ];
 

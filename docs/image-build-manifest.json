@@ -1,335 +1,531 @@
 [
   {
-    "output": "blog-cat-reservation.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:ATW_Car_Rental_Center.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "KDTW Flyer",
-    "watermark": false,
-    "kb": 99.3
-  },
-  {
-    "output": "blog-cat-assurance.webp",
-    "source": "new fotos/Agadir Airport Family Car Pickup.png",
+    "output": "hero/new-slide-2.webp",
+    "source": "new fotos/Red Sandero Stepway at Agadir Marina.png",
     "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
-    "kb": 173.2
+    "zoom": 1.0,
+    "kb": 285.9
   },
   {
-    "output": "blog-cat-conditions.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 201.1
-  },
-  {
-    "output": "blog-post-age-permis.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45 (3).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 68.1
-  },
-  {
-    "output": "blog-post-assurance.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.47.jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 70.4
-  },
-  {
-    "output": "blog-post-reserver.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.23.jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 100.8
-  },
-  {
-    "output": "news-cat-conduite-maroc.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco.JPG",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 3.0",
-    "author": "Makary",
-    "watermark": false,
-    "kb": 135.5
-  },
-  {
-    "output": "news-cat-securite-regles.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Road_signs_Agadir_2020.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Abdeaitali",
-    "watermark": false,
-    "kb": 280.7
-  },
-  {
-    "output": "news-cat-assurance-caution.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 103.4
-  },
-  {
-    "output": "news-cat-reservation-documents.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.45.jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 193.1
-  },
-  {
-    "output": "news-cat-aeroports-livraison.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24 (1).jpeg",
-    "folder": "New image",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 222.5
-  },
-  {
-    "output": "news-cat-villes-visites.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Agadir_bay.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "AJSPARK4444",
-    "watermark": false,
-    "kb": 248.4
-  },
-  {
-    "output": "news-cat-road-trips.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Taghazout_2.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "AJSPARK4444",
-    "watermark": false,
-    "kb": 134.5
-  },
-  {
-    "output": "news-cat-voyage-famille.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14 (1).jpeg",
-    "folder": "New image",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 166.2
-  },
-  {
-    "output": "news-cat-flotte-modeles.webp",
-    "source": "new fotos/Carzio CarPlay Dashboard Experience.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 144.3
-  },
-  {
-    "output": "news-cat-evenements.webp",
-    "source": "new fotos/Golden Hour Family Escape by the Coast.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 232.5
-  },
-  {
-    "output": "news-cat-budget-conseils.webp",
-    "source": "new fotos/Seaside Travel Planning in Agadir.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 186.3
-  },
-  {
-    "output": "news-post-conduire-au-maroc.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:R212_MZouda_Shishawa_Morocco_Oct25_A7CR_08374.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Timothy A. Gonsalves",
-    "watermark": false,
-    "kb": 172.5
-  },
-  {
-    "output": "news-post-securite-routiere.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Road_signs_pedestrians_Agadir_2020.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Abdeaitali",
-    "watermark": false,
-    "kb": 270.5
-  },
-  {
-    "output": "news-post-assurance-complete.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg",
-    "folder": "New image",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 100.2
-  },
-  {
-    "output": "news-post-caution-zero-mad.webp",
-    "source": "New image/WhatsApp Image 2026-11-05 at 16.22.14.jpeg",
-    "folder": "New image",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 222.8
-  },
-  {
-    "output": "news-post-gps-ecran-tactile.webp",
-    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 140.2
-  },
-  {
-    "output": "news-post-evenements-saisons.webp",
-    "source": "new fotos/Carzio Family Car Rental Welcome.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 217.0
-  },
-  {
-    "output": "news-post-livraison-aeroport.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (1).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 76.8
-  },
-  {
-    "output": "news-post-louer-voiture-famille.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Packing_Luggage_into_the_Car_for_a_Holiday.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Familydestinationsguide.com Images",
-    "watermark": false,
-    "kb": 283.6
-  },
-  {
-    "output": "news-post-road-trips.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Red_car_morocco_Marina_Agadir.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "MustaSensei",
-    "watermark": false,
-    "kb": 297.7
-  },
-  {
-    "output": "news-post-agadir-marrakech-essaouira.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Skala_du_Port,_Essaouira_01.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY-SA 4.0",
-    "author": "Adam Harangozó",
-    "watermark": false,
-    "kb": 109.4
-  },
-  {
-    "output": "news-post-budget-location.webp",
-    "source": "news blog/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
-    "folder": "news blog",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 94.0
-  },
-  {
-    "output": "faq-cat-reservation.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:Enterprise,_Alamo_and_National_Car_Rental_Counter.jpg",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 2.0",
-    "author": "Rusty Clark ~ 100K Photos",
-    "watermark": false,
-    "kb": 88.6
-  },
-  {
-    "output": "faq-cat-conditions.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.44 (2).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 209.7
-  },
-  {
-    "output": "faq-cat-assurance.webp",
-    "source": "new fotos/Carzio Family Pickup Agadir Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 197.6
-  },
-  {
-    "output": "faq-cat-carburant-livraison.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (5).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 118.7
-  },
-  {
-    "output": "faq-cat-conduite-maroc.webp",
-    "source": "https://commons.wikimedia.org/wiki/File:A7_motorway_in_Morocco_2.JPG",
-    "folder": "Wikimedia Commons",
-    "licence": "CC BY 3.0",
-    "author": "Makary",
-    "watermark": false,
-    "kb": 114.0
-  },
-  {
-    "output": "faq-airport-assistance.webp",
-    "source": "new fotos/Carzio Family Pickup at Agadir Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 196.2
-  },
-  {
-    "output": "faq-agadir-terminal.webp",
-    "source": "inspiration/WhatsApp Image 2026-11-08 at 19.10.46 (7).jpeg",
-    "folder": "inspiration",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 79.1
-  },
-  {
-    "output": "blog-agadir-aerial.webp",
-    "source": "new fotos/Carzio Fleet at Agadir Airport.png",
-    "folder": "new fotos",
-    "licence": "Carzio-owned",
-    "author": "Carzio",
-    "watermark": true,
-    "kb": 227.3
-  },
-  {
-    "output": "carzio-new-routes.webp",
+    "output": "hero/new-slide-3.webp",
     "source": "new fotos/Sunny Family Holiday Departure.png",
     "folder": "new fotos",
     "licence": "Carzio-owned",
     "author": "Carzio",
     "watermark": true,
+    "zoom": 1.0,
     "kb": 232.6
+  },
+  {
+    "output": "hero/new-slide-4.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.44.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 222.8
+  },
+  {
+    "output": "hero/new-slide-5.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.44 (3).jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 202.0
+  },
+  {
+    "output": "hero/new-slide-6.webp",
+    "source": "new fotos/Carzio Family Pickup at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 196.2
+  },
+  {
+    "output": "hero/new-slide-7.webp",
+    "source": "new fotos/Carzio Fleet at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 227.3
+  },
+  {
+    "output": "locations/agadir.webp",
+    "source": "new fotos/Agadir Airport Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 201.2
+  },
+  {
+    "output": "locations/marrakech.webp",
+    "source": "new fotos/Carzio CarPlay Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 144.3
+  },
+  {
+    "output": "locations/essaouira.webp",
+    "source": "new fotos/Red Stepway by the Blue Harbor.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 266.7
+  },
+  {
+    "output": "locations/taghazout.webp",
+    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 140.2
+  },
+  {
+    "output": "locations/tamraght.webp",
+    "source": "new fotos/Seaside Travel Planning in Agadir.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 186.3
+  },
+  {
+    "output": "locations/casablanca.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 134.1
+  },
+  {
+    "output": "explore/corniche-agadir.webp",
+    "source": "new fotos/Golden Hour Family Escape by the Coast.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 232.5
+  },
+  {
+    "output": "explore/aeroport-agadir.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.33.41.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 165.1
+  },
+  {
+    "output": "explore/remise-des-cles.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.47.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 73.9
+  },
+  {
+    "output": "journal/blog-agadir-aerial.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 93.9
+  },
+  {
+    "output": "journal/blog-cat-reservation.webp",
+    "source": "new fotos/Car Rental Pickup at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 144.8
+  },
+  {
+    "output": "journal/blog-cat-assurance.webp",
+    "source": "new fotos/Carzio Family Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 217.0
+  },
+  {
+    "output": "journal/blog-cat-conditions.webp",
+    "source": "new fotos/Family Car Rental Pickup at Carzio Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 152.8
+  },
+  {
+    "output": "journal/blog-post-age-permis.webp",
+    "source": "new fotos/Luxury Airport Car Rental Pickup.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 182.3
+  },
+  {
+    "output": "journal/blog-post-assurance.webp",
+    "source": "new fotos/Agadir Airport Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 183.0
+  },
+  {
+    "output": "journal/blog-post-reserver.webp",
+    "source": "new fotos/Agadir Airport Family Car Pickup.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 173.2
+  },
+  {
+    "output": "journal/carzio-new-routes.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.24 (2).jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 88.1
+  },
+  {
+    "output": "journal/news-cat-conduite-maroc.webp",
+    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 140.1
+  },
+  {
+    "output": "journal/news-cat-securite-regles.webp",
+    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 150.0
+  },
+  {
+    "output": "journal/news-cat-assurance-caution.webp",
+    "source": "new fotos/Agadir Airport Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 174.2
+  },
+  {
+    "output": "journal/news-cat-reservation-documents.webp",
+    "source": "new fotos/Carzio Airport Rental Check-In.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 176.0
+  },
+  {
+    "output": "journal/news-cat-aeroports-livraison.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 81.7
+  },
+  {
+    "output": "journal/news-cat-villes-visites.webp",
+    "source": "new fotos/Red Stepway by the Blue Harbor.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 239.1
+  },
+  {
+    "output": "journal/news-cat-road-trips.webp",
+    "source": "new fotos/Seaside Travel Planning in Agadir.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 179.5
+  },
+  {
+    "output": "journal/news-cat-voyage-famille.webp",
+    "source": "new fotos/Carzio Family Pickup Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 197.6
+  },
+  {
+    "output": "journal/news-cat-flotte-modeles.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.24.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 73.7
+  },
+  {
+    "output": "journal/news-cat-evenements.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.10.47.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 71.7
+  },
+  {
+    "output": "journal/news-cat-budget-conseils.webp",
+    "source": "new fotos/Carzio Family Car Rental Welcome.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 202.6
+  },
+  {
+    "output": "journal/news-post-conduire-au-maroc.webp",
+    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 134.7
+  },
+  {
+    "output": "journal/news-post-securite-routiere.webp",
+    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 153.0
+  },
+  {
+    "output": "journal/news-post-assurance-complete.webp",
+    "source": "new fotos/Luxury Airport Car Rental Pickup.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 166.3
+  },
+  {
+    "output": "journal/news-post-caution-zero-mad.webp",
+    "source": "new fotos/Car Rental Pickup at Agadir Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 137.6
+  },
+  {
+    "output": "journal/news-post-gps-ecran-tactile.webp",
+    "source": "new fotos/Carzio CarPlay Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 134.8
+  },
+  {
+    "output": "journal/news-post-evenements-saisons.webp",
+    "source": "new fotos/Golden Hour Family Escape by the Coast.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 212.7
+  },
+  {
+    "output": "journal/news-post-livraison-aeroport.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.33.41.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 151.5
+  },
+  {
+    "output": "journal/news-post-louer-voiture-famille.webp",
+    "source": "new fotos/Agadir Airport Family Car Pickup.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 163.5
+  },
+  {
+    "output": "journal/news-post-road-trips.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-08 at 19.04.24.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.0,
+    "kb": 201.1
+  },
+  {
+    "output": "journal/news-post-agadir-marrakech-essaouira.webp",
+    "source": "new fotos/Family Car Rental Pickup at Carzio Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 144.7
+  },
+  {
+    "output": "journal/news-post-budget-location.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 138.0
+  },
+  {
+    "output": "journal/faq-cat-reservation.webp",
+    "source": "new fotos/Luxury Airport Car Rental Pickup.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 152.9
+  },
+  {
+    "output": "journal/faq-cat-conditions.webp",
+    "source": "new fotos/Carzio Airport Rental Check-In.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 170.5
+  },
+  {
+    "output": "journal/faq-cat-assurance.webp",
+    "source": "new fotos/Carzio Car Rental Inspection at the Airport.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 149.8
+  },
+  {
+    "output": "journal/faq-cat-carburant-livraison.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 135.1
+  },
+  {
+    "output": "journal/faq-cat-conduite-maroc.webp",
+    "source": "new fotos/Dacia Duster Coastal Dashboard Experience.png",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.3,
+    "kb": 127.8
+  },
+  {
+    "output": "journal/faq-airport-assistance.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.33.41.jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.2,
+    "kb": 145.1
+  },
+  {
+    "output": "journal/faq-agadir-terminal.webp",
+    "source": "new fotos/WhatsApp Image 2026-11-05 at 16.24.25 (1).jpeg",
+    "folder": "new fotos",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": true,
+    "zoom": 1.1,
+    "kb": 83.5
+  },
+  {
+    "output": "about-new.webp",
+    "source": "new about foto/Carzio_ Drive with Confidence.png",
+    "folder": "new about foto",
+    "licence": "Carzio-owned",
+    "author": "Carzio",
+    "watermark": false,
+    "kb": 254.7
   }
 ]

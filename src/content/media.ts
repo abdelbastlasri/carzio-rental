@@ -2,9 +2,10 @@
  * Single source of truth for the photography used by the Blog, News and FAQ.
  *
  * Every entry records the derivative that is served, the alt text for each
- * language, and where the underlying photograph came from. Sources are either
- * Carzio-owned photographs (owner folders: `news blog`, `New image`,
- * `inspiration`) or Wikimedia Commons files with a documented licence.
+ * language, and where the underlying photograph came from. All of the imagery
+ * in this file now comes from the owner-supplied `new fotos` folder; no
+ * third-party photograph is published any more, so `src/data/photoCredits.ts`
+ * is intentionally empty.
  *
  * The full provenance table lives in `docs/image-inventory.md`.
  */
@@ -31,26 +32,26 @@ const J = (file: string) => `/images/journal/${file}`;
 export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
   reservation: {
     file: 'blog-cat-reservation.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Comptoir de location de voitures dans un aeroport, pret pour la prise en charge',
-      en: 'Car rental counter at an airport, ready for pickup',
+      fr: "Un agent Carzio remet les clés à un couple devant le terminal de l'aéroport d'Agadir Al Massira",
+      en: 'A Carzio agent hands the keys to a couple outside the Agadir Al Massira airport terminal',
     },
   },
   assurance: {
     file: 'blog-cat-assurance.webp',
     source: 'new fotos',
     alt: {
-      fr: "Une famille heureuse recupere sa voiture Carzio a l'aeroport d'Agadir",
-      en: 'A happy family collects their Carzio car at Agadir airport',
+      fr: "Une famille signe son contrat de location au comptoir Carzio de l'aéroport d'Agadir",
+      en: 'A family signs its rental contract at the Carzio desk at Agadir airport',
     },
   },
   conditions: {
     file: 'blog-cat-conditions.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: "Un client tient ses documents et sa carte Carzio à côté de sa voiture de location à l'aéroport d'Agadir",
-      en: 'A customer holds his Carzio card and rental documents beside his hire car at Agadir airport',
+      fr: "Un agent Carzio remet les documents de location à une famille au comptoir de l'aéroport",
+      en: 'A Carzio agent hands the rental documents to a family at the airport desk',
     },
   },
 };
@@ -58,26 +59,26 @@ export const blogCategoryMedia: Record<string, BlogCategoryMedia> = {
 export const blogPostMedia: Record<string, BlogCategoryMedia> = {
   'age-permis-conducteurs-location-maroc': {
     file: 'blog-post-age-permis.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: "Une voiture Carzio au point de prise en charge et de restitution a l'aeroport d'Agadir",
-      en: 'A Carzio car at the pickup and return point at Agadir airport',
+      fr: "Un agent Carzio remet une carte-clé à un couple souriant au comptoir de l'aéroport",
+      en: 'A Carzio agent hands a key card to a smiling couple at the airport desk',
     },
   },
   'assurance-location-voiture-maroc': {
     file: 'blog-post-assurance.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: 'Une Dacia blanche, portes et coffre ouverts, contrôlée avant la remise des clés',
-      en: 'A white Dacia with its doors and boot open, checked before the keys are handed over',
+      fr: "Un agent Carzio remet les clés à un couple au comptoir de l'aéroport d'Agadir Al Massira",
+      en: 'A Carzio agent hands the keys to a couple at the Agadir Al Massira airport desk',
     },
   },
   'reserver-voiture-agadir-guide': {
     file: 'blog-post-reserver.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: "Une voiture de location garée devant le terminal de l'aéroport d'Agadir Al Massira",
-      en: 'A rental car parked in front of the Agadir Al Massira airport terminal',
+      fr: "Un agent Carzio accueille une famille avec enfants devant l'aéroport d'Agadir",
+      en: 'A Carzio agent welcomes a family with children outside Agadir airport',
     },
   },
 };
@@ -87,90 +88,90 @@ export const blogPostMedia: Record<string, BlogCategoryMedia> = {
 export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
   'conduite-maroc': {
     file: 'news-cat-conduite-maroc.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Autoroute marocaine avec un panneau de direction bilingue',
-      en: 'Moroccan motorway with a bilingual direction sign',
+      fr: "Le tableau de bord d'un Dacia Duster avec l'écran de navigation, sur une route côtière",
+      en: 'The dashboard of a Dacia Duster with the navigation screen on a coastal road',
     },
   },
   'securite-regles': {
     file: 'news-cat-securite-regles.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: "Panneau de limitation à 40 km/h dans une rue d'Agadir",
-      en: '40 km/h speed limit sign on an Agadir street',
+      fr: "Un agent Carzio vérifie l'état d'un véhicule avec une checklist devant un couple",
+      en: 'A Carzio agent checks a vehicle against a checklist in front of a couple',
     },
   },
   'assurance-caution': {
     file: 'news-cat-assurance-caution.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: 'Renault et Dacia Sandero Stepway garées à l’aéroport d’Agadir, prêtes à être récupérées',
-      en: 'A Renault and a Dacia Sandero Stepway parked at Agadir airport, ready to be collected',
+      fr: "Un agent Carzio remet les clés d'un véhicule à un couple à l'aéroport d'Agadir",
+      en: 'A Carzio agent hands a vehicle key to a couple at Agadir airport',
     },
   },
   'reservation-documents': {
     file: 'news-cat-reservation-documents.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: "Une voiture Carzio remise a un client a l'aeroport d'Agadir, documents et cles en main",
-      en: 'A Carzio car handed over to a customer at Agadir airport, documents and keys ready',
+      fr: "Un couple présente ses documents au comptoir Carzio de l'aéroport d'Agadir",
+      en: 'A couple presents its documents at the Carzio desk at Agadir airport',
     },
   },
   'aeroports-livraison': {
     file: 'news-cat-aeroports-livraison.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: "Le terminal de l'aéroport d'Agadir Al Massira",
-      en: 'The Agadir Al Massira airport terminal',
+      fr: "Le parking de l'aéroport d'Agadir Al Massira avec plusieurs voitures garées et la tour de contrôle en arrière-plan",
+      en: 'The Agadir Al Massira airport car park with several parked cars and the control tower behind',
     },
   },
   'villes-visites': {
     file: 'news-cat-villes-visites.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Vue aérienne de la baie d’Agadir et de la ville',
-      en: 'Aerial view of the bay of Agadir and the city',
+      fr: 'Une Dacia Stepway rouge garée sur un quai, avec des bateaux de pêche bleus et des remparts en arrière-plan',
+      en: 'A red Dacia Stepway parked on a quay, with blue fishing boats and ramparts behind',
     },
   },
   'road-trips': {
     file: 'news-cat-road-trips.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'La baie de Taghazout et ses montagnes, point de départ de la boucle côtière',
-      en: 'The bay of Taghazout and its mountains, the start of the coastal loop',
+      fr: 'Un couple prépare un itinéraire à une terrasse face à la mer, carte et téléphone sur la table',
+      en: 'A couple plans a route at a seaside terrace with a map and a phone on the table',
     },
   },
   'voyage-famille': {
     file: 'news-cat-voyage-famille.webp',
-    source: 'New image',
+    source: 'new fotos',
     alt: {
-      fr: "Une famille avec enfant récupère sa voiture Carzio à l'aéroport d'Agadir, plaque CARZIO visible",
-      en: 'A family with a child collects their Carzio car at Agadir airport, CARZIO plate visible',
+      fr: "Un agent Carzio présente une voiture blanche à une famille avec valises devant l'aéroport d'Agadir",
+      en: 'A Carzio agent presents a white car to a family with suitcases outside Agadir airport',
     },
   },
   'flotte-modeles': {
     file: 'news-cat-flotte-modeles.webp',
     source: 'new fotos',
     alt: {
-      fr: 'Tableau de bord Carzio avec CarPlay et navigation',
-      en: 'Carzio dashboard with CarPlay and navigation',
+      fr: 'Une voiture stationnée dans un parking couvert éclairé',
+      en: 'A car parked in a lit indoor car park',
     },
   },
   evenements: {
     file: 'news-cat-evenements.webp',
     source: 'new fotos',
     alt: {
-      fr: "Une famille Carzio en escapade cotiere au coucher du soleil",
-      en: 'A Carzio family on a coastal escape at golden hour',
+      fr: "Un SUV blanc garé dans le parking de l'aéroport, coffre et portière ouverts",
+      en: 'A white SUV parked at the airport car park with its boot and door open',
     },
   },
   'budget-conseils': {
     file: 'news-cat-budget-conseils.webp',
     source: 'new fotos',
     alt: {
-      fr: 'Planification de voyage a Agadir avec voiture Carzio',
-      en: 'Travel planning in Agadir with a Carzio car',
+      fr: "Une famille signe son contrat de location au comptoir Carzio de l'aéroport d'Agadir",
+      en: 'A family signs its rental contract at the Carzio desk at Agadir airport',
     },
   },
 };
@@ -178,90 +179,90 @@ export const newsCategoryMedia: Record<string, BlogCategoryMedia> = {
 export const newsPostMedia: Record<string, BlogCategoryMedia> = {
   'conduire-au-maroc-essentiel': {
     file: 'news-post-conduire-au-maroc.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Route nationale traversant une ville marocaine, avec circulation et palmiers',
-      en: 'A national road crossing a Moroccan town, with traffic and palm trees',
+      fr: "Le tableau de bord d'un Dacia Duster avec l'écran de navigation allumé",
+      en: 'The dashboard of a Dacia Duster with the navigation screen on',
     },
   },
   'securite-routiere-maroc-essentiel': {
     file: 'news-post-securite-routiere.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Passage piéton et circulation dans une rue d’Agadir',
-      en: 'Pedestrian crossing and traffic on an Agadir street',
+      fr: "Un agent Carzio inspecte le phare d'un véhicule avec une checklist, sous le regard d'un couple",
+      en: 'A Carzio agent inspects a vehicle headlight against a checklist while a couple watches',
     },
   },
   'assurance-complete-cinq-jours': {
     file: 'news-post-assurance-complete.webp',
-    source: 'New image',
+    source: 'new fotos',
     alt: {
-      fr: 'Voitures de location alignées à l’aéroport d’Agadir, prêtes à être couvertes',
-      en: 'Rental cars lined up at Agadir airport, ready to be covered',
+      fr: "Un agent Carzio remet une carte-clé à un couple au comptoir de l'aéroport d'Agadir",
+      en: 'A Carzio agent hands a key card to a couple at the Agadir airport desk',
     },
   },
   'caution-zero-mad': {
     file: 'news-post-caution-zero-mad.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: "Un client récupère sa voiture Carzio à l'aéroport d'Agadir, remise des clés sans caution",
-      en: 'A customer collects his Carzio car at Agadir airport, keys handed over with no deposit',
+      fr: "Un agent Carzio remet les clés à un couple devant le terminal de l'aéroport d'Agadir",
+      en: 'A Carzio agent hands the keys to a couple outside the Agadir airport terminal',
     },
   },
   'gps-ecran-tactile-modeles': {
     file: 'news-post-gps-ecran-tactile.webp',
     source: 'new fotos',
     alt: {
-      fr: 'Tableau de bord Dacia Duster avec CarPlay',
-      en: 'Dacia Duster dashboard with CarPlay',
+      fr: "Une main utilise l'écran CarPlay du tableau de bord d'une voiture de location",
+      en: "A hand uses the CarPlay screen on a rental car's dashboard",
     },
   },
   'evenements-saisons-agadir': {
     file: 'news-post-evenements-saisons.webp',
     source: 'new fotos',
     alt: {
-      fr: "Une famille Carzio prete pour les vacances a Agadir",
-      en: 'A Carzio family ready for the holidays in Agadir',
+      fr: "Une famille marche vers la plage avec sa valise au coucher du soleil, devant une voiture noire siglée Carzio",
+      en: 'A family walks to the beach with its suitcase at sunset, past a black Carzio-badged car',
     },
   },
   'livraison-aeroport-agadir': {
     file: 'news-post-livraison-aeroport.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: "Les voitures de location alignées au parking de l'aéroport d'Agadir Al Massira",
-      en: 'The rental cars lined up in the car park at Agadir Al Massira airport',
+      fr: "Une voyageuse avec sa valise devant une voiture de location au coffre ouvert, à l'aéroport d'Agadir Al Massira",
+      en: 'A traveller with a suitcase beside a rental car with its boot open at Agadir Al Massira airport',
     },
   },
   'louer-voiture-famille-maroc': {
     file: 'news-post-louer-voiture-famille.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Une famille chargeant ses bagages dans le coffre de sa voiture avant les vacances',
-      en: 'A family loading their luggage into the car boot before the holiday',
+      fr: "Un agent Carzio accueille une famille avec enfants devant l'aéroport d'Agadir",
+      en: 'A Carzio agent welcomes a family with children outside Agadir airport',
     },
   },
   'road-trips-depuis-agadir': {
     file: 'news-post-road-trips.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Une voiture rouge garée près de la marina d’Agadir',
-      en: 'A red car parked near the Agadir marina',
+      fr: "Un couple avec sa valise sur le parking de l'aéroport d'Agadir au coucher du soleil, devant une Dacia Stepway grise",
+      en: 'A couple with a suitcase in the Agadir airport car park at sunset, in front of a grey Dacia Stepway',
     },
   },
   'agadir-marrakech-essaouira-voiture': {
     file: 'news-post-agadir-marrakech-essaouira.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Le port d’Essaouira et ses remparts',
-      en: 'The port of Essaouira and its ramparts',
+      fr: "Un agent Carzio remet les documents de location à une famille au comptoir de l'aéroport",
+      en: 'A Carzio agent hands the rental documents to a family at the airport desk',
     },
   },
   'budget-location-voiture-agadir': {
     file: 'news-post-budget-location.webp',
-    source: 'news blog',
+    source: 'new fotos',
     alt: {
-      fr: 'Une Renault Clio grise, modèle économique de la flotte Carzio',
-      en: 'A grey Renault Clio, an economical model in the Carzio fleet',
+      fr: "Un homme charge une Peugeot 208 argentée au coffre ouvert, devant une station de lavage de l'aéroport",
+      en: 'A man loads a silver Peugeot 208 with its boot open, in front of an airport car-wash bay',
     },
   },
 };
@@ -271,57 +272,57 @@ export const newsPostMedia: Record<string, BlogCategoryMedia> = {
 export const faqCategoryMedia: Record<string, MediaEntry> = {
   reservation: {
     file: 'faq-cat-reservation.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Comptoir de location de voitures a l aeroport, prise en charge des clients',
-      en: 'Car rental counter at the airport, customer pickup',
-      de: 'Mietwagenschalter am Flughafen, Kundenabholung',
-      es: 'Mostrador de alquiler de coches en el aeropuerto, recogida de clientes',
-      pl: 'Stoisko wypozyczalni samochodow na lotnisku, odbior klientow',
+      fr: "Un agent Carzio remet une carte-clé à un couple au comptoir de l'aéroport d'Agadir",
+      en: 'A Carzio agent hands a key card to a couple at the Agadir airport desk',
+      de: 'Ein Carzio-Mitarbeiter übergibt einem Paar am Flughafenschalter in Agadir eine Schlüsselkarte',
+      es: 'Un agente de Carzio entrega una tarjeta-llave a una pareja en el mostrador del aeropuerto de Agadir',
+      pl: 'Pracownik Carzio przekazuje parze kartę-klucz przy stanowisku na lotnisku w Agadirze',
     },
   },
   conditions: {
     file: 'faq-cat-conditions.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: "Un client choisit sa voiture de location sur le parking de l'aéroport d'Agadir, permis et documents en main",
-      en: 'A customer chooses his rental car in the Agadir airport car park, licence and documents ready',
-      de: 'Ein Kunde wählt sein Mietauto auf dem Parkplatz des Flughafens Agadir, Führerschein und Unterlagen bereit',
-      es: 'Un cliente elige su coche de alquiler en el aparcamiento del aeropuerto de Agadir, con permiso y documentos listos',
-      pl: 'Klient wybiera samochód na parkingu lotniska w Agadirze, z prawem jazdy i dokumentami gotowymi do odbioru',
+      fr: "Un couple présente ses documents au comptoir Carzio de l'aéroport d'Agadir",
+      en: 'A couple presents its documents at the Carzio desk at Agadir airport',
+      de: 'Ein Paar legt seine Dokumente am Carzio-Schalter am Flughafen Agadir vor',
+      es: 'Una pareja presenta sus documentos en el mostrador de Carzio en el aeropuerto de Agadir',
+      pl: 'Para okazuje dokumenty przy stanowisku Carzio na lotnisku w Agadirze',
     },
   },
   assurance: {
     file: 'faq-cat-assurance.webp',
     source: 'new fotos',
     alt: {
-      fr: "Une famille heureuse recupere sa voiture Carzio a l'aeroport d'Agadir",
-      en: 'A happy family collects their Carzio car at Agadir airport',
-      de: 'Eine glueckliche Familie holt ihr Carzio-Auto am Flughafen Agadir ab',
-      es: 'Una familia feliz recoge su coche Carzio en el aeropuerto de Agadir',
-      pl: 'Szczesliwa rodzina odbiera samochod Carzio na lotnisku w Agadirze',
+      fr: "Un agent Carzio vérifie l'état d'un véhicule avec une checklist devant un couple",
+      en: 'A Carzio agent checks a vehicle against a checklist in front of a couple',
+      de: 'Ein Carzio-Mitarbeiter prüft ein Fahrzeug anhand einer Checkliste vor einem Paar',
+      es: 'Un agente de Carzio revisa un vehículo con una lista de control ante una pareja',
+      pl: 'Pracownik Carzio sprawdza pojazd według listy kontrolnej w obecności pary',
     },
   },
   'carburant-livraison': {
     file: 'faq-cat-carburant-livraison.webp',
-    source: 'inspiration',
+    source: 'new fotos',
     alt: {
-      fr: "Une voiture Carzio et ses clients à l'aéroport d'Agadir Al Massira, avec un avion en arrière-plan",
-      en: 'A Carzio car and its customers at Agadir Al Massira airport, with an aircraft overhead',
-      de: 'Ein Carzio-Auto und seine Kunden am Flughafen Agadir Al Massira, mit einem Flugzeug im Hintergrund',
-      es: 'Un coche Carzio y sus clientes en el aeropuerto de Agadir Al Massira, con un avión al fondo',
-      pl: 'Samochód Carzio i jego klienci na lotnisku Agadir Al Massira, z samolotem w tle',
+      fr: "Des voitures au coffre ouvert devant une station de lavage du parking de l'aéroport d'Agadir",
+      en: 'Cars with their boots open in front of a car-wash bay in the Agadir airport car park',
+      de: 'Autos mit geöffnetem Kofferraum vor einer Waschanlage auf dem Parkplatz des Flughafens Agadir',
+      es: 'Coches con el maletero abierto frente a una zona de lavado en el aparcamiento del aeropuerto de Agadir',
+      pl: 'Samochody z otwartymi bagażnikami przed myjnią na parkingu lotniska w Agadirze',
     },
   },
   'conduite-maroc': {
     file: 'faq-cat-conduite-maroc.webp',
-    source: 'Wikimedia Commons',
+    source: 'new fotos',
     alt: {
-      fr: 'Autoroute marocaine qui traverse un paysage de montagnes rouges',
-      en: 'Moroccan motorway crossing a red-rock landscape',
-      de: 'Marokkanische Autobahn durch eine Landschaft roter Felsen',
-      es: 'Autopista marroquí que atraviesa un paisaje de montañas rojas',
-      pl: 'Marokańska autostrada przecinająca krajobraz czerwonych skał',
+      fr: "Le tableau de bord d'un Dacia Duster avec l'écran de navigation, sur une route côtière",
+      en: 'The dashboard of a Dacia Duster with the navigation screen on a coastal road',
+      de: 'Das Armaturenbrett eines Dacia Duster mit Navigationsbildschirm auf einer Küstenstraße',
+      es: 'El salpicadero de un Dacia Duster con la pantalla de navegación en una carretera costera',
+      pl: 'Deska rozdzielcza Dacii Duster z ekranem nawigacji na drodze nadmorskiej',
     },
   },
 };

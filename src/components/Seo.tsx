@@ -83,7 +83,7 @@ export default function Seo({
     x.setAttribute('data-carzio-hreflang', 'true');
     document.head.appendChild(x);
 
-    const socialImage = image || 'https://www.carzio.ma/images/agadir-airport.jpg';
+    const socialImage = image || 'https://www.carzio.ma/images/hero/new-slide-7.webp';
     const localeMap: Record<string, string> = {
       en: 'en_GB',
       fr: 'fr_FR',
