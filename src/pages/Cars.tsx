@@ -1,14 +1,20 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Fleet from '../components/Fleet';
 import BookingModal from '../components/BookingModal';
+import MobileStickyCta from '../components/MobileStickyCta';
 import Seo from '../components/Seo';
+import { trackEvent } from '../lib/analytics';
 
 export default function Cars() {
   const { t } = useTranslation();
   const [bookingOpen, setBookingOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState('');
   const [modalKey, setModalKey] = useState(0);
+
+  useEffect(() => {
+    trackEvent('view_fleet', { page: 'cars' });
+  }, []);
 
   const handleBook = useCallback((carId: string) => {
     setSelectedCar(carId);
@@ -17,7 +23,7 @@ export default function Cars() {
   }, []);
 
   return (
-    <div className="pt-28 md:pt-32">
+    <div className="pt-28 pb-28 md:pt-32 md:pb-0">
       <Seo
         title={t('pages.carTitle')}
         description={t('pages.carDesc')}
@@ -32,6 +38,7 @@ export default function Cars() {
         </div>
       </div>
       <Fleet onBook={handleBook} />
+      <MobileStickyCta onBook={() => handleBook('')} />
       <BookingModal
         key={`booking-${modalKey}`}
         isOpen={bookingOpen}

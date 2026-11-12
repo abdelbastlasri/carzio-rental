@@ -292,7 +292,10 @@
     "submitting": "Wird gesendet...",
     "submitted": "Gesendet",
     "flightRequired": "Flugnummer ist erforderlich",
-    "selectCarLabel": "Wählen Sie ein Auto"
+    "selectCarLabel": "Wählen Sie ein Auto",
+    "trustLine": "Zahlung bei Schl?ssel?bergabe ? 0 MAD Kaution ? Kostenlose Stornierung 24 Std.",
+    "whatsappHelp": "Brauchen Sie Hilfe? Schreiben Sie uns mit Ihren Daten.",
+    "flightNote": "Wird verwendet, um Ihren Flug bei Versp?tung zu verfolgen."
   },
   "extras": {
     "Baby Seat": "Kindersitz",
@@ -567,5 +570,16 @@
     "section11Content": "Diese Erklärung kann aktualisiert werden; das Datum der letzten Aktualisierung steht oben auf der Seite.",
     "backToHome": "Zurück zur Startseite",
     "contactLine": "Fragen zu Ihren Daten: contact@carzio.ma"
+  },
+  "cookie": {
+    "title": "Cookies und Datenschutz",
+    "text": "Wir verwenden Cookies, um den Datenverkehr zu analysieren und Ihr Buchungserlebnis zu verbessern. Sie k?nnen nicht notwendige Cookies akzeptieren oder ablehnen.",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen",
+    "privacy": "Datenschutzerkl?rung"
+  },
+  "mobileBar": {
+    "book": "Auto buchen",
+    "whatsapp": "WhatsApp"
   }
 }

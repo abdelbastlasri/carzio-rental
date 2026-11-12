@@ -292,7 +292,10 @@
     "submitting": "Submitting...",
     "submitted": "Submitted",
     "flightRequired": "Flight number is required",
-    "selectCarLabel": "Choose a car"
+    "selectCarLabel": "Choose a car",
+    "trustLine": "Pay at pickup ? 0 MAD deposit ? Free cancellation 24h",
+    "whatsappHelp": "Need help? Message us with your dates.",
+    "flightNote": "Used to track your flight if it is delayed."
   },
   "extras": {
     "Baby Seat": "Baby Seat",
@@ -567,5 +570,16 @@
     "section11Content": "This policy may be updated; the date of the latest update is shown at the top of the page.",
     "backToHome": "Back to the homepage",
     "contactLine": "Questions about your data: contact@carzio.ma"
+  },
+  "cookie": {
+    "title": "Cookies and privacy",
+    "text": "We use cookies to analyse traffic and improve your booking experience. You can accept or reject non-essential cookies.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "privacy": "Privacy policy"
+  },
+  "mobileBar": {
+    "book": "Book a car",
+    "whatsapp": "WhatsApp"
   }
 }

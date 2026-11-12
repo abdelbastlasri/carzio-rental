@@ -292,7 +292,10 @@
     "submitting": "Wysyłanie...",
     "submitted": "Wysłano",
     "flightRequired": "Numer lotu jest wymagany",
-    "selectCarLabel": "Wybierz samochód"
+    "selectCarLabel": "Wybierz samochód",
+    "trustLine": "P?atno?? przy przekazaniu kluczyk?w ? 0 MAD kaucji ? Bezp?atna anulacja 24 godz.",
+    "whatsappHelp": "Potrzebujesz pomocy? Napisz do nas z datami.",
+    "flightNote": "U?ywany do ?ledzenia lotu w przypadku op??nienia."
   },
   "extras": {
     "Baby Seat": "Fotelik Dziecięcy",
@@ -567,5 +570,16 @@
     "section11Content": "Polityka może być aktualizowana; data ostatniej aktualizacji znajduje się na górze strony.",
     "backToHome": "Powrót na stronę główną",
     "contactLine": "Pytania o Twoje dane: contact@carzio.ma"
+  },
+  "cookie": {
+    "title": "Pliki cookie i prywatno??",
+    "text": "U?ywamy plik?w cookie, aby analizowa? ruch i ulepsza? proces rezerwacji. Mo?esz zaakceptowa? lub odrzuci? pliki cookie, kt?re nie s? niezb?dne.",
+    "accept": "Akceptuj",
+    "reject": "Odrzu?",
+    "privacy": "Polityka prywatno?ci"
+  },
+  "mobileBar": {
+    "book": "Zarezerwuj samoch?d",
+    "whatsapp": "WhatsApp"
   }
 }

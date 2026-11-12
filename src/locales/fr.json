@@ -292,7 +292,10 @@
     "submitting": "Envoi en cours...",
     "submitted": "Envoyé",
     "flightRequired": "Le numéro de vol est obligatoire",
-    "selectCarLabel": "Choisissez une voiture"
+    "selectCarLabel": "Choisissez une voiture",
+    "trustLine": "Paiement ? la remise des cl?s ? 0 MAD de caution ? Annulation gratuite 24 h",
+    "whatsappHelp": "Besoin d'aide ? ?crivez-nous avec vos dates.",
+    "flightNote": "Utilis? pour suivre votre vol en cas de retard."
   },
   "extras": {
     "Baby Seat": "Siège Bébé",
@@ -567,5 +570,16 @@
     "section11Content": "Cette politique peut être mise à jour ; la date de la dernière mise à jour figure en haut de la page.",
     "backToHome": "Retour à l'accueil",
     "contactLine": "Une question sur vos données : contact@carzio.ma"
+  },
+  "cookie": {
+    "title": "Cookies et confidentialit?",
+    "text": "Nous utilisons des cookies pour analyser le trafic et am?liorer votre exp?rience de r?servation. Vous pouvez accepter ou refuser les cookies non essentiels.",
+    "accept": "Accepter",
+    "reject": "Refuser",
+    "privacy": "Politique de confidentialit?"
+  },
+  "mobileBar": {
+    "book": "R?server une voiture",
+    "whatsapp": "WhatsApp"
   }
 }

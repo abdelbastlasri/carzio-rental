@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
+import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
 import Cars from './pages/Cars';
 import About from './pages/About';
@@ -84,6 +85,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <CookieConsent />
     </CurrencyProvider>
   );
 }

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Car } from '../types';
 import { useCurrency } from '../lib/currency';
+import { trackEvent } from '../lib/analytics';
 import CarAd from './CarAd';
 
 interface CarCardProps {
@@ -118,7 +119,14 @@ export default function CarCard({ car, onBook, index = 0, overridePrice }: CarCa
         <div className="mt-auto pt-4">
           <button
             type="button"
-            onClick={() => onBook(car.id)}
+            onClick={() => {
+              trackEvent('select_car', {
+                car_id: car.id,
+                car_name: car.name,
+                price_per_day: displayPrice,
+              });
+              onBook(car.id);
+            }}
             className="group/cta flex w-full items-center justify-between rounded-xl bg-burgundy px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-burgundy/20 transition hover:bg-red-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
           >
             <span>{t('carCard.bookNow')}</span>

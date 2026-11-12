@@ -1,5 +1,6 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import LangLink from './LangLink';
+import { trackEvent, trackBookingConversion } from '../lib/analytics';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
@@ -55,10 +56,21 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const [dateError, setDateError] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [overridePrice, setOverridePrice] = useState<number | null>(null);
+  const step2Tracked = useRef(false);
 
   useEffect(() => {
     if (isOpen) {
-      setStep(preselectedCar && preselectedPickupDate && preselectedDropoffDate ? 2 : 1);
+      const initialStep = preselectedCar && preselectedPickupDate && preselectedDropoffDate ? 2 : 1;
+      setStep(initialStep);
+      step2Tracked.current = initialStep === 2;
+      trackEvent('begin_booking', {
+        car_id: preselectedCar || undefined,
+        preselected: Boolean(preselectedCar),
+        start_step: initialStep,
+      });
+      if (initialStep === 2) {
+        trackEvent('booking_step_2', { car_id: preselectedCar });
+      }
       setShowConfirmation(false);
       setSubmitError('');
       setPickupLocation(preselectedLocation || 'agadir');
@@ -152,6 +164,10 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       return;
     }
     setStep(2);
+    if (!step2Tracked.current) {
+      step2Tracked.current = true;
+      trackEvent('booking_step_2', { car_id: selectedCar });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -203,6 +219,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body.error || 'Server error');
+      trackBookingConversion({ value: totalPrice, carName, days });
       setShowConfirmation(true);
       setSubmitting(false);
     } catch (err) {
@@ -224,6 +241,16 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
     );
   };
+
+  const whatsappHelpText = [
+    'Hello Carzio, I need help with my booking.',
+    car ? `Car: ${car.name}.` : '',
+    pickupDate ? `Pickup: ${pickupDate}.` : '',
+    dropoffDate ? `Return: ${dropoffDate}.` : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const whatsappHelpUrl = `https://wa.me/212680318003?text=${encodeURIComponent(whatsappHelpText)}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 md:pt-16 overflow-y-auto">
@@ -340,6 +367,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             >
               {t('bookingModal.continue')}
             </button>
+            <p className="text-center text-[11px] leading-relaxed text-gray-500">
+              {t(
+                'bookingModal.trustLine',
+                'Pay at pickup · 0 MAD deposit · Free cancellation 24h',
+              )}
+            </p>
           </form>
         )}
 
@@ -485,6 +518,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                       autoComplete="off"
                       className="w-full bg-black text-white border border-zinc-700 rounded-lg px-3 py-2 text-sm focus:border-gold"
                     />
+                    <p className="mt-1 text-[11px] leading-relaxed text-gray-500">
+                      {t(
+                        'bookingModal.flightNote',
+                        'Used to track your flight if it is delayed.',
+                      )}
+                    </p>
                   </div>
                   <div>
                     <label className="block text-gray-300 text-xs font-medium mb-1">{t('bookingModal.specialRequests')}</label>
@@ -572,6 +611,22 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
 
             {/* Terms + Submit */}
             <div className="p-5 space-y-3">
+              <div className="rounded-lg border border-white/10 bg-black/40 p-3 text-center">
+                <p className="text-[11px] leading-relaxed text-gray-400">
+                  {t(
+                    'bookingModal.trustLine',
+                    'Pay at pickup · 0 MAD deposit · Free cancellation 24h',
+                  )}
+                </p>
+                <a
+                  href={whatsappHelpUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block text-xs font-medium text-[#25D366] underline hover:text-[#25D366]/80"
+                >
+                  {t('bookingModal.whatsappHelp', 'Need help? Message us with your dates.')}
+                </a>
+              </div>
               <label className="flex items-start gap-2 cursor-pointer">
                 <input
                   type="checkbox"
