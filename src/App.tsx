@@ -10,6 +10,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
 import Cars from './pages/Cars';
+import AirportPage from './pages/AirportPage';
 import About from './pages/About';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
@@ -63,6 +64,11 @@ function App() {
         <Routes location={{ ...location, pathname: basePath }}>
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<Cars />} />
+          <Route path="/car-rental-agadir-airport" element={<AirportPage />} />
+          <Route path="/location-voiture-aeroport-agadir" element={<AirportPage />} />
+          <Route path="/mietwagen-agadir-flughafen" element={<AirportPage />} />
+          <Route path="/alquiler-coche-aeropuerto-agadir" element={<AirportPage />} />
+          <Route path="/wynajem-samochodu-agadir-lotnisko" element={<AirportPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />

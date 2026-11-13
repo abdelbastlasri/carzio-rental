@@ -13,6 +13,8 @@ interface SeoProps {
   type?: string;
   /** Languages that actually exist for this page. Defaults to all five. */
   alternateLangs?: ('en' | 'fr' | 'de' | 'es' | 'pl')[];
+  /** Language-specific paths, when the slug differs per language. */
+  alternatePaths?: Partial<Record<'en' | 'fr' | 'de' | 'es' | 'pl', string>>;
 }
 
 export default function Seo({
@@ -25,6 +27,7 @@ export default function Seo({
   image,
   type = 'website',
   alternateLangs = [...ALL_LANGS],
+  alternatePaths,
 }: SeoProps) {
   const { i18n } = useTranslation();
 
@@ -69,7 +72,8 @@ export default function Seo({
       const a = document.createElement('link');
       a.setAttribute('rel', 'alternate');
       a.setAttribute('hreflang', alt);
-      a.setAttribute('href', `${origin}${withLangPrefix(basePath, alt)}`);
+      const altPath = alternatePaths?.[alt] || basePath;
+      a.setAttribute('href', `${origin}${withLangPrefix(altPath, alt)}`);
       a.setAttribute('data-carzio-hreflang', 'true');
       document.head.appendChild(a);
     }
@@ -79,7 +83,7 @@ export default function Seo({
     const x = document.createElement('link');
     x.setAttribute('rel', 'alternate');
     x.setAttribute('hreflang', 'x-default');
-    x.setAttribute('href', `${origin}${withLangPrefix(basePath, 'en')}`);
+    x.setAttribute('href', `${origin}${withLangPrefix(alternatePaths?.en || basePath, 'en')}`);
     x.setAttribute('data-carzio-hreflang', 'true');
     document.head.appendChild(x);
 
@@ -120,7 +124,7 @@ export default function Seo({
       const ld = document.getElementById('carzio-jsonld');
       if (ld) ld.remove();
     };
-  }, [title, description, canonical, lang, jsonLd, robots, image, type, alternateLangs, i18n.language]);
+  }, [title, description, canonical, lang, jsonLd, robots, image, type, alternateLangs, alternatePaths, i18n.language]);
 
   return null;
 }

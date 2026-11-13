@@ -1,8 +1,10 @@
 import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
+import { getAirportPage } from '../content/airport';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const airportPage = getAirportPage(i18n.language);
   return (
     <footer className="relative border-t border-white/5 bg-black">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/10 to-transparent" />
@@ -66,6 +68,11 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8">
           <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-3">{t('footer.destinations')}</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            <li>
+              <LangLink to={`/${airportPage.slug}`} className="text-gold text-sm font-medium hover:text-gold-light transition">
+                Agadir Airport
+              </LangLink>
+            </li>
             {[
               { name: 'Agadir', slug: 'agadir' },
               { name: 'Marrakech', slug: 'marrakech' },
