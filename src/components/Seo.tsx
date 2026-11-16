@@ -51,7 +51,10 @@ export default function Seo({
     };
 
     const origin = window.location.origin;
-    const callerPath = (canonical || window.location.href).replace(/^https?:\/\/[^/]+/, '');
+    const callerPath = (canonical || window.location.href)
+      .replace(/^https?:\/\/[^/]+/, '')
+      .split('#')[0]
+      .split('?')[0];
     const basePath = stripLangPrefix(callerPath) || '/';
     const canonicalHref = `${origin}${withLangPrefix(basePath, prefix)}`;
 
