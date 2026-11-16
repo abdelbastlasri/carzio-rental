@@ -5,12 +5,13 @@ import fr from './locales/fr.json';
 import es from './locales/es.json';
 import pl from './locales/pl.json';
 import de from './locales/de.json';
+import nl from './locales/nl.json';
 
 const savedLang = typeof window !== 'undefined' ? localStorage.getItem('carzioLang') : null;
-const urlMatch = typeof window !== 'undefined' ? window.location.pathname.match(/^\/(fr|en|de|es|pl)(?=\/|$)/) : null;
+const urlMatch = typeof window !== 'undefined' ? window.location.pathname.match(/^\/(fr|en|de|es|pl|nl)(?=\/|$)/) : null;
 
 i18n.use(initReactI18next).init({
-  resources: { en: { translation: en }, fr: { translation: fr }, es: { translation: es }, pl: { translation: pl }, de: { translation: de } },
+  resources: { en: { translation: en }, fr: { translation: fr }, es: { translation: es }, pl: { translation: pl }, de: { translation: de }, nl: { translation: nl } },
   lng: urlMatch?.[1] || savedLang || 'en',
   fallbackLng: 'en',
   interpolation: { escapeValue: false },

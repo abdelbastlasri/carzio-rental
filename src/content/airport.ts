@@ -1,4 +1,4 @@
-export type AirportLang = 'en' | 'fr' | 'de' | 'es' | 'pl';
+export type AirportLang = 'en' | 'fr' | 'de' | 'es' | 'pl' | 'nl';
 
 export interface AirportFaq {
   q: string;
@@ -381,7 +381,76 @@ const pl: AirportPageContent = {
   whatsappText: 'Potrzebujesz pomocy? Napisz na WhatsApp.',
 };
 
-export const airportPages: Record<AirportLang, AirportPageContent> = { en, fr, de, es, pl };
+const nl: AirportPageContent = {
+  slug: 'auto-huren-agadir-luchthaven',
+  title: 'Auto huren op Agadir Airport (Al Massira) | Carzio',
+  description:
+    'Huur een auto op Agadir Al Massira Airport met Carzio: ontvangst in de aankomsthal, 0 MAD borg, gratis annulering 24 uur, automatische auto\'s en SUV\'s, 24/7 lokale service.',
+  h1: 'Auto huren op Agadir Airport (Al Massira)',
+  intro:
+    'Uw auto staat klaar op Agadir Al Massira Airport. Carzio is een lokaal verhuurbedrijf op de terminal: ons team ontvangt u in de aankomsthal, u regelt de papieren en rijdt weg. Duidelijke prijzen, 0 MAD borg en gratis annulering tot 24 uur voor het ophalen.',
+  cta: 'Beschikbaarheid checken',
+  trust: ['Ontvangst in de aankomsthal', '0 MAD borg', 'Gratis annulering 24 uur', '24/7 lokale service'],
+  stepsTitle: 'Zo werkt ophalen op de luchthaven',
+  steps: [
+    {
+      title: 'Stuur uw boekingsaanvraag',
+      text: 'Geef ons uw vluchtnummer, aankomstdatum en auto. Wij bevestigen de beschikbaarheid per e-mail of WhatsApp.',
+    },
+    {
+      title: 'Ontmoet ons in de aankomsthal',
+      text: 'Ons team wacht op u in de aankomsthal met uw naam. Geen shuttle, geen wachtrij aan de balie.',
+    },
+    {
+      title: 'Controleer de auto en rijd weg',
+      text: 'We bekijken de auto samen, leggen de verzekering uit en overhandigen de sleutels. Betaling bij sleuteloverdracht.',
+    },
+  ],
+  pickupTitle: 'Ophalen op Agadir Al Massira (AGA)',
+  pickupText:
+    'Onze balie is MAG N2, Agadir Airport. Als uw vlucht vertraging heeft, stuur ons een bericht op WhatsApp en we passen de ophaaltijd aan.',
+  priceTitle: 'Duidelijke prijzen, geen verrassingen',
+  priceText:
+    'De prijs die u ziet is inclusief onbeperkte kilometers, standaardverzekering, ophalen op de luchthaven en de tweede bestuurder. Volledige verzekering is optioneel en wordt getoond voordat u bevestigt.',
+  insuranceTitle: 'Verzekering en borg',
+  insuranceText:
+    'Standaardverzekering is inbegrepen. Volledige verzekering verlaagt het eigen risico naar 0 MAD vanaf 5 gefactureerde dagen. Geen kaarthold en geen borg: u betaalt bij sleuteloverdracht.',
+  faqTitle: 'FAQ auto huren op de luchthaven',
+  faqs: [
+    {
+      q: 'Waar ontmoet ik het Carzio-team?',
+      a: 'In de aankomsthal van Agadir Al Massira Airport. Stuur uw vluchtnummer en wij volgen uw aankomst.',
+    },
+    {
+      q: 'Is ophalen op de luchthaven gratis?',
+      a: 'Ja. Ophalen en inleveren op Agadir Al Massira Airport zijn gratis.',
+    },
+    {
+      q: 'Hoe hoog is de borg?',
+      a: '0 MAD. We houden geen bedrag op uw kaart vast.',
+    },
+    {
+      q: 'Kan ik de auto laat in de avond ophalen?',
+      a: 'Ja, we zijn 24/7 op de luchthaven. Geef ons uw vluchtnummer zodat we kunnen plannen.',
+    },
+    {
+      q: 'Welke documenten heb ik nodig?',
+      a: 'Paspoort of ID, een rijbewijs dat minstens 4 jaar geldig is en een bankkaart voor betaling bij sleuteloverdracht.',
+    },
+    {
+      q: 'Kan ik de auto in een andere stad inleveren?',
+      a: 'One-way huren is mogelijk op aanvraag. Marrakech en Casablanca hebben leveringskosten; Taghazout, Tamraght en Essaouira worden vooraf geprijsd.',
+    },
+  ],
+  mapTitle: 'Vind ons op Agadir Airport',
+  mapText: 'MAG N2, Agadir Al Massira Airport, 80000 Agadir, Marokko. 24/7 geopend.',
+  directions: 'Open in Google Maps',
+  fleetTitle: 'Kies uw auto',
+  fleetSubtitle: "Stadsauto's, automatische auto's, gezinsauto's en SUV's beschikbaar op de luchthaven.",
+  whatsappText: 'Hulp nodig? Stuur ons een bericht op WhatsApp.',
+};
+
+export const airportPages: Record<AirportLang, AirportPageContent> = { en, fr, de, es, pl, nl };
 
 export function getAirportPage(language: string): AirportPageContent {
   const lang = (language.split('-')[0] || 'en') as AirportLang;
@@ -395,5 +464,6 @@ export function airportAlternatePaths(): Record<AirportLang, string> {
     de: `/${airportPages.de.slug}`,
     es: `/${airportPages.es.slug}`,
     pl: `/${airportPages.pl.slug}`,
+    nl: `/${airportPages.nl.slug}`,
   };
 }

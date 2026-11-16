@@ -20,7 +20,7 @@
 - Insurance: standard insurance is included (glass, tyres and mirrors covered). Full Risk insurance reduces the excess to 0 MAD for +€10/day or +€15/day depending on the vehicle. Full Risk is available from 5 billed days only, is never pre-selected and is removed automatically below 5 billed days. Its price is included in the total shown before confirmation.
 - Delivery: free at Agadir Al Massira airport and at the Agadir agency. Marrakech and Casablanca: €80 per trip (delivery and, if applicable, return). Taghazout, Tamraght and Essaouira: on request, price confirmed before booking.
 - Fleet: 12 cars, economy to SUV, good prices for our clients. Some models have GPS and a touchscreen.
-- Languages: French, English, German, Spanish and Polish on the website. Articles are published in French and English.
+- Languages: French, English, German, Spanish and Polish across the website, plus a Dutch airport landing page. Articles are published in French and English.
 
 ## Main pages
 
@@ -33,6 +33,7 @@
 - FAQ: https://www.carzio.ma/faq
 - Blog: https://www.carzio.ma/blog
 - News: https://www.carzio.ma/news
+- Dutch airport page: https://www.carzio.ma/nl/auto-huren-agadir-luchthaven
 
 ## Destinations
 

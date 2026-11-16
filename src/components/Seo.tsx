@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { detectLangFromPath, stripLangPrefix, withLangPrefix, ALL_LANGS } from '../lib/i18nRouting';
+import { detectLangFromPath, stripLangPrefix, withLangPrefix } from '../lib/i18nRouting';
 
 interface SeoProps {
   title: string;
@@ -11,10 +11,10 @@ interface SeoProps {
   robots?: string;
   image?: string;
   type?: string;
-  /** Languages that actually exist for this page. Defaults to all five. */
-  alternateLangs?: ('en' | 'fr' | 'de' | 'es' | 'pl')[];
+  /** Languages that actually exist for this page. Defaults to the five fully translated versions. */
+  alternateLangs?: ('en' | 'fr' | 'de' | 'es' | 'pl' | 'nl')[];
   /** Language-specific paths, when the slug differs per language. */
-  alternatePaths?: Partial<Record<'en' | 'fr' | 'de' | 'es' | 'pl', string>>;
+  alternatePaths?: Partial<Record<'en' | 'fr' | 'de' | 'es' | 'pl' | 'nl', string>>;
 }
 
 export default function Seo({
@@ -26,7 +26,7 @@ export default function Seo({
   robots = 'index, follow',
   image,
   type = 'website',
-  alternateLangs = [...ALL_LANGS],
+  alternateLangs = ['en', 'fr', 'de', 'es', 'pl'],
   alternatePaths,
 }: SeoProps) {
   const { i18n } = useTranslation();
@@ -94,6 +94,7 @@ export default function Seo({
       de: 'de_DE',
       es: 'es_ES',
       pl: 'pl_PL',
+      nl: 'nl_NL',
     };
     const socialLocale = localeMap[currentLang.slice(0, 2)] || 'en_GB';
 

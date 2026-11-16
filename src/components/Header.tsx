@@ -7,8 +7,10 @@ import { stripLangPrefix, withLangPrefix, type Lang } from '../lib/i18nRouting';
 import CurrencySwitcher from './CurrencySwitcher';
 import { blogCategories } from '../content/blog/categories';
 import { newsCategories } from '../content/news/categories';
+import { airportAlternatePaths } from '../content/airport';
 
 const WHATSAPP_URL = 'https://wa.me/212680318003';
+const AIRPORT_PATHS = airportAlternatePaths();
 
 // Desktop: logo handles "home" — keep the bar free of a redundant fifth item.
 const navLinks = [
@@ -30,6 +32,7 @@ const languages = [
   { code: 'es', label: 'lang.es', flag: '/images/flags/es.svg' },
   { code: 'pl', label: 'lang.pl', flag: '/images/flags/pl.svg' },
   { code: 'de', label: 'lang.de', flag: '/images/flags/de.svg' },
+  { code: 'nl', label: 'lang.nl', flag: '/images/flags/nl.svg' },
 ];
 
 export default function Header() {
@@ -212,7 +215,12 @@ export default function Header() {
                       onClick={() => {
                         i18n.changeLanguage(lang.code);
                         setLangOpen(false);
-                        const target = withLangPrefix(basePath, lang.code as Lang);
+                        // Airport pages use a different slug per language.
+                        const airportPath = Object.values(AIRPORT_PATHS).find((p) => p === basePath);
+                        const targetBase = airportPath
+                          ? AIRPORT_PATHS[lang.code as keyof typeof AIRPORT_PATHS]
+                          : basePath;
+                        const target = withLangPrefix(targetBase, lang.code as Lang);
                         navigate(target);
                       }}
                       className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm transition ${

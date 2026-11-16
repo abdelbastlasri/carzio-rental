@@ -69,6 +69,7 @@ function App() {
           <Route path="/mietwagen-agadir-flughafen" element={<AirportPage />} />
           <Route path="/alquiler-coche-aeropuerto-agadir" element={<AirportPage />} />
           <Route path="/wynajem-samochodu-agadir-lotnisko" element={<AirportPage />} />
+          <Route path="/auto-huren-agadir-luchthaven" element={<AirportPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />

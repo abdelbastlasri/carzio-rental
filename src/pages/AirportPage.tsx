@@ -99,7 +99,7 @@ export default function AirportPage() {
         title={content.title}
         description={content.description}
         image="https://www.carzio.ma/images/hero/agadir-airport-arrival.jpg"
-        alternateLangs={['en', 'fr', 'de', 'es', 'pl']}
+        alternateLangs={['en', 'fr', 'de', 'es', 'pl', 'nl']}
         alternatePaths={ALTERNATE_PATHS}
         jsonLd={jsonLd}
       />

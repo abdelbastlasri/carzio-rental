@@ -3,8 +3,8 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/(en|fr|de|es|pl)", "destination": "/index.html" },
-    { "source": "/(en|fr|de|es|pl)/(.*)", "destination": "/index.html" },
+    { "source": "/(en|fr|de|es|pl|nl)", "destination": "/index.html" },
+    { "source": "/(en|fr|de|es|pl|nl)/(.*)", "destination": "/index.html" },
     { "source": "/", "destination": "/index.html" },
     { "source": "/cars", "destination": "/index.html" },
     { "source": "/about", "destination": "/index.html" },

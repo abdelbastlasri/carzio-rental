@@ -1,7 +1,7 @@
-export const ALL_LANGS = ['en', 'fr', 'de', 'es', 'pl'] as const;
+export const ALL_LANGS = ['en', 'fr', 'de', 'es', 'pl', 'nl'] as const;
 export type Lang = (typeof ALL_LANGS)[number];
 
-const LANG_RE = /^\/(en|fr|de|es|pl)(?=\/|$)/;
+const LANG_RE = /^\/(en|fr|de|es|pl|nl)(?=\/|$)/;
 
 export function detectLangFromPath(pathname: string): Lang | null {
   const match = pathname.match(LANG_RE);

@@ -10,7 +10,9 @@ interface CarAdProps {
 export default function CarAd({ carId, compact = false }: CarAdProps) {
   const { i18n } = useTranslation();
   const ad = getCarAd(carId, i18n.language);
-  if (!ad) return null;
+  // Dutch car pitches are not translated yet. Hide the English fallback rather
+  // than mixing languages on the Dutch landing page.
+  if (!ad || i18n.language.startsWith('nl')) return null;
 
   if (compact) {
     return <p className="mt-2 text-[11px] leading-snug text-white/50">{ad.pitch}</p>;
