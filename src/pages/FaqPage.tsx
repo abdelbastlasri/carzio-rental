@@ -50,8 +50,7 @@ export default function FaqPage() {
         title={`${category.title} | FAQ Carzio`}
         description={category.description}
         canonical={`https://www.carzio.ma/faq/${category.slug}`}
-        alternateLangs={['en', 'fr', 'de', 'es', 'pl']}
-        robots={i18n.language.startsWith('nl') ? 'noindex, follow' : 'index, follow'}
+        alternateLangs={['en', 'fr', 'de', 'es', 'pl', 'nl']}
         jsonLd={[faqLd, breadcrumbs]}
       />
       <JournalCategoryHero

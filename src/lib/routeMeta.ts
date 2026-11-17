@@ -297,14 +297,11 @@ function makeCoreRoutes(): RouteMeta[] {
 }
 
 function faqLanguages(): Lang[] {
-  // FAQ content is translated in five languages. Dutch currently falls back
-  // to French, so its FAQ pages are generated but kept noindex and out of
-  // hreflang/sitemap until a Dutch FAQ translation exists.
   return ['en', 'fr', 'de', 'es', 'pl', 'nl'];
 }
 
 function faqAlternateLanguages(): Lang[] {
-  return ['en', 'fr', 'de', 'es', 'pl'];
+  return ['en', 'fr', 'de', 'es', 'pl', 'nl'];
 }
 
 function makeFaqRoutes(): RouteMeta[] {
@@ -320,7 +317,6 @@ function makeFaqRoutes(): RouteMeta[] {
       canonicalPath: hubPath,
       h1: t(lang, 'faq.heading'),
       intro: t(lang, 'faq.intro'),
-      robots: lang === 'nl' ? 'noindex, follow' : undefined,
       jsonLd: breadcrumbLd(lang, [
         { name: t(lang, 'nav.home', 'Home'), path: withLangPrefix('/', lang) },
         { name: 'FAQ', path: hubPath },
@@ -328,7 +324,7 @@ function makeFaqRoutes(): RouteMeta[] {
       alternates: Object.fromEntries(
         faqAlternateLanguages().map((alt) => [alt, withLangPrefix('/faq', alt)]),
       ) as Partial<Record<Lang, string>>,
-      sitemap: lang !== 'nl',
+      sitemap: true,
       priority: 0.7,
     });
 
@@ -342,7 +338,6 @@ function makeFaqRoutes(): RouteMeta[] {
         canonicalPath: path,
         h1: category.title,
         intro: category.description,
-        robots: lang === 'nl' ? 'noindex, follow' : undefined,
         jsonLd: [
           {
             '@context': 'https://schema.org',
@@ -362,7 +357,7 @@ function makeFaqRoutes(): RouteMeta[] {
         alternates: Object.fromEntries(
           faqAlternateLanguages().map((alt) => [alt, withLangPrefix(`/faq/${category.slug}`, alt)]),
         ) as Partial<Record<Lang, string>>,
-        sitemap: lang !== 'nl',
+        sitemap: true,
         priority: 0.55,
       });
     }
@@ -372,13 +367,13 @@ function makeFaqRoutes(): RouteMeta[] {
 
 function makeCityRoutes(): RouteMeta[] {
   const routes: RouteMeta[] = [];
-  const cityAlternateLangs: Lang[] = ['en', 'fr', 'de', 'es', 'pl'];
+  const cityAlternateLangs: Lang[] = ['en', 'fr', 'de', 'es', 'pl', 'nl'];
   const cityLangs: Lang[] = ['en', 'fr', 'de', 'es', 'pl', 'nl'];
   const slugs = ['agadir', 'marrakech', 'casablanca', 'taghazout', 'tamraght', 'essaouira'];
 
   for (const lang of cityLangs) {
     for (const slug of slugs) {
-      const city = findCity(slug, lang === 'nl' ? 'fr' : lang);
+      const city = findCity(slug, lang);
       if (!city) continue;
       const path = withLangPrefix(`/location-voiture-${slug}`, lang);
       const alternates = Object.fromEntries(
@@ -392,7 +387,6 @@ function makeCityRoutes(): RouteMeta[] {
         canonicalPath: path,
         h1: cleanTitle(city.title),
         intro: city.intro[0] || city.description,
-        robots: lang === 'nl' ? 'noindex, follow' : undefined,
         jsonLd: [
           autoRentalLd(lang, path, `Car rental in ${city.name}`, [city.name]),
           breadcrumbLd(lang, [
@@ -402,7 +396,7 @@ function makeCityRoutes(): RouteMeta[] {
           ]),
         ],
         alternates,
-        sitemap: lang !== 'nl',
+        sitemap: true,
         priority: 0.65,
       });
     }

@@ -1,4 +1,5 @@
 import { faqCategoryMedia } from '../content/media';
+import { nlFaqCategories } from './faq-nl';
 
 export interface FaqEntry {
   q: string;
@@ -17,10 +18,10 @@ export interface FaqCategory {
 
 interface FaqCategoryImage {
   image: string;
-  alt: Record<FaqLang, string>;
+  alt: Record<string, string>;
 }
 
-type FaqLang = 'fr' | 'en' | 'de' | 'es' | 'pl';
+type FaqLang = 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
 
 // Photography for the FAQ categories lives in src/content/media.ts so every
 // content section shares one source of truth.
@@ -901,6 +902,7 @@ const CATS: Record<FaqLang, FaqCategory[]> = {
   de: withCategoryImages(de, 'de'),
   es: withCategoryImages(es, 'es'),
   pl: withCategoryImages(pl, 'pl'),
+  nl: withCategoryImages(nlFaqCategories, 'nl'),
 };
 
 export function getFaqCategories(lang: string): FaqCategory[] {

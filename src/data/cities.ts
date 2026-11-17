@@ -1,3 +1,5 @@
+import { nlCities } from './cities-nl';
+
 export interface CityHighlight {
   name: string;
   detail: string;
@@ -30,7 +32,7 @@ export interface CityPage {
   faqs: CityFaq[];
 }
 
-export type CityLang = 'fr' | 'en' | 'de' | 'es' | 'pl';
+export type CityLang = 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
 
 const fr: Record<string, CityPage> = {
   agadir: {
@@ -1255,9 +1257,9 @@ const CATS_PL: Record<string, CityPage> = {
   },
 };
 
-const CITIES: Record<CityLang, Record<string, CityPage>> = { fr, en: CATS_EN, de: CATS_DE, es: CATS_ES, pl: CATS_PL };
+const CITIES: Record<CityLang, Record<string, CityPage>> = { fr, en: CATS_EN, de: CATS_DE, es: CATS_ES, pl: CATS_PL, nl: nlCities };
 export const cities: CityPage[] = Object.values(CITIES.fr);
 export function findCity(slug: string, lang: string = 'fr'): CityPage | undefined {
-  const key = (['fr', 'en', 'de', 'es', 'pl'].includes(lang.slice(0, 2)) ? lang.slice(0, 2) : 'fr') as CityLang;
+  const key = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(lang.slice(0, 2)) ? lang.slice(0, 2) : 'fr') as CityLang;
   return CITIES[key][slug];
 }

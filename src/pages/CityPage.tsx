@@ -80,8 +80,7 @@ export default function CityPage({ citySlug }: CityPageProps) {
         title={city.title}
         description={city.description}
         canonical={canonical}
-        alternateLangs={['en', 'fr', 'de', 'es', 'pl']}
-        robots={lang === 'nl' ? 'noindex, follow' : 'index, follow'}
+        alternateLangs={['en', 'fr', 'de', 'es', 'pl', 'nl']}
         jsonLd={[autoRental, breadcrumbs]}
       />
       <div className="pt-28 md:pt-32">

@@ -23,8 +23,7 @@ export default function FaqHub() {
         title={t('faq.metaTitle')}
         description={t('faq.metaDescription')}
         canonical="https://www.carzio.ma/faq"
-        alternateLangs={['en', 'fr', 'de', 'es', 'pl']}
-        robots={i18n.language.startsWith('nl') ? 'noindex, follow' : 'index, follow'}
+        alternateLangs={['en', 'fr', 'de', 'es', 'pl', 'nl']}
         jsonLd={[breadcrumbs]}
       />
       <div className="pt-28 md:pt-32">
