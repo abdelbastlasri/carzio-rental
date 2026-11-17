@@ -140,4 +140,39 @@ export function initAnalytics(): void {
   }
 
   document.addEventListener('click', handleDelegatedClick, true);
+
+  // INP approximation: keep the worst interaction duration of the page and
+  // send it once when the visitor leaves. No extra dependency is required.
+  if ('PerformanceObserver' in window) {
+    let worstInteraction = 0;
+    let reported = false;
+    try {
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          const interaction = entry as unknown as { interactionId?: number; duration: number };
+          if (interaction.interactionId && interaction.duration > worstInteraction) {
+            worstInteraction = interaction.duration;
+          }
+        }
+      });
+      observer.observe({ type: 'event', buffered: true } as unknown as PerformanceObserverInit);
+    } catch {
+      // Event timing is not supported in every browser.
+    }
+
+    const reportInp = () => {
+      if (reported || worstInteraction <= 0) return;
+      reported = true;
+      const rounded = Math.round(worstInteraction);
+      trackEvent('web_vitals', {
+        metric_name: 'INP',
+        metric_value: rounded,
+        metric_rating: rounded <= 200 ? 'good' : rounded <= 500 ? 'needs_improvement' : 'poor',
+      });
+    };
+    window.addEventListener('pagehide', reportInp, { once: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') reportInp();
+    });
+  }
 }

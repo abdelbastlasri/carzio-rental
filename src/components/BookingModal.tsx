@@ -21,7 +21,7 @@ interface BookingModalProps {
 
 export default function BookingModal({ isOpen, onClose, preselectedCar, preselectedLocation, preselectedDropoffLocation, preselectedPickupDate, preselectedDropoffDate }: BookingModalProps) {
   const { t } = useTranslation();
-  const { formatPrice } = useCurrency();
+  const { formatPrice, currency } = useCurrency();
   const localDate = () => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -56,7 +56,12 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
   const [dateError, setDateError] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [overridePrice, setOverridePrice] = useState<number | null>(null);
+  const [quoteSending, setQuoteSending] = useState(false);
+  const [quoteSent, setQuoteSent] = useState(false);
+  const [quoteError, setQuoteError] = useState('');
+  const [draftAvailable, setDraftAvailable] = useState(false);
   const step2Tracked = useRef(false);
+  const DRAFT_KEY = 'carzio_booking_draft';
 
   useEffect(() => {
     if (isOpen) {
@@ -93,8 +98,83 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       setConfirmationMethod('email');
       setOverridePrice(null);
       setDateError('');
+      setQuoteSent(false);
+      setQuoteError('');
+      setQuoteSending(false);
     }
   }, [isOpen, preselectedCar, preselectedLocation, preselectedDropoffLocation, preselectedPickupDate, preselectedDropoffDate, today]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      setDraftAvailable(Boolean(raw && JSON.parse(raw)?.email));
+    } catch {
+      setDraftAvailable(false);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || (!name && !email && !phone)) return;
+    const draft = {
+      name,
+      email,
+      phone,
+      age,
+      flightNumber,
+      requests,
+      selectedCar,
+      pickupDate,
+      dropoffDate,
+      pickupTime,
+      dropoffTime,
+      pickupLocation,
+      dropoffLocation,
+      selectedExtras,
+      fullInsurance,
+    };
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    } catch {
+      // Storage can be unavailable in private mode; the form still works.
+    }
+  }, [isOpen, name, email, phone, age, flightNumber, requests, selectedCar, pickupDate, dropoffDate, pickupTime, dropoffTime, pickupLocation, dropoffLocation, selectedExtras, fullInsurance]);
+
+  const resumeDraft = () => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const draft = JSON.parse(raw);
+      setName(draft.name || '');
+      setEmail(draft.email || '');
+      setPhone(draft.phone || '');
+      setAge(draft.age || '');
+      setFlightNumber(draft.flightNumber || '');
+      setRequests(draft.requests || '');
+      setSelectedCar(draft.selectedCar || selectedCar);
+      setPickupDate(draft.pickupDate || pickupDate);
+      setDropoffDate(draft.dropoffDate || dropoffDate);
+      setPickupTime(draft.pickupTime || pickupTime);
+      setDropoffTime(draft.dropoffTime || dropoffTime);
+      setPickupLocation(draft.pickupLocation || pickupLocation);
+      setDropoffLocation(draft.dropoffLocation || dropoffLocation);
+      setSelectedExtras(Array.isArray(draft.selectedExtras) ? draft.selectedExtras : []);
+      setFullInsurance(Boolean(draft.fullInsurance));
+      setStep(2);
+      setDraftAvailable(false);
+    } catch {
+      setDraftAvailable(false);
+    }
+  };
+
+  const clearDraft = () => {
+    try {
+      localStorage.removeItem(DRAFT_KEY);
+    } catch {
+      // Ignore storage errors.
+    }
+    setDraftAvailable(false);
+  };
 
   useEffect(() => {
     if (selectedCar) {
@@ -220,6 +300,11 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       const body = await res.json();
       if (!res.ok) throw new Error(body.error || 'Server error');
       trackBookingConversion({ value: totalPrice, carName, days });
+      try {
+        localStorage.removeItem(DRAFT_KEY);
+      } catch {
+        // Ignore storage errors.
+      }
       setShowConfirmation(true);
       setSubmitting(false);
     } catch (err) {
@@ -228,6 +313,43 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
       setSubmitError(msg);
       setSubmitted(false);
       setSubmitting(false);
+    }
+  };
+
+  const sendQuote = async () => {
+    setQuoteError('');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setQuoteError(t('bookingModal.quoteEmailRequired', 'Enter a valid email address to receive the quote.'));
+      return;
+    }
+    setQuoteSending(true);
+    try {
+      const response = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name || 'Guest',
+          email,
+          phone,
+          carName: car?.name || 'Car rental in Agadir',
+          pickupDate,
+          dropoffDate,
+          pickupTime,
+          dropoffTime,
+          pickupLocation: locations.find((location) => location.id === pickupLocation)?.name || pickupLocation,
+          dropoffLocation: locations.find((location) => location.id === dropoffLocation)?.name || dropoffLocation,
+          days,
+          totalPrice,
+          currency,
+        }),
+      });
+      const body = await response.json();
+      if (!response.ok || !body.ok) throw new Error(body.error || 'Quote could not be sent.');
+      setQuoteSent(true);
+    } catch (error) {
+      setQuoteError(error instanceof Error ? error.message : 'Quote could not be sent.');
+    } finally {
+      setQuoteSending(false);
     }
   };
 
@@ -293,6 +415,30 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
             </button>
           </div>
         </div>
+
+        {draftAvailable && !showConfirmation && (
+          <div className="mx-5 mt-5 rounded-xl border border-gold/30 bg-gold/10 p-3 text-sm">
+            <p className="text-white/80">
+              {t('bookingModal.draftFound', 'You started a request earlier. Resume it?')}
+            </p>
+            <div className="mt-2 flex gap-2">
+              <button
+                type="button"
+                onClick={resumeDraft}
+                className="rounded-lg bg-gold px-3 py-1.5 text-xs font-semibold text-black"
+              >
+                {t('bookingModal.draftResume', 'Resume')}
+              </button>
+              <button
+                type="button"
+                onClick={clearDraft}
+                className="rounded-lg border border-white/20 px-3 py-1.5 text-xs font-semibold text-white/70"
+              >
+                {t('bookingModal.draftClear', 'Clear')}
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Step 1: Booking Details */}
         {step === 1 && (
@@ -627,6 +773,19 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
                   {t('bookingModal.whatsappHelp', 'Need help? Message us with your dates.')}
                 </a>
               </div>
+              <button
+                type="button"
+                onClick={sendQuote}
+                disabled={quoteSending || quoteSent}
+                className="w-full rounded-lg border border-gold/40 bg-gold/10 px-4 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold/20 disabled:opacity-60"
+              >
+                {quoteSent
+                  ? t('bookingModal.quoteSent', 'Quote sent — check your inbox.')
+                  : quoteSending
+                    ? t('bookingModal.quoteSending', 'Sending your quote…')
+                    : t('bookingModal.quoteEmailCta', 'Email me this quote')}
+              </button>
+              {quoteError && <p className="text-center text-xs text-red-400">{quoteError}</p>}
               <label className="flex items-start gap-2 cursor-pointer">
                 <input
                   type="checkbox"

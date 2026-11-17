@@ -6,7 +6,7 @@ import { formatBlogDate } from '../content/blog/format';
 
 interface NewsCardProps {
   post: NewsPost;
-  contentLang: 'fr' | 'en';
+  contentLang: string;
 }
 
 export default function NewsCard({ post, contentLang }: NewsCardProps) {

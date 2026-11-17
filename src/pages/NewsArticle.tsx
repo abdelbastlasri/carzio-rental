@@ -5,20 +5,22 @@ import Seo from '../components/Seo';
 import Markdown from '../components/Markdown';
 import NewsCard from '../components/NewsCard';
 import JournalArticleHero from '../components/JournalArticleHero';
-import { findNews, getRelatedNews } from '../content/news/loader';
+import { findNews, getAvailableNewsLanguages, getRelatedNews } from '../content/news/loader';
 import { formatBlogDate } from '../content/blog/format';
 import { getNewsCategoryCopy } from '../content/news/categories';
 
 export default function NewsArticle() {
   const { t, i18n } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
   const post = findNews(slug || '', contentLang);
+  const availableLangs = getAvailableNewsLanguages(slug || '');
 
   if (!post) {
     return (
       <>
-        <Seo alternateLangs={['en','fr']}
+        <Seo alternateLangs={availableLangs.length ? availableLangs : ['en','fr']}
           title={t('news.notFound')}
           description={t('news.notFoundText')}
           robots="noindex, follow"
@@ -38,7 +40,7 @@ export default function NewsArticle() {
   const canonical = `https://www.carzio.ma/news/${post.slug}`;
   const imageUrl = `https://www.carzio.ma${post.image}`;
   const related = getRelatedNews(post, contentLang);
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = post.lang !== contentLang;
 
   const articleLd = {
     '@context': 'https://schema.org',
@@ -85,7 +87,7 @@ export default function NewsArticle() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={availableLangs.length ? availableLangs : ['en','fr']}
         title={`${post.title} | ${t('news.title')}`}
         description={post.description}
         canonical={canonical}

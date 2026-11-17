@@ -1,5 +1,15 @@
 import { Review } from '../types';
 
+/**
+ * Last verified Google Business Profile summary (17 Nov 2026). The live
+ * /api/reviews endpoint overrides it when GOOGLE_PLACES_API_KEY is set.
+ */
+export const googleReviewSummary = {
+  rating: 5.0,
+  total: 126,
+  checkedAt: '2026-11-17',
+};
+
 export const reviews: Review[] = [
   {
     id: 'anthony',

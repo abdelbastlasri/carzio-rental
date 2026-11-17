@@ -1,4 +1,4 @@
-export type BlogLang = 'fr' | 'en';
+export type BlogLang = 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
 
 export interface BlogPost {
   slug: string;

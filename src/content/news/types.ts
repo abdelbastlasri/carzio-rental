@@ -1,4 +1,4 @@
-export type NewsLang = 'fr' | 'en';
+export type NewsLang = 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
 
 export interface NewsPost {
   slug: string;

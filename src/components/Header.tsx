@@ -4,6 +4,7 @@ import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { stripLangPrefix, withLangPrefix, type Lang } from '../lib/i18nRouting';
+import { getSupportPage, getSupportPages, type SupportKey } from '../content/support';
 import CurrencySwitcher from './CurrencySwitcher';
 import { blogCategories } from '../content/blog/categories';
 import { newsCategories } from '../content/news/categories';
@@ -215,11 +216,16 @@ export default function Header() {
                       onClick={() => {
                         i18n.changeLanguage(lang.code);
                         setLangOpen(false);
-                        // Airport pages use a different slug per language.
+                        // Airport and support pages use a different slug per language.
                         const airportPath = Object.values(AIRPORT_PATHS).find((p) => p === basePath);
-                        const targetBase = airportPath
-                          ? AIRPORT_PATHS[lang.code as keyof typeof AIRPORT_PATHS]
-                          : basePath;
+                        const supportPage = getSupportPages(i18n.language).find(
+                          (page) => `/${page.slug}` === basePath,
+                        );
+                        const targetBase = supportPage
+                          ? `/${getSupportPage(supportPage.key as SupportKey, lang.code).slug}`
+                          : airportPath
+                            ? AIRPORT_PATHS[lang.code as keyof typeof AIRPORT_PATHS]
+                            : basePath;
                         const target = withLangPrefix(targetBase, lang.code as Lang);
                         navigate(target);
                       }}

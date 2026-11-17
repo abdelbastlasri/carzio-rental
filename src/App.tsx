@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { detectLangFromPath, stripLangPrefix } from './lib/i18nRouting';
 import { CurrencyProvider } from './lib/currency';
 import Header from './components/Header';
@@ -8,24 +8,29 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
 import CookieConsent from './components/CookieConsent';
-import Home from './pages/Home';
-import Cars from './pages/Cars';
-import AirportPage from './pages/AirportPage';
-import About from './pages/About';
-import ContactPage from './pages/ContactPage';
-import TermsPage from './pages/TermsPage';
-import PrivacyPage from './pages/PrivacyPage';
-import FaqHub from './pages/FaqHub';
-import FaqPage from './pages/FaqPage';
-import BlogHub from './pages/BlogHub';
-import BlogCategory from './pages/BlogCategory';
-import BlogPostPage from './pages/BlogPostPage';
-import NewsHub from './pages/NewsHub';
-import NewsCategory from './pages/NewsCategory';
-import NewsArticle from './pages/NewsArticle';
-import CityPage from './pages/CityPage';
-import NotFound from './pages/NotFound';
-import AdminRoutes from './pages/admin/AdminRoutes';
+
+const Home = lazy(() => import('./pages/Home'));
+const Cars = lazy(() => import('./pages/Cars'));
+const AirportPage = lazy(() => import('./pages/AirportPage'));
+const About = lazy(() => import('./pages/About'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const FaqHub = lazy(() => import('./pages/FaqHub'));
+const FaqPage = lazy(() => import('./pages/FaqPage'));
+const BlogHub = lazy(() => import('./pages/BlogHub'));
+const BlogCategory = lazy(() => import('./pages/BlogCategory'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const NewsHub = lazy(() => import('./pages/NewsHub'));
+const NewsCategory = lazy(() => import('./pages/NewsCategory'));
+const NewsArticle = lazy(() => import('./pages/NewsArticle'));
+const CityPage = lazy(() => import('./pages/CityPage'));
+const SupportPage = lazy(() => import('./pages/SupportPage'));
+const PartnersPage = lazy(() => import('./pages/PartnersPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
+const OffersPage = lazy(() => import('./pages/OffersPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const AdminRoutes = lazy(() => import('./pages/admin/AdminRoutes'));
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -46,7 +51,11 @@ function App() {
   }, [urlLang, isAdmin]);
 
   if (isAdmin) {
-    return <AdminRoutes />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-black" aria-hidden="true" />}>
+        <AdminRoutes />
+      </Suspense>
+    );
   }
 
   return (
@@ -61,6 +70,7 @@ function App() {
       <Header />
       <WhatsAppButton />
       <main id="main-content">
+        <Suspense fallback={<div className="min-h-[60vh] bg-black" aria-hidden="true" />}>
         <Routes location={{ ...location, pathname: basePath }}>
           <Route path="/" element={<Home />} />
           <Route path="/cars" element={<Cars />} />
@@ -88,8 +98,13 @@ function App() {
           <Route path="/location-voiture-taghazout" element={<CityPage citySlug="taghazout" />} />
           <Route path="/location-voiture-tamraght" element={<CityPage citySlug="tamraght" />} />
           <Route path="/location-voiture-essaouira" element={<CityPage citySlug="essaouira" />} />
+          <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/compare" element={<ComparePage />} />
+          <Route path="/offers" element={<OffersPage />} />
+          <Route path="/:slug" element={<SupportPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </main>
       <Footer />
       <CookieConsent />

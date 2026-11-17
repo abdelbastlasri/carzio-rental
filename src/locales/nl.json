@@ -296,7 +296,14 @@
     "selectCarLabel": "Kies een auto",
     "trustLine": "Betaal bij ophalen · 0 MAD borg · Gratis annulering 24 uur",
     "whatsappHelp": "Hulp nodig? Stuur ons uw data.",
-    "flightNote": "Wordt gebruikt om uw vlucht te volgen bij vertraging."
+    "flightNote": "Wordt gebruikt om uw vlucht te volgen bij vertraging.",
+    "quoteEmailCta": "Stuur mij deze prijsopgave",
+    "quoteSending": "Prijsopgave wordt verzonden…",
+    "quoteSent": "Prijsopgave verzonden — controleer uw inbox.",
+    "quoteEmailRequired": "Voer een geldig e-mailadres in.",
+    "draftFound": "U bent eerder begonnen met een aanvraag. Doorgaan?",
+    "draftResume": "Doorgaan",
+    "draftClear": "Wissen"
   },
   "extras": {
     "Baby Seat": "Babyzitje",
@@ -446,7 +453,10 @@
     "terms": "Algemene voorwaarden",
     "openInMaps": "Open in Google Maps",
     "destinations": "Wij leveren ook in",
-    "privacy": "Privacybeleid"
+    "privacy": "Privacybeleid",
+    "partners": "Partners",
+    "offers": "Aanbiedingen",
+    "compare": "Vergelijken"
   },
   "facts": {
     "title": "Wat u moet weten voordat u boekt",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "Boek een auto",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Partner worden van Carzio",
+    "teaserText": "Surfkampen, hotels en reisbureaus: bied uw gasten een auto op de luchthaven van Agadir.",
+    "teaserCta": "Bekijk het partnerprogramma",
+    "audienceTitle": "Voor wie",
+    "perksTitle": "Partnervoordelen"
+  },
+  "support": {
+    "moreTitle": "Meer huurgidsen"
+  },
+  "compare": {
+    "criterion": "Criterium",
+    "platform": "Internationaal platform",
+    "disclaimer": "De voorwaarden verschillen per platform en tarief. Vergelijk de totale prijs, borg en annuleringsvoorwaarden voordat u boekt."
+  },
+  "offers": {
+    "teaserCta": "Bekijk de seizoensaanbiedingen",
+    "requestCta": "Vraag deze aanbieding aan"
   }
 }

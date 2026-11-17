@@ -5,6 +5,34 @@ import BookingModal from '../components/BookingModal';
 import MobileStickyCta from '../components/MobileStickyCta';
 import Seo from '../components/Seo';
 import { trackEvent } from '../lib/analytics';
+import { fleet } from '../data/fleet';
+
+const fleetLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Carzio rental fleet in Agadir',
+  numberOfItems: fleet.length,
+  itemListElement: fleet.map((car, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: car.name,
+      image: `https://www.carzio.ma${car.image}`,
+      description: car.description,
+      brand: { '@type': 'Brand', name: 'Carzio' },
+      category: car.type,
+      offers: {
+        '@type': 'Offer',
+        url: 'https://www.carzio.ma/en/cars',
+        price: car.pricePerDay,
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'Carzio' },
+      },
+    },
+  })),
+};
 
 export default function Cars() {
   const { t } = useTranslation();
@@ -28,6 +56,7 @@ export default function Cars() {
         title={t('pages.carTitle')}
         description={t('pages.carDesc')}
         canonical="https://www.carzio.ma/cars"
+        jsonLd={fleetLd}
       />
       <div className="py-12 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/30 to-black" />

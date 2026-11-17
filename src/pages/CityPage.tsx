@@ -2,6 +2,7 @@ import LangLink from '../components/LangLink';
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/Seo';
 import { findCity } from '../data/cities';
+import { withLangPrefix, type Lang } from '../lib/i18nRouting';
 
 const CITY_SLUGS = ['agadir', 'marrakech', 'casablanca', 'taghazout', 'tamraght', 'essaouira'] as const;
 
@@ -24,7 +25,35 @@ export default function CityPage({ citySlug }: CityPageProps) {
     );
   }
 
-  const canonical = `https://www.carzio.ma/location-voiture-${city.slug}`;
+  const lang = (['en', 'fr', 'de', 'es', 'pl', 'nl'].includes(i18n.language.slice(0, 2))
+    ? i18n.language.slice(0, 2)
+    : 'fr') as Lang;
+  const canonicalPath = withLangPrefix(`/location-voiture-${city.slug}`, lang);
+  const canonical = `https://www.carzio.ma${canonicalPath}`;
+  const autoRental = {
+    '@context': 'https://schema.org',
+    '@type': 'AutoRental',
+    name: 'Carzio',
+    url: canonical,
+    telephone: '+212680318003',
+    email: 'contact@carzio.ma',
+    priceRange: '€€',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'MAG N2, Agadir Airport',
+      addressLocality: 'Agadir',
+      postalCode: '80000',
+      addressCountry: 'MA',
+    },
+    areaServed: city.name,
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    inLanguage: lang,
+  };
   const breadcrumbs = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -46,7 +75,9 @@ export default function CityPage({ citySlug }: CityPageProps) {
         title={city.title}
         description={city.description}
         canonical={canonical}
-        jsonLd={[breadcrumbs]}
+        alternateLangs={['en', 'fr', 'de', 'es', 'pl']}
+        robots={lang === 'nl' ? 'noindex, follow' : 'index, follow'}
+        jsonLd={[autoRental, breadcrumbs]}
       />
       <div className="pt-28 md:pt-32">
         <section className="relative overflow-hidden py-12">

@@ -67,9 +67,9 @@ export function findBlogCategory(slug: string): BlogCategory | undefined {
 
 export function getCategoryCopy(
   slug: string,
-  lang: 'fr' | 'en',
+  lang: string,
 ): BlogCategoryCopy {
   const category = findBlogCategory(slug);
   if (!category) return { name: slug, description: '' };
-  return category[lang];
+  return category[lang.slice(0, 2) === 'fr' ? 'fr' : 'en'];
 }

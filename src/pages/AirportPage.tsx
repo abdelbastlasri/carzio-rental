@@ -109,7 +109,7 @@ export default function AirportPage() {
         <section className="relative overflow-hidden border-b border-white/5">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/hero/agadir-airport-arrival.jpg')" }}
+            style={{ backgroundImage: "url('/images/hero/agadir-airport-arrival.webp')" }}
             aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/35" />

@@ -296,7 +296,14 @@
     "selectCarLabel": "Wählen Sie ein Auto",
     "trustLine": "Zahlung bei Schl?ssel?bergabe ? 0 MAD Kaution ? Kostenlose Stornierung 24 Std.",
     "whatsappHelp": "Brauchen Sie Hilfe? Schreiben Sie uns mit Ihren Daten.",
-    "flightNote": "Wird verwendet, um Ihren Flug bei Versp?tung zu verfolgen."
+    "flightNote": "Wird verwendet, um Ihren Flug bei Versp?tung zu verfolgen.",
+    "quoteEmailCta": "Angebot per E-Mail erhalten",
+    "quoteSending": "Angebot wird gesendet…",
+    "quoteSent": "Angebot gesendet — prüfen Sie Ihren Posteingang.",
+    "quoteEmailRequired": "Geben Sie eine gültige E-Mail-Adresse ein.",
+    "draftFound": "Sie haben eine Anfrage begonnen. Fortsetzen?",
+    "draftResume": "Fortsetzen",
+    "draftClear": "Löschen"
   },
   "extras": {
     "Baby Seat": "Kindersitz",
@@ -446,7 +453,10 @@
     "terms": "AGB",
     "openInMaps": "In Google Maps öffnen",
     "destinations": "Wir liefern auch nach",
-    "privacy": "Datenschutzerklärung"
+    "privacy": "Datenschutzerklärung",
+    "partners": "Partner",
+    "offers": "Angebote",
+    "compare": "Vergleich"
   },
   "facts": {
     "title": "Was Sie vor der Buchung wissen sollten",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "Auto buchen",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Partner von Carzio werden",
+    "teaserText": "Surfcamps, Hotels und Reisebüros: Bieten Sie Ihren Gästen ein Auto am Flughafen Agadir.",
+    "teaserCta": "Partnerprogramm ansehen",
+    "audienceTitle": "Für wen",
+    "perksTitle": "Partnervorteile"
+  },
+  "support": {
+    "moreTitle": "Weitere Mietwagen-Ratgeber"
+  },
+  "compare": {
+    "criterion": "Kriterium",
+    "platform": "Internationale Plattform",
+    "disclaimer": "Die Bedingungen der Plattformen variieren je nach Anbieter und Tarif. Vergleichen Sie Gesamtpreis, Kaution und Stornobedingungen vor der Buchung."
+  },
+  "offers": {
+    "teaserCta": "Saisonangebote ansehen",
+    "requestCta": "Dieses Angebot anfragen"
   }
 }

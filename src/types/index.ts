@@ -95,4 +95,6 @@ export interface Review {
   avatar: string;
   /** Optional relative date, localized at render time via Intl.RelativeTimeFormat. */
   date?: { count: number; unit: 'day' | 'week' | 'month' };
+  /** Relative date already formatted by Google Places ("2 months ago"). */
+  dateLabel?: string;
 }

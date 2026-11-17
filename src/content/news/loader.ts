@@ -1,11 +1,14 @@
 import type { NewsLang, NewsPost } from './types';
 import { newsPostMedia } from '../media';
 
-const files = import.meta.glob(['./fr/*.md', './en/*.md'], {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+const files = import.meta.glob(
+  ['./fr/*.md', './en/*.md', './de/*.md', './es/*.md', './pl/*.md', './nl/*.md'],
+  {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  },
+) as Record<string, string>;
 
 function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -34,7 +37,7 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; body: st
 
 function toPost(path: string, raw: string): NewsPost {
   const { data, body } = parseFrontmatter(raw);
-  const pathLang = path.includes('/en/') ? 'en' : 'fr';
+  const pathLang = (path.match(/\.\/([a-z]{2})\//)?.[1] || 'fr') as NewsLang;
   const lang = (data.lang as NewsLang) || pathLang;
   // Photography lives in one place (src/content/media.ts). The frontmatter is
   // kept as a fallback so an unpublished draft never loses its image.
@@ -49,7 +52,7 @@ function toPost(path: string, raw: string): NewsPost {
     date: data.date,
     updated: data.updated || undefined,
     image: media ? `/images/journal/${media.file}` : data.image,
-    imageAlt: media ? media.alt[lang] || media.alt.en : data.imageAlt,
+    imageAlt: media ? (media.alt as Record<string, string>)[lang] || media.alt.en : data.imageAlt,
     readingTime: Number(data.readingTime) || 4,
     featured: data.featured === 'true',
     published: data.published === 'true',
@@ -76,7 +79,10 @@ export function findNews(slug: string, lang: NewsLang): NewsPost | undefined {
     (post) => post.published && post.slug === slug && post.lang === lang,
   );
   if (localized) return localized;
-  return allNews.find((post) => post.published && post.slug === slug && post.lang === 'fr');
+  return (
+    allNews.find((post) => post.published && post.slug === slug && post.lang === 'en') ||
+    allNews.find((post) => post.published && post.slug === slug && post.lang === 'fr')
+  );
 }
 
 export function getRelatedNews(post: NewsPost, lang: NewsLang, limit = 2): NewsPost[] {
@@ -84,6 +90,12 @@ export function getRelatedNews(post: NewsPost, lang: NewsLang, limit = 2): NewsP
   const sameCategory = posts.filter((entry) => entry.category === post.category);
   const others = posts.filter((entry) => entry.category !== post.category);
   return [...sameCategory, ...others].slice(0, limit);
+}
+
+export function getAvailableNewsLanguages(slug: string): NewsLang[] {
+  return (['fr', 'en', 'de', 'es', 'pl', 'nl'] as NewsLang[]).filter((lang) =>
+    allNews.some((post) => post.slug === slug && post.lang === lang && post.published),
+  );
 }
 
 export function countNewsByCategory(lang: NewsLang): Record<string, number> {

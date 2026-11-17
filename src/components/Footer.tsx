@@ -1,10 +1,12 @@
 import LangLink from './LangLink';
 import { useTranslation } from 'react-i18next';
 import { getAirportPage } from '../content/airport';
+import { getSupportPages } from '../content/support';
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
   const airportPage = getAirportPage(i18n.language);
+  const guidePages = getSupportPages(i18n.language).slice(0, 4);
   return (
     <footer className="relative border-t border-white/5 bg-black">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/10 to-transparent" />
@@ -28,6 +30,9 @@ export default function Footer() {
                 { label: 'footer.faq', to: '/faq' },
                 { label: 'footer.blog', to: '/blog' },
                 { label: 'footer.news', to: '/news' },
+                { label: 'footer.offers', to: '/offers' },
+                { label: 'footer.compare', to: '/compare' },
+                { label: 'footer.partners', to: '/partners' },
                 { label: 'footer.contact', to: '/contact' },
                 { label: 'footer.terms', to: '/terms' },
                 { label: 'footer.privacy', to: '/privacy' },
@@ -84,6 +89,20 @@ export default function Footer() {
               <li key={city.slug}>
                 <LangLink to={`/location-voiture-${city.slug}`} className="text-white/60 text-sm hover:text-gold transition">
                   {city.name}
+                </LangLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="border-t border-white/5 pt-6 mt-6">
+          <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-3">
+            {t('support.moreTitle', 'More car rental guides')}
+          </h3>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {guidePages.map((page) => (
+              <li key={page.key}>
+                <LangLink to={`/${page.slug}`} className="text-white/60 text-sm hover:text-gold transition">
+                  {page.h1}
                 </LangLink>
               </li>
             ))}

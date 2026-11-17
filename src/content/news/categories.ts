@@ -192,7 +192,7 @@ export function findNewsCategory(slug: string): NewsCategory | undefined {
 
 export function getNewsCategoryCopy(
   slug: string,
-  lang: 'fr' | 'en',
+  lang: string,
 ): NewsCategoryCopy {
-  return findNewsCategory(slug)?.[lang] ?? { name: slug, description: '' };
+  return findNewsCategory(slug)?.[lang.slice(0, 2) === 'fr' ? 'fr' : 'en'] ?? { name: slug, description: '' };
 }

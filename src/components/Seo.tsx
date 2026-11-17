@@ -26,7 +26,7 @@ export default function Seo({
   robots = 'index, follow',
   image,
   type = 'website',
-  alternateLangs = ['en', 'fr', 'de', 'es', 'pl'],
+  alternateLangs = ['en', 'fr', 'de', 'es', 'pl', 'nl'],
   alternatePaths,
 }: SeoProps) {
   const { i18n } = useTranslation();

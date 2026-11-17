@@ -21,13 +21,16 @@ export default function BlogHub() {
   // Same live price source as /cars — the Blog strip must never show a
   // different daily rate than the fleet page.
   const priceOverrides = useCarPrices();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
-  const posts = getPosts(contentLang);
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
+  const copyLang = contentLang === 'fr' ? 'fr' : 'en';
+  const localizedPosts = getPosts(contentLang);
+  const posts = localizedPosts.length ? localizedPosts : getPosts('en');
   const [featured, ...rest] = posts;
   const models = MODEL_STRIP_IDS
     .map((id) => fleet.find((car) => car.id === id))
     .filter((car): car is (typeof fleet)[number] => Boolean(car));
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = localizedPosts.length === 0;
 
   const breadcrumbs = {
     '@context': 'https://schema.org',
@@ -57,7 +60,7 @@ export default function BlogHub() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={['en','fr','de','es','pl','nl']}
         title={t('blog.metaTitle')}
         description={t('blog.metaDescription')}
         canonical="https://www.carzio.ma/blog"
@@ -159,13 +162,13 @@ export default function BlogHub() {
           <div className="grid gap-4 md:grid-cols-3">
             {blogCategories.map((category) => {
               const count = posts.filter((post) => post.category === category.slug).length;
-              const copy = category[contentLang];
+              const copy = category[copyLang];
               return (
                 <ImageCategoryCard
                   key={category.slug}
                   to={`/blog/categorie/${category.slug}`}
                   image={category.image}
-                  alt={category.imageAlt[contentLang]}
+                  alt={category.imageAlt[copyLang]}
                   title={copy.name}
                   description={copy.description}
                   badge={count}

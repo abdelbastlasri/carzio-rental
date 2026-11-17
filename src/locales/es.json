@@ -296,7 +296,14 @@
     "selectCarLabel": "Elija un coche",
     "trustLine": "Pago al entregar las llaves ? 0 MAD de dep?sito ? Cancelaci?n gratuita 24 h",
     "whatsappHelp": "?Necesitas ayuda? Escr?benos con tus fechas.",
-    "flightNote": "Se utiliza para seguir tu vuelo en caso de retraso."
+    "flightNote": "Se utiliza para seguir tu vuelo en caso de retraso.",
+    "quoteEmailCta": "Recibir este presupuesto por e-mail",
+    "quoteSending": "Enviando el presupuesto…",
+    "quoteSent": "Presupuesto enviado — revisa tu correo.",
+    "quoteEmailRequired": "Introduce una dirección de e-mail válida.",
+    "draftFound": "Empezaste una solicitud. ¿Continuar?",
+    "draftResume": "Continuar",
+    "draftClear": "Borrar"
   },
   "extras": {
     "Baby Seat": "Silla de Bebé",
@@ -446,7 +453,10 @@
     "terms": "Términos y Condiciones",
     "openInMaps": "Abrir en Google Maps",
     "destinations": "También entregamos en",
-    "privacy": "Política de privacidad"
+    "privacy": "Política de privacidad",
+    "partners": "Socios",
+    "offers": "Ofertas",
+    "compare": "Comparar"
   },
   "facts": {
     "title": "Lo que debes saber antes de reservar",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "Reservar un coche",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Hazte socio de Carzio",
+    "teaserText": "Surf camps, hoteles y agencias de viaje: ofrece a tus clientes un coche en el aeropuerto de Agadir.",
+    "teaserCta": "Ver el programa de socios",
+    "audienceTitle": "Para quién",
+    "perksTitle": "Ventajas para socios"
+  },
+  "support": {
+    "moreTitle": "Más guías de alquiler"
+  },
+  "compare": {
+    "criterion": "Criterio",
+    "platform": "Plataforma internacional",
+    "disclaimer": "Las condiciones de las plataformas varían según el proveedor y la tarifa. Compara el precio total, el depósito y las condiciones de cancelación antes de reservar."
+  },
+  "offers": {
+    "teaserCta": "Ver las ofertas de temporada",
+    "requestCta": "Solicitar esta oferta"
   }
 }

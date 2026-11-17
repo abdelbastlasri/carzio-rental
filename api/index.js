@@ -539,6 +539,145 @@ ${bookingDetailRows(b)}
 
 // ===== PUBLIC =====
 
+// Public Google reviews for the Google Business Profile. Uses the Places API
+// when GOOGLE_PLACES_API_KEY is configured; the website falls back to its
+// curated review list when the key is absent or the quota is exhausted.
+const GOOGLE_PLACE_ID = process.env.GOOGLE_PLACE_ID || 'ChIJ82tvQjOFt68R6Hm61KnRySo';
+const GOOGLE_REVIEWS_CACHE_MS = 30 * 60 * 1000;
+let googleReviewsCache = null;
+
+app.get('/api/reviews', async (req, res) => {
+  const key = process.env.GOOGLE_PLACES_API_KEY;
+  if (!key) {
+    return res.json({ configured: false, source: 'fallback', rating: null, total: null, reviews: [] });
+  }
+
+  const requested = String(req.query.lang || 'en').slice(0, 2).toLowerCase();
+  const lang = ['en', 'fr', 'de', 'es', 'pl', 'nl'].includes(requested) ? requested : 'en';
+
+  if (googleReviewsCache && googleReviewsCache.lang === lang && Date.now() - googleReviewsCache.at < GOOGLE_REVIEWS_CACHE_MS) {
+    return res.json(googleReviewsCache.payload);
+  }
+
+  try {
+    const url = new URL('https://maps.googleapis.com/maps/api/place/details/json');
+    url.searchParams.set('place_id', GOOGLE_PLACE_ID);
+    url.searchParams.set('fields', 'rating,user_ratings_total,reviews');
+    url.searchParams.set('language', lang);
+    url.searchParams.set('key', key);
+
+    const upstream = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    const data = await upstream.json();
+    if (data.status !== 'OK' || !data.result) {
+      console.warn('[reviews] Places API status:', data.status, data.error_message || '');
+      return res.status(200).json({ configured: true, source: 'google-places', rating: null, total: null, reviews: [] });
+    }
+
+    const payload = {
+      configured: true,
+      source: 'google-places',
+      rating: data.result.rating ?? null,
+      total: data.result.user_ratings_total ?? null,
+      reviews: (data.result.reviews || []).map((review, index) => ({
+        id: `google-${index}-${review.time || index}`,
+        name: review.author_name,
+        rating: review.rating,
+        text: review.text,
+        avatar: review.profile_photo_url || '',
+        dateLabel: review.relative_time_description || '',
+        time: review.time || null,
+      })),
+    };
+
+    googleReviewsCache = { lang, at: Date.now(), payload };
+    return res.json(payload);
+  } catch (err) {
+    console.warn('[reviews] Places API error:', err.message);
+    return res.status(200).json({ configured: true, source: 'google-places', rating: null, total: null, reviews: [] });
+  }
+});
+
+// Email a quote to a visitor who is not ready to submit a booking request.
+// No database row is created: the email is the deliverable, and the visitor
+// can reply or continue to the booking form.
+app.post('/api/quotes', rateLimit(5, 10 * 60 * 1000), async (req, res) => {
+  const escape = (value) =>
+    String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+
+  const {
+    name,
+    email,
+    phone,
+    carName,
+    pickupDate,
+    dropoffDate,
+    pickupTime,
+    dropoffTime,
+    pickupLocation,
+    dropoffLocation,
+    days,
+    totalPrice,
+    currency,
+  } = req.body || {};
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) {
+    return res.status(400).json({ error: 'A valid email address is required.' });
+  }
+  if (!name) {
+    return res.status(400).json({ error: 'Your name is required.' });
+  }
+
+  const safeName = escape(name);
+  const safeCar = escape(carName || 'Car rental in Agadir');
+  const priceLine = totalPrice
+    ? `<p style="font-size:18px;margin:16px 0"><strong>${escape(totalPrice)} ${escape(currency || 'MAD')}</strong> estimated total</p>`
+    : '';
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:620px;margin:0 auto;color:#18181b">
+      <h2 style="margin:0 0 8px">Your Carzio quote</h2>
+      <p>Hello ${safeName},</p>
+      <p>Here is the quote you requested for <strong>${safeCar}</strong>.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr><td style="padding:6px 0;color:#71717a">Pickup</td><td style="padding:6px 0">${escape(pickupDate || '')} ${escape(pickupTime || '')} — ${escape(pickupLocation || '')}</td></tr>
+        <tr><td style="padding:6px 0;color:#71717a">Return</td><td style="padding:6px 0">${escape(dropoffDate || '')} ${escape(dropoffTime || '')} — ${escape(dropoffLocation || '')}</td></tr>
+        <tr><td style="padding:6px 0;color:#71717a">Duration</td><td style="padding:6px 0">${escape(days || '')} day(s)</td></tr>
+        ${phone ? `<tr><td style="padding:6px 0;color:#71717a">Phone</td><td style="padding:6px 0">${escape(phone)}</td></tr>` : ''}
+      </table>
+      ${priceLine}
+      <p style="color:#71717a;font-size:13px">This is an estimate, not a confirmed reservation. Availability and the final price are confirmed by our team before payment.</p>
+      <p style="margin:24px 0">
+        <a href="https://www.carzio.ma/en/cars" style="background:#d4af37;color:#000;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:bold">Continue to booking</a>
+      </p>
+      <p>Questions? Reply to this email or message us on WhatsApp: <a href="https://wa.me/212680318003">+212 680 318003</a>.</p>
+      <p style="color:#71717a;font-size:12px">Carzio — Car rental at Agadir Al Massira Airport, Morocco.</p>
+    </div>`;
+
+  try {
+    const customer = await sendEmail({
+      to: String(email),
+      subject: `Your Carzio quote — ${carName || 'car rental in Agadir'}`,
+      html,
+    });
+    await sendEmail({
+      to: ADMIN_NOTIFY_EMAIL,
+      subject: `Quote request from ${name}`,
+      html: `<p>New quote request from ${safeName} (${escape(email)}${phone ? `, ${escape(phone)}` : ''}).</p><p>${safeCar} — ${escape(pickupDate || '')} to ${escape(dropoffDate || '')} — ${escape(totalPrice || '')} ${escape(currency || 'MAD')}</p>`,
+    }).catch((error) => console.warn('[quotes] admin notification failed:', error.message));
+
+    if (!customer.ok) {
+      return res.status(502).json({ ok: false, error: customer.error || 'Email could not be sent.' });
+    }
+    return res.json({ ok: true });
+  } catch (error) {
+    console.error('[quotes] error:', error);
+    return res.status(500).json({ ok: false, error: 'Quote could not be sent.' });
+  }
+});
+
 app.get('/api/status', async (req, res) => {
   await loadDbSmtp();
   await loadDbResend();

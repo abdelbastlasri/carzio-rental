@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
-  { image: '/images/55.jpg', key: 'hero.slideSurf' },
+  { image: '/images/55.webp', key: 'hero.slideSurf' },
   { image: '/images/hero/new-slide-2.webp', key: 'hero.slideCar' },
   { image: '/images/hero/new-slide-3.webp', key: 'hero.slideJogger' },
   { image: '/images/hero/new-slide-4.webp', key: 'hero.slideBordeaux' },

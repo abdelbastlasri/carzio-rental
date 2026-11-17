@@ -5,20 +5,22 @@ import Seo from '../components/Seo';
 import Markdown from '../components/Markdown';
 import BlogCard from '../components/BlogCard';
 import JournalArticleHero from '../components/JournalArticleHero';
-import { findPost, getRelatedPosts } from '../content/blog/loader';
+import { findPost, getAvailableLanguages, getRelatedPosts } from '../content/blog/loader';
 import { formatBlogDate } from '../content/blog/format';
 import { getCategoryCopy } from '../content/blog/categories';
 
 export default function BlogPostPage() {
   const { t, i18n } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
   const post = findPost(slug || '', contentLang);
+  const availableLangs = getAvailableLanguages(slug || '');
 
   if (!post) {
     return (
       <>
-        <Seo alternateLangs={['en','fr']}
+        <Seo alternateLangs={availableLangs.length ? availableLangs : ['en','fr']}
           title={t('blog.notFound')}
           description={t('blog.notFoundText')}
           robots="noindex, follow"
@@ -38,7 +40,7 @@ export default function BlogPostPage() {
   const canonical = `https://www.carzio.ma/blog/${post.slug}`;
   const imageUrl = `https://www.carzio.ma${post.image}`;
   const related = getRelatedPosts(post, contentLang);
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = post.lang !== contentLang;
 
   const articleLd = {
     '@context': 'https://schema.org',
@@ -85,7 +87,7 @@ export default function BlogPostPage() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={availableLangs.length ? availableLangs : ['en','fr']}
         title={`${post.title} | Carzio`}
         description={post.description}
         canonical={canonical}

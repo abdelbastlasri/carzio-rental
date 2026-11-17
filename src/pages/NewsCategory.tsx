@@ -10,13 +10,15 @@ import { findNewsCategory } from '../content/news/categories';
 export default function NewsCategory() {
   const { t, i18n } = useTranslation();
   const { category: categorySlug } = useParams<{ category: string }>();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
+  const copyLang = contentLang === 'fr' ? 'fr' : 'en';
   const category = findNewsCategory(categorySlug || '');
 
   if (!category) {
     return (
       <>
-        <Seo alternateLangs={['en','fr']}
+        <Seo alternateLangs={['en','fr','de','es','pl','nl']}
           title={t('news.notFound')}
           description={t('news.notFoundText')}
           robots="noindex, follow"
@@ -31,10 +33,10 @@ export default function NewsCategory() {
     );
   }
 
-  const copy = category[contentLang];
+  const copy = category[copyLang];
   const posts = getNewsByCategory(category.slug, contentLang);
   const canonical = `https://www.carzio.ma/news/categorie/${category.slug}`;
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = posts.length === 0;
 
   const breadcrumbs = {
     '@context': 'https://schema.org',
@@ -67,7 +69,7 @@ export default function NewsCategory() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={['en','fr','de','es','pl','nl']}
         title={`${copy.name} | ${t('news.title')}`}
         description={copy.description}
         canonical={canonical}
@@ -76,7 +78,7 @@ export default function NewsCategory() {
       />
       <JournalCategoryHero
         image={category.image}
-        imageAlt={category.imageAlt[contentLang]}
+        imageAlt={category.imageAlt[copyLang]}
         language={contentLang}
         eyebrow={t('news.categoryLabel')}
         title={copy.name}

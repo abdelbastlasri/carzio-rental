@@ -296,7 +296,14 @@
     "selectCarLabel": "Wybierz samochód",
     "trustLine": "P?atno?? przy przekazaniu kluczyk?w ? 0 MAD kaucji ? Bezp?atna anulacja 24 godz.",
     "whatsappHelp": "Potrzebujesz pomocy? Napisz do nas z datami.",
-    "flightNote": "U?ywany do ?ledzenia lotu w przypadku op??nienia."
+    "flightNote": "U?ywany do ?ledzenia lotu w przypadku op??nienia.",
+    "quoteEmailCta": "Wyślij mi tę wycenę e-mailem",
+    "quoteSending": "Wysyłanie wyceny…",
+    "quoteSent": "Wycena wysłana — sprawdź skrzynkę.",
+    "quoteEmailRequired": "Podaj prawidłowy adres e-mail.",
+    "draftFound": "Rozpocząłeś zapytanie. Kontynuować?",
+    "draftResume": "Kontynuuj",
+    "draftClear": "Wyczyść"
   },
   "extras": {
     "Baby Seat": "Fotelik Dziecięcy",
@@ -446,7 +453,10 @@
     "terms": "Warunki i Zasady",
     "openInMaps": "Otwórz w Google Maps",
     "destinations": "Dostarczamy również do",
-    "privacy": "Polityka prywatności"
+    "privacy": "Polityka prywatności",
+    "partners": "Partnerzy",
+    "offers": "Oferty",
+    "compare": "Porównanie"
   },
   "facts": {
     "title": "To, co musisz wiedzieć przed rezerwacją",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "Zarezerwuj samoch?d",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Zostań partnerem Carzio",
+    "teaserText": "Surf campy, hotele i biura podróży: zaoferuj gościom samochód na lotnisku w Agadirze.",
+    "teaserCta": "Zobacz program partnerski",
+    "audienceTitle": "Dla kogo",
+    "perksTitle": "Korzyści dla partnerów"
+  },
+  "support": {
+    "moreTitle": "Więcej poradników"
+  },
+  "compare": {
+    "criterion": "Kryterium",
+    "platform": "Międzynarodowa platforma",
+    "disclaimer": "Warunki platform różnią się w zależności od dostawcy i taryfy. Przed rezerwacją porównaj cenę całkowitą, kaucję i warunki anulowania."
+  },
+  "offers": {
+    "teaserCta": "Zobacz oferty sezonowe",
+    "requestCta": "Zapytaj o tę ofertę"
   }
 }

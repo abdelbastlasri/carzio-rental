@@ -5,17 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    image: '/images/tamraght.jpg',
+    image: '/images/tamraght.webp',
     title: 'Tamraght Beach',
     subtitle: 'Côte d\u2019Agadir',
   },
   {
-    image: '/images/cable-car.jpg',
+    image: '/images/cable-car.webp',
     title: "Télécabine d'Agadir",
     subtitle: 'Cable Car',
   },
   {
-    image: '/images/agadir-airport.jpg',
+    image: '/images/agadir-airport.webp',
     title: 'Agadir Airport',
     subtitle: 'Agadir Al Massira',
   },

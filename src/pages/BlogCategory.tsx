@@ -10,7 +10,9 @@ import { findBlogCategory } from '../content/blog/categories';
 export default function BlogCategory() {
   const { t, i18n } = useTranslation();
   const { category: categorySlug } = useParams<{ category: string }>();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
+  const copyLang = contentLang === 'fr' ? 'fr' : 'en';
   const category = findBlogCategory(categorySlug || '');
 
   if (!category) {
@@ -24,10 +26,10 @@ export default function BlogCategory() {
     );
   }
 
-  const copy = category[contentLang];
+  const copy = category[copyLang];
   const posts = getPostsByCategory(category.slug, contentLang);
   const canonical = `https://www.carzio.ma/blog/categorie/${category.slug}`;
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = posts.length === 0;
 
   const breadcrumbs = {
     '@context': 'https://schema.org',
@@ -64,7 +66,7 @@ export default function BlogCategory() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={['en','fr','de','es','pl','nl']}
         title={`${copy.name} | Blog Carzio`}
         description={copy.description}
         canonical={canonical}
@@ -72,7 +74,7 @@ export default function BlogCategory() {
       />
       <JournalCategoryHero
         image={category.image}
-        imageAlt={category.imageAlt[contentLang]}
+        imageAlt={category.imageAlt[copyLang]}
         language={contentLang}
         eyebrow={t('blog.categoryLabel')}
         title={copy.name}

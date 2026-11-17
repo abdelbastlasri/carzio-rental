@@ -1,11 +1,14 @@
 import type { BlogLang, BlogPost } from './types';
 import { blogPostMedia } from '../media';
 
-const files = import.meta.glob(['./fr/*.md', './en/*.md'], {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+const files = import.meta.glob(
+  ['./fr/*.md', './en/*.md', './de/*.md', './es/*.md', './pl/*.md', './nl/*.md'],
+  {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  },
+) as Record<string, string>;
 
 function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -34,7 +37,7 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; body: st
 
 function toPost(path: string, raw: string): BlogPost {
   const { data, body } = parseFrontmatter(raw);
-  const pathLang = path.includes('/en/') ? 'en' : 'fr';
+  const pathLang = (path.match(/\.\/([a-z]{2})\//)?.[1] || 'fr') as BlogLang;
   const lang = (data.lang as BlogLang) || pathLang;
   // Photography lives in one place (src/content/media.ts). The frontmatter is
   // kept as a fallback so an unpublished draft never loses its image.
@@ -49,7 +52,7 @@ function toPost(path: string, raw: string): BlogPost {
     date: data.date,
     updated: data.updated || undefined,
     image: media ? `/images/journal/${media.file}` : data.image,
-    imageAlt: media ? media.alt[lang] || media.alt.en : data.imageAlt,
+    imageAlt: media ? (media.alt as Record<string, string>)[lang] || media.alt.en : data.imageAlt,
     readingTime: Number(data.readingTime) || 6,
     featured: data.featured === 'true',
     published: data.published === 'true',
@@ -76,7 +79,10 @@ export function findPost(slug: string, lang: BlogLang): BlogPost | undefined {
     (post) => post.published && post.slug === slug && post.lang === lang,
   );
   if (localized) return localized;
-  return allPosts.find((post) => post.published && post.slug === slug && post.lang === 'fr');
+  return (
+    allPosts.find((post) => post.published && post.slug === slug && post.lang === 'en') ||
+    allPosts.find((post) => post.published && post.slug === slug && post.lang === 'fr')
+  );
 }
 
 export function getRelatedPosts(post: BlogPost, lang: BlogLang, limit = 2): BlogPost[] {
@@ -87,7 +93,7 @@ export function getRelatedPosts(post: BlogPost, lang: BlogLang, limit = 2): Blog
 }
 
 export function getAvailableLanguages(slug: string): BlogLang[] {
-  return (['fr', 'en'] as BlogLang[]).filter((lang) =>
+  return (['fr', 'en', 'de', 'es', 'pl', 'nl'] as BlogLang[]).filter((lang) =>
     allPosts.some((post) => post.slug === slug && post.lang === lang && post.published),
   );
 }

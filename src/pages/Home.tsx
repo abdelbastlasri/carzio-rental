@@ -26,6 +26,12 @@ const localBusinessLd = {
     addressCountry: 'MA',
   },
   areaServed: ['Agadir', 'Taghazout', 'Tamraght', 'Essaouira', 'Marrakech', 'Casablanca'],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: 5.0,
+    reviewCount: 126,
+    bestRating: 5,
+  },
 };
 import MapSection from '../components/MapSection';
 import BookingModal from '../components/BookingModal';

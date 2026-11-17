@@ -296,7 +296,14 @@
     "selectCarLabel": "Choose a car",
     "trustLine": "Pay at pickup ? 0 MAD deposit ? Free cancellation 24h",
     "whatsappHelp": "Need help? Message us with your dates.",
-    "flightNote": "Used to track your flight if it is delayed."
+    "flightNote": "Used to track your flight if it is delayed.",
+    "quoteEmailCta": "Email me this quote",
+    "quoteSending": "Sending your quote…",
+    "quoteSent": "Quote sent — check your inbox.",
+    "quoteEmailRequired": "Enter a valid email address to receive the quote.",
+    "draftFound": "You started a request earlier. Resume it?",
+    "draftResume": "Resume",
+    "draftClear": "Clear"
   },
   "extras": {
     "Baby Seat": "Baby Seat",
@@ -446,7 +453,10 @@
     "terms": "Terms & Conditions",
     "openInMaps": "Open in Google Maps",
     "destinations": "We also deliver to",
-    "privacy": "Privacy policy"
+    "privacy": "Privacy policy",
+    "partners": "Partners",
+    "offers": "Offers",
+    "compare": "Compare"
   },
   "facts": {
     "title": "What you need to know before booking",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "Book a car",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Partner with Carzio",
+    "teaserText": "Surf camps, hotels and travel agencies: offer your guests a car waiting at Agadir Airport.",
+    "teaserCta": "See the partner programme",
+    "audienceTitle": "Who it is for",
+    "perksTitle": "Partner perks"
+  },
+  "support": {
+    "moreTitle": "More car rental guides"
+  },
+  "compare": {
+    "criterion": "Criterion",
+    "platform": "International platform",
+    "disclaimer": "Platform conditions vary by provider and rate. Compare the total price, deposit and cancellation terms before booking."
+  },
+  "offers": {
+    "teaserCta": "See the seasonal offers",
+    "requestCta": "Request this offer"
   }
 }

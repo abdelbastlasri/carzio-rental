@@ -11,12 +11,15 @@ import { formatBlogDate } from '../content/blog/format';
 
 export default function NewsHub() {
   const { t, i18n } = useTranslation();
-  const contentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
-  const posts = getNews(contentLang);
-  const counts = countNewsByCategory(contentLang);
+  const rawLang = i18n.language.slice(0, 2);
+  const contentLang = (['fr', 'en', 'de', 'es', 'pl', 'nl'].includes(rawLang) ? rawLang : 'en') as 'fr' | 'en' | 'de' | 'es' | 'pl' | 'nl';
+  const copyLang = contentLang === 'fr' ? 'fr' : 'en';
+  const localizedPosts = getNews(contentLang);
+  const posts = localizedPosts.length ? localizedPosts : getNews('en');
+  const counts = countNewsByCategory(localizedPosts.length ? contentLang : 'en');
   const featured = posts.find((post) => post.featured) || posts[0];
   const rest = posts.filter((post) => post.slug !== featured?.slug);
-  const showLanguageNotice = !['fr', 'en'].includes(i18n.language.slice(0, 2));
+  const showLanguageNotice = localizedPosts.length === 0;
 
   const breadcrumbs = {
     '@context': 'https://schema.org',
@@ -48,7 +51,7 @@ export default function NewsHub() {
 
   return (
     <>
-      <Seo alternateLangs={['en','fr']}
+      <Seo alternateLangs={['en','fr','de','es','pl','nl']}
         title={t('news.metaTitle')}
         description={t('news.metaDescription')}
         canonical="https://www.carzio.ma/news"
@@ -119,7 +122,7 @@ export default function NewsHub() {
           <ul className="flex flex-wrap gap-2.5">
             {newsCategories.map((category) => {
               const count = counts[category.slug] || 0;
-              const copy = category[contentLang];
+              const copy = category[copyLang];
               return (
                 <li key={category.slug}>
                   <LangLink

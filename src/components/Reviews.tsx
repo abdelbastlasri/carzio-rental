@@ -1,7 +1,15 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useReducedMotion } from 'framer-motion';
-import { reviews } from '../data/reviews';
+import { googleReviewSummary, reviews } from '../data/reviews';
+import type { Review } from '../types';
+
+interface LiveReviews {
+  configured: boolean;
+  rating: number | null;
+  total: number | null;
+  reviews: Review[];
+}
 
 const INTERVAL = 7000;
 const GOOGLE_REVIEW_URL = 'https://g.page/r/Ceh5utSp0ckqEBM/review';
@@ -43,8 +51,25 @@ export default function Reviews() {
   const [draftRating, setDraftRating] = useState(5);
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState('');
+  const [live, setLive] = useState<LiveReviews | null>(null);
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const lang = i18n.language.slice(0, 2);
+    fetch(`/api/reviews?lang=${encodeURIComponent(lang)}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: LiveReviews | null) => {
+        if (!cancelled && data?.reviews?.length) setLive(data);
+      })
+      .catch(() => {
+        // Keep the curated reviews when the API/key is unavailable.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n.language]);
 
   const copyDraft = async () => {
     setCopyError('');
@@ -61,8 +86,12 @@ export default function Reviews() {
     }
   };
 
-  // Only 4.5-star and 5-star reviews are displayed, as requested.
-  const rated = useMemo(() => reviews.filter((review) => review.rating >= 4.5), []);
+  // Live Google reviews when the Places API is configured; otherwise the
+  // curated Google reviews already stored in the repository.
+  const rated = useMemo(() => {
+    const source = live?.reviews?.length ? live.reviews : reviews;
+    return source.filter((review) => review.rating >= 4.5);
+  }, [live]);
   const total = rated.length;
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total]);
@@ -114,8 +143,14 @@ export default function Reviews() {
               loading="lazy"
               decoding="async"
             />
-            <Stars rating={rated[0]?.rating || 5} className="h-4 w-4" />
-            <span className="text-white/60 text-sm">{t('reviews.googleVerified')}</span>
+            <Stars rating={live?.rating ?? googleReviewSummary.rating} className="h-4 w-4" />
+            <span className="text-white/60 text-sm">
+              {(live?.rating ?? googleReviewSummary.rating).toLocaleString(i18n.language, {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1,
+              })}{' '}
+              · {live?.total ?? googleReviewSummary.total} {t('reviews.googleVerified')}
+            </span>
           </div>
         </div>
 
@@ -134,9 +169,9 @@ export default function Reviews() {
         >
           <div className="grid gap-4 md:gap-5 md:grid-cols-3">
             {visible.map((review, offset) => {
-              const relativeDate = review.date
+              const relativeDate = review.dateLabel || (review.date
                 ? relativeFormatter.format(-review.date.count, review.date.unit)
-                : null;
+                : null);
               const meta = [review.country, relativeDate].filter(Boolean).join(' · ');
 
               return (

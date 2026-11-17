@@ -296,7 +296,14 @@
     "selectCarLabel": "Choisissez une voiture",
     "trustLine": "Paiement ? la remise des cl?s ? 0 MAD de caution ? Annulation gratuite 24 h",
     "whatsappHelp": "Besoin d'aide ? ?crivez-nous avec vos dates.",
-    "flightNote": "Utilis? pour suivre votre vol en cas de retard."
+    "flightNote": "Utilis? pour suivre votre vol en cas de retard.",
+    "quoteEmailCta": "Recevoir ce devis par e-mail",
+    "quoteSending": "Envoi du devis…",
+    "quoteSent": "Devis envoyé — vérifiez votre boîte mail.",
+    "quoteEmailRequired": "Saisissez une adresse e-mail valide pour recevoir le devis.",
+    "draftFound": "Vous avez commencé une demande. La reprendre ?",
+    "draftResume": "Reprendre",
+    "draftClear": "Effacer"
   },
   "extras": {
     "Baby Seat": "Siège Bébé",
@@ -446,7 +453,10 @@
     "terms": "Conditions Générales",
     "openInMaps": "Ouvrir dans Google Maps",
     "destinations": "Nous livrons aussi",
-    "privacy": "Politique de confidentialité"
+    "privacy": "Politique de confidentialité",
+    "partners": "Partenaires",
+    "offers": "Offres",
+    "compare": "Comparer"
   },
   "facts": {
     "title": "Ce qu’il faut retenir avant de réserver",
@@ -582,5 +592,24 @@
   "mobileBar": {
     "book": "R?server une voiture",
     "whatsapp": "WhatsApp"
+  },
+  "partners": {
+    "teaserTitle": "Devenir partenaire Carzio",
+    "teaserText": "Surf camps, hôtels et agences de voyage : offrez à vos clients une voiture qui les attend à l’aéroport d’Agadir.",
+    "teaserCta": "Voir le programme partenaire",
+    "audienceTitle": "Pour qui ?",
+    "perksTitle": "Avantages partenaires"
+  },
+  "support": {
+    "moreTitle": "Plus de guides de location"
+  },
+  "compare": {
+    "criterion": "Critère",
+    "platform": "Plateforme internationale",
+    "disclaimer": "Les conditions des plateformes varient selon le prestataire et le tarif. Comparez le prix total, la caution et les conditions d’annulation avant de réserver."
+  },
+  "offers": {
+    "teaserCta": "Voir les offres saisonnières",
+    "requestCta": "Demander cette offre"
   }
 }
