@@ -27,6 +27,19 @@ export default function MapSection() {
             className="w-full"
           />
         </div>
+        <div className="mt-4 text-center">
+          <a
+            href="https://www.google.com/maps/place/?q=place_id:ChIJ82tvQjOFt68R6Hm61KnRySo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-gold/50 hover:text-gold"
+          >
+            <svg aria-hidden="true" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+            </svg>
+            {t('footer.openInMaps')}
+          </a>
+        </div>
       </div>
     </section>
   );

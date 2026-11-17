@@ -42,6 +42,8 @@ export default function AirportPage() {
       telephone: '+212680318003',
       email: 'contact@carzio.ma',
       priceRange: '€€',
+      hasMap: MAPS_URL,
+      sameAs: [MAPS_URL, 'https://www.instagram.com/carzio_cars'],
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'MAG N2, Agadir Airport',

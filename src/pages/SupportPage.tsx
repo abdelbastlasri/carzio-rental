@@ -50,6 +50,11 @@ export default function SupportPage() {
       telephone: '+212680318003',
       email: 'contact@carzio.ma',
       priceRange: '€€',
+      hasMap: 'https://www.google.com/maps/place/?q=place_id:ChIJ82tvQjOFt68R6Hm61KnRySo',
+      sameAs: [
+        'https://www.google.com/maps/place/?q=place_id:ChIJ82tvQjOFt68R6Hm61KnRySo',
+        'https://www.instagram.com/carzio_cars',
+      ],
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'MAG N2, Agadir Airport',

@@ -29,6 +29,7 @@ const SupportPage = lazy(() => import('./pages/SupportPage'));
 const PartnersPage = lazy(() => import('./pages/PartnersPage'));
 const ComparePage = lazy(() => import('./pages/ComparePage'));
 const OffersPage = lazy(() => import('./pages/OffersPage'));
+const MapsRedirect = lazy(() => import('./pages/MapsRedirect'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const AdminRoutes = lazy(() => import('./pages/admin/AdminRoutes'));
 
@@ -101,6 +102,7 @@ function App() {
           <Route path="/partners" element={<PartnersPage />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/offers" element={<OffersPage />} />
+          <Route path="/maps" element={<MapsRedirect />} />
           <Route path="/:slug" element={<SupportPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

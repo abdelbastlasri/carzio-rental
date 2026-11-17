@@ -26,6 +26,8 @@ import {
 
 export const SITE_ORIGIN = 'https://www.carzio.ma';
 export const DEFAULT_IMAGE = `${SITE_ORIGIN}/images/hero/new-slide-7.webp`;
+export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/?q=place_id:ChIJ82tvQjOFt68R6Hm61KnRySo';
+const INSTAGRAM_URL = 'https://www.instagram.com/carzio_cars';
 
 type Dict = Record<string, unknown>;
 
@@ -82,6 +84,8 @@ function autoRentalLd(lang: Lang, path: string, name: string, area: string[]): R
     telephone: '+212680318003',
     email: 'contact@carzio.ma',
     priceRange: '€€',
+    hasMap: GOOGLE_MAPS_URL,
+    sameAs: [GOOGLE_MAPS_URL, INSTAGRAM_URL],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'MAG N2, Agadir Airport',
@@ -639,6 +643,23 @@ function makeMarketingRoutes(): RouteMeta[] {
   return routes;
 }
 
+function makeMapsRoute(): RouteMeta[] {
+  return [
+    {
+      path: '/maps',
+      lang: 'en',
+      title: 'Carzio — Car rental at Agadir Airport',
+      description: 'Choose your language and continue to Carzio car rental at Agadir Al Massira Airport.',
+      canonicalPath: '/en',
+      robots: 'noindex, follow',
+      h1: 'Car rental at Agadir Airport',
+      intro: 'Choose your language to continue to the Carzio booking page.',
+      alternates: {},
+      sitemap: false,
+    },
+  ];
+}
+
 function makeLegacyRoutes(): RouteMeta[] {
   const aliases: {
     path: string;
@@ -722,6 +743,7 @@ export function getRouteMeta(): RouteMeta[] {
     ...makeNewsRoutes(),
     ...makeSupportRoutes(),
     ...makeMarketingRoutes(),
+    ...makeMapsRoute(),
     ...makeLegacyRoutes(),
     ...makeAdminRoutes(),
   ];
