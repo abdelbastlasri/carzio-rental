@@ -20,9 +20,9 @@ export default function Footer() {
               {t('footer.tagline')}
             </p>
           </div>
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.quickLinks')}</h3>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-1 sm:gap-x-6">
               {[
                 { label: 'footer.home', to: '/' },
                 { label: 'footer.ourCars', to: '/cars' },
@@ -38,12 +38,17 @@ export default function Footer() {
                 { label: 'footer.privacy', to: '/privacy' },
               ].map((link) => (
                 <li key={link.label}>
-                  <LangLink to={link.to} className="text-white/60 text-sm hover:text-gold transition">{t(link.label)}</LangLink>
+                  <LangLink
+                    to={link.to}
+                    className="flex min-h-[32px] items-center text-[13px] leading-snug text-white/60 transition hover:text-gold"
+                  >
+                    {t(link.label)}
+                  </LangLink>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-white font-heading font-semibold text-sm uppercase tracking-wider mb-4">{t('footer.getInTouch')}</h3>
             <ul className="space-y-2 text-white/60 text-sm">
               <li className="leading-relaxed">{t('footer.address')}</li>
