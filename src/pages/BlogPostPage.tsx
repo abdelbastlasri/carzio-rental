@@ -8,6 +8,7 @@ import JournalArticleHero from '../components/JournalArticleHero';
 import { findPost, getAvailableLanguages, getRelatedPosts } from '../content/blog/loader';
 import { formatBlogDate } from '../content/blog/format';
 import { getCategoryCopy } from '../content/blog/categories';
+import RelatedGuides from '../components/RelatedGuides';
 
 export default function BlogPostPage() {
   const { t, i18n } = useTranslation();
@@ -151,6 +152,8 @@ export default function BlogPostPage() {
             </div>
           </div>
         </article>
+
+        <RelatedGuides />
 
         {related.length > 0 && (
           <section className="mx-auto max-w-6xl px-4 pb-16">

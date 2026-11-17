@@ -8,6 +8,7 @@ import JournalArticleHero from '../components/JournalArticleHero';
 import { findNews, getAvailableNewsLanguages, getRelatedNews } from '../content/news/loader';
 import { formatBlogDate } from '../content/blog/format';
 import { getNewsCategoryCopy } from '../content/news/categories';
+import RelatedGuides from '../components/RelatedGuides';
 
 export default function NewsArticle() {
   const { t, i18n } = useTranslation();
@@ -152,6 +153,8 @@ export default function NewsArticle() {
             </div>
           </div>
         </article>
+
+        <RelatedGuides />
 
         {related.length > 0 && (
           <section className="mx-auto max-w-6xl px-4 pb-16">
