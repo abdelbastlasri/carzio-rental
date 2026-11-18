@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import LangLink from './LangLink';
-import { trackEvent, trackBookingConversion } from '../lib/analytics';
+import { getAttribution, trackEvent, trackBookingConversion } from '../lib/analytics';
 import { useTranslation } from 'react-i18next';
 import { locations } from '../data/locations';
 import { fleet } from '../data/fleet';
@@ -295,6 +295,7 @@ export default function BookingModal({ isOpen, onClose, preselectedCar, preselec
           paymentMethod: 'payment_upon_delivery',
           confirmationMethod,
           noDepositAgreed,
+          ...(getAttribution() || {}),
         }),
       });
       const body = await res.json();

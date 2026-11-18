@@ -20,6 +20,27 @@ export const GOOGLE_ADS_BOOKING_LABEL = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX';
 
 const PLACEHOLDER = 'XXXXXXXXXX';
 const CONSENT_KEY = 'carzio_cookie_consent';
+const ATTRIBUTION_KEY = 'carzio_attribution';
+
+export interface Attribution {
+  gclid?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  landing_page?: string;
+  captured_at?: string;
+}
+
+const ATTRIBUTION_PARAMS: (keyof Attribution)[] = [
+  'gclid',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
+  'utm_term',
+];
 
 let initialised = false;
 
@@ -98,6 +119,48 @@ export function trackBookingConversion(params: {
   }
 }
 
+/**
+ * Capture Google Ads click id and UTM parameters once, then keep them for the
+ * whole visit so a booking request can be attributed to the original ad click.
+ * Stored locally in the visitor's browser; no personal data is added here.
+ */
+export function captureAttribution(): Attribution | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl: Attribution = {};
+    let hasValue = false;
+    for (const key of ATTRIBUTION_PARAMS) {
+      const value = params.get(key);
+      if (value) {
+        fromUrl[key] = value;
+        hasValue = true;
+      }
+    }
+    if (!hasValue) return getAttribution();
+
+    const attribution: Attribution = {
+      ...fromUrl,
+      landing_page: fromUrl.landing_page || window.location.pathname,
+      captured_at: new Date().toISOString(),
+    };
+    window.localStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
+    return attribution;
+  } catch {
+    return null;
+  }
+}
+
+export function getAttribution(): Attribution | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem(ATTRIBUTION_KEY);
+    return raw ? (JSON.parse(raw) as Attribution) : null;
+  } catch {
+    return null;
+  }
+}
+
 function handleDelegatedClick(event: MouseEvent): void {
   const target = event.target as HTMLElement | null;
   const anchor = target?.closest('a');
@@ -131,6 +194,8 @@ export function initAnalytics(): void {
 
   const consent = storedConsent();
   if (consent) updateConsent(consent === 'granted');
+
+  captureAttribution();
 
   if (
     typeof window.gtag === 'function' &&

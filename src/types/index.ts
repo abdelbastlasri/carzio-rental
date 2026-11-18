@@ -73,8 +73,22 @@ export interface BookingRecord {
   payment_method?: string;
   confirmation_method?: string;
   no_deposit_agreed?: boolean;
-  status: 'pending' | 'confirmed' | 'rejected';
+  status: 'pending' | 'availability_confirmed' | 'confirmed' | 'rejected' | 'completed' | 'cancelled';
   submitted_at?: string;
+  availability_confirmed_at?: string;
+  confirmed_at?: string;
+  completed_at?: string;
+  cancelled_at?: string;
+  rejected_at?: string;
+  responded_at?: string;
+  gclid?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+  landing_page?: string;
+  attribution_captured_at?: string;
 }
 
 export interface ContactRecord {

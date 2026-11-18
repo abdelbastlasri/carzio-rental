@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BookingRecord } from '../../types';
+import { trackEvent } from '../../lib/analytics';
+
+type BookingStatus = 'pending' | 'availability_confirmed' | 'confirmed' | 'rejected' | 'completed' | 'cancelled';
 
 export default function AdminBookings() {
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
@@ -28,9 +31,10 @@ export default function AdminBookings() {
 
   useEffect(() => { fetchBookings(); }, []);
 
-  const updateStatus = async (id: string, newStatus: 'confirmed' | 'rejected') => {
+  const updateStatus = async (id: string, newStatus: BookingStatus) => {
     setUpdating(id);
     setNotice(null);
+    const booking = bookings.find(b => b.id === id);
     try {
       const token = localStorage.getItem('admin_token');
       const res = await fetch(`/api/admin/bookings/${id}/status`, {
@@ -41,6 +45,16 @@ export default function AdminBookings() {
       const body = await res.json();
       if (res.ok) {
         setBookings(prev => prev.map(b => b.id === id ? { ...b, status: newStatus } : b));
+        const value = Number(booking?.total_price || 0);
+        if (newStatus === 'availability_confirmed') {
+          trackEvent('availability_confirmed', { booking_id: id, car_name: booking?.car_name, value });
+        } else if (newStatus === 'confirmed') {
+          trackEvent('reservation_confirmed', { booking_id: id, car_name: booking?.car_name, value });
+        } else if (newStatus === 'completed') {
+          trackEvent('rental_handover_completed', { booking_id: id, car_name: booking?.car_name, value });
+        } else if (newStatus === 'cancelled') {
+          trackEvent('reservation_cancelled', { booking_id: id, car_name: booking?.car_name, value });
+        }
         if (body.notification) setNotice({ type: 'success', text: body.ownerCopy ? `${body.notification} · ${body.ownerCopy}` : body.notification });
       } else {
         setNotice({ type: 'error', text: body.error || 'Failed to update status' });
@@ -107,7 +121,10 @@ export default function AdminBookings() {
 
   const statusBadge = (status: string) => {    const colors: Record<string, string> = {
       pending: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+      availability_confirmed: 'bg-gold/20 text-gold border-gold/30',
       confirmed: 'bg-green-500/20 text-green-400 border-green-500/30',
+      completed: 'bg-emerald-600/20 text-emerald-300 border-emerald-600/30',
+      cancelled: 'bg-zinc-500/20 text-zinc-300 border-zinc-500/30',
       rejected: 'bg-red-500/20 text-red-400 border-red-500/30',
     };
     return `px-2 py-0.5 rounded-full text-xs font-medium border ${colors[status] || colors.pending}`;
@@ -189,24 +206,20 @@ export default function AdminBookings() {
                 </div>
 
                 <div className="flex items-center gap-2 shrink-0 flex-wrap">
-                  {booking.status === 'pending' && (
-                    <>
-                      <button
-                        onClick={() => updateStatus(booking.id, 'confirmed')}
-                        disabled={updating === booking.id}
-                        className="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-medium rounded-lg transition disabled:opacity-50"
-                      >
-                        {updating === booking.id ? '...' : 'Confirm'}
-                      </button>
-                      <button
-                        onClick={() => updateStatus(booking.id, 'rejected')}
-                        disabled={updating === booking.id}
-                        className="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-medium rounded-lg transition disabled:opacity-50"
-                      >
-                        {updating === booking.id ? '...' : 'Reject'}
-                      </button>
-                    </>
-                  )}
+                  <select
+                    value={booking.status}
+                    disabled={updating === booking.id}
+                    onChange={(event) => updateStatus(booking.id, event.target.value as BookingStatus)}
+                    aria-label="Booking status"
+                    className="px-2 py-1.5 bg-zinc-800 text-gray-200 text-xs font-medium rounded-lg border border-zinc-700 transition disabled:opacity-50"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="availability_confirmed">Availability confirmed</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
                   <button
                     onClick={() => sendEmail(booking.id)}
                     disabled={sending === booking.id}

@@ -729,6 +729,8 @@ app.post('/api/bookings', rateLimit(5, 10 * 60 * 1000), async (req, res) => {
     const OPTIONAL_COLS = new Set([
       'insurance_type', 'insurance_price', 'insurance_franchise', 'insurance_band',
       'full_insurance', 'full_insurance_price', 'flight_number', 'extras', 'special_requests', 'days',
+      'gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+      'landing_page', 'attribution_captured_at',
     ]);
     let insertResult;
     if (supabase.from) {
@@ -904,6 +906,47 @@ app.get('/api/admin/bookings', requireAuth, async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
+/**
+ * Attribution export for Google Ads offline conversion imports and reporting.
+ * Returns only operational fields — no email, phone, age or flight number.
+ */
+app.get('/api/admin/bookings/export', requireAuth, async (req, res) => {
+  try {
+    if (!supabase) return res.json([]);
+    const { from, to, status } = req.query;
+    let query = supabase.from('bookings').select('*').not('id', 'in', `("${SMTP_BEACON_ID}","${RESEND_BEACON_ID}")`);
+    if (from) query = query.gte('submitted_at', String(from));
+    if (to) query = query.lte('submitted_at', String(to));
+    if (status) query = query.eq('status', String(status));
+    const { data, error } = await query.order('submitted_at', { ascending: false });
+    if (error) throw error;
+
+    const rows = (data || []).map((b) => ({
+      booking_id: b.id,
+      gclid: b.gclid || null,
+      utm_source: b.utm_source || null,
+      utm_medium: b.utm_medium || null,
+      utm_campaign: b.utm_campaign || null,
+      utm_content: b.utm_content || null,
+      utm_term: b.utm_term || null,
+      landing_page: b.landing_page || null,
+      attribution_captured_at: b.attribution_captured_at || null,
+      car_name: b.car_name || null,
+      total_price: b.total_price || null,
+      currency: 'EUR',
+      status: b.status,
+      submitted_at: b.submitted_at || null,
+      availability_confirmed_at: b.availability_confirmed_at || null,
+      confirmed_at: b.confirmed_at || null,
+      completed_at: b.completed_at || null,
+      cancelled_at: b.cancelled_at || null,
+      rejected_at: b.rejected_at || null,
+      responded_at: b.responded_at || null,
+    }));
+    res.json(rows);
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
 app.get('/api/admin/contacts', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.json([]);
@@ -917,10 +960,42 @@ app.put('/api/admin/bookings/:id/status', requireAuth, async (req, res) => {
   try {
     if (!supabase) return res.status(500).json({ error: 'Database not configured' });
     const { status } = req.body;
-    if (!['pending', 'confirmed', 'rejected'].includes(status)) {
+    const allowed = ['pending', 'availability_confirmed', 'confirmed', 'rejected', 'completed', 'cancelled'];
+    if (!allowed.includes(status)) {
       return res.status(400).json({ error: 'Invalid status' });
     }
-    const { data, error } = await supabase.from('bookings').update({ status }).eq('id', req.params.id).select();
+
+    const now = new Date().toISOString();
+    const patch = { status };
+    if (status === 'availability_confirmed') patch.availability_confirmed_at = now;
+    if (status === 'confirmed') patch.confirmed_at = now;
+    if (status === 'completed') patch.completed_at = now;
+    if (status === 'cancelled') patch.cancelled_at = now;
+    if (status === 'rejected') patch.rejected_at = now;
+    if (status !== 'pending') patch.responded_at = now;
+
+    // Older databases may not have all status columns yet. Drop only the
+    // missing column and retry so the status update is never lost.
+    const OPTIONAL_STATUS_COLS = new Set([
+      'availability_confirmed_at', 'confirmed_at', 'completed_at',
+      'cancelled_at', 'rejected_at', 'responded_at',
+    ]);
+    let working = { ...patch };
+    let updateResult;
+    for (let attempt = 0; attempt <= OPTIONAL_STATUS_COLS.size; attempt++) {
+      const r = await supabase.from('bookings').update(working).eq('id', req.params.id).select();
+      if (!r.error) { updateResult = r; break; }
+      const match = (r.error.message || '').match(/could not find the ['"`]([a-z0-9_]+)['"`]/i) ||
+        (r.error.message || '').match(/column ["']?([a-z0-9_]+)["']? does not exist/i);
+      const missing = match && match[1] ? match[1] : null;
+      if (!missing || !OPTIONAL_STATUS_COLS.has(missing) || !(missing in working)) {
+        updateResult = r;
+        break;
+      }
+      delete working[missing];
+      console.warn(`Status column ${missing} missing, updating without it`);
+    }
+    const { data, error } = updateResult;
     if (error) throw error;
     if (!data?.[0]) return res.status(404).json({ error: 'Booking not found' });
     const updated = data[0];
