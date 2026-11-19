@@ -19,7 +19,8 @@
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "backHome": "Retour à l'accueil",
-    "viewCars": "Voir les voitures"
+    "viewCars": "Voir les voitures",
+    "viewAll": "Voir tout"
   },
   "nav": {
     "home": "Accueil",

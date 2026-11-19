@@ -19,7 +19,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "backHome": "Back to home",
-    "viewCars": "See the cars"
+    "viewCars": "See the cars",
+    "viewAll": "View all"
   },
   "nav": {
     "home": "Home",

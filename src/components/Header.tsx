@@ -8,6 +8,7 @@ import { getSupportPage, getSupportPages, type SupportKey } from '../content/sup
 import CurrencySwitcher from './CurrencySwitcher';
 import { blogCategories } from '../content/blog/categories';
 import { newsCategories } from '../content/news/categories';
+import { getFaqCategories } from '../data/faq';
 import { airportAlternatePaths } from '../content/airport';
 
 const WHATSAPP_URL = 'https://wa.me/212680318003';
@@ -39,9 +40,13 @@ const languages = [
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (!menuOpen) setMobileExpanded(null);
+  }, [menuOpen]);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [dropdown, setDropdown] = useState<'blog' | 'news' | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -275,37 +280,94 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             id="mobile-menu"
-            className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-xl overflow-hidden"
+            className="md:hidden border-t border-white/5 bg-black/95 backdrop-blur-xl overflow-y-auto max-h-[calc(100vh-5rem)]"
           >
             <nav aria-label="Mobile navigation" className="px-4 py-4 flex flex-col items-center gap-1 text-base font-medium">
-              {mobileNavLinks.map((link) => (
-                <div key={link.path} className="w-full">
-                  <LangLink
-                    to={link.path}
-                    className={`flex min-h-[44px] w-full items-center justify-center rounded-lg px-3 transition ${isActive(link.path) ? 'text-gold' : 'text-white/80 hover:bg-white/5 hover:text-gold'}`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {t(link.label)}
-                  </LangLink>
-                  {(link.path === '/blog' || link.path === '/news') && (
-                    <div className="mb-2 flex flex-col gap-1 pl-4">
-                      {(link.path === '/blog' ? blogCategories : newsCategories).map((category) => {
-                        const copy = category[i18n.language.startsWith('fr') ? 'fr' : 'en'];
-                        return (
-                          <LangLink
-                            key={category.slug}
-                            to={`${link.path}/categorie/${category.slug}`}
-                            className="flex min-h-[40px] w-full items-center justify-center rounded-lg px-3 text-sm text-white/60 transition hover:bg-white/5 hover:text-gold"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            {copy.name}
-                          </LangLink>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              ))}
+              {mobileNavLinks.map((link) => {
+                 const hasChildren = link.path === '/blog' || link.path === '/news' || link.path === '/faq';
+                 const categories =
+                   link.path === '/blog' ? blogCategories :
+                   link.path === '/news' ? newsCategories :
+                   link.path === '/faq' ? getFaqCategories(i18n.language) :
+                   [];
+                 const isExpanded = mobileExpanded === link.path;
+                 const panelId = 'mobile-submenu-' + link.path.replace('/', '');
+
+                 if (!hasChildren) {
+                   return (
+                     <div key={link.path} className="w-full">
+                       <LangLink
+                         to={link.path}
+                         className={`flex min-h-[44px] w-full items-center justify-center rounded-lg px-3 transition ${isActive(link.path) ? 'text-gold' : 'text-white/80 hover:bg-white/5 hover:text-gold'}`}
+                         onClick={() => setMenuOpen(false)}
+                       >
+                         {t(link.label)}
+                       </LangLink>
+                     </div>
+                   );
+                 }
+
+                 return (
+                   <div key={link.path} className="w-full">
+                     <button
+                       type="button"
+                       onClick={() => setMobileExpanded(isExpanded ? null : link.path)}
+                       aria-expanded={isExpanded}
+                       aria-controls={panelId}
+                       className={`flex min-h-[44px] w-full items-center justify-between rounded-lg px-3 transition ${isActive(link.path) ? 'text-gold' : 'text-white/80 hover:bg-white/5 hover:text-gold'}`}
+                     >
+                       <span>{t(link.label)}</span>
+                       <svg aria-hidden="true" className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                       </svg>
+                     </button>
+                     <AnimatePresence initial={false}>
+                       {isExpanded && (
+                         <motion.div
+                           id={panelId}
+                           initial={{ height: 0, opacity: 0 }}
+                           animate={{ height: 'auto', opacity: 1 }}
+                           exit={{ height: 0, opacity: 0 }}
+                           transition={{ duration: 0.18 }}
+                           className="overflow-hidden"
+                         >
+                           <div className="mb-2 mt-1 flex flex-col gap-1 pl-3">
+                             <LangLink
+                               to={link.path}
+                               onClick={() => setMenuOpen(false)}
+                               className="flex min-h-[40px] w-full items-center justify-center rounded-lg px-3 text-sm font-semibold text-gold transition hover:bg-white/5"
+                             >
+                               {t('common.viewAll', 'Voir tout')}
+                             </LangLink>
+                             {categories.map((category) => {
+                               const isBlog = link.path === '/blog';
+                               const isNews = link.path === '/news';
+                               const isFaq = link.path === '/faq';
+                               const copy = isBlog || isNews
+                                 ? (category as { fr?: { name: string }; en?: { name: string } })[(i18n.language.startsWith('fr') ? 'fr' : 'en') as 'fr' | 'en']
+                                 : category;
+                               const name = (copy && typeof copy === 'object' && 'name' in copy)
+                                 ? (copy as { name: string }).name
+                                 : (category as { title?: string }).title || category.slug;
+                               const childTo = isFaq ? `${link.path}/${category.slug}` : `${link.path}/categorie/${category.slug}`;
+                               return (
+                                 <LangLink
+                                   key={category.slug}
+                                   to={childTo}
+                                   className="flex min-h-[40px] w-full items-center justify-center rounded-lg px-3 text-sm text-white/60 transition hover:bg-white/5 hover:text-gold"
+                                   onClick={() => setMenuOpen(false)}
+                                 >
+                                   {name}
+                                 </LangLink>
+                               );
+                             })}
+                           </div>
+                         </motion.div>
+                       )}
+                     </AnimatePresence>
+                   </div>
+                 );
+               })}
 
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center justify-center text-gold font-medium text-center">{t('common.callUs')}</a>
               <LangLink
