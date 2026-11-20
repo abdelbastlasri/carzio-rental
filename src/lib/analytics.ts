@@ -15,8 +15,11 @@ declare global {
 }
 
 /** Replace these two values when the Google Ads account is ready. */
-export const GOOGLE_ADS_ID = 'AW-XXXXXXXXXX';
-export const GOOGLE_ADS_BOOKING_LABEL = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX';
+// ID confirmé en ligne : le site live émet déjà le tag Google Ads AW-18452928840
+// (pagead/viewthroughconversion/18452928840). Le libellé de conversion reste à
+// remplir une fois récupéré dans Google Ads (Outils → Conversions → tag).
+export const GOOGLE_ADS_ID = 'AW-18452928840';
+export const GOOGLE_ADS_BOOKING_LABEL = 'AW-18452928840/XXXXXXXXXXXXXXXX';
 
 const PLACEHOLDER = 'XXXXXXXXXX';
 const CONSENT_KEY = 'carzio_cookie_consent';
